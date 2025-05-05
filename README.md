@@ -115,41 +115,41 @@ emotion_system:
 
 ```
 upps/
-├── LICENSE                        # ライセンス情報
-├── README.md                      # このファイル
-│
-├── specification/                 # 規格仕様 ✅
-│   ├── upps_standard.md           # 規格定義書
-│   ├── operational_guidelines.md  # 運用指針  
-│   └── schema/                    # スキーマ定義
-│       └── upps_schema.yaml       
-│
-├── prompting/                     # プロンプト主導型 ✅
-│   ├── templates/                 
-│   │   ├── basic_template.md      # 基本テンプレート
-│   │   ├── state_update.md        # 状態更新テンプレート
-│   │   └── memory_trigger.md      # 記憶トリガーテンプレート
-│   └── examples/                  
-│       └── profiles/              
-│           └── rachel-bladerunner.md  # サンプルプロファイル
+├── LICENSE                        # ライセンス情報  
+├── README.md                      # このファイル  
+│  
+├── specification/                 # 規格仕様 ✅  
+│   ├── upps_standard.md           # 規格定義書  
+│   ├── operational_guidelines.md  # 運用指針    
+│   └── schema/                    # スキーマ定義  
+│       └── upps_schema.yaml         
+│  
+├── prompting/                     # プロンプト主導型 ✅  
+│   ├── templates/                   
+│   │   ├── basic_template.md      # 基本テンプレート  
+│   │   ├── state_update.md        # 状態更新テンプレート  
+│   │   └── memory_trigger.md      # 記憶トリガーテンプレート  
+│   └── examples/                    
+│       └── profiles/                
+│           └── rachel-bladerunner.md  # サンプルプロファイル  
 ```
 
 ### 📋 予定・開発中
 
 ```
-prompting/                         # プロンプト主導型（開発中）
-├── direct_prompting_guide.md      # 直接プロンプト利用ガイド 🚧
-├── examples/                     
-│   ├── conversation_example.md    # 会話例 🚧
-│   └── session_management.md      # セッション管理例 🚧
-│
-programming/                       # プログラム主導型（将来予定）
-├── implementation_guide.md        # 実装ガイド 📋
-├── api_reference.md               # APIリファレンス 📋
-└── examples/                      # プログラム例 📋
-    ├── basic_chatbot.py          
-    ├── state_visualization.py    
-    └── web_interface/
+prompting/                         # プロンプト主導型（開発中）  
+├── direct_prompting_guide.md      # 直接プロンプト利用ガイド 🚧  
+├── examples/                       
+│   ├── conversation_example.md    # 会話例 🚧  
+│   └── session_management.md      # セッション管理例 🚧  
+│  
+programming/                       # プログラム主導型（将来予定）  
+├── implementation_guide.md        # 実装ガイド 📋  
+├── api_reference.md               # APIリファレンス 📋  
+└── examples/                      # プログラム例 📋  
+    ├── basic_chatbot.py            
+    ├── state_visualization.py      
+    └── web_interface/  
 ```
 
 ## 変更履歴
