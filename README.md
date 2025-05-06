@@ -1,6 +1,6 @@
 # UPPS - Unified Personality Profile Standard 改訂版2025.2
 
-[![License: Custom](https://img.shields.io/badge/License-UPPS_Custom-blue.svg)](./LICENSE)
+[![License: Custom](https://img.shields.io/badge/License-UPPS_Custom-blue.svg)](./LICENSE.md)
 [![Version: 2025.2 v1.2.0](https://img.shields.io/badge/Version-2025.2_v1.2.0-brightgreen.svg)](https://github.com/upps-consortium/upps)
 [![Documentation Status](https://img.shields.io/badge/docs-latest-informational)](https://github.com/upps-consortium/upps/wiki)
 
@@ -36,7 +36,7 @@ UPPS（Unified Personality Profile Standard）は、対話型AIや架空クラ�
 - [基本テンプレート](./prompting/templates/basic_template.md): 基本的なプロンプトテンプレート
 - [状態管理テンプレート](./prompting/templates/state_update.md): 感情状態の更新を含むテンプレート  
 - [記憶トリガーテンプレート](./prompting/templates/memory_trigger.md): 記憶想起機能を含むテンプレート
-- [サンプルプロファイル - レイチェル](./examples/profiles/rachel-bladerunner.md): ブレードランナーのキャラクター例
+- [サンプルプロファイル - レイチェル](./examples/profiles/rachel_bladerunner.md): ブレードランナーのキャラクター例
 
 #### 📋 開発予定（プロンプト主導型）
 
@@ -115,7 +115,7 @@ emotion_system:
 
 ```
 upps/
-├── LICENSE                        # ライセンス情報  
+├── LICENSE.md                     # ライセンス情報  
 ├── README.md                      # このファイル  
 │  
 ├── specification/                 # 規格仕様 ✅  
@@ -131,14 +131,14 @@ upps/
 │   │   └── memory_trigger.md      # 記憶トリガーテンプレート  
 │   └── examples/                    
 │       └── profiles/                
-│           └── rachel-bladerunner.md  # サンプルプロファイル  
+│           └── rachel_bladerunner.md  # サンプルプロファイル  
 ```
 
 ### 📋 予定・開発中
 
 ```
 prompting/                         # プロンプト主導型（開発中）  
-├── direct_prompting_guide.md      # 直接プロンプト利用ガイド 🚧  
+├── prompt_guide.md                # 直接プロンプト利用ガイド 🚧  
 ├── examples/                       
 │   ├── conversation_example.md    # 会話例 🚧  
 │   └── session_management.md      # セッション管理例 🚧  
@@ -163,7 +163,7 @@ programming/                       # プログラム主導型（将来予定）
 
 ## ライセンス
 
-UPPSは個人、研究、学術、教育用途での使用が無償で許可されています。商用利用には別途ライセンスが必要です。詳細は[LICENSE](./LICENSE)ファイルを参照してください。
+UPPSは個人、研究、学術、教育用途での使用が無償で許可されています。商用利用には別途ライセンスが必要です。詳細は[LICENSE](./LICENSE.md)ファイルを参照してください。
 
 ## 連絡先
 
