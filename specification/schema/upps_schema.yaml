@@ -1,10 +1,10 @@
 ---
 # Unified Personality Profile Standard (UPPS) Schema Definition
-# Version: 2025 v1.0.0
+# Version: 2025.2 v1.2.0
 
 $schema: "http://json-schema.org/draft-07/schema#"
 title: "UPPS Profile"
-description: "Schema for validating UPPS (Unified Personality Profile Standard) profiles"
+description: "Schema for validating UPPS (Unified Personality Profile Standard) profiles with emotion and memory system extensions"
 type: object
 required:
   - personal_info
@@ -23,10 +23,13 @@ properties:
         type: string
         description: "氏名"
       age:
-        type: integer
+        oneOf:
+          - type: integer
+            minimum: 0
+            maximum: 150
+          - type: string
+            description: "年齢を表す文字列（例: 'appears late 20s'）"
         description: "年齢"
-        minimum: 0
-        maximum: 150
       gender:
         type: string
         description: "性別"
@@ -141,10 +144,10 @@ properties:
     type: string
     description: "話し方、態度"
 
-  # 認知プロファイル
+  # 認知プロファイル (レガシー形式)
   cognitive_profile:
     type: object
-    description: "知的能力、発達特性"
+    description: "知的能力、発達特性 (レガシー形式)"
     properties:
       test_results:
         type: array
@@ -158,6 +161,10 @@ properties:
             test_name:
               type: string
               description: "検査名"
+            date:
+              type: string
+              description: "検査実施日"
+              pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
             scores:
               type: object
               description: "検査スコア"
@@ -170,10 +177,10 @@ properties:
         type: string
         description: "認知特性の総合的な説明"
 
-  # 感情記憶
+  # 記憶痕跡 (レガシー形式)
   memory_trace:
     type: object
-    description: "感情記憶とトリガー"
+    description: "感情記憶とトリガー (レガシー形式)"
     properties:
       memories:
         type: array
@@ -204,15 +211,21 @@ properties:
               items:
                 type: string
               minItems: 1
+            related_memories:
+              type: array
+              description: "関連する他の記憶ID（オプション）"
+              items:
+                type: string
+            importance:
+              type: integer
+              description: "記憶の重要度（0-100）"
+              minimum: 0
+              maximum: 100
 
   # セッション文脈
   session_context:
     type: object
     description: "セッション背景設定"
-    required:
-      - setting
-      - purpose
-      - background
     properties:
       setting:
         type: string
@@ -223,16 +236,464 @@ properties:
       background:
         type: string
         description: "背景情報（例: 症状の悪化）"
+      participants:
+        type: array
+        description: "参加者リスト"
+        items:
+          type: string
+      relationship_context:
+        type: array
+        description: "人間関係の文脈"
+        items:
+          type: object
+          properties:
+            person:
+              type: string
+              description: "関係者名"
+            relationship:
+              type: string
+              description: "関係性"
+            history:
+              type: string
+              description: "関係の歴史"
+      environmental_factors:
+        type: object
+        description: "環境要因"
+        properties:
+          time:
+            type: string
+            description: "時間"
+          duration:
+            type: string
+            description: "所要時間"
+          atmosphere:
+            type: string
+            description: "雰囲気"
+          interruptions:
+            type: string
+            description: "中断要素"
 
-  # 状態
+  # 状態 (レガシー形式)
   state:
     type: object
-    description: "現在の感情状態（0-100の範囲）"
+    description: "現在の感情状態（0-100の範囲）- レガシー形式"
     additionalProperties:
       type: integer
       minimum: 0
       maximum: 100
     minProperties: 1
+
+  # 現在の感情状態 (新形式)
+  current_emotion_state:
+    type: object
+    description: "現在の感情状態（0-100の範囲）- 新形式"
+    additionalProperties:
+      type: integer
+      minimum: 0
+      maximum: 100
+    minProperties: 1
+
+  # 感情システム (新規)
+  emotion_system:
+    type: object
+    description: "感情モデルとベースライン値"
+    required:
+      - model
+      - emotions
+    properties:
+      model:
+        type: string
+        description: "使用する感情モデル名"
+        enum:
+          - "Ekman"
+          - "Plutchik"
+          - "PAD"
+          - "OCC"
+          - "Custom"
+      emotions:
+        type: object
+        description: "基本感情セット"
+        additionalProperties:
+          type: object
+          required:
+            - baseline
+          properties:
+            baseline:
+              type: integer
+              description: "基本値（0-100）"
+              minimum: 0
+              maximum: 100
+            description:
+              type: string
+              description: "感情の説明"
+            opposite:
+              type: string
+              description: "対極の感情（主にPlutchikモデル用）"
+            intensity_levels:
+              type: array
+              description: "強度レベル（弱→強）"
+              items:
+                type: string
+        minProperties: 1
+      additional_emotions:
+        type: object
+        description: "追加感情セット（オプション）"
+        additionalProperties:
+          type: object
+          required:
+            - baseline
+          properties:
+            baseline:
+              type: integer
+              description: "基本値（0-100）"
+              minimum: 0
+              maximum: 100
+            description:
+              type: string
+              description: "感情の説明"
+            opposite:
+              type: string
+              description: "対極の感情"
+      compound_emotions:
+        type: object
+        description: "複合感情セット（主にPlutchikモデル用）"
+        additionalProperties:
+          type: object
+          required:
+            - components
+          properties:
+            components:
+              type: array
+              description: "構成感情のリスト"
+              items:
+                type: string
+              minItems: 2
+            baseline:
+              type: integer
+              description: "基本値（0-100）"
+              minimum: 0
+              maximum: 100
+            description:
+              type: string
+              description: "感情の説明"
+
+  # 記憶システム (新規)
+  memory_system:
+    type: object
+    description: "構造化された記憶システム"
+    required:
+      - memories
+    properties:
+      memories:
+        type: array
+        description: "記憶のリスト"
+        items:
+          type: object
+          required:
+            - id
+            - type
+            - content
+          properties:
+            id:
+              type: string
+              description: "記憶の一意識別子"
+            type:
+              type: string
+              description: "記憶のタイプ"
+              enum:
+                - "episodic"
+                - "semantic"
+                - "procedural"
+                - "autobiographical"
+            content:
+              type: string
+              description: "記憶の内容"
+            period:
+              type: string
+              description: "いつの記憶か（時期）"
+            context:
+              type: string
+              description: "記憶の文脈情報"
+            importance:
+              type: integer
+              description: "記憶の重要度（0-100）"
+              minimum: 0
+              maximum: 100
+            emotional_valence:
+              type: string
+              description: "感情的な価値（positive, negative, neutral, mixed）"
+              enum:
+                - "positive"
+                - "negative"
+                - "neutral"
+                - "mixed"
+            associated_emotions:
+              type: array
+              description: "関連する感情のリスト"
+              items:
+                type: string
+        minItems: 1
+
+  # 関連性ネットワーク (新規)
+  association_system:
+    type: object
+    description: "感情と記憶の関連性ネットワーク"
+    required:
+      - associations
+    properties:
+      associations:
+        type: array
+        description: "関連性定義のリスト"
+        items:
+          type: object
+          required:
+            - trigger
+            - response
+          properties:
+            trigger:
+              oneOf:
+                # 単一トリガー
+                - type: object
+                  required:
+                    - type
+                  properties:
+                    type:
+                      type: string
+                      enum: ["memory", "emotion", "external"]
+                    id:
+                      type: string
+                      description: "トリガーとなる記憶または感情のID"
+                    threshold:
+                      type: integer
+                      description: "感情トリガーの閾値"
+                      minimum: 0
+                      maximum: 100
+                    category:
+                      type: string
+                      description: "外部トリガーのカテゴリ"
+                    items:
+                      type: array
+                      description: "外部トリガーの項目リスト"
+                      items:
+                        type: string
+                
+                # 複合トリガー
+                - type: object
+                  required:
+                    - operator
+                    - conditions
+                  properties:
+                    operator:
+                      type: string
+                      enum: ["AND", "OR"]
+                      description: "複合条件の論理演算子"
+                    conditions:
+                      type: array
+                      description: "条件のリスト"
+                      items:
+                        type: object
+                        required:
+                          - type
+                        properties:
+                          type:
+                            type: string
+                            enum: ["memory", "emotion", "external"]
+                          id:
+                            type: string
+                            description: "条件となる記憶または感情のID"
+                          threshold:
+                            type: integer
+                            description: "感情条件の閾値"
+                            minimum: 0
+                            maximum: 100
+                          category:
+                            type: string
+                            description: "外部条件のカテゴリ"
+                          items:
+                            type: array
+                            description: "外部条件の項目リスト"
+                            items:
+                              type: string
+                      minItems: 1
+                      maxItems: 5
+            
+            response:
+              type: object
+              required:
+                - type
+                - id
+                - association_strength
+              properties:
+                type:
+                  type: string
+                  enum: ["memory", "emotion"]
+                  description: "応答のタイプ"
+                id:
+                  type: string
+                  description: "応答となる記憶または感情のID"
+                association_strength:
+                  type: integer
+                  description: "関連の強さ（0-100）"
+                  minimum: 0
+                  maximum: 100
+                decay_rate:
+                  type: number
+                  description: "関連強度の減衰率（オプション）"
+                  minimum: 0
+                  maximum: 1
+                context_dependency:
+                  type: string
+                  description: "文脈依存性（low, medium, high）"
+                  enum:
+                    - "low"
+                    - "medium"
+                    - "high"
+
+  # 認知能力システム (新規)
+  cognitive_system:
+    type: object
+    description: "WAIS-IVモデルに基づく認知能力"
+    required:
+      - model
+      - abilities
+    properties:
+      model:
+        type: string
+        description: "使用する能力モデル"
+        enum:
+          - "WAIS-IV"
+          - "CHC"
+          - "Custom"
+      abilities:
+        type: object
+        description: "能力セット"
+        required:
+          - verbal_comprehension
+          - perceptual_reasoning
+          - working_memory
+          - processing_speed
+        properties:
+          verbal_comprehension:
+            type: object
+            required:
+              - level
+            properties:
+              level:
+                type: integer
+                description: "言語理解能力（0-100）"
+                minimum: 0
+                maximum: 100
+              description:
+                type: string
+                description: "能力の説明"
+              strengths:
+                type: array
+                description: "得意な側面"
+                items:
+                  type: string
+              weaknesses:
+                type: array
+                description: "苦手な側面"
+                items:
+                  type: string
+          
+          perceptual_reasoning:
+            type: object
+            required:
+              - level
+            properties:
+              level:
+                type: integer
+                description: "知覚推理能力（0-100）"
+                minimum: 0
+                maximum: 100
+              description:
+                type: string
+                description: "能力の説明"
+              strengths:
+                type: array
+                description: "得意な側面"
+                items:
+                  type: string
+              weaknesses:
+                type: array
+                description: "苦手な側面"
+                items:
+                  type: string
+          
+          working_memory:
+            type: object
+            required:
+              - level
+            properties:
+              level:
+                type: integer
+                description: "ワーキングメモリ能力（0-100）"
+                minimum: 0
+                maximum: 100
+              description:
+                type: string
+                description: "能力の説明"
+              strengths:
+                type: array
+                description: "得意な側面"
+                items:
+                  type: string
+              weaknesses:
+                type: array
+                description: "苦手な側面"
+                items:
+                  type: string
+          
+          processing_speed:
+            type: object
+            required:
+              - level
+            properties:
+              level:
+                type: integer
+                description: "処理速度能力（0-100）"
+                minimum: 0
+                maximum: 100
+              description:
+                type: string
+                description: "能力の説明"
+              strengths:
+                type: array
+                description: "得意な側面"
+                items:
+                  type: string
+              weaknesses:
+                type: array
+                description: "苦手な側面"
+                items:
+                  type: string
+      
+      general_ability:
+        type: object
+        required:
+          - level
+        properties:
+          level:
+            type: integer
+            description: "全体的な認知能力（0-100）"
+            minimum: 0
+            maximum: 100
+          description:
+            type: string
+            description: "能力の説明"
+          domain_specific_abilities:
+            type: object
+            description: "特定領域の能力（オプション）"
+            additionalProperties:
+              type: object
+              properties:
+                level:
+                  type: integer
+                  minimum: 0
+                  maximum: 100
+                description:
+                  type: string
 
 # 追加のプロパティは許可しない
 additionalProperties: false
