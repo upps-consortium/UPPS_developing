@@ -1,6 +1,3 @@
-// main.js
-// アプリケーションのメインエントリーポイント
-
 function UPPSEditor() {
     return {
         // 状態管理
@@ -10,6 +7,13 @@ function UPPSEditor() {
         tabs: [], // タブ定義
         externalItems: {}, // 外部アイテム一時保存用
         errors: {}, // バリデーションエラー
+        
+        // ビジュアルエディタ関連の状態
+        visualEditorOpen: false,
+        selectedNode: null,
+        selectedNodeType: null,
+        selectedNodeData: null,
+        networkVisualization: null,
 
         // 初期化
         init() {
@@ -225,32 +229,17 @@ function UPPSEditor() {
             link.click();
             
             URL.revokeObjectURL(link.href);
-        }
+        },
+        
+        // ビジュアルエディタ関連メソッド
+        initializeVisualizer,
+        toggleVisualEditor,
+        selectNode,
+        getSelectedNodeTitle,
+        closeNodeEditor,
+        updateLinkStrength,
+        zoomIn,
+        zoomOut,
+        resetZoom
     };
-}
-
-// オブジェクトの深いマージを行うユーティリティ関数
-function deepMerge(target, source) {
-    const output = Object.assign({}, target);
-    
-    if (isObject(target) && isObject(source)) {
-        Object.keys(source).forEach(key => {
-            if (isObject(source[key])) {
-                if (!(key in target)) {
-                    Object.assign(output, { [key]: source[key] });
-                } else {
-                    output[key] = deepMerge(target[key], source[key]);
-                }
-            } else {
-                Object.assign(output, { [key]: source[key] });
-            }
-        });
-    }
-    
-    return output;
-}
-
-// オブジェクト判定
-function isObject(item) {
-    return (item && typeof item === 'object' && !Array.isArray(item));
 }
