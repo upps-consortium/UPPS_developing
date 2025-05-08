@@ -22,7 +22,7 @@ function UPPSEditor() {
             // タブの定義
             this.tabs = [
                 { id: 'basic', icon: 'user', label: '基本情報' },
-                { id: 'current-state', icon: 'activity', label: '現在の感情' },
+                { id: 'current', icon: 'activity', label: '現在の感情' },
                 { id: 'emotion', icon: 'heart', label: '感情システム' },
                 { id: 'personality', icon: 'sparkles', label: '性格特性' },
                 { id: 'memory', icon: 'book', label: '記憶システム' },
