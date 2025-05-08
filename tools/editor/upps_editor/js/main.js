@@ -231,6 +231,30 @@ function UPPSEditor() {
             URL.revokeObjectURL(link.href);
         },
         
+        // data.js からの関数参照
+        initializeProfile,
+        handleEmotionModelChange,
+        handleCognitiveModelChange,
+        syncEmotionState,
+        
+        // UI.js からの関数参照
+        getEmotionLabel,
+        getEmotionIcon,
+        getTraitLabel,
+        getTraitDescription,
+        getAbilityLabel,
+        addMemory,
+        removeMemory,
+        addAssociation,
+        removeAssociation,
+        addComplexCondition,
+        removeComplexCondition,
+        updateComplexConditionType,
+        updateExternalItems,
+        getExternalConditionItems,
+        updateExternalConditionItems,
+        updateAssociationOptions,
+        
         // ビジュアルエディタ関連メソッド
         initializeVisualizer,
         toggleVisualEditor,
