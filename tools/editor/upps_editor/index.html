@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPPS Profile Editor 2025.2 - 感情・記憶システム統合モデル対応</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen">
+    <div x-data="UPPSEditor()" class="container mx-auto px-4 py-8" x-init="init()">
+        <!-- Header -->
+        <header class="glass rounded-2xl p-6 mb-8">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-400 to-cyan-400 flex items-center justify-center">
+                        <i data-lucide="brain" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <h1 class="text-2xl font-bold text-white">UPPS Profile Editor</h1>
+                            <span class="version-badge">2025.2</span>
+                        </div>
+                        <p class="text-white/60">Unified Personality Profile Standard</p>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button @click="toggleTheme()" class="glass rounded-lg p-2 text-white/80 hover:text-white">
+                        <i data-lucide="sun" x-show="darkMode" class="w-5 h-5"></i>
+                        <i data-lucide="moon" x-show="!darkMode" class="w-5 h-5"></i>
+                    </button>
+                    <button @click="saveProfile()" class="bg-gradient-to-r from-indigo-500 to-cyan-500 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:from-indigo-600 hover:to-cyan-600 transition">
+                        <i data-lucide="save" class="w-4 h-4"></i>
+                        <span>保存</span>
+                    </button>
+                    <button @click="loadFile()" class="glass rounded-lg p-2 text-white/80 hover:text-white">
+                        <i data-lucide="upload" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-12 gap-6">
+            <!-- Main Editor -->
+            <div class="col-span-8">
+                <!-- Tabs -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <template x-for="tab in tabs" :key="tab.id">
+                        <button 
+                            :class="activeTab === tab.id ? 'glass-bright text-white' : 'text-white/60 hover:text-white/80'" 
+                            @click="activeTab = tab.id" 
+                            class="px-4 py-2 rounded-lg transition flex items-center space-x-2"
+                        >
+                            <i :data-lucide="tab.icon" class="w-4 h-4"></i>
+                            <span x-text="tab.label"></span>
+                        </button>
+                    </template>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="bento-card rounded-2xl p-6">
+                    <!-- タブコンテンツはそれぞれ別ファイルから読み込み -->
+                    <div id="tab-content"></div>
+                </div>
+            </div>
+
+            <!-- Preview Panel -->
+            <div class="col-span-4">
+                <div class="bento-card rounded-2xl p-6 sticky top-8">
+                    <h2 class="text-xl font-semibold text-white mb-4">YAML プレビュー</h2>
+                    <pre class="bg-black/50 rounded-lg p-4 text-white/80 text-sm overflow-auto max-h-[600px] font-mono" x-text="generateYAML()"></pre>
+                    
+                    <div class="mt-6 space-y-4">
+                        <button @click="exportJSON()" class="w-full glass hover:glass-bright rounded-lg px-4 py-2 text-white flex items-center justify-center space-x-2 transition">
+                            <i data-lucide="download" class="w-4 h-4"></i>
+                            <span>JSON エクスポート</span>
+                        </button>
+                        <button @click="exportYAML()" class="w-full glass hover:glass-bright rounded-lg px-4 py-2 text-white flex items-center justify-center space-x-2 transition">
+                            <i data-lucide="file-text" class="w-4 h-4"></i>
+                            <span>YAML エクスポート</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Scripts -->
+    <script src="js/utils/export.js"></script>
+    <script src="js/utils/validation.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/tabs/basic.js"></script>
+    <script src="js/tabs/emotion.js"></script>
+    <script src="js/tabs/current-state.js"></script>
+    <script src="js/tabs/personality.js"></script>
+    <script src="js/tabs/memory.js"></script>
+    <script src="js/tabs/association.js"></script>
+    <script src="js/tabs/cognitive.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Lucide Icons初期化
+        lucide.createIcons();
+    </script>
+</body>
+</html>

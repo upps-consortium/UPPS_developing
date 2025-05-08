@@ -1,0 +1,116 @@
+/* タブ固有のスタイル */
+
+/* 基本情報タブ */
+.personal-info-field {
+    transition: all 0.2s ease;
+}
+
+.personal-info-field:focus-within {
+    transform: translateY(-2px);
+}
+
+/* 感情システムタブ */
+.emotion-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.emotion-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #4F46E5, #06B6D4);
+    opacity: 0.7;
+}
+
+/* 記憶システムタブ */
+.memory-card {
+    position: relative;
+}
+
+.memory-episodic {
+    border-left: 3px solid rgba(79, 70, 229, 0.6);
+}
+
+.memory-semantic {
+    border-left: 3px solid rgba(6, 182, 212, 0.6);
+}
+
+.memory-procedural {
+    border-left: 3px solid rgba(245, 158, 11, 0.6);
+}
+
+.memory-autobiographical {
+    border-left: 3px solid rgba(139, 92, 246, 0.6);
+}
+
+/* 関連性ネットワークタブ */
+.association-trigger {
+    background: rgba(79, 70, 229, 0.1);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    border-radius: 8px;
+}
+
+.association-response {
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    border-radius: 8px;
+}
+
+.complex-condition {
+    position: relative;
+    padding-left: 12px;
+}
+
+.complex-condition::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(79, 70, 229, 0.6), rgba(6, 182, 212, 0.6));
+}
+
+/* 認知能力タブ */
+.ability-card {
+    transition: all 0.3s ease;
+}
+
+.ability-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* アニメーション */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* プレビューパネル */
+.yaml-preview {
+    font-family: 'Fira Code', monospace;
+    line-height: 1.5;
+}
+
+.yaml-key {
+    color: #06B6D4;
+}
+
+.yaml-value {
+    color: #F9FAFB;
+}
+
+.yaml-comment {
+    color: #6B7280;
+    font-style: italic;
+}
