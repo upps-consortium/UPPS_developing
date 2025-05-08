@@ -54,7 +54,7 @@ function UPPSEditor() {
             const tabContent = document.getElementById('tab-content');
             
             // ファイルからHTMLをフェッチ
-            fetch(`templates/${tabId}.html`)
+            fetch(`js/tabs/${tabId}.html`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Failed to load tab content: ${response.status}`);
