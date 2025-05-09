@@ -169,7 +169,7 @@
     <div class="flex justify-between items-center mb-4">
         <div>
             <h3 class="text-lg text-white mb-1">関連性ネットワークビジュアライザ</h3>
-            <p class="text-white/50 text-sm">ノードをドラッグして配置を調整できます</p>
+            <p class="text-white/50 text-sm">ノードをドラッグして配置を調整できます。Alt+クリック＆ドラッグで新しい関連性を作成できます。</p>
         </div>
         <button @click="toggleVisualEditor()" class="glass px-4 py-2 rounded text-white hover:bg-white/10 transition">
             <span x-text="visualEditorOpen ? '閉じる' : '開く'"></span>
@@ -191,40 +191,82 @@
         </div>
         
         <!-- 編集パネル -->
-        <div x-show="selectedNode" x-transition class="absolute bottom-0 left-0 right-0 bg-black/50 backdrop-blur p-4">
-            <div class="flex justify-between items-center">
-                <h4 class="text-white font-medium" x-text="getSelectedNodeTitle()"></h4>
+        <div x-show="selectedNode" x-transition class="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h4 class="text-white font-medium text-lg" x-text="getSelectedNodeTitle()"></h4>
                 <button @click="closeNodeEditor()" class="text-white/60 hover:text-white">
                     <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
             </div>
-            <div class="mt-2 grid grid-cols-2 gap-4">
-                <!-- 感情ノード編集 -->
-                <template x-if="selectedNodeType === 'emotion'">
+            
+            <!-- 感情ノード編集 -->
+            <template x-if="selectedNodeType === 'emotion'">
+                <div class="grid grid-cols-2 gap-6">
                     <div>
-                        <label class="text-white/60 text-sm">感情強度</label>
-                        <input type="range" x-model.number="selectedNodeData.value" min="0" max="100" class="slider w-full mt-1" :style="'--value: ' + selectedNodeData.value">
-                        <span class="text-white/80 text-sm" x-text="selectedNodeData.value + '%'"></span>
+                        <label class="text-white/60 text-sm block mb-2">ベースライン値</label>
+                        <input type="range" x-model.number="profile.emotion_system.emotions[selectedNodeData.emotionId].baseline" 
+                               min="0" max="100" class="slider w-full" 
+                               :style="'--value: ' + profile.emotion_system.emotions[selectedNodeData.emotionId].baseline"
+                               @change="updateEmotionBaseline()">
+                        <span class="text-white/80 text-sm" 
+                              x-text="profile.emotion_system.emotions[selectedNodeData.emotionId].baseline + '%'"></span>
                     </div>
-                </template>
-                
-                <!-- 記憶ノード編集 -->
-                <template x-if="selectedNodeType === 'memory'">
                     <div>
-                        <label class="text-white/60 text-sm">内容</label>
-                        <div class="text-white/80 text-sm mt-1 max-h-20 overflow-auto" x-text="selectedNodeData.content"></div>
+                        <label class="text-white/60 text-sm block mb-2">説明</label>
+                        <textarea x-model="profile.emotion_system.emotions[selectedNodeData.emotionId].description" 
+                                 class="w-full glass rounded p-2 text-white text-sm h-20"></textarea>
                     </div>
-                </template>
-                
-                <!-- 関連性編集 -->
-                <template x-if="selectedNodeType === 'link'">
+                </div>
+            </template>
+            
+            <!-- 記憶ノード編集 -->
+            <template x-if="selectedNodeType === 'memory'">
+                <div class="grid grid-cols-2 gap-6">
                     <div>
-                        <label class="text-white/60 text-sm">関連強度</label>
-                        <input type="range" x-model.number="selectedNodeData.strength" min="0" max="100" class="slider w-full mt-1" :style="'--value: ' + selectedNodeData.strength" @change="updateLinkStrength()">
+                        <label class="text-white/60 text-sm block mb-2">ID</label>
+                        <input x-model="getMemoryById(selectedNodeData.memoryId).id" 
+                              class="w-full glass rounded p-2 text-white text-sm" 
+                              @change="updateMemoryId()">
+                    </div>
+                    <div>
+                        <label class="text-white/60 text-sm block mb-2">タイプ</label>
+                        <select x-model="getMemoryById(selectedNodeData.memoryId).type" 
+                               class="w-full glass rounded p-2 text-white text-sm">
+                            <option value="episodic">エピソード記憶</option>
+                            <option value="semantic">意味記憶</option>
+                            <option value="procedural">手続き記憶</option>
+                            <option value="autobiographical">自伝的記憶</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <label class="text-white/60 text-sm block mb-2">内容</label>
+                        <textarea x-model="getMemoryById(selectedNodeData.memoryId).content" 
+                                 class="w-full glass rounded p-2 text-white text-sm h-20"></textarea>
+                    </div>
+                </div>
+            </template>
+            
+            <!-- 関連性編集 -->
+            <template x-if="selectedNodeType === 'link'">
+                <div class="grid grid-cols-3 gap-6">
+                    <div>
+                        <label class="text-white/60 text-sm block mb-2">トリガー</label>
+                        <div class="text-white text-sm" x-text="selectedNodeData.source.name"></div>
+                    </div>
+                    <div>
+                        <label class="text-white/60 text-sm block mb-2">レスポンス</label>
+                        <div class="text-white text-sm" x-text="selectedNodeData.target.name"></div>
+                    </div>
+                    <div>
+                        <label class="text-white/60 text-sm block mb-2">関連強度</label>
+                        <input type="range" x-model.number="selectedNodeData.strength" 
+                               min="0" max="100" class="slider w-full" 
+                               :style="'--value: ' + selectedNodeData.strength" 
+                               @change="updateLinkStrength()">
                         <span class="text-white/80 text-sm" x-text="selectedNodeData.strength + '%'"></span>
                     </div>
-                </template>
-            </div>
+                </div>
+            </template>
         </div>
     </div>
 </div>
