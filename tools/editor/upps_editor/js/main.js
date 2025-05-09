@@ -19,10 +19,9 @@ function UPPSEditor() {
         init() {
             console.log('UPPS Editor initializing...');
             
-            // タブの定義
+            // タブの定義 - 「current」タブを削除
             this.tabs = [
                 { id: 'basic', icon: 'user', label: '基本情報' },
-                { id: 'current', icon: 'activity', label: '現在の感情' },
                 { id: 'emotion', icon: 'heart', label: '感情システム' },
                 { id: 'personality', icon: 'sparkles', label: '性格特性' },
                 { id: 'memory', icon: 'book', label: '記憶システム' },
@@ -96,6 +95,91 @@ function UPPSEditor() {
             }
         },
         
+        // 追加: メモリオブジェクト取得ヘルパー関数
+        getMemoryById(id) {
+            if (!id) return null;
+            const memories = this.profile.memory_system?.memories || [];
+            return memories.find(m => m.id === id) || null;
+        },
+        
+        // 追加: 感情ベースライン更新関数
+        updateEmotionBaseline() {
+            // ビジュアライザが開かれている場合、対応するノードを更新
+            if (this.visualEditorOpen && this.selectedNodeType === 'emotion' && this.selectedNodeData) {
+                const emotionId = this.selectedNodeData.emotionId;
+                const baseline = this.profile.emotion_system.emotions[emotionId].baseline;
+                
+                // 選択中のノードデータを更新
+                this.selectedNodeData.value = baseline;
+                
+                // ノードの視覚的な更新
+                this.updateNodeInVisualizer(this.selectedNodeData);
+            }
+        },
+        
+        // 追加: ノードの視覚的更新
+        updateNodeInVisualizer(nodeData) {
+            if (!this.networkVisualization) return;
+            
+            // D3.jsを使用してノードの視覚的な属性を更新
+            d3.select(`#network-visualizer circle[data-id="${nodeData.id}"]`)
+                .attr("r", this.getNodeRadius(nodeData))
+                .attr("fill", this.getNodeColor(nodeData));
+                
+            // リンクの再計算が必要な場合は行う
+            this.updateAffectedLinks(nodeData);
+        },
+        
+        // 追加: 関連するリンクの更新
+        updateAffectedLinks(nodeData) {
+            if (!this.networkVisualization) return;
+            
+            // このノードに関連するリンクを更新
+            const links = this.networkVisualization.links.filter(link => 
+                link.source.id === nodeData.id || link.target.id === nodeData.id
+            );
+            
+            links.forEach(link => {
+                d3.select(`#network-visualizer line[data-id="${link.id}"]`)
+                    .attr("stroke-width", Math.max(1, link.strength / 20));
+            });
+        },
+        
+        // 追加: ノードの半径を取得
+        getNodeRadius(node) {
+            if (node.type === 'emotion') {
+                return 20 + (node.value / 5); // 感情の強さに比例
+            } else {
+                return 25; // 記憶ノードは固定サイズ
+            }
+        },
+        
+        // 追加: ノードの色を取得
+        getNodeColor(node) {
+            if (node.type === 'emotion') {
+                // 感情タイプに応じた色
+                const colors = {
+                    joy: '#4FD1C5', // ティール
+                    sadness: '#4299E1', // 青
+                    anger: '#F56565', // 赤
+                    fear: '#9F7AEA', // 紫
+                    disgust: '#68D391', // 緑
+                    surprise: '#F6AD55' // オレンジ
+                };
+                return colors[node.emotionId] || '#A0AEC0'; // デフォルトはグレー
+            } else if (node.type === 'memory') {
+                // 記憶タイプに応じた色
+                const colors = {
+                    episodic: '#4F46E5', // インディゴ
+                    semantic: '#06B6D4', // シアン
+                    procedural: '#F59E0B', // アンバー
+                    autobiographical: '#8B5CF6' // パープル
+                };
+                return colors[node.memoryType] || '#A0AEC0';
+            }
+            return '#A0AEC0';
+        },
+        
         // プロファイルの保存
         saveProfile() {
             // バリデーション
@@ -166,10 +250,45 @@ function UPPSEditor() {
             input.click();
         },
         
+        // data.js からの関数参照
+        initializeProfile,
+        handleEmotionModelChange,
+        handleCognitiveModelChange,
+        syncEmotionState,
+        
+        // UI.js からの関数参照
+        getEmotionLabel,
+        getEmotionIcon,
+        getTraitLabel,
+        getTraitDescription,
+        getAbilityLabel,
+        addMemory,
+        removeMemory,
+        addAssociation,
+        removeAssociation,
+        addComplexCondition,
+        removeComplexCondition,
+        updateComplexConditionType,
+        updateExternalItems,
+        getExternalConditionItems,
+        updateExternalConditionItems,
+        updateAssociationOptions,
+        
+        // ビジュアルエディタ関連メソッド
+        initializeVisualizer,
+        toggleVisualEditor,
+        selectNode,
+        getSelectedNodeTitle,
+        closeNodeEditor,
+        updateLinkStrength,
+        zoomIn,
+        zoomOut,
+        resetZoom,
+
         // テンプレートとマージして不足フィールドを補完
         mergeWithTemplate(data) {
             const template = getDefaultProfile();
-            return deepMerge(template, data);
+            return this.deepMerge(template, data);
         },
         
         // プロファイル全体のバリデーション
@@ -195,6 +314,31 @@ function UPPSEditor() {
                 noRefs: true,
                 sortKeys: true
             });
+        },
+        
+        // 深いマージを行うヘルパー関数
+        deepMerge(target, source) {
+            const isObject = obj => obj && typeof obj === 'object' && !Array.isArray(obj);
+            
+            if (!isObject(target) || !isObject(source)) {
+                return source;
+            }
+            
+            const output = Object.assign({}, target);
+            
+            Object.keys(source).forEach(key => {
+                if (isObject(source[key])) {
+                    if (!(key in target)) {
+                        Object.assign(output, { [key]: source[key] });
+                    } else {
+                        output[key] = this.deepMerge(target[key], source[key]);
+                    }
+                } else {
+                    Object.assign(output, { [key]: source[key] });
+                }
+            });
+            
+            return output;
         },
         
         // JSONエクスポート
@@ -229,41 +373,6 @@ function UPPSEditor() {
             link.click();
             
             URL.revokeObjectURL(link.href);
-        },
-        
-        // data.js からの関数参照
-        initializeProfile,
-        handleEmotionModelChange,
-        handleCognitiveModelChange,
-        syncEmotionState,
-        
-        // UI.js からの関数参照
-        getEmotionLabel,
-        getEmotionIcon,
-        getTraitLabel,
-        getTraitDescription,
-        getAbilityLabel,
-        addMemory,
-        removeMemory,
-        addAssociation,
-        removeAssociation,
-        addComplexCondition,
-        removeComplexCondition,
-        updateComplexConditionType,
-        updateExternalItems,
-        getExternalConditionItems,
-        updateExternalConditionItems,
-        updateAssociationOptions,
-        
-        // ビジュアルエディタ関連メソッド
-        initializeVisualizer,
-        toggleVisualEditor,
-        selectNode,
-        getSelectedNodeTitle,
-        closeNodeEditor,
-        updateLinkStrength,
-        zoomIn,
-        zoomOut,
-        resetZoom
+        }
     };
 }

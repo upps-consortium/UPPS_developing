@@ -27,25 +27,36 @@ function initializeVisualizer() {
     // ネットワークデータの準備
     const { nodes, links } = prepareNetworkData(this.profile);
     
+    // リンク用のグループ
+    const linkGroup = g.append("g").attr("class", "links");
+    
     // リンクの描画
-    const link = g.selectAll(".link")
+    const link = linkGroup.selectAll(".link")
         .data(links)
         .enter()
         .append("line")
         .attr("class", "link")
+        .attr("data-id", d => d.id)
         .attr("stroke", d => getLinkColor(d))
         .attr("stroke-width", d => Math.max(1, d.strength / 20))
         .attr("stroke-opacity", 0.6)
         .on("click", (event, d) => this.selectNode('link', d, event));
     
+    // ノード用のグループ
+    const nodeGroup = g.append("g").attr("class", "nodes");
+    
     // ノードの描画
-    const node = g.selectAll(".node")
+    const node = nodeGroup.selectAll(".node")
         .data(nodes)
         .enter()
         .append("circle")
         .attr("class", "node")
-        .attr("r", d => getNodeRadius(d))
-        .attr("fill", d => getNodeColor(d))
+        .attr("data-id", d => d.id)
+        .attr("r", d => this.getNodeRadius(d))
+        .attr("fill", d => this.getNodeColor(d))
+        .attr("stroke", "#000")
+        .attr("stroke-width", 1.5)
+        .attr("stroke-opacity", 0.3)
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
@@ -62,14 +73,15 @@ function initializeVisualizer() {
         .attr("dy", ".35em")
         .attr("fill", "#ffffff")
         .attr("font-size", "10px")
+        .attr("pointer-events", "none")
         .text(d => d.name);
     
     // シミュレーションの作成
     const simulation = d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).id(d => d.id).distance(100))
+        .force("link", d3.forceLink(links).id(d => d.id).distance(120))
         .force("charge", d3.forceManyBody().strength(-300))
         .force("center", d3.forceCenter(width / 2, height / 2))
-        .force("collide", d3.forceCollide().radius(d => getNodeRadius(d) + 10));
+        .force("collide", d3.forceCollide().radius(d => this.getNodeRadius(d) + 15));
     
     // シミュレーション更新時の処理
     simulation.on("tick", () => {
@@ -106,13 +118,132 @@ function initializeVisualizer() {
         d.fy = null;
     }
     
+    // 新規リンク作成のためのドラッグラインを追加
+    const dragLine = g.append("path")
+        .attr("class", "drag-line")
+        .attr("d", "M0,0L0,0")
+        .style("stroke", "#4299E1")
+        .style("stroke-width", 2)
+        .style("stroke-dasharray", "5,5")
+        .style("opacity", 0)
+        .style("pointer-events", "none");
+    
+    // 新規リンク作成機能
+    enableLinkCreation(node, dragLine, svg, g);
+    
     // グローバル変数に保存
     this.networkVisualization = {
         svg,
+        g,
         simulation,
         nodes,
-        links
+        links,
+        dragLine
     };
+}
+
+// 新規リンク作成を有効化
+function enableLinkCreation(nodes, dragLine, svg, g) {
+    let sourceNode = null;
+    
+    nodes.on("mousedown", function(event, d) {
+        if (event.button !== 0) return; // 左クリックのみ
+        if (event.altKey) { // Altキーを押しながらクリック
+            sourceNode = d;
+            dragLine
+                .style("opacity", 1)
+                .attr("d", `M${sourceNode.x},${sourceNode.y}L${sourceNode.x},${sourceNode.y}`);
+            
+            event.preventDefault();
+        }
+    });
+    
+    svg.on("mousemove", function(event) {
+        if (!sourceNode) return;
+        
+        const pointer = d3.pointer(event, g.node());
+        dragLine.attr("d", `M${sourceNode.x},${sourceNode.y}L${pointer[0]},${pointer[1]}`);
+    });
+    
+    nodes.on("mouseup", function(event, d) {
+        if (!sourceNode || sourceNode === d) {
+            dragLine.style("opacity", 0);
+            sourceNode = null;
+            return;
+        }
+        
+        if (event.altKey) {
+            // ターゲットノードを設定
+            const targetNode = d;
+            
+            // リンク作成ダイアログを表示
+            openCreateLinkDialog(sourceNode, targetNode);
+            
+            // リセット
+            dragLine.style("opacity", 0);
+            sourceNode = null;
+        }
+    });
+    
+    svg.on("mouseup", function() {
+        dragLine.style("opacity", 0);
+        sourceNode = null;
+    });
+}
+
+// リンク作成ダイアログを表示
+function openCreateLinkDialog(sourceNode, targetNode) {
+    // 関連性タイプに基づいてダイアログ表示を管理するコードはここに実装
+    // 現時点ではシンプルにコンソールログとデフォルト値での作成
+    console.log('Creating link from', sourceNode.id, 'to', targetNode.id);
+    
+    // 関連性の追加
+    const sourceType = sourceNode.type;
+    const sourceId = sourceNode.emotionId || sourceNode.memoryId;
+    const targetType = targetNode.type;
+    const targetId = targetNode.emotionId || targetNode.memoryId;
+    
+    // 関連性をプロファイルに追加
+    addAssociationToProfile(sourceType, sourceId, targetType, targetId);
+    
+    // ビジュアライザを更新
+    this.refreshVisualizer();
+}
+
+// プロファイルに関連性を追加
+function addAssociationToProfile(sourceType, sourceId, targetType, targetId, strength = 50) {
+    if (!this.profile.association_system) {
+        this.profile.association_system = { associations: [] };
+    }
+    
+    if (!this.profile.association_system.associations) {
+        this.profile.association_system.associations = [];
+    }
+    
+    // 新しい関連性を作成
+    const newId = `assoc_${this.profile.association_system.associations.length + 1}`;
+    
+    this.profile.association_system.associations.push({
+        id: newId,
+        trigger: {
+            type: sourceType,
+            id: sourceId
+        },
+        response: {
+            type: targetType,
+            id: targetId,
+            association_strength: strength
+        }
+    });
+    
+    console.log('Added new association:', newId);
+}
+
+// ビジュアライザを更新
+function refreshVisualizer() {
+    if (this.visualEditorOpen) {
+        this.initializeVisualizer();
+    }
 }
 
 // プロファイルからネットワークデータを作成
@@ -169,60 +300,58 @@ function prepareNetworkData(profile) {
                         source: sourceId,
                         target: targetId,
                         type: `${assoc.trigger.type}-${assoc.response.type}`,
-                        strength: assoc.response.association_strength || 50
+                        strength: assoc.response.association_strength || 50,
+                        associationId: assoc.id || null
                     });
                 }
             }
             
-            // 複合トリガーはこの単純な可視化では省略
+            // 複合トリガーの処理
+            if (assoc.trigger.type === 'complex' && assoc.trigger.conditions) {
+                const targetId = `${assoc.response.type}:${assoc.response.id}`;
+                if (!nodeMap[targetId]) continue;
+                
+                // 各条件からターゲットへのリンクを作成
+                assoc.trigger.conditions.forEach((condition, index) => {
+                    if (condition.type && condition.id) {
+                        const sourceId = `${condition.type}:${condition.id}`;
+                        if (nodeMap[sourceId]) {
+                            links.push({
+                                id: `${sourceId}-${targetId}-${index}`,
+                                source: sourceId,
+                                target: targetId,
+                                type: `complex-${assoc.trigger.operator || 'AND'}`,
+                                strength: assoc.response.association_strength || 50,
+                                isComplex: true,
+                                operator: assoc.trigger.operator || 'AND',
+                                associationId: assoc.id || null
+                            });
+                        }
+                    }
+                });
+            }
         }
     }
     
     return { nodes, links };
 }
 
-// ノードの半径を取得
-function getNodeRadius(node) {
-    if (node.type === 'emotion') {
-        return 20 + (node.value / 5); // 感情の強さに比例
-    } else {
-        return 25; // 記憶ノードは固定サイズ
-    }
-}
-
-// ノードの色を取得
-function getNodeColor(node) {
-    if (node.type === 'emotion') {
-        // 感情タイプに応じた色
-        const colors = {
-            joy: '#4FD1C5', // ティール
-            sadness: '#4299E1', // 青
-            anger: '#F56565', // 赤
-            fear: '#9F7AEA', // 紫
-            disgust: '#68D391', // 緑
-            surprise: '#F6AD55' // オレンジ
-        };
-        return colors[node.emotionId] || '#A0AEC0'; // デフォルトはグレー
-    } else if (node.type === 'memory') {
-        // 記憶タイプに応じた色
-        const colors = {
-            episodic: '#4F46E5', // インディゴ
-            semantic: '#06B6D4', // シアン
-            procedural: '#F59E0B', // アンバー
-            autobiographical: '#8B5CF6' // パープル
-        };
-        return colors[node.memoryType] || '#A0AEC0';
-    }
-    return '#A0AEC0';
-}
-
 // リンクの色を取得
 function getLinkColor(link) {
+    if (link.isComplex) {
+        return link.operator === 'AND' ? 'rgba(159, 122, 234, 0.6)' : 'rgba(246, 173, 85, 0.6)';
+    }
+    
     if (link.type === 'memory-emotion') {
         return 'rgba(79, 70, 229, 0.6)'; // インディゴ
     } else if (link.type === 'emotion-memory') {
         return 'rgba(6, 182, 212, 0.6)'; // シアン
+    } else if (link.type === 'emotion-emotion') {
+        return 'rgba(245, 101, 101, 0.6)'; // 赤
+    } else if (link.type === 'memory-memory') {
+        return 'rgba(104, 211, 145, 0.6)'; // 緑
     }
+    
     return 'rgba(160, 174, 192, 0.6)'; // グレー
 }
 
@@ -233,6 +362,21 @@ function selectNode(type, data, event) {
     this.selectedNodeType = type;
     this.selectedNode = data.id || null;
     this.selectedNodeData = data;
+    
+    // ノードの選択状態を視覚的に表示
+    d3.selectAll("#network-visualizer .node")
+        .attr("stroke-opacity", 0.3)
+        .attr("stroke-width", 1.5);
+    
+    if (type !== 'link') {
+        d3.select(`#network-visualizer circle[data-id="${data.id}"]`)
+            .attr("stroke-opacity", 1)
+            .attr("stroke-width", 3);
+    } else {
+        d3.select(`#network-visualizer line[data-id="${data.id}"]`)
+            .attr("stroke-opacity", 1)
+            .attr("stroke-width", Math.max(2, data.strength / 15));
+    }
     
     console.log('Selected node:', type, data);
 }
@@ -254,6 +398,15 @@ function getSelectedNodeTitle() {
 
 // ノードエディタを閉じる
 function closeNodeEditor() {
+    // 選択状態のリセット
+    d3.selectAll("#network-visualizer .node")
+        .attr("stroke-opacity", 0.3)
+        .attr("stroke-width", 1.5);
+    
+    d3.selectAll("#network-visualizer .link")
+        .attr("stroke-opacity", 0.6)
+        .attr("stroke-width", d => Math.max(1, d.strength / 20));
+    
     this.selectedNode = null;
     this.selectedNodeType = null;
     this.selectedNodeData = null;
@@ -264,7 +417,7 @@ function updateLinkStrength() {
     if (!this.selectedNode || this.selectedNodeType !== 'link') return;
     
     // 可視化の更新
-    d3.select(`#network-visualizer line[id="${this.selectedNode}"]`)
+    d3.select(`#network-visualizer line[data-id="${this.selectedNodeData.id}"]`)
         .attr("stroke-width", Math.max(1, this.selectedNodeData.strength / 20));
     
     // プロファイルデータの更新
@@ -280,6 +433,7 @@ function updateLinkStrength() {
             assoc.response?.id === targetId) {
             
             assoc.response.association_strength = this.selectedNodeData.strength;
+            console.log('Updated association strength:', this.selectedNodeData.strength);
             break;
         }
     }
@@ -328,5 +482,8 @@ function toggleVisualEditor() {
         setTimeout(() => {
             this.initializeVisualizer();
         }, 100);
+    } else {
+        // 非表示時は選択状態をクリア
+        this.closeNodeEditor();
     }
 }

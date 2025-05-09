@@ -12,14 +12,8 @@ function getDefaultProfile() {
             occupation: ''
         },
         background: '',
-        current_emotion_state: {
-            joy: 50,
-            sadness: 20,
-            anger: 10,
-            fear: 15,
-            disgust: 5,
-            surprise: 35
-        },
+        // 現在の感情状態はランタイム変数として扱う（初期値はベースラインから生成）
+        current_emotion_state: {},
         emotion_system: {
             model: 'Ekman',
             emotions: {
@@ -121,6 +115,9 @@ function initializeProfile() {
     // 認知モデルの初期化
     this.handleCognitiveModelChange();
     
+    // 現在の感情状態をベースラインから初期化
+    this.syncEmotionState();
+    
     console.log('Profile initialized with default values');
 }
 
@@ -165,15 +162,8 @@ function handleEmotionModelChange() {
             }
         };
         
-        // 現在の感情状態も初期化
-        this.profile.current_emotion_state = {
-            joy: 50,
-            sadness: 20,
-            anger: 10,
-            fear: 15,
-            disgust: 5,
-            surprise: 35
-        };
+        // 感情状態を初期化
+        this.syncEmotionState();
     }
     
     // 他のモデル（Plutchik、PAD、カスタム）はまだ実装されていない
@@ -233,4 +223,27 @@ function syncEmotionState() {
     }
     
     console.log('Emotion state synchronized from baseline values');
+    
+    // ビジュアライザが開かれている場合、ノードを更新
+    if (this.visualEditorOpen && this.networkVisualization) {
+        this.updateVisualizerFromEmotionState();
+    }
+}
+
+// ビジュアライザの感情ノードを更新する
+function updateVisualizerFromEmotionState() {
+    if (!this.networkVisualization) return;
+    
+    // 感情ノードを見つけて更新
+    this.networkVisualization.nodes.forEach(node => {
+        if (node.type === 'emotion' && this.profile.current_emotion_state[node.emotionId]) {
+            // 現在の感情値で更新
+            node.value = this.profile.current_emotion_state[node.emotionId];
+            
+            // ノードの視覚的な更新
+            d3.select(`#network-visualizer circle[data-id="${node.id}"]`)
+                .attr("r", this.getNodeRadius(node))
+                .attr("fill", this.getNodeColor(node));
+        }
+    });
 }
