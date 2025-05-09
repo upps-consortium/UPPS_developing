@@ -153,3 +153,42 @@
     user-select: none;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
+
+/* ドラッグラインのスタイル（追加） */
+#network-visualizer .drag-line {
+    stroke: #4299E1;
+    stroke-width: 2px;
+    stroke-dasharray: 5,5;
+    pointer-events: none;
+}
+
+/* 選択中のノードスタイル（追加） */
+#network-visualizer .node.selected {
+    stroke: #fff;
+    stroke-width: 3px;
+    stroke-opacity: 1;
+}
+
+/* 関連リンクのスタイル（追加） */
+#network-visualizer .link.related {
+    stroke-opacity: 0.8;
+}
+
+#network-visualizer .link.unrelated {
+    stroke-opacity: 0.2;
+}
+
+/* 複合条件のリンクスタイル（追加） */
+#network-visualizer .link.complex-AND {
+    stroke-dasharray: 5,3;
+}
+
+#network-visualizer .link.complex-OR {
+    stroke-dasharray: 2,2;
+}
+
+/* ノード編集パネルのスタイル（追加） */
+.node-editor-panel {
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
