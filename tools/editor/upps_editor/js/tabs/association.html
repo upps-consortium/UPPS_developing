@@ -67,6 +67,7 @@
                                         </template>
                                         
                                         <button @click="removeComplexCondition(index, conditionIndex)" class="mt-1 text-red-400 hover:text-red-300 text-xs">
+                                           <button @click="removeComplexCondition(index, conditionIndex)" class="mt-1 text-red-400 hover:text-red-300 text-xs">
                                             削除
                                         </button>
                                     </div>
@@ -78,7 +79,7 @@
                         <template x-if="association.trigger.type === 'memory'">
                             <select x-model="association.trigger.id" class="w-full glass rounded px-3 py-1 text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-400" :data-validation="`assoc_${index}_trigger_id`">
                                 <option value="">記憶を選択</option>
-                                <template x-for="memory in profile.memory_system?.memories || []" :key="memory.id">
+                                <template x-for="memory in persona.memory_system?.memories || []" :key="memory.id">
                                     <option :value="memory.id" x-text="memory.id + ' (' + memory.type + ')'"></option>
                                 </template>
                             </select>
@@ -89,7 +90,7 @@
                             <div>
                                 <select x-model="association.trigger.id" class="w-full glass rounded px-3 py-1 text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-400" :data-validation="`assoc_${index}_trigger_id`">
                                     <option value="">感情を選択</option>
-                                    <template x-for="emotion in Object.keys(profile.emotion_system?.emotions || {})" :key="emotion">
+                                    <template x-for="emotion in Object.keys(persona.emotion_system?.emotions || {})" :key="emotion">
                                         <option :value="emotion" x-text="getEmotionLabel(emotion)"></option>
                                     </template>
                                 </select>
@@ -124,7 +125,7 @@
                         <template x-if="association.response.type === 'memory'">
                             <select x-model="association.response.id" class="w-full glass rounded px-3 py-1 text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-400" :data-validation="`assoc_${index}_response_id`">
                                 <option value="">記憶を選択</option>
-                                <template x-for="memory in profile.memory_system?.memories || []" :key="memory.id">
+                                <template x-for="memory in persona.memory_system?.memories || []" :key="memory.id">
                                     <option :value="memory.id" x-text="memory.id + ' (' + memory.type + ')'"></option>
                                 </template>
                             </select>
@@ -134,7 +135,7 @@
                         <template x-if="association.response.type === 'emotion'">
                             <select x-model="association.response.id" class="w-full glass rounded px-3 py-1 text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-400" :data-validation="`assoc_${index}_response_id`">
                                 <option value="">感情を選択</option>
-                                <template x-for="emotion in Object.keys(profile.emotion_system?.emotions || {})" :key="emotion">
+                                <template x-for="emotion in Object.keys(persona.emotion_system?.emotions || {})" :key="emotion">
                                     <option :value="emotion" x-text="getEmotionLabel(emotion)"></option>
                                 </template>
                             </select>
@@ -164,7 +165,7 @@
     </button>
 </div>
 
-<!-- Visual Editor -->
+<!-- Visual Editor - 強化版 -->
 <div class="bento-card rounded-xl p-6">
     <div class="flex justify-between items-center mb-4">
         <div>
@@ -179,19 +180,19 @@
     <div x-show="visualEditorOpen" x-transition class="w-full h-[500px] bg-black/20 rounded-lg overflow-hidden relative" id="network-visualizer">
         <!-- ここにD3.jsによる可視化が描画される -->
         <div class="absolute top-2 right-2 flex space-x-2">
-            <button @click="zoomIn()" class="glass p-1 rounded">
+            <button @click="zoomIn()" class="glass p-1 rounded" title="拡大">
                 <i data-lucide="zoom-in" class="w-5 h-5 text-white/80"></i>
             </button>
-            <button @click="zoomOut()" class="glass p-1 rounded">
+            <button @click="zoomOut()" class="glass p-1 rounded" title="縮小">
                 <i data-lucide="zoom-out" class="w-5 h-5 text-white/80"></i>
             </button>
-            <button @click="resetZoom()" class="glass p-1 rounded">
+            <button @click="resetZoom()" class="glass p-1 rounded" title="リセット">
                 <i data-lucide="maximize" class="w-5 h-5 text-white/80"></i>
             </button>
         </div>
         
         <!-- 編集パネル -->
-        <div x-show="selectedNode" x-transition class="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur p-6">
+        <div x-show="selectedNode" x-transition class="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur p-6 node-editor-panel">
             <div class="flex justify-between items-center mb-4">
                 <h4 class="text-white font-medium text-lg" x-text="getSelectedNodeTitle()"></h4>
                 <button @click="closeNodeEditor()" class="text-white/60 hover:text-white">
@@ -204,16 +205,16 @@
                 <div class="grid grid-cols-2 gap-6">
                     <div>
                         <label class="text-white/60 text-sm block mb-2">ベースライン値</label>
-                        <input type="range" x-model.number="profile.emotion_system.emotions[selectedNodeData.emotionId].baseline" 
+                        <input type="range" x-model.number="persona.emotion_system.emotions[selectedNodeData.emotionId].baseline" 
                                min="0" max="100" class="slider w-full" 
-                               :style="'--value: ' + profile.emotion_system.emotions[selectedNodeData.emotionId].baseline"
+                               :style="'--value: ' + persona.emotion_system.emotions[selectedNodeData.emotionId].baseline"
                                @change="updateEmotionBaseline()">
                         <span class="text-white/80 text-sm" 
-                              x-text="profile.emotion_system.emotions[selectedNodeData.emotionId].baseline + '%'"></span>
+                              x-text="persona.emotion_system.emotions[selectedNodeData.emotionId].baseline + '%'"></span>
                     </div>
                     <div>
                         <label class="text-white/60 text-sm block mb-2">説明</label>
-                        <textarea x-model="profile.emotion_system.emotions[selectedNodeData.emotionId].description" 
+                        <textarea x-model="persona.emotion_system.emotions[selectedNodeData.emotionId].description" 
                                  class="w-full glass rounded p-2 text-white text-sm h-20"></textarea>
                     </div>
                 </div>
@@ -226,7 +227,7 @@
                         <label class="text-white/60 text-sm block mb-2">ID</label>
                         <input x-model="getMemoryById(selectedNodeData.memoryId).id" 
                               class="w-full glass rounded p-2 text-white text-sm" 
-                              @change="updateMemoryId()">
+                              @change="updateMemoryId(selectedNodeData.memoryId, getMemoryById(selectedNodeData.memoryId).id)">
                     </div>
                     <div>
                         <label class="text-white/60 text-sm block mb-2">タイプ</label>
@@ -242,6 +243,27 @@
                         <label class="text-white/60 text-sm block mb-2">内容</label>
                         <textarea x-model="getMemoryById(selectedNodeData.memoryId).content" 
                                  class="w-full glass rounded p-2 text-white text-sm h-20"></textarea>
+                    </div>
+                </div>
+            </template>
+            
+            <!-- 複合ノード編集 -->
+            <template x-if="selectedNodeType === 'complex'">
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <label class="text-white/60 text-sm block mb-2">演算子</label>
+                        <div class="text-white text-sm" x-text="selectedNodeData.operator"></div>
+                    </div>
+                    <div>
+                        <label class="text-white/60 text-sm block mb-2">説明</label>
+                        <div class="text-white/80 text-sm">
+                            <template x-if="selectedNodeData.operator === 'AND'">
+                                <p>すべての条件を満たした場合にトリガーが発動します。</p>
+                            </template>
+                            <template x-if="selectedNodeData.operator === 'OR'">
+                                <p>いずれかの条件を満たした場合にトリガーが発動します。</p>
+                            </template>
+                        </div>
                     </div>
                 </div>
             </template>
