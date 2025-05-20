@@ -1,0 +1,85 @@
+<!-- js/tabs/memory.html -->
+<h2 class="text-xl font-semibold text-white mb-6">記憶システム</h2>
+<div class="space-y-4">
+    <template x-for="(memory, index) in persona.memory_system.memories" :key="index">
+        <div class="bento-card rounded-xl p-4" :class="{
+            'memory-episodic': memory.type === 'episodic',
+            'memory-semantic': memory.type === 'semantic',
+            'memory-procedural': memory.type === 'procedural',
+            'memory-autobiographical': memory.type === 'autobiographical'
+        }">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-white/60 text-sm mb-1">ID</label>
+                    <input x-model="memory.id" class="w-full glass rounded px-3 py-1 text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-400" placeholder="例：childhood_memory_01" :data-validation="`memory_${index}_id`">
+                </div>
+                <div>
+                    <label class="block text-white/60 text-sm mb-1">タイプ</label>
+                    <select x-model="memory.type" class="w-full glass rounded px-3 py-1 text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-400" :data-validation="`memory_${index}_type`">
+                        <option value="episodic">エピソード記憶</option>
+                        <option value="semantic">意味記憶</option>
+                        <option value="procedural">手続き記憶</option>
+                        <option value="autobiographical">自伝的記憶</option>
+                    </select>
+                </div>
+                <div class="col-span-2">
+                    <label class="block text-white/60 text-sm mb-1">内容</label>
+                    <textarea x-model="memory.content" rows="2" class="w-full glass rounded px-3 py-1 text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-400" :data-validation="`memory_${index}_content`"></textarea>
+                </div>
+                <div>
+                    <label class="block text-white/60 text-sm mb-1">時期</label>
+                    <input x-model="memory.period" class="w-full glass rounded px-3 py-1 text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-400" :data-validation="`memory_${index}_period`">
+                </div>
+                <div class="flex items-end">
+                    <div class="w-full">
+                        <label class="block text-white/60 text-sm mb-1">感情的価値 <span class="text-white/40" x-text="memory.emotional_valence || 0.5"></span></label>
+                        <input type="range" x-model.number="memory.emotional_valence" min="0" max="1" step="0.1" class="w-full slider" :style="'--value: ' + ((memory.emotional_valence || 0.5) * 100)">
+                    </div>
+                </div>
+                <div class="col-span-2 text-right">
+                    <button @click="removeMemory(index)" class="text-red-400 hover:text-red-300 transition">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+    <button @click="addMemory()" class="w-full glass hover:glass-bright rounded-lg px-4 py-3 text-white flex items-center justify-center space-x-2 transition">
+        <i data-lucide="plus" class="w-4 h-4"></i>
+        <span>記憶を追加</span>
+    </button>
+</div>
+
+<div class="mt-8 p-4 glass rounded-lg">
+    <h3 class="text-lg text-white mb-3">記憶タイプの説明</h3>
+    <div class="grid grid-cols-2 gap-4 text-sm">
+        <div>
+            <h4 class="text-white/80 font-medium mb-1 flex items-center">
+                <div class="w-2 h-2 rounded-full bg-indigo-400 mr-2"></div>
+                エピソード記憶
+            </h4>
+            <p class="text-white/60">個人的な出来事や特定の経験に関する記憶。時間と場所の情報を含む。</p>
+        </div>
+        <div>
+            <h4 class="text-white/80 font-medium mb-1 flex items-center">
+                <div class="w-2 h-2 rounded-full bg-cyan-400 mr-2"></div>
+                意味記憶
+            </h4>
+            <p class="text-white/60">一般的な知識や概念に関する記憶。事実、言葉の意味、世界の理解を含む。</p>
+        </div>
+        <div>
+            <h4 class="text-white/80 font-medium mb-1 flex items-center">
+                <div class="w-2 h-2 rounded-full bg-orange-400 mr-2"></div>
+                手続き記憶
+            </h4>
+            <p class="text-white/60">スキルやタスクの実行方法に関する記憶。自転車の乗り方など。</p>
+        </div>
+        <div>
+            <h4 class="text-white/80 font-medium mb-1 flex items-center">
+                <div class="w-2 h-2 rounded-full bg-purple-400 mr-2"></div>
+                自伝的記憶
+            </h4>
+            <p class="text-white/60">自己のライフストーリーを形成する重要な個人的記憶。アイデンティティに関連。</p>
+        </div>
+    </div>
+</div>
