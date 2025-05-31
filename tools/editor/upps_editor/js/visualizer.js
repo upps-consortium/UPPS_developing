@@ -240,7 +240,7 @@ function addDragHandlers(svg, data, radius) {
                 updateRadarChart(svg, data, angleSlice, rScale);
                 
                 // ペルソナデータも更新
-                window.upperEditor.updateCognitiveAbility(data[i].axis, newValue * 100);
+                window.uppsEditor.updateCognitiveAbility(data[i].axis, newValue * 100);
             });
         
         // ドラッグハンドルを適用
