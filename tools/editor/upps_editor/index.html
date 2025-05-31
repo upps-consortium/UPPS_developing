@@ -21,7 +21,7 @@
                 <div class="flex items-center space-x-4">
                     <!-- UPPSロゴを使用 -->
                     <div class="h-12 w-auto">
-                        <img src="img/upps_logo.png" alt="UPPS Logo" class="h-full w-auto">
+                        <img src="img/upps_logo.png" alt="UPPS Logo" class="h-full w-auto" onerror="this.style.display='none'">
                     </div>
                     <div>
                         <div class="flex items-center space-x-2">
@@ -48,7 +48,7 @@
                     </button>
                     
                     <!-- ドキュメントボタンを追加 -->
-                    <button @click="showHelpDocumentation()" class="glass rounded-lg p-2 text-white/80 hover:text-white">
+                    <button onclick="showHelpDocumentation()" class="glass rounded-lg p-2 text-white/80 hover:text-white">
                         <i data-lucide="file-text" class="w-5 h-5"></i>
                     </button>
                     
@@ -79,7 +79,7 @@
                     <template x-for="tab in tabs" :key="tab.id">
                         <button 
                             :class="activeTab === tab.id ? 'glass-bright text-white' : 'text-white/60 hover:text-white/80'" 
-                            @click="activeTab = tab.id" 
+                            @click="activeTab = tab.id; loadTabContent(tab.id)" 
                             class="px-4 py-2 rounded-lg transition flex items-center space-x-2"
                         >
                             <i :data-lucide="tab.icon" class="w-4 h-4"></i>
@@ -91,7 +91,13 @@
                 <!-- Tab Content -->
                 <div class="bento-card rounded-2xl p-6">
                     <!-- タブコンテンツはそれぞれ別ファイルから読み込み -->
-                    <div id="tab-content"></div>
+                    <div id="tab-content">
+                        <!-- デフォルトコンテンツ -->
+                        <div class="text-center py-8">
+                            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+                            <p class="text-white/60">タブコンテンツを読み込み中...</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -102,11 +108,11 @@
                     <pre class="bg-black/50 rounded-lg p-4 text-white/80 text-sm overflow-auto max-h-[600px] font-mono" x-text="generateYAML()"></pre>
                     
                     <div class="mt-6 space-y-4">
-                        <button @click="exportJSON()" class="w-full glass hover:glass-bright rounded-lg px-4 py-2 text-white flex items-center justify-center space-x-2 transition">
+                        <button onclick="exportJSON()" class="w-full glass hover:glass-bright rounded-lg px-4 py-2 text-white flex items-center justify-center space-x-2 transition">
                             <i data-lucide="download" class="w-4 h-4"></i>
                             <span>JSON エクスポート</span>
                         </button>
-                        <button @click="exportYAML()" class="w-full glass hover:glass-bright rounded-lg px-4 py-2 text-white flex items-center justify-center space-x-2 transition">
+                        <button onclick="exportYAML()" class="w-full glass hover:glass-bright rounded-lg px-4 py-2 text-white flex items-center justify-center space-x-2 transition">
                             <i data-lucide="file-text" class="w-4 h-4"></i>
                             <span>YAML エクスポート</span>
                         </button>
@@ -140,21 +146,6 @@
                             <li>ビジュアライザ: 関連性を視覚的に表示・編集</li>
                         </ul>
                     </div>
-                    
-                    <div>
-                        <h3 class="text-lg font-medium mb-2">ビジュアライザの使い方</h3>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li>ノードのドラッグ: 配置を調整</li>
-                            <li>ノードのクリック: 選択して詳細表示</li>
-                            <li>Alt+クリック＆ドラッグ: 新しい関連性を作成</li>
-                            <li>ズームコントロール: 右上のボタンで拡大・縮小</li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-lg font-medium mb-2">プロファイルの保存と読み込み</h3>
-                        <p>画面上部の保存ボタンで現在のペルソナをJSONファイルとして保存できます。また、プレビューパネルからは、JSONまたはYAML形式でエクスポートすることも可能です。30秒ごとに自動保存されるため、ブラウザを閉じても作業を失うことはありません。</p>
-                    </div>
                 </div>
                 <div class="mt-6 flex justify-end">
                     <button @click="closeHelpModal()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg transition">
@@ -171,7 +162,7 @@
                 <h3 class="text-xl font-medium text-white mb-2">ファイルをドロップ</h3>
                 <p class="text-white/60 mb-4">JSONまたはYAMLファイルをここにドロップしてください</p>
                 <p class="text-white/40 text-sm">または</p>
-                <button @click="loadFile()" class="mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg transition">
+                <button onclick="window.uppsEditor.loadFile()" class="mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg transition">
                     ファイルを選択
                 </button>
             </div>
@@ -213,32 +204,32 @@
     <script>
         // Lucide Icons初期化
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing icons...');
             lucide.createIcons();
             
             // グローバル変数を統一
             window.uppsEditor = Alpine.evaluate(document.querySelector('[x-data]'), '$data');
+            console.log('UPPSEditor initialized:', window.uppsEditor);
             
             // ファイルドロップ機能の初期化は PersonaImporter で自動処理される
         });
         
-        // windowのresizeイベントにデバウンスを適用
-        let resizeTimer;
+        // windowのresizeイベントにデバウンスを適用（重複宣言を削除）
         window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
-                // レーダーチャートの再描画
-                const uppsEditor = window.uppsEditor;
-                if (uppsEditor.activeTab === 'cognitive') {
-                    if (typeof uppsEditor.initializeCognitiveRadarChart === 'function') {
-                        uppsEditor.initializeCognitiveRadarChart();
-                    }
+            // レーダーチャートの再描画
+            const uppsEditor = window.uppsEditor;
+            if (uppsEditor && uppsEditor.activeTab === 'cognitive') {
+                if (typeof uppsEditor.initializeCognitiveRadarChart === 'function') {
+                    uppsEditor.initializeCognitiveRadarChart();
                 }
-                
-                // ビジュアライザの再描画
-                if (uppsEditor.visualEditorOpen) {
+            }
+            
+            // ビジュアライザの再描画
+            if (uppsEditor && uppsEditor.visualEditorOpen) {
+                if (typeof uppsEditor.refreshVisualizer === 'function') {
                     uppsEditor.refreshVisualizer();
                 }
-            }, 250);
+            }
         });
     </script>
 </body>
