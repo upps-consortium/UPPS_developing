@@ -1,7 +1,7 @@
 # UPPS License
 
 **Unified Personality Profile Standard (UPPS)**  
-Version: 2025 v1.0.0  
+Version: 2025.2 v1.2.0  
 © 2025 UPPS Consortium  
 
 ## License Terms
@@ -71,7 +71,7 @@ This License and the rights granted hereunder will terminate automatically upon 
 
 - This License constitutes the entire agreement between the parties with respect to the Standard licensed here.
 - If any provision of this License is held to be unenforceable, such provision shall be reformed only to the extent necessary to make it enforceable.
-- This License shall be governed by the laws of [Jurisdiction].
+- This License shall be governed by the laws of japan.
 
 ---
 
