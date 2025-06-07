@@ -2,6 +2,21 @@
 // ファイルインポート専用システム
 
 /**
+ * HTML特殊文字をエスケープ
+ * @param {string} str エスケープ対象文字列
+ * @returns {string} エスケープされた文字列
+ */
+function escapeHTML(str) {
+    return String(str).replace(/[&<>"']/g, s => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    }[s]));
+}
+
+/**
  * ペルソナインポート管理クラス
  */
 class PersonaImporter {
@@ -341,9 +356,9 @@ class PersonaImporter {
                 <div class="bg-white/5 rounded-lg p-3">
                     <h4 class="text-white font-medium mb-2">基本情報</h4>
                     <div class="text-white/80 text-sm space-y-1">
-                        ${data.personal_info.name ? `<div>名前: ${data.personal_info.name}</div>` : ''}
-                        ${data.personal_info.age ? `<div>年齢: ${data.personal_info.age}</div>` : ''}
-                        ${data.personal_info.occupation ? `<div>職業: ${data.personal_info.occupation}</div>` : ''}
+                        ${data.personal_info.name ? `<div>名前: ${escapeHTML(data.personal_info.name)}</div>` : ''}
+                        ${data.personal_info.age ? `<div>年齢: ${escapeHTML(data.personal_info.age)}</div>` : ''}
+                        ${data.personal_info.occupation ? `<div>職業: ${escapeHTML(data.personal_info.occupation)}</div>` : ''}
                     </div>
                 </div>
             `);
@@ -356,7 +371,7 @@ class PersonaImporter {
                 <div class="bg-white/5 rounded-lg p-3">
                     <h4 class="text-white font-medium mb-2">感情システム</h4>
                     <div class="text-white/80 text-sm">
-                        <div>モデル: ${data.emotion_system.model || '未指定'}</div>
+                        <div>モデル: ${escapeHTML(data.emotion_system.model || '未指定')}</div>
                         <div>感情数: ${emotionCount}件</div>
                     </div>
                 </div>
@@ -372,7 +387,7 @@ class PersonaImporter {
                     <h4 class="text-white font-medium mb-2">記憶システム</h4>
                     <div class="text-white/80 text-sm">
                         <div>記憶数: ${memoryCount}件</div>
-                        <div>タイプ: ${memoryTypes.join(', ')}</div>
+                        <div>タイプ: ${memoryTypes.map(t => escapeHTML(t)).join(', ')}</div>
                     </div>
                 </div>
             `);
@@ -397,7 +412,7 @@ class PersonaImporter {
                 <div class="bg-white/5 rounded-lg p-3">
                     <h4 class="text-white font-medium mb-2">認知能力</h4>
                     <div class="text-white/80 text-sm">
-                        <div>モデル: ${data.cognitive_system.model || '未指定'}</div>
+                        <div>モデル: ${escapeHTML(data.cognitive_system.model || '未指定')}</div>
                     </div>
                 </div>
             `);

@@ -290,11 +290,20 @@ class NodeEditorManager {
         menuItems.forEach(item => {
             const menuItem = document.createElement('div');
             menuItem.className = 'px-3 py-2 text-white hover:bg-white/10 cursor-pointer text-sm';
-            menuItem.innerHTML = `<i data-lucide="${item.icon}" class="w-4 h-4 inline mr-2"></i>${item.label}`;
+
+            const icon = document.createElement('i');
+            icon.setAttribute('data-lucide', item.icon);
+            icon.className = 'w-4 h-4 inline mr-2';
+            menuItem.appendChild(icon);
+
+            const labelNode = document.createTextNode(item.label);
+            menuItem.appendChild(labelNode);
+
             menuItem.addEventListener('click', () => {
                 item.action(node);
                 this.hideContextMenu();
             });
+
             menu.appendChild(menuItem);
         });
         
