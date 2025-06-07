@@ -16,7 +16,7 @@ prompting/
 │   ├── anthropic_claude.md       # Anthropic Claude用テンプレート
 │   ├── google_gemini.md          # Google Gemini用テンプレート
 │   └── meta_llama.md             # Meta Llama用テンプレート
-└── examples/
+└── example/
     └── example_conversation.md   # 対話例
 ```
 
@@ -70,7 +70,7 @@ personal_info:
 # 対話を開始
 ```
 
-詳細な使用例については [examples/example_conversation.md](./examples/example_conversation.md) を参照してください。
+詳細な使用例については [example/example_conversation.md](./example/example_conversation.md) を参照してください。
 
 ---
 

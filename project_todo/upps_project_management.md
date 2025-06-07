@@ -28,7 +28,7 @@ upps/
 │   │   ├── basic_template.md      # 基本テンプレート
 │   │   ├── state_update.md        # 状態更新用テンプレート
 │   │   └── memory_trigger.md      # 記憶トリガー用テンプレート
-│   └── examples/                  # プロンプト使用例
+│   └── example/                  # プロンプト使用例
 │       ├── conversation_example.md # 会話例
 │       └── session_management.md   # セッション管理例
 │
@@ -66,8 +66,8 @@ upps/
 - [x] 記憶トリガーテンプレート (`prompting/templates/memory_trigger.md`) を作成
 - [ ] 直接プロンプト利用ガイド (`upps-direct-prompting-guide-revised.md`) を整理
 - [ ] 整理したガイドを `prompting/direct_prompting_guide.md` に移行
-- [ ] 会話例 (`upps-conversation-example-revised.md`) を `prompting/examples/conversation_example.md` に移行
-- [ ] セッション管理の例を作成して `prompting/examples/session_management.md` に配置
+- [ ] 会話例 (`upps-conversation-example-revised.md`) を `prompting/example/conversation_example.md` に移行
+- [ ] セッション管理の例を作成して `prompting/example/session_management.md` に配置
 
 ### 3. 実装ガイドの整理
 
