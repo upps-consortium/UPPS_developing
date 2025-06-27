@@ -39,6 +39,7 @@ UPPSでは、UPPS標準に基づく人格データセットを「UPPSペルソ�
 
 - [基本テンプレート](./prompting/templates/basic_template.md): 基本的なUPPSペルソナプロンプトテンプレート
 - [サンプルペルソナ - レイチェル](./persona_lib/rachel_bladerunner.md): ブレードランナーのキャラクター例
+- [サンプルペルソナ - ラムちゃん](./persona_lib/lum_urusei_yatsura.md): うる星やつらのキャラクター例
 
 #### 📋 開発予定（プロンプト主導型）
 
@@ -141,8 +142,9 @@ upps/
 └── tools/
 │   └──upps_editor/                # ペルソナ編集ツール
 │
-└──　persona_lib/                  # ペルソナファイルライブラリ                
-│       └── rachel_bladerunner.md  　　# サンプルペルソナ  
+└──　persona_lib/                  # ペルソナファイルライブラリ
+│       ├── rachel_bladerunner.md  　　# サンプルペルソナ
+│       └── lum_urusei_yatsura.md    # サンプルペルソナ
 ```
 
 ### 📋 予定・開発中
