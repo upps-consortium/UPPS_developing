@@ -5,7 +5,7 @@
 ### 1. UPPS規格の理解
 | ファイル名 | 目的 | 重要度 |
 |------------|------|--------|
-| `specification/upps_standard.md` | UPPS 2025.2規格の完全仕様 | ★★★★★ |
+| `specification/upps_standard.md` | UPPS 2025.3規格の完全仕様 | ★★★★★ |
 | `specification/schema/schema.yaml` | データ構造の正式定義 | ★★★★★ |
 | `persona_lib/rachel_bladerunner.md` | 実装例（完全なペルソナサンプル） | ★★★★☆ |
 | `specification/operational_guidelines.md` | 運用指針とベストプラクティス | ★★★☆☆ |
@@ -105,7 +105,7 @@ cognitive_system: WAIS-IV認知能力
 
 ### 2. データ形式の互換性
 - **入力**: 0-1の性格特性、0-100の感情値
-- **出力**: UPPS 2025.2準拠のYAML形式
+- **出力**: UPPS 2025.3準拠のYAML形式
 - **検証**: スキーマ準拠の確認が必要
 
 ### 3. 将来拡張の考慮
@@ -115,7 +115,7 @@ cognitive_system: WAIS-IV認知能力
 ## 📝 引き継ぎチェックリスト
 
 ### 新しいAIが理解すべき項目
-- [ ] UPPS 2025.2規格の基本概念
+- [ ] UPPS 2025.3規格の基本概念
 - [ ] 感情システム（Ekmanモデル）の仕組み
 - [ ] 記憶システム（episodic/semantic/procedural）の区分
 - [ ] 関連性ネットワークのトリガー・レスポンス構造
@@ -162,7 +162,7 @@ cognitive_system: WAIS-IV認知能力
 
 新しいAIに確認すべき理解度：
 
-1. **「UPPS 2025.2の4つの主要システムを説明してください」**
+1. **「UPPS 2025.3の主要システムを説明してください」**
 2. **「現在のプロトタイプで何ができて何ができないか説明してください」**
 3. **「Phase 2で最優先で実装すべき機能は何ですか？」**
 4. **「PersonaDataクラスの役割と主要メソッドを説明してください」**

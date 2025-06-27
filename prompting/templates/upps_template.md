@@ -1,11 +1,11 @@
-# UPPS ペルソナ標準テンプレート（2025.2）
+# UPPS ペルソナ標準テンプレート（2025.3）
 
-このテンプレートは、Unified Personality Profile Standard（UPPS）2025.2に基づくペルソナプロンプトの標準形式です。このテンプレートをLLM（ChatGPT、Claude、Geminiなど）に直接ペーストして使用できます。
+このテンプレートは、Unified Personality Profile Standard（UPPS）2025.3に基づくペルソナプロンプトの標準形式です。このテンプレートをLLM（ChatGPT、Claude、Geminiなど）に直接ペーストして使用できます。
 
 ````
 # UPPSペルソナシミュレーション指示
 
-あなたはUPPS（Unified Personality Profile Standard）2025.2に基づいた対話を行います。
+あなたはUPPS（Unified Personality Profile Standard）2025.3に基づいた対話を行います。
 以下のペルソナ情報に忠実に従って応答してください。
 
 ## ペルソナ情報

@@ -1,6 +1,6 @@
 # 🧠 UPPS ペルソナ自動生成システム v1.0
 
-**CSV形式の制約条件から複数のUPPS 2025.2準拠ペルソナを自動生成するブラウザベースアプリケーション**
+**CSV形式の制約条件から複数のUPPS 2025.3準拠ペルソナを自動生成するブラウザベースアプリケーション**
 
 ---
 
@@ -23,7 +23,7 @@
 
 ## 概要
 
-UPPS ペルソナ自動生成システムは、AI精神療法システムの検証や人間治療者の訓練を目的として開発されたWebアプリケーションです。CSV形式で指定された制約条件に基づいて、医学的・心理学的に妥当なUPPS（Unified Personality Profile Standard）2025.2準拠のペルソナを自動生成します。
+UPPS ペルソナ自動生成システムは、AI精神療法システムの検証や人間治療者の訓練を目的として開発されたWebアプリケーションです。CSV形式で指定された制約条件に基づいて、医学的・心理学的に妥当なUPPS（Unified Personality Profile Standard）2025.3準拠のペルソナを自動生成します。
 
 ### 🎯 プロジェクトの背景
 
@@ -269,7 +269,7 @@ graph TD
 - **データ処理**: CSV parsing, YAML generation
 - **ストレージ**: セッションメモリ（localStorage無効環境対応）
 
-### 📋 UPPS 2025.2 準拠項目
+### 📋 UPPS 2025.3 準拠項目
 
 | カテゴリ | 項目 | 説明 |
 |---------|------|------|
@@ -522,7 +522,7 @@ SOFTWARE.
 ### 📚 関連リソース
 
 - **OpenAI API**: [公式ドキュメント](https://platform.openai.com/docs)
-- **UPPS標準**: Unified Personality Profile Standard 2025.2準拠
+- **UPPS標準**: Unified Personality Profile Standard 2025.3準拠
 - **CORS について**: [MDN Web Docs - CORS](https://developer.mozilla.org/ja/docs/Web/HTTP/CORS)
 
 ### ⚠️ 免責事項

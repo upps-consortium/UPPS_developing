@@ -1,7 +1,7 @@
-# UPPS - Unified Personality Profile Standard 改訂版2025.2
+# UPPS - Unified Personality Profile Standard 改訂版2025.3
 
 [![License: Custom](https://img.shields.io/badge/License-UPPS_Custom-blue.svg)](./LICENSE.md)
-[![Version: 2025.2 v1.2.0](https://img.shields.io/badge/Version-2025.2_v1.2.0-brightgreen.svg)](https://github.com/upps-consortium/upps)
+[![Version: 2025.3 v1.0.0](https://img.shields.io/badge/Version-2025.3_v1.0.0-brightgreen.svg)](https://github.com/upps-consortium/upps)
 [![Documentation Status](https://img.shields.io/badge/docs-latest-informational)](https://github.com/upps-consortium/upps/wiki)
 
 > 「人格モデルの標準化とペルソナ表現を通じてAIと人間の対話に一貫性と深みをもたらす」
@@ -12,7 +12,7 @@ UPPS（Unified Personality Profile Standard）は、対話型AIや架空クラ�
 
 UPPSでは、UPPS標準に基づく人格データセットを「UPPSペルソナ」と呼びます。一般的なプロファイル（構成情報）という用語とは区別します。
 
-**改訂版2025.2**では、新たに感情システム（Emotion System）、記憶システム（Memory System）、関連性ネットワーク（Association System）、認知能力システム（Cognitive System）を含む拡張モデルを導入しました。これにより、より自然で深みのある人格表現が可能になっています。
+**改訂版2025.3**では、2025.2の機能を継承しつつ、対話実行指示フレームワークと動的人格変容システムを追加しました。これにより長期的変化や症状表現をより柔軟に扱えます。
 
 ## 特徴
 
@@ -26,6 +26,8 @@ UPPSでは、UPPS標準に基づく人格データセットを「UPPSペルソ�
 - **[新機能]** **記憶システム**: 記憶タイプを区別した構造化された記憶表現
 - **[新機能]** **関連性ネットワーク**: 感情と記憶の相互作用を記述
 - **[新機能]** **認知能力システム**: WAIS-IVモデルに基づく知的能力の表現
+- **[新機能]** **対話実行指示フレームワーク**: 症状や特殊表現を統一的に指示
+- **[新機能]** **動的人格変容システム**: 長期的な変化を管理
 
 ## アプローチ
 
@@ -80,7 +82,7 @@ print(response)
 ````
 # UPPSペルソナシミュレーション指示
 
-あなたはUPPS（Unified Personality Profile Standard）改訂版2025.2に基づいた対話を行います。
+あなたはUPPS（Unified Personality Profile Standard）改訂版2025.3に基づいた対話を行います。
 
 ## ペルソナ情報
 
@@ -131,7 +133,7 @@ upps/
 │   ├── prompt_guide.md               # プロンプト実施ガイド（詳細）
 │   ├── templates/
 │   │   ├── basic_template.md         # 基本テンプレート
-│   │   └── upps_template.md          # 標準テンプレート（2025.2対応）
+│   │   └── upps_template.md          # 標準テンプレート（2025.3対応）
 │   └── providers/
 │       ├── openai_gpt.md             # OpenAI GPT用テンプレート
 │       ├── anthropic_claude.md       # Anthropic Claude用テンプレート
@@ -164,11 +166,13 @@ programming/                       # プログラム主導型（将来予定）
 
 ## 変更履歴
 
-### バージョン 2025.2 v1.2.0
+### バージョン 2025.3 v1.0.0
 - 感情システム（Emotion System）の追加
 - 記憶システム（Memory System）の追加
 - 関連性ネットワーク（Association System）の追加
 - 認知能力システム（Cognitive System）の追加
+- 対話実行指示フレームワークの導入
+- 動的人格変容システムの導入
 - レガシーシステムとの互換性の維持
 
 ## ライセンス
@@ -186,7 +190,7 @@ UPPSは個人、研究、学術、教育用途での使用が無償で許可さ�
 UPPS規格を参照または利用する場合は、以下の形式での引用をお願いします：
 
 ```
-UPPS Consortium. (2025). Unified Personality Profile Standard (Version 2025.2 v1.2.0) [Data standard].
+UPPS Consortium. (2025). Unified Personality Profile Standard (Version 2025.3 v1.0.0) [Data standard].
 https://github.com/upps-consortium/upps
 ```
 

@@ -318,7 +318,7 @@
     <div class="container">
         <div class="header">
             <h1>🧠 UPPS ペルソナ自動生成システム</h1>
-            <p>CSV形式の制約条件から複数のUPPS 2025.2準拠ペルソナを自動生成</p>
+            <p>CSV形式の制約条件から複数のUPPS 2025.3準拠ペルソナを自動生成</p>
         </div>
 
         <div class="tabs">
@@ -511,12 +511,12 @@ persona_003,"40代男性、PTSD、元自衛官、アルコール依存症併発"
         };
 
         // デフォルトテンプレート
-        const defaultGenerationTemplate = `# UPPS 2025.2 ペルソナ生成指示
+        const defaultGenerationTemplate = `# UPPS 2025.3 ペルソナ生成指示
 
-あなたはUPPS（Unified Personality Profile Standard）2025.2の専門家です。
+あなたはUPPS（Unified Personality Profile Standard）2025.3の専門家です。
 以下の制約条件に基づいて、完全なペルソナをYAML形式で生成してください。
 
-## UPPS 2025.2 規格概要
+## UPPS 2025.3 規格概要
 - 対話型AIや架空クライアントの人格モデル標準化フォーマット
 - BigFive理論による性格特性
 - 感情システム（Ekman モデル推奨）
@@ -938,7 +938,7 @@ ${currentDraft}
 改善提案:
 ${improvementSuggestions}
 
-上記を踏まえて改善されたUPPS 2025.2準拠ペルソナをYAML形式で生成してください。`;
+上記を踏まえて改善されたUPPS 2025.3準拠ペルソナをYAML形式で生成してください。`;
                 }
                 
                 const draft = await callOpenAI(generationPrompt, 0.7);

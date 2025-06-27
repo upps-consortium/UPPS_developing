@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 UPPS Converter Tool (レガシー→拡張モデル変換ツール)
-Version: 2025.2 v1.2.0
+Version: 2025.3 v1.0.0
 
 このスクリプトは、レガシー形式のUPPSプロファイルを拡張モデル形式に変換します。
 - state → current_emotion_state + emotion_system
@@ -450,7 +450,7 @@ def main():
     # ファイル読み込み
     profile = load_yaml(profile_path)
     
-    print("UPPSレガシー→拡張モデル変換ツール v2025.2 v1.2.0")
+    print("UPPSレガシー→拡張モデル変換ツール v2025.3 v1.0.0")
     print("=" * 50)
     
     # プロファイルの基本情報を表示

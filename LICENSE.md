@@ -1,7 +1,7 @@
 # UPPS License
 
 **Unified Personality Profile Standard (UPPS)**  
-Version: 2025.2 v1.2.0  
+Version: 2025.3 v1.0.0
 © 2025 UPPS Consortium  
 
 ## License Terms

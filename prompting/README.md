@@ -1,6 +1,6 @@
 # UPPS プロンプトガイド & テンプレート
 
-このディレクトリには、UPPSペルソナをLLMに適用するためのガイドとテンプレートが含まれています。UPPS（Unified Personality Profile Standard）2025.2に基づいたプロンプト手法を提供します。
+このディレクトリには、UPPSペルソナをLLMに適用するためのガイドとテンプレートが含まれています。UPPS（Unified Personality Profile Standard）2025.3に基づいたプロンプト手法を提供します。
 
 ## ディレクトリ構造
 
@@ -10,7 +10,7 @@ prompting/
 ├── prompt_guide.md               # プロンプト実施ガイド（詳細）
 ├── templates/
 │   ├── basic_template.md         # 基本テンプレート
-│   └── upps_template.md          # 標準テンプレート（2025.2対応）
+│   └── upps_template.md          # 標準テンプレート（2025.3対応）
 ├── providers/
 │   ├── openai_gpt.md             # OpenAI GPT用テンプレート
 │   ├── anthropic_claude.md       # Anthropic Claude用テンプレート
@@ -28,7 +28,7 @@ prompting/
 
 - **[templates/basic_template.md](./templates/basic_template.md)**: 最低限必要な要素だけを含む簡素なプロンプトテンプレート。基本的な使用例に適しています。
 
-- **[templates/upps_template.md](./templates/upps_template.md)**: 2025.2標準に準拠した完全な機能を持つプロンプトテンプレート。感情システム、記憶システム、関連性ネットワーク、認知能力システムを含みます。
+- **[templates/upps_template.md](./templates/upps_template.md)**: 2025.3標準に準拠した完全な機能を持つプロンプトテンプレート。感情システム、記憶システム、関連性ネットワーク、認知能力システムを含みます。
 
 ### プロバイダー別テンプレート
 
