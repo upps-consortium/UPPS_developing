@@ -7,7 +7,7 @@
 |------------|------|--------|
 | `specification/upps_standard.md` | UPPS 2025.3規格の完全仕様 | ★★★★★ |
 | `specification/schema/schema.yaml` | データ構造の正式定義 | ★★★★★ |
-| `persona_lib/rachel_bladerunner.md` | 実装例（完全なペルソナサンプル） | ★★★★☆ |
+| `persona_lib/rachel_bladerunner.yaml` | 実装例ペルソナデータ | ★★★★☆ |
 | `specification/operational_guidelines.md` | 運用指針とベストプラクティス | ★★★☆☆ |
 
 ### 2. 現在の実装状況
@@ -58,8 +58,7 @@
 ### Phase 1: 基礎理解（必須）
 1. **`specification/upps_standard.md`** - UPPS規格を完全理解
 2. **`specification/schema/schema.yaml`** - データ構造の把握
-3. **`persona_lib/rachel_bladerunner.md`** - 実装例の確認
-
+3. **`persona_lib/rachel_bladerunner.yaml`** - ペルソナデータの確認
 ### Phase 2: 現在の実装把握
 4. **動作するプロトタイプ** - コードの構造と動作確認
 5. **最小要件定義** - MVPの理解
