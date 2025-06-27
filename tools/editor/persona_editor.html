@@ -388,6 +388,23 @@
             color: var(--text-secondary);
         }
 
+        .suggestions {
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .suggestion {
+            padding: 0.25rem 0.5rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 0.75rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
         /* Modal Styles */
         .modal {
             position: fixed;
@@ -901,20 +918,14 @@
                 <div class="card">
                     <h2 class="card-title">対話指示</h2>
                     <div class="form-group">
-                        <label for="speech-patterns">話し方・口調</label>
-                        <textarea id="speech-patterns" rows="3" class="dialogue-input"></textarea>
+                        <label for="instructions-text">指示内容</label>
+                        <textarea id="instructions-text" rows="8" class="instructions-input"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="behavioral-responses">行動・反応</label>
-                        <textarea id="behavioral-responses" rows="3" class="dialogue-input"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="special-abilities">特殊能力</label>
-                        <textarea id="special-abilities" rows="3" class="dialogue-input"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="implementation-notes">実装メモ</label>
-                        <textarea id="implementation-notes" rows="3" class="dialogue-input"></textarea>
+                    <div class="suggestions">
+                        <span class="suggestion" draggable="true" data-snippet="話し方・口調:" title="キャラクターの語調を指定">話し方・口調</span>
+                        <span class="suggestion" draggable="true" data-snippet="行動・反応:" title="想定する振る舞い">行動・反応</span>
+                        <span class="suggestion" draggable="true" data-snippet="特殊能力:" title="特別なスキルや能力">特殊能力</span>
+                        <span class="suggestion" draggable="true" data-snippet="実装メモ:" title="開発用メモ">実装メモ</span>
                     </div>
                 </div>
             </div>
@@ -924,20 +935,14 @@
                 <div class="card">
                     <h2 class="card-title">メタデータ</h2>
                     <div class="form-group">
-                        <label for="clinical-data">医療関連データ</label>
-                        <textarea id="clinical-data" rows="3" class="metadata-input"></textarea>
+                        <label for="metadata-text">メタデータ</label>
+                        <textarea id="metadata-text" rows="8" class="metadata-input"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="copyright-info">著作権情報</label>
-                        <textarea id="copyright-info" rows="3" class="metadata-input"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="administrative">管理情報</label>
-                        <textarea id="administrative" rows="3" class="metadata-input"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="usage-terms">使用条件</label>
-                        <textarea id="usage-terms" rows="3" class="metadata-input"></textarea>
+                    <div class="suggestions">
+                        <span class="suggestion" draggable="true" data-snippet="医療関連データ:" title="健康や病歴に関する情報">医療関連データ</span>
+                        <span class="suggestion" draggable="true" data-snippet="著作権情報:" title="権利者やライセンス表記">著作権情報</span>
+                        <span class="suggestion" draggable="true" data-snippet="管理情報:" title="バージョンや責任者">管理情報</span>
+                        <span class="suggestion" draggable="true" data-snippet="使用条件:" title="利用規約や禁止事項">使用条件</span>
                     </div>
                 </div>
             </div>
@@ -1144,18 +1149,8 @@
                     association_system: {
                         associations: []
                     },
-                    dialogue_instructions: {
-                        speech_patterns: "",
-                        behavioral_responses: "",
-                        special_abilities: "",
-                        implementation_notes: ""
-                    },
-                    non_dialogue_metadata: {
-                        clinical_data: "",
-                        copyright_info: "",
-                        administrative: "",
-                        usage_terms: ""
-                    }
+                    dialogue_instructions_text: "",
+                    non_dialogue_metadata_text: ""
                 };
             }
 
@@ -1192,13 +1187,13 @@
                 this.notifyChange();
             }
 
-            updateDialogueInstructions(instructions) {
-                this.data.dialogue_instructions = { ...this.data.dialogue_instructions, ...instructions };
+            updateDialogueText(text) {
+                this.data.dialogue_instructions_text = text;
                 this.notifyChange();
             }
 
-            updateMetadata(metadata) {
-                this.data.non_dialogue_metadata = { ...this.data.non_dialogue_metadata, ...metadata };
+            updateMetadataText(text) {
+                this.data.non_dialogue_metadata_text = text;
                 this.notifyChange();
             }
 
@@ -1306,6 +1301,13 @@
                     if (e.target.matches('.tab-btn')) {
                         this.showTab(e.target.dataset.tab);
                     }
+                    if (e.target.matches('.suggestion')) {
+                        const snippet = e.target.dataset.snippet || '';
+                        const textarea = e.target.closest('#instructions-tab') ?
+                            document.getElementById('instructions-text') :
+                            document.getElementById('metadata-text');
+                        this.insertSnippet(textarea, snippet);
+                    }
                 });
 
                 // データ変更イベント
@@ -1314,11 +1316,29 @@
                         this.handlePersonalInfoChange(e);
                     } else if (e.target.matches('.slider-input')) {
                         this.handleSliderChange(e);
-                    } else if (e.target.matches('.dialogue-input')) {
+                    } else if (e.target.matches('.instructions-input')) {
                         this.handleDialogueInputChange(e);
                     } else if (e.target.matches('.metadata-input')) {
                         this.handleMetadataInputChange(e);
                     }
+                });
+
+                document.addEventListener('dragstart', (e) => {
+                    if (e.target.matches('.suggestion')) {
+                        e.dataTransfer.setData('text/plain', e.target.dataset.snippet || '');
+                    }
+                });
+
+                ['instructions-text', 'metadata-text'].forEach(id => {
+                    const area = document.getElementById(id);
+                    area.addEventListener('dragover', e => e.preventDefault());
+                    area.addEventListener('drop', e => {
+                        e.preventDefault();
+                        const text = e.dataTransfer.getData('text/plain');
+                        if (text) {
+                            this.insertSnippet(area, text);
+                        }
+                    });
                 });
 
                 // データ変更通知を受信
@@ -1380,32 +1400,16 @@
 
             handleDialogueInputChange(e) {
                 const { id, value } = e.target;
-                const updates = {};
-                if (id === 'speech-patterns') {
-                    updates.speech_patterns = value;
-                } else if (id === 'behavioral-responses') {
-                    updates.behavioral_responses = value;
-                } else if (id === 'special-abilities') {
-                    updates.special_abilities = value;
-                } else if (id === 'implementation-notes') {
-                    updates.implementation_notes = value;
+                if (id === 'instructions-text') {
+                    this.personaData.updateDialogueText(value);
                 }
-                this.personaData.updateDialogueInstructions(updates);
             }
 
             handleMetadataInputChange(e) {
                 const { id, value } = e.target;
-                const updates = {};
-                if (id === 'clinical-data') {
-                    updates.clinical_data = value;
-                } else if (id === 'copyright-info') {
-                    updates.copyright_info = value;
-                } else if (id === 'administrative') {
-                    updates.administrative = value;
-                } else if (id === 'usage-terms') {
-                    updates.usage_terms = value;
+                if (id === 'metadata-text') {
+                    this.personaData.updateMetadataText(value);
                 }
-                this.personaData.updateMetadata(updates);
             }
 
             updateAllUI() {
@@ -1480,19 +1484,11 @@
             }
 
             updateDialogueInstructionsUI(data) {
-                const instr = data.dialogue_instructions;
-                document.getElementById('speech-patterns').value = instr.speech_patterns || '';
-                document.getElementById('behavioral-responses').value = instr.behavioral_responses || '';
-                document.getElementById('special-abilities').value = instr.special_abilities || '';
-                document.getElementById('implementation-notes').value = instr.implementation_notes || '';
+                document.getElementById('instructions-text').value = data.dialogue_instructions_text || '';
             }
 
             updateMetadataUI(data) {
-                const meta = data.non_dialogue_metadata;
-                document.getElementById('clinical-data').value = meta.clinical_data || '';
-                document.getElementById('copyright-info').value = meta.copyright_info || '';
-                document.getElementById('administrative').value = meta.administrative || '';
-                document.getElementById('usage-terms').value = meta.usage_terms || '';
+                document.getElementById('metadata-text').value = data.non_dialogue_metadata_text || '';
             }
 
             renderTrigger(trigger) {
@@ -1569,6 +1565,14 @@
                 setTimeout(() => {
                     container.removeChild(notification);
                 }, 5000);
+            }
+
+            insertSnippet(textarea, snippet) {
+                const start = textarea.selectionStart;
+                const end = textarea.selectionEnd;
+                textarea.setRangeText(snippet, start, end, 'end');
+                textarea.focus();
+                textarea.dispatchEvent(new Event('input', { bubbles: true }));
             }
         }
 
