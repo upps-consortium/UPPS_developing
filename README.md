@@ -38,9 +38,7 @@ UPPSでは、UPPS標準に基づく人格データセットを「UPPSペルソ�
 #### ✅ 利用可能なドキュメント
 
 - [基本テンプレート](./prompting/templates/basic_template.md): 基本的なUPPSペルソナプロンプトテンプレート
-- [状態管理テンプレート](./prompting/templates/state_update.md): 感情状態の更新を含むテンプレート  
-- [記憶トリガーテンプレート](./prompting/templates/memory_trigger.md): 記憶想起機能を含むテンプレート
-- [サンプルペルソナ - レイチェル](./examples/profiles/rachel_bladerunner.md): ブレードランナーのキャラクター例
+- [サンプルペルソナ - レイチェル](./persona_lib/rachel_bladerunner.md): ブレードランナーのキャラクター例
 
 #### 📋 開発予定（プロンプト主導型）
 
@@ -151,7 +149,7 @@ upps/
 
 ```
 prompting/                         # プロンプト主導型（開発中）  
-├── examples/                       
+├── example/                       
 │   ├── conversation_example.md    # 会話例 🚧  
 │   └── session_management.md      # セッション管理例 🚧  
 │  
