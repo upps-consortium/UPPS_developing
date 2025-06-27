@@ -922,10 +922,10 @@
                         <textarea id="instructions-text" rows="8" class="instructions-input"></textarea>
                     </div>
                     <div class="suggestions">
-                        <span class="suggestion" draggable="true" data-snippet="話し方・口調:" title="キャラクターの語調を指定">話し方・口調</span>
-                        <span class="suggestion" draggable="true" data-snippet="行動・反応:" title="想定する振る舞い">行動・反応</span>
-                        <span class="suggestion" draggable="true" data-snippet="特殊能力:" title="特別なスキルや能力">特殊能力</span>
-                        <span class="suggestion" draggable="true" data-snippet="実装メモ:" title="開発用メモ">実装メモ</span>
+                        <span class="suggestion" draggable="true" data-snippet="speech_patterns: |\n  " title="キャラクターの語調を指定">話し方・口調</span>
+                        <span class="suggestion" draggable="true" data-snippet="behavioral_responses: |\n  " title="想定する振る舞い">行動・反応</span>
+                        <span class="suggestion" draggable="true" data-snippet="special_abilities: |\n  " title="特別なスキルや能力">特殊能力</span>
+                        <span class="suggestion" draggable="true" data-snippet="direct_description: |\n  " title="自然言語による指示">直接記述</span>
                     </div>
                 </div>
             </div>
@@ -939,10 +939,10 @@
                         <textarea id="metadata-text" rows="8" class="metadata-input"></textarea>
                     </div>
                     <div class="suggestions">
-                        <span class="suggestion" draggable="true" data-snippet="医療関連データ:" title="健康や病歴に関する情報">医療関連データ</span>
-                        <span class="suggestion" draggable="true" data-snippet="著作権情報:" title="権利者やライセンス表記">著作権情報</span>
-                        <span class="suggestion" draggable="true" data-snippet="管理情報:" title="バージョンや責任者">管理情報</span>
-                        <span class="suggestion" draggable="true" data-snippet="使用条件:" title="利用規約や禁止事項">使用条件</span>
+                        <span class="suggestion" draggable="true" data-snippet="clinical_data:\n  " title="健康や病歴に関する情報">医療関連データ</span>
+                        <span class="suggestion" draggable="true" data-snippet="copyright_info:\n  " title="権利者やライセンス表記">著作権情報</span>
+                        <span class="suggestion" draggable="true" data-snippet="administrative:\n  " title="バージョンや責任者">管理情報</span>
+                        <span class="suggestion" draggable="true" data-snippet="usage_terms:\n  - " title="利用規約や禁止事項">使用条件</span>
                     </div>
                 </div>
             </div>
@@ -1242,11 +1242,26 @@
             toYAML() {
                 // 数値を適切な形式に変換
                 const outputData = JSON.parse(JSON.stringify(this.data));
-                
+
                 // 性格特性を0-1の範囲に変換
                 Object.keys(outputData.personality.traits).forEach(trait => {
                     outputData.personality.traits[trait] = outputData.personality.traits[trait] / 100;
                 });
+
+                // dialogue_instructions と non_dialogue_metadata を YAML オブジェクトに変換
+                try {
+                    outputData.dialogue_instructions = jsyaml.load(this.data.dialogue_instructions_text) || {};
+                } catch (e) {
+                    outputData.dialogue_instructions = this.data.dialogue_instructions_text || {};
+                }
+                try {
+                    outputData.non_dialogue_metadata = jsyaml.load(this.data.non_dialogue_metadata_text) || {};
+                } catch (e) {
+                    outputData.non_dialogue_metadata = this.data.non_dialogue_metadata_text || {};
+                }
+
+                delete outputData.dialogue_instructions_text;
+                delete outputData.non_dialogue_metadata_text;
 
                 return jsyaml.dump(outputData, {
                     lineWidth: -1,
@@ -1258,7 +1273,7 @@
             fromYAML(yamlString) {
                 try {
                     const parsedData = jsyaml.load(yamlString);
-                    
+
                     // 性格特性を0-100の範囲に変換
                     if (parsedData.personality && parsedData.personality.traits) {
                         Object.keys(parsedData.personality.traits).forEach(trait => {
@@ -1266,7 +1281,14 @@
                         });
                     }
 
+                    const instructions = parsedData.dialogue_instructions;
+                    const metadata = parsedData.non_dialogue_metadata;
+                    delete parsedData.dialogue_instructions;
+                    delete parsedData.non_dialogue_metadata;
+
                     this.data = { ...this.getDefaultData(), ...parsedData };
+                    this.data.dialogue_instructions_text = instructions ? jsyaml.dump(instructions) : '';
+                    this.data.non_dialogue_metadata_text = metadata ? jsyaml.dump(metadata) : '';
                     this.notifyChange();
                     return true;
                 } catch (error) {
@@ -1337,6 +1359,18 @@
                         const text = e.dataTransfer.getData('text/plain');
                         if (text) {
                             this.insertSnippet(area, text);
+                        }
+                    });
+                    area.addEventListener('keydown', e => {
+                        if (e.key === 'Enter') {
+                            const start = area.selectionStart;
+                            const indentMatch = area.value.slice(0, start).split('\n').pop().match(/^\s+/);
+                            const indent = indentMatch ? indentMatch[0] : '';
+                            setTimeout(() => {
+                                const pos = area.selectionStart;
+                                area.setRangeText(indent, pos, pos, 'end');
+                                area.selectionStart = area.selectionEnd = pos + indent.length;
+                            }, 0);
                         }
                     });
                 });
