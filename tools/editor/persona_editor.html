@@ -683,6 +683,12 @@
             <button class="tab-btn" data-tab="associations">
                 🔗 関連性ネットワーク
             </button>
+            <button class="tab-btn" data-tab="instructions">
+                📝 対話指示
+            </button>
+            <button class="tab-btn" data-tab="metadata">
+                📑 メタデータ
+            </button>
             <button class="tab-btn" data-tab="preview">
                 📄 プレビュー
             </button>
@@ -867,6 +873,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>ID</th>
                                     <th>トリガー</th>
                                     <th>レスポンス</th>
                                     <th>強度</th>
@@ -885,6 +892,52 @@
                         <button class="btn btn--secondary" onclick="app.openAssociationModal()">
                             最初の関連性を追加
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions Tab -->
+            <div id="instructions-tab" class="tab-panel">
+                <div class="card">
+                    <h2 class="card-title">対話指示</h2>
+                    <div class="form-group">
+                        <label for="speech-patterns">話し方・口調</label>
+                        <textarea id="speech-patterns" rows="3" class="dialogue-input"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="behavioral-responses">行動・反応</label>
+                        <textarea id="behavioral-responses" rows="3" class="dialogue-input"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="special-abilities">特殊能力</label>
+                        <textarea id="special-abilities" rows="3" class="dialogue-input"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="implementation-notes">実装メモ</label>
+                        <textarea id="implementation-notes" rows="3" class="dialogue-input"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metadata Tab -->
+            <div id="metadata-tab" class="tab-panel">
+                <div class="card">
+                    <h2 class="card-title">メタデータ</h2>
+                    <div class="form-group">
+                        <label for="clinical-data">医療関連データ</label>
+                        <textarea id="clinical-data" rows="3" class="metadata-input"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="copyright-info">著作権情報</label>
+                        <textarea id="copyright-info" rows="3" class="metadata-input"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="administrative">管理情報</label>
+                        <textarea id="administrative" rows="3" class="metadata-input"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="usage-terms">使用条件</label>
+                        <textarea id="usage-terms" rows="3" class="metadata-input"></textarea>
                     </div>
                 </div>
             </div>
@@ -956,6 +1009,8 @@
                                 <select id="responseType">
                                     <option value="memory">記憶</option>
                                     <option value="emotion">感情</option>
+                                    <option value="emotion_baseline_change">感情ベースライン変更</option>
+                                    <option value="special_ability_activation">特殊能力発動</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -963,6 +1018,14 @@
                                 <select id="responseTarget">
                                     <!-- 選択されたタイプに応じて動的に変更 -->
                                 </select>
+                            </div>
+                            <div class="form-group" id="changeAmountGroup" style="display:none;">
+                                <label for="changeAmount">変化量/強度</label>
+                                <input type="number" id="changeAmount" value="0">
+                            </div>
+                            <div class="form-group" id="responseDescGroup" style="display:none;">
+                                <label for="responseDescription">説明</label>
+                                <input type="text" id="responseDescription">
                             </div>
                         </div>
                         
@@ -1080,6 +1143,18 @@
                     },
                     association_system: {
                         associations: []
+                    },
+                    dialogue_instructions: {
+                        speech_patterns: "",
+                        behavioral_responses: "",
+                        special_abilities: "",
+                        implementation_notes: ""
+                    },
+                    non_dialogue_metadata: {
+                        clinical_data: "",
+                        copyright_info: "",
+                        administrative: "",
+                        usage_terms: ""
                     }
                 };
             }
@@ -1114,6 +1189,16 @@
 
             updateBackground(background) {
                 this.data.background = background;
+                this.notifyChange();
+            }
+
+            updateDialogueInstructions(instructions) {
+                this.data.dialogue_instructions = { ...this.data.dialogue_instructions, ...instructions };
+                this.notifyChange();
+            }
+
+            updateMetadata(metadata) {
+                this.data.non_dialogue_metadata = { ...this.data.non_dialogue_metadata, ...metadata };
                 this.notifyChange();
             }
 
@@ -1229,6 +1314,10 @@
                         this.handlePersonalInfoChange(e);
                     } else if (e.target.matches('.slider-input')) {
                         this.handleSliderChange(e);
+                    } else if (e.target.matches('.dialogue-input')) {
+                        this.handleDialogueInputChange(e);
+                    } else if (e.target.matches('.metadata-input')) {
+                        this.handleMetadataInputChange(e);
                     }
                 });
 
@@ -1289,12 +1378,44 @@
                 }
             }
 
+            handleDialogueInputChange(e) {
+                const { id, value } = e.target;
+                const updates = {};
+                if (id === 'speech-patterns') {
+                    updates.speech_patterns = value;
+                } else if (id === 'behavioral-responses') {
+                    updates.behavioral_responses = value;
+                } else if (id === 'special-abilities') {
+                    updates.special_abilities = value;
+                } else if (id === 'implementation-notes') {
+                    updates.implementation_notes = value;
+                }
+                this.personaData.updateDialogueInstructions(updates);
+            }
+
+            handleMetadataInputChange(e) {
+                const { id, value } = e.target;
+                const updates = {};
+                if (id === 'clinical-data') {
+                    updates.clinical_data = value;
+                } else if (id === 'copyright-info') {
+                    updates.copyright_info = value;
+                } else if (id === 'administrative') {
+                    updates.administrative = value;
+                } else if (id === 'usage-terms') {
+                    updates.usage_terms = value;
+                }
+                this.personaData.updateMetadata(updates);
+            }
+
             updateAllUI() {
                 const data = this.personaData.getData();
                 this.updatePersonalInfoUI(data);
                 this.updatePersonalityUI(data);
                 this.updateEmotionSystemUI(data);
                 this.updateAssociationsUI(data);
+                this.updateDialogueInstructionsUI(data);
+                this.updateMetadataUI(data);
             }
 
             updatePersonalInfoUI(data) {
@@ -1340,6 +1461,7 @@
                 tbody.innerHTML = associations.map((assoc, index) => `
                     <tr>
                         <td>${index + 1}</td>
+                        <td>${assoc.id}</td>
                         <td>${this.renderTrigger(assoc.trigger)}</td>
                         <td>${this.renderResponse(assoc.response)}</td>
                         <td>${this.renderStrength(assoc.response.association_strength)}</td>
@@ -1355,6 +1477,22 @@
                         </td>
                     </tr>
                 `).join('');
+            }
+
+            updateDialogueInstructionsUI(data) {
+                const instr = data.dialogue_instructions;
+                document.getElementById('speech-patterns').value = instr.speech_patterns || '';
+                document.getElementById('behavioral-responses').value = instr.behavioral_responses || '';
+                document.getElementById('special-abilities').value = instr.special_abilities || '';
+                document.getElementById('implementation-notes').value = instr.implementation_notes || '';
+            }
+
+            updateMetadataUI(data) {
+                const meta = data.non_dialogue_metadata;
+                document.getElementById('clinical-data').value = meta.clinical_data || '';
+                document.getElementById('copyright-info').value = meta.copyright_info || '';
+                document.getElementById('administrative').value = meta.administrative || '';
+                document.getElementById('usage-terms').value = meta.usage_terms || '';
             }
 
             renderTrigger(trigger) {
@@ -1393,11 +1531,17 @@
             }
 
             renderResponse(response) {
-                const icon = response.type === 'memory' ? '💭' : '😊';
+                let icon = '💭';
+                if (response.type === 'emotion' || response.type === 'emotion_baseline_change') {
+                    icon = '😊';
+                } else if (response.type === 'special_ability_activation') {
+                    icon = '⚡';
+                }
+                const change = response.change_amount !== undefined ? ` (${response.change_amount})` : '';
                 return `
                     <div class="response-display">
                         <span class="response-type-icon">${icon}</span>
-                        <div>${response.id}</div>
+                        <div>${response.id}${change}</div>
                     </div>
                 `;
             }
@@ -1768,6 +1912,10 @@
                 // レスポンス設定リセット
                 document.getElementById('responseType').value = 'memory';
                 document.getElementById('responseTarget').innerHTML = '';
+                document.getElementById('changeAmount').value = 0;
+                document.getElementById('changeAmountGroup').style.display = 'none';
+                document.getElementById('responseDescription').value = '';
+                document.getElementById('responseDescGroup').style.display = 'none';
                 
                 // 関連強度リセット
                 document.getElementById('association-strength').value = 70;
@@ -1875,6 +2023,8 @@
                     case 3:
                         this.associationFormData.responseType = document.getElementById('responseType').value;
                         this.associationFormData.responseTarget = document.getElementById('responseTarget').value;
+                        this.associationFormData.changeAmount = parseFloat(document.getElementById('changeAmount').value) || 0;
+                        this.associationFormData.responseDescription = document.getElementById('responseDescription').value;
                         break;
                     case 4:
                         this.associationFormData.associationStrength = parseInt(document.getElementById('association-strength').value);
@@ -1996,15 +2146,31 @@
 
             updateResponseTargets(responseType) {
                 const select = document.getElementById('responseTarget');
-                
+                const changeGroup = document.getElementById('changeAmountGroup');
+                const descGroup = document.getElementById('responseDescGroup');
+
                 if (responseType === 'memory') {
                     const memoryIds = this.personaData.getMemoryIds();
                     select.innerHTML = '<option value="">選択してください</option>' +
                         memoryIds.map(id => `<option value="${id}">${id}</option>`).join('');
+                    changeGroup.style.display = 'none';
+                    descGroup.style.display = 'none';
                 } else if (responseType === 'emotion') {
                     const emotionIds = this.personaData.getEmotionIds();
                     select.innerHTML = '<option value="">選択してください</option>' +
                         emotionIds.map(id => `<option value="${id}">${id}</option>`).join('');
+                    changeGroup.style.display = 'none';
+                    descGroup.style.display = 'none';
+                } else if (responseType === 'emotion_baseline_change') {
+                    const emotionIds = this.personaData.getEmotionIds();
+                    select.innerHTML = '<option value="">選択してください</option>' +
+                        emotionIds.map(id => `<option value="${id}">${id}</option>`).join('');
+                    changeGroup.style.display = 'block';
+                    descGroup.style.display = 'block';
+                } else if (responseType === 'special_ability_activation') {
+                    select.innerHTML = '<option value="">入力してください</option>';
+                    changeGroup.style.display = 'block';
+                    descGroup.style.display = 'block';
                 }
             }
 
@@ -2016,7 +2182,9 @@
                     response: {
                         type: this.associationFormData.responseType,
                         id: this.associationFormData.responseTarget,
-                        association_strength: this.associationFormData.associationStrength
+                        association_strength: this.associationFormData.associationStrength,
+                        change_amount: this.associationFormData.changeAmount,
+                        description: this.associationFormData.responseDescription
                     }
                 };
                 
