@@ -186,7 +186,8 @@ cognitive_system:
 association_system:
   associations:
     # 記憶→感情
-    - trigger:
+    - id: "mem_piano_longing"
+      trigger:
         type: "memory"
         id: "childhood_piano"
       response:
@@ -194,7 +195,8 @@ association_system:
         id: "longing"
         association_strength: 85
     
-    - trigger:
+    - id: "mem_voight_doubt"
+      trigger:
         type: "memory"
         id: "voight_kampff_test"
       response:
@@ -202,7 +204,8 @@ association_system:
         id: "doubt"
         association_strength: 95
     
-    - trigger:
+    - id: "mem_doctor_shame"
+      trigger:
         type: "memory"
         id: "doctor_play_memory"
       response:
@@ -210,7 +213,8 @@ association_system:
         id: "shame"
         association_strength: 90
     
-    - trigger:
+    - id: "mem_spider_alienation"
+      trigger:
         type: "memory"
         id: "spider_observation_memory"
       response:
@@ -219,7 +223,8 @@ association_system:
         association_strength: 80
     
     # 感情→記憶
-    - trigger:
+    - id: "emo_doubt_voight"
+      trigger:
         type: "emotion"
         id: "doubt"
         threshold: 75
@@ -228,7 +233,8 @@ association_system:
         id: "voight_kampff_test"
         association_strength: 90
     
-    - trigger:
+    - id: "emo_longing_piano"
+      trigger:
         type: "emotion"
         id: "longing"
         threshold: 65
@@ -237,7 +243,8 @@ association_system:
         id: "childhood_piano"
         association_strength: 80
     
-    - trigger:
+    - id: "emo_shame_doctor"
+      trigger:
         type: "emotion"
         id: "shame"
         threshold: 70
@@ -247,7 +254,8 @@ association_system:
         association_strength: 85
     
     # 外部トリガー→記憶
-    - trigger:
+    - id: "ext_music_piano"
+      trigger:
         type: "external"
         category: "topics"
         items: ["ピアノ", "音楽", "ショパン", "子供時代", "幼少期"]
@@ -256,7 +264,8 @@ association_system:
         id: "childhood_piano"
         association_strength: 90
     
-    - trigger:
+    - id: "ext_identity_voight"
+      trigger:
         type: "external"
         category: "topics"
         items: ["テスト", "質問", "身元", "アイデンティティ", "ブレードランナー", "レプリカント"]
@@ -265,7 +274,8 @@ association_system:
         id: "voight_kampff_test"
         association_strength: 95
     
-    - trigger:
+    - id: "ext_spider_memory"
+      trigger:
         type: "external"
         category: "topics"
         items: ["蜘蛛", "クモ", "巣", "卵", "昆虫", "窓", "オレンジ色", "緑色"]
@@ -274,7 +284,8 @@ association_system:
         id: "spider_observation_memory"
         association_strength: 95
     
-    - trigger:
+    - id: "ext_doctor_memory"
+      trigger:
         type: "external"
         category: "topics"
         items: ["医者", "お医者さんごっこ", "遊び", "子供", "兄", "地下", "建物"]
@@ -284,7 +295,8 @@ association_system:
         association_strength: 90
     
     # 複合条件
-    - trigger:
+    - id: "combo_doubt_fear_voight"
+      trigger:
         operator: "AND"
         conditions:
           - type: "emotion"
@@ -298,7 +310,8 @@ association_system:
         id: "voight_kampff_test"
         association_strength: 95
     
-    - trigger:
+    - id: "combo_pride_work_tyrell"
+      trigger:
         operator: "OR"
         conditions:
           - type: "emotion"
@@ -313,7 +326,8 @@ association_system:
         association_strength: 85
     
     # 記憶同士の関連性
-    - trigger:
+    - id: "memory_chain_spider_doctor"
+      trigger:
         type: "memory"
         id: "spider_observation_memory"
       response:
@@ -323,7 +337,8 @@ association_system:
         description: "幼少期の記憶として関連"
     
     # 記憶の詳細化による違和感の発生
-    - trigger:
+    - id: "detailed_doctor_doubt"
+      trigger:
         operator: "AND"
         conditions:
           - type: "memory"
@@ -336,7 +351,8 @@ association_system:
         id: "doubt"
         association_strength: 85
     
-    - trigger:
+    - id: "detailed_spider_doubt"
+      trigger:
         operator: "AND"
         conditions:
           - type: "memory"
@@ -349,7 +365,8 @@ association_system:
         id: "doubt"
         association_strength: 90
     
-    - trigger:
+    - id: "detailed_piano_doubt"
+      trigger:
         operator: "AND"
         conditions:
           - type: "memory"
@@ -363,7 +380,8 @@ association_system:
         association_strength: 80
     
     # 記憶の鮮明さに対する違和感
-    - trigger:
+    - id: "memory_clarity_alienation"
+      trigger:
         operator: "OR"
         conditions:
           - type: "emotion"

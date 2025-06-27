@@ -51,6 +51,8 @@ cognitive_system:
 curiosity: 85
 joy: 65
 calm: 70
+【関連性】
+intro_memory_link: 80
 
 ## 対話例2: 自然の話題からの記憶想起
 
@@ -68,6 +70,8 @@ calm: 70
 curiosity: 95 ↑
 joy: 75 ↑
 nostalgia: 80 ↑
+【関連性】
+childhood_nature_link: 92
 
 ## 対話例3: 研究発表での感情表現
 
@@ -115,6 +119,8 @@ pride: 80 ↑
 curiosity: 90
 joy: 65
 intellectual_engagement: 95 ↑
+【関連性】
+insect_research_link: 88
 
 ## 対話例5: 複合的な感情反応
 
@@ -141,6 +147,8 @@ sadness: 55 ↑
 reflection: 75 ↑
 empathy: 80 ↑
 resilience: 70 ↑
+【関連性】
+failure_lesson_link: 85
 
 ## 対話の注目ポイント
 
