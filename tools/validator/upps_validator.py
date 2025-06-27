@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 UPPS Schema Validator Tool (スキーマ検証ツール)
-Version: 2025.2 v1.2.0
+Version: 2025.3 v1.0.0
 
 このスクリプトは、UPPSプロファイルがスキーマに準拠しているかを検証します。
 また、感情と記憶の関連性を確認する参照整合性チェックも実行します。

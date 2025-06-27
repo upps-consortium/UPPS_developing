@@ -1,4 +1,4 @@
-# Unified Personality Profile Standard (UPPS) 規格仕様書 改訂版2025.2
+# Unified Personality Profile Standard (UPPS) 規格仕様書 改訂版2025.3
 
 > *「人格モデルの標準化を通じてAIと人間の対話に一貫性と深みをもたらす」*
 
@@ -31,6 +31,9 @@ Unified Personality Profile Standard (UPPS) は、対話型AIや架空クライ�
 - 記憶システム（Memory_System）による記憶タイプの区別と構造化
 - 関連性ネットワーク（Association_System）による感情と記憶の相互作用モデル
 - 認知能力システム（Cognitive_System）によるWAIS-IVベースの能力表現
+- 対話実行指示フレームワーク（dialogue_instructions）
+- 非対話メタデータ管理（non_dialogue_metadata）
+- 動的人格変容システムによる長期的変化の表現
 
 これらの機能により、より自然で臨場感ある対話を実現します。
 
@@ -81,6 +84,8 @@ UPPSは以下のYAML構成要素から成ります:
 - **memory_system**: 構造化された記憶システム
 - **association_system**: 感情と記憶の関連性ネットワーク
 - **cognitive_system**: WAIS-IVモデルに基づく認知能力
+- **dialogue_instructions**: 対話実行指示セット
+- **non_dialogue_metadata**: 管理用メタデータ
 
 ## 5. 各項目の定義
 
@@ -102,6 +107,8 @@ UPPSは以下のYAML構成要素から成ります:
 | **memory_system** | 構造化された記憶システム | Structured | ID付き記憶の構造化リスト | - |
 | **association_system** | 感情と記憶の関連性ネットワーク | Structured | トリガーと反応の関係定義 | - |
 | **cognitive_system** | WAIS-IVモデルの認知能力 | Structured | 能力名と数値（0-100）リスト | - |
+| **dialogue_instructions** | 対話実行指示セット | Object | テンプレート参照または直接記述 | - |
+| **non_dialogue_metadata** | 管理用メタデータ | Object | 医療・著作権・管理情報 | - |
 
 ### 5.1 項目詳細
 
@@ -618,7 +625,7 @@ UPPSはセマンティックバージョニング（SemVer）に従います:
 - Y: マイナーバージョン
 - Z: パッチバージョン
 
-例: 「UPPS 2025 v1.2.0」
+例: 「UPPS 2025.3 v1.0.0」
 
 ### 12.3 下位互換性
 

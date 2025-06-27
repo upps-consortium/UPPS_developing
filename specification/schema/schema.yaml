@@ -1,6 +1,6 @@
 ---
 # Unified Personality Profile Standard (UPPS) Schema Definition
-# Version: 2025.2 v1.2.0
+# Version: 2025.3 v1.0.0
 
 $schema: "http://json-schema.org/draft-07/schema#"
 title: "UPPS Persona"
@@ -447,9 +447,13 @@ properties:
         items:
           type: object
           required:
+            - id
             - trigger
             - response
           properties:
+            id:
+              type: string
+              description: "関連性の固有ID"
             trigger:
               oneOf:
                 # 単一トリガー
@@ -526,7 +530,7 @@ properties:
               properties:
                 type:
                   type: string
-                  enum: ["memory", "emotion"]
+                  enum: ["memory", "emotion", "emotion_baseline_change", "association_strength_change", "multiple_association_changes"]
                   description: "応答のタイプ"
                 id:
                   type: string
@@ -694,6 +698,34 @@ properties:
                   maximum: 100
                 description:
                   type: string
+
+  dialogue_instructions:
+    type: object
+    description: "対話実行指示"
+    properties:
+      template_ref:
+        type: string
+        description: "テンプレートID参照"
+      customizations:
+        type: object
+        description: "個別カスタマイズ"
+      direct_description:
+        type: string
+        description: "直接記述"
+
+  non_dialogue_metadata:
+    type: object
+    description: "対話実行で参照しない管理情報"
+    properties:
+      clinical_data:
+        type: object
+        description: "医療関連メタデータ"
+      copyright_info:
+        type: object
+        description: "著作権情報"
+      administrative:
+        type: object
+        description: "管理・バージョン情報"
 
 # 追加のプロパティは許可しない
 additionalProperties: false
