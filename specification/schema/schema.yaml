@@ -4,7 +4,7 @@
 
 $schema: "http://json-schema.org/draft-07/schema#"
 title: "UPPS Persona"
-description: "Schema for validating UPPS (Unified Personality Profile Standard) personas with emotion and memory system extensions"
+description: "Schema for validating UPPS (Unified Personality Profile Standard) personas with emotion, memory, association, and cognitive systems - 2025.3 specification"
 type: object
 required:
   - personal_info
@@ -434,7 +434,7 @@ properties:
                 type: string
         minItems: 1
 
-  # 関連性ネットワーク (新規)
+  # 関連性ネットワーク (新規 - 2025.3で拡張)
   association_system:
     type: object
     description: "感情と記憶の関連性ネットワーク"
@@ -453,7 +453,7 @@ properties:
           properties:
             id:
               type: string
-              description: "関連性の固有ID"
+              description: "関連性の固有ID（2025.3で必須）"
             trigger:
               oneOf:
                 # 単一トリガー
@@ -478,6 +478,11 @@ properties:
                     items:
                       type: array
                       description: "外部トリガーの項目リスト"
+                      items:
+                        type: string
+                    context:
+                      type: array
+                      description: "文脈情報（2025.3で追加）"
                       items:
                         type: string
                 
@@ -518,6 +523,11 @@ properties:
                             description: "外部条件の項目リスト"
                             items:
                               type: string
+                          context:
+                            type: array
+                            description: "文脈情報（2025.3で追加）"
+                            items:
+                              type: string
                       minItems: 1
                       maxItems: 5
             
@@ -525,13 +535,18 @@ properties:
               type: object
               required:
                 - type
-                - id
                 - association_strength
               properties:
                 type:
                   type: string
-                  enum: ["memory", "emotion", "emotion_baseline_change", "association_strength_change", "multiple_association_changes"]
-                  description: "応答のタイプ"
+                  enum: 
+                    - "memory"
+                    - "emotion"
+                    - "emotion_baseline_change"
+                    - "association_strength_change"
+                    - "multiple_association_changes"
+                    - "special_ability_activation"
+                  description: "応答のタイプ（2025.3で拡張）"
                 id:
                   type: string
                   description: "応答となる記憶または感情のID"
@@ -540,6 +555,37 @@ properties:
                   description: "関連の強さ（0-100）"
                   minimum: 0
                   maximum: 100
+                change_amount:
+                  type: integer
+                  description: "変化量（2025.3で追加、動的変容用）"
+                  minimum: -50
+                  maximum: 50
+                target_association_ids:
+                  type: array
+                  description: "複数の関連性ID（2025.3で追加）"
+                  items:
+                    type: string
+                changes:
+                  type: array
+                  description: "複数の変化定義（2025.3で追加）"
+                  items:
+                    type: object
+                    required:
+                      - target_association_id
+                      - change_amount
+                    properties:
+                      target_association_id:
+                        type: string
+                      change_amount:
+                        type: integer
+                        minimum: -50
+                        maximum: 50
+                intensity_factor:
+                  type: string
+                  description: "強度要因（特殊能力用）"
+                description:
+                  type: string
+                  description: "変化の説明"
                 decay_rate:
                   type: number
                   description: "関連強度の減衰率（オプション）"
@@ -699,33 +745,262 @@ properties:
                 description:
                   type: string
 
+  # 対話実行指示 (2025.3で新規追加)
   dialogue_instructions:
     type: object
-    description: "対話実行指示"
+    description: "対話実行時の特別指示（2025.3新機能）"
     properties:
       template_ref:
         type: string
-        description: "テンプレートID参照"
+        description: "疾患特異的テンプレートID参照"
       customizations:
         type: object
-        description: "個別カスタマイズ"
+        description: "個別カスタマイズ内容"
+        properties:
+          additional_notes:
+            type: string
+            description: "追加の注意事項"
+          specific_expressions:
+            type: array
+            description: "特定の表現パターン"
+            items:
+              type: string
+        additionalProperties: true
       direct_description:
         type: string
-        description: "直接記述"
+        description: "自然言語による直接記述"
+      speech_patterns:
+        type: string
+        description: "言語・表現パターンの特徴"
+      behavioral_responses:
+        type: string
+        description: "行動・反応パターンの特徴"
+      special_abilities:
+        type: string
+        description: "特殊能力・制約（娯楽・創作用）"
+      implementation_notes:
+        type: string
+        description: "実装上の注意事項"
 
+  # 非対話メタデータ (2025.3で新規追加)
   non_dialogue_metadata:
     type: object
-    description: "対話実行で参照しない管理情報"
+    description: "対話実行で参照しない管理・分類用情報（2025.3新機能）"
     properties:
       clinical_data:
         type: object
-        description: "医療関連メタデータ"
+        description: "医療関連メタデータ（旧clinical_metadata）"
+        properties:
+          primary_diagnosis:
+            type: object
+            description: "主診断"
+            properties:
+              icd_11:
+                type: string
+                description: "ICD-11診断コード"
+              dsm_5_tr:
+                type: string
+                description: "DSM-5-TR診断コード"
+              name_jp:
+                type: string
+                description: "日本語診断名"
+              severity:
+                type: string
+                description: "重症度"
+                enum: ["mild", "moderate", "severe"]
+          educational_objectives:
+            type: array
+            description: "教育目標"
+            items:
+              type: string
+          target_audience:
+            type: array
+            description: "対象利用者"
+            items:
+              type: string
+          validation:
+            type: object
+            description: "検証情報"
+            properties:
+              medical_reviewer:
+                type: string
+                description: "医学的監修者"
+              review_date:
+                type: string
+                description: "監修日"
+                pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              quality_score:
+                type: integer
+                description: "品質スコア（0-100）"
+                minimum: 0
+                maximum: 100
+              approval_status:
+                type: string
+                description: "承認状態"
+                enum: ["pending", "approved", "rejected"]
+              notes:
+                type: string
+                description: "備考"
+        additionalProperties: true
+      
       copyright_info:
         type: object
-        description: "著作権情報"
+        description: "著作権・出典情報"
+        properties:
+          original_work:
+            type: string
+            description: "原作品名"
+          creator:
+            type: string
+            description: "作者名"
+          publisher:
+            type: string
+            description: "出版社名"
+          copyright_year:
+            type: string
+            description: "著作権年"
+          usage_rights:
+            type: object
+            description: "使用権利"
+            properties:
+              type:
+                type: string
+                description: "利用形態"
+                enum: ["original", "fan_creation", "adaptation", "derivative"]
+              commercial_use:
+                type: boolean
+                description: "商用利用可否"
+              disclaimer:
+                type: string
+                description: "免責事項"
+          legal_notices:
+            type: array
+            description: "法的注意事項"
+            items:
+              type: string
+        additionalProperties: true
+      
       administrative:
         type: object
         description: "管理・バージョン情報"
+        properties:
+          file_id:
+            type: string
+            description: "ファイル識別子"
+          creation_date:
+            type: string
+            description: "作成日"
+            pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          last_updated:
+            type: string
+            description: "最終更新日"
+            pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          version:
+            type: string
+            description: "バージョン"
+          status:
+            type: string
+            description: "ステータス"
+            enum: ["draft", "review", "production_ready", "archived"]
+          creator:
+            type: string
+            description: "作成者"
+          intended_use:
+            type: string
+            description: "使用目的"
+          contact_info:
+            type: object
+            description: "連絡先情報"
+            properties:
+              questions:
+                type: string
+                description: "質問用メールアドレス"
+              takedown_requests:
+                type: string
+                description: "削除要請用メールアドレス"
+          usage_terms:
+            type: array
+            description: "使用条件"
+            items:
+              type: string
+        additionalProperties: true
+        
+  # 変化追跡システム (2025.3で新規追加)
+  change_tracking:
+    type: object
+    description: "動的変容の履歴管理（2025.3新機能）"
+    properties:
+      emotion_baseline_changes:
+        type: array
+        description: "感情基準値の変化履歴"
+        items:
+          type: object
+          required:
+            - emotion_id
+            - cumulative_change
+          properties:
+            emotion_id:
+              type: string
+              description: "感情ID"
+            cumulative_change:
+              type: integer
+              description: "累積変化量"
+              minimum: -50
+              maximum: 50
+            change_log:
+              type: array
+              description: "変化ログ"
+              items:
+                type: string
+      
+      association_strength_changes:
+        type: array
+        description: "関連強度の変化履歴"
+        items:
+          type: object
+          required:
+            - association_id
+            - cumulative_change
+          properties:
+            association_id:
+              type: string
+              description: "関連性ID"
+            cumulative_change:
+              type: integer
+              description: "累積変化量"
+              minimum: -100
+              maximum: 100
+            change_log:
+              type: array
+              description: "変化ログ"
+              items:
+                type: string
 
-# 追加のプロパティは許可しない
+# 追加のプロパティは許可しない（厳密性確保）
 additionalProperties: false
+
+# バリデーションルール (2025.3で強化)
+validation_rules:
+  emotion_system:
+    - "model が指定されている場合、対応する感情セットが定義されていること"
+    - "baseline値は0-100の範囲内であること"
+  
+  memory_system:
+    - "各記憶にはユニークなIDが必要"
+    - "記憶タイプは定義された列挙値のいずれかであること"
+  
+  association_system:
+    - "各関連性にはユニークなIDが必要（2025.3で強化）"
+    - "トリガーとレスポンスのIDは存在する記憶・感情を参照していること"
+    - "複合トリガーの条件数は1-5個の範囲内であること"
+  
+  cognitive_system:
+    - "能力レベルは0-100の範囲内であること"
+    - "WAIS-IVモデルの場合、4つの主要能力が定義されていること"
+  
+  dialogue_instructions:
+    - "template_refまたはdirect_descriptionのいずれかは定義されていること"
+  
+  change_tracking:
+    - "変化量は定義された範囲内であること"
+    - "参照するIDは存在する感情・関連性を指していること"
