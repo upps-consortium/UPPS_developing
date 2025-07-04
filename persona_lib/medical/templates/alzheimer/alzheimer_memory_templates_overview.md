@@ -164,12 +164,6 @@ educational_value:
 - [症状表現テンプレート作成ガイドライン](../specification/clinical_symptom_expression_templates.md)
 - [医療用ペルソナ実装例](../examples/README.md)
 
-## サポート・問い合わせ
-
-- **技術的問題**: tech-support@upps-consortium.org
-- **医学的内容**: medical-review@upps-consortium.org
-- **品質改善**: quality-feedback@upps-consortium.org
-
 ---
 
 © UPPS Consortium 2025
