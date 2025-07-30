@@ -1,17 +1,17 @@
 # ========================================
 # UPPS症状表現テンプレート
-# 統合失調症（軽度陽性症状・適応的慢性期）
+# 統合失調症（軽度・適応的慢性期）
 # ========================================
 
 template_info:
-  id: "schizophrenia_mild_positive_adapted_v1.0"
-  name: "統合失調症（軽度陽性症状・適応的慢性期）"
-  description: "軽度の陽性症状が残存するが、症状との付き合い方を習得し社会適応良好な状態"
+  id: "schizophrenia_mild_adapted_v1.0"  # ✅ ファイル名と一致に修正
+  name: "統合失調症（軽度・適応的慢性期）"
+  description: "軽度の症状が残存するが、症状との付き合い方を習得し社会適応良好な状態"
   version: "1.0"
   
   diagnosis: "統合失調症"
   severity: "mild"
-  pattern: "positive_adapted"
+  pattern: "adapted"  # ✅ よりシンプルに修正
   codes:
     dsm_5_tr: "295.90"
     icd_11: "6A20"
