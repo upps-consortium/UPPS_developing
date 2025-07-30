@@ -3,7 +3,7 @@
 > *医学教育・臨床研修・心理学研究のための仮想患者ペルソナ集*
 
 **対象**: UPPS 2025.3  
-**最終更新**: 2025年7月3日
+**最終更新**: 2025年7月30日
 
 ## 概要
 
@@ -32,10 +32,10 @@ templates/
 ```
 examples/
 ├── README.md                          # 実装例使用方法
-├── alzheimer_tanaka_hanako.yaml      # 田中花子（アルツハイマー）
-├── depression_yamada_taro.yaml       # 山田太郎（うつ病）
-├── anxiety_sato_yuki.yaml            # 佐藤雪（不安症）
-└── schizophrenia_suzuki_kenji.yaml   # 鈴木健二（統合失調症）
+├── alzheimer_TH.yaml                  # T.H.（アルツハイマー）
+├── depression_YT.yaml                 # Y.T.（うつ病）
+├── anxiety_SY.yaml                    # S.Y.（不安症）
+└── schizophrenia_SK.yaml             # S.K.（統合失調症）
 ```
 
 **特徴**:
@@ -150,6 +150,44 @@ dialogue_instructions:
 - **PTSD**: 再体験、回避、覚醒症状
 - **急性ストレス障害**: 急性期の反応
 - **適応障害**: ストレス因子への反応
+
+## 実装状況
+
+### ✅ 実装済みテンプレート群
+| 疾患群 | 実装済み | 予定 | 完成率 | ステータス |
+|--------|----------|------|--------|------------|
+| アルツハイマー型認知症 | 4種類 | 7種類 | 57% | 🟡 部分完成 |
+| うつ病 | 4種類 | 6種類 | 67% | 🟡 部分完成 |
+| 統合失調症 | 4種類 | 5種類 | 80% | 🟢 ほぼ完成 |
+| 不安症 | 0種類 | 3種類 | 0% | 🚧 作成予定 |
+| PTSD | 0種類 | 2種類 | 0% | 🚧 作成予定 |
+| 双極性障害 | 0種類 | 2種類 | 0% | 🚧 作成予定 |
+
+### 📁 ディレクトリ構造（実際の状況）
+```
+templates/
+├── alzheimer/          ✅ 4ファイル実装済み
+│   ├── alzheimer_mild_typical_v1.0.yaml
+│   ├── alzheimer_moderate_confabulation_v1.0.yaml
+│   ├── alzheimer_moderate_anosognosia_v1.0.yaml
+│   ├── alzheimer_severe_disorientation_v1.0.yaml
+│   └── alzheimer_memory_templates.md
+├── depression/         ✅ 4ファイル実装済み
+│   ├── depression_mild_typical_v1.0.yaml
+│   ├── depression_mild_atypical_v1.0.yaml
+│   ├── depression_moderate_melancholic_v1.0.yaml
+│   ├── depression_dysthymic_chronic_v1.0.yaml
+│   └── depression_templates_overview.md
+├── schizophrenia/      ✅ 4ファイル実装済み
+│   ├── schizophrenia_mild_adapted_v1.0.yaml
+│   ├── schizophrenia_mild_negative_v1.0.yaml
+│   ├── schizophrenia_moderate_acute_v1.0.yaml
+│   ├── schizophrenia_subtle_positive_v1.0.yaml
+│   └── schizophrenia_templates_overview.md
+├── anxiety/            🚧 作成予定
+├── ptsd/              🚧 作成予定
+└── bipolar/           🚧 作成予定
+```
 
 ## 品質保証
 
