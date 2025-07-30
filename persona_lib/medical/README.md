@@ -19,7 +19,8 @@ templates/
 ├── depression_mild_melancholic_v1.0.yaml  # うつ病
 ├── anxiety_mild_generalized_v1.0.yaml     # 不安症
 ├── schizophrenia_active_positive_v1.0.yaml # 統合失調症
-└── ptsd_moderate_reexperiencing_v1.0.yaml  # PTSD
+├── ptsd_moderate_reexperiencing_v1.0.yaml  # PTSD
+└── ptsd_moderate_avoidance_v1.0.yaml       # PTSD（回避症状）
 ```
 
 **特徴**:
@@ -160,7 +161,7 @@ dialogue_instructions:
 | うつ病 | 4種類 | 6種類 | 67% | 🟡 部分完成 |
 | 統合失調症 | 4種類 | 5種類 | 80% | 🟢 ほぼ完成 |
 | 不安症 | 0種類 | 3種類 | 0% | 🚧 作成予定 |
-| PTSD | 0種類 | 2種類 | 0% | 🚧 作成予定 |
+| PTSD | 2種類 | 2種類 | 100% | 🟢 完成 |
 | 双極性障害 | 0種類 | 2種類 | 0% | 🚧 作成予定 |
 
 ### 📁 ディレクトリ構造（実際の状況）
