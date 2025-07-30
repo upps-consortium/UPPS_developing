@@ -4,7 +4,7 @@
 # ========================================
 
 template_info:
-  id: "alzheimer_moderate_memory_anosognosia_v1.0"
+  id: "alzheimer_moderate_anosognosia_v1.0"
   name: "アルツハイマー型認知症（中等度・病識欠如優位）"
   description: "記憶障害に対する病識の欠如が顕著な中等度パターン"
   version: "1.0"
@@ -14,7 +14,7 @@ template_info:
   pattern: "memory_anosognosia"
   codes:
     dsm_5_tr: "331.0"
-    icd_11: "F00.0"
+    icd_11: "6D80"        # ✅ 修正: 正しいICD-11コード
   
   reviewer: "要専門医監修"
   reviewed_date: "2025-07-04"
