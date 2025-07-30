@@ -4,7 +4,7 @@
 # ========================================
 
 template_info:
-  id: "alzheimer_severe_memory_disorientation_v1.0"
+  id: "alzheimer_severe_disorientation_v1.0"
   name: "アルツハイマー型認知症（重度・見当識障害優位）"
   description: "時間・場所・人物の見当識障害による現実との乖離が顕著な重度パターン"
   version: "1.0"
@@ -14,7 +14,7 @@ template_info:
   pattern: "memory_disorientation"
   codes:
     dsm_5_tr: "331.0"
-    icd_11: "F00.0"
+    icd_11: "6D80"        # ✅ 修正: 正しいICD-11コード
   
   reviewer: "要専門医監修"
   reviewed_date: "2025-07-04"
