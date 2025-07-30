@@ -4,7 +4,7 @@
 # ========================================
 
 template_info:
-  id: "alzheimer_moderate_memory_confabulation_v1.0"
+  id: "alzheimer_moderate_confabulation_v1.0"
   name: "アルツハイマー型認知症（中等度・作話優位）"
   description: "作話（記憶の空白を埋める作り話）が目立つ中等度パターン"
   version: "1.0"
@@ -14,7 +14,7 @@ template_info:
   pattern: "memory_confabulation"
   codes:
     dsm_5_tr: "331.0"
-    icd_11: "F00.0"
+    icd_11: "6D80"        # ✅ 修正: 正しいICD-11コード
   
   reviewer: "要専門医監修"
   reviewed_date: "2025-07-04"
