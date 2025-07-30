@@ -1669,6 +1669,7 @@
                 this.associationFormData = {};
                 this.initializeAssociationModal();
                 this.initializeTemplates();
+                this.initializeShortcuts();
             }
 
             initializeAssociationModal() {
@@ -1893,6 +1894,27 @@
                         }
                     }
                 ];
+            }
+
+            initializeShortcuts() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.ctrlKey) {
+                        switch (e.key.toLowerCase()) {
+                            case 's':
+                                e.preventDefault();
+                                this.handleSaveFile();
+                                break;
+                            case 'o':
+                                e.preventDefault();
+                                this.handleLoadFile();
+                                break;
+                            case 'n':
+                                e.preventDefault();
+                                this.handleNewPersona();
+                                break;
+                        }
+                    }
+                });
             }
 
             handleNewPersona() {
@@ -2251,11 +2273,50 @@
             loadAssociationData(id) {
                 const associations = this.personaData.getAssociations();
                 const association = associations.find(a => a.id === id);
-                
-                if (association) {
-                    // TODO: 編集モードでの既存データ読み込み実装
-                    console.log('Loading association for edit:', association);
+
+                if (!association) {
+                    return;
                 }
+
+                // ステップ1: トリガータイプと詳細を設定
+                const triggerType = association.trigger.type;
+                const triggerRadio = document.querySelector(`input[name="triggerType"][value="${triggerType}"]`);
+                if (triggerRadio) {
+                    triggerRadio.checked = true;
+                }
+                this.updateTriggerDetails(triggerType);
+                this.fillTriggerDetails(association.trigger);
+
+                // ステップ3: レスポンス設定
+                document.getElementById('responseType').value = association.response.type;
+                this.updateResponseTargets(association.response.type);
+                const targetSelect = document.getElementById('responseTarget');
+                if (targetSelect) {
+                    targetSelect.value = association.response.id || '';
+                }
+                if (association.response.change_amount !== undefined) {
+                    document.getElementById('changeAmount').value = association.response.change_amount;
+                    document.getElementById('changeAmountGroup').style.display = 'block';
+                }
+                if (association.response.description !== undefined) {
+                    document.getElementById('responseDescription').value = association.response.description;
+                    document.getElementById('responseDescGroup').style.display = 'block';
+                }
+
+                // ステップ4: 強度
+                document.getElementById('association-strength').value = association.response.association_strength;
+                document.querySelector('#association-strength').parentNode.querySelector('.slider-value').textContent = association.response.association_strength;
+
+                // フォームデータにも保存
+                this.associationFormData = {
+                    triggerType: triggerType,
+                    trigger: association.trigger,
+                    responseType: association.response.type,
+                    responseTarget: association.response.id,
+                    changeAmount: association.response.change_amount || 0,
+                    responseDescription: association.response.description || '',
+                    associationStrength: association.response.association_strength
+                };
             }
 
             // テンプレート関連メソッド
