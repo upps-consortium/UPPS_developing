@@ -244,20 +244,6 @@ execution_instructions: |
 - [UPPS運用指針](../../specification/operational_guidelines.md)
 - [医療用ペルソナ実装例](../examples/README.md)
 
-## サポート・問い合わせ
-
-### 技術的問題
-- GitHub Issues: https://github.com/upps-consortium/upps/issues
-- 技術サポート: tech-support@upps-consortium.org
-
-### 医学的内容
-- 医学監修に関する問い合わせ: medical-review@upps-consortium.org
-- 新しいテンプレートの提案: template-proposals@upps-consortium.org
-
-### 一般的な問い合わせ
-- 一般問い合わせ: contact@upps-consortium.org
-- コミュニティフォーラム: https://forum.upps-consortium.org
-
 ---
 
 © UPPS Consortium 2025
