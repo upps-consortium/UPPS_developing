@@ -4,7 +4,7 @@
 # ========================================
 
 template_info:
-  id: "alzheimer_mild_memory_typical_v1.0"
+  id: "alzheimer_mild_typical_v1.0"
   name: "アルツハイマー型認知症（軽度・典型的記憶障害）"
   description: "軽度の記憶障害を中心とした初期症状パターン。病識は部分的に保たれている"
   version: "1.0"
@@ -14,7 +14,7 @@ template_info:
   pattern: "memory_typical"
   codes:
     dsm_5_tr: "331.0"
-    icd_11: "F00.0"
+    icd_11: "6D80"        # ✅ 修正: 正しいICD-11コード
   
   reviewer: "要専門医監修"
   reviewed_date: "2025-07-04"
