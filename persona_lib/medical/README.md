@@ -14,13 +14,14 @@
 ### templates/ - 症状表現テンプレート
 ```
 templates/
-├── README.md                               # テンプレート使用方法
-├── alzheimer_moderate_typical_v1.0.yaml   # アルツハイマー型認知症
-├── depression_mild_melancholic_v1.0.yaml  # うつ病
-├── anxiety_mild_generalized_v1.0.yaml     # 不安症
-├── schizophrenia_active_positive_v1.0.yaml # 統合失調症
-├── ptsd_moderate_reexperiencing_v1.0.yaml  # PTSD
-└── ptsd_moderate_avoidance_v1.0.yaml       # PTSD（回避症状）
+├── README.md                # テンプレート使用方法
+├── alzheimer/               # アルツハイマー型認知症テンプレート
+├── depression/              # うつ病テンプレート
+├── schizophrenia/           # 統合失調症テンプレート
+├── anxiety/                 # 不安症テンプレート
+├── panic/                   # パニック症テンプレート
+├── ptsd/                    # PTSDテンプレート
+└── bipolar/                 # 双極性障害テンプレート
 ```
 
 **特徴**:
@@ -32,14 +33,13 @@ templates/
 ### examples/ - 実装例
 ```
 examples/
-├── README.md                          # 実装例使用方法
-├── alzheimer_TH.yaml                  # T.H.（アルツハイマー）
-├── depression_YT.yaml                 # Y.T.（うつ病）
-├── anxiety_SY.yaml                    # S.Y.（不安症）
-├── panic_TK.yaml                      # T.K.（パニック症）
-├── bipolar_NA.yaml                    # N.A.（双極性障害）
-├── ptsd_KW.yaml                       # K.W.（PTSD）
-└── schizophrenia_SK.yaml             # S.K.（統合失調症）
+├── README.md            # 実装例使用方法
+├── alzheimer_TH.yaml    # T.H.（アルツハイマー）
+├── depression_YT.yaml   # Y.T.（うつ病）
+├── anxiety_SY.yaml      # S.Y.（不安症）
+├── bipolar_NA.yaml      # N.A.（双極性障害）
+├── panic_TK.yaml        # パニック症
+└── ptsd_KW.yaml         # K.W.（PTSD）
 ```
 
 **特徴**:
@@ -286,9 +286,9 @@ templates/
 
 - [症状表現テンプレート使用方法](templates/README.md)
 - [実装例使用方法](examples/README.md)
-- [UPPS症状表現テンプレート作成ガイドライン](../specification/clinical_symptom_expression_templates.md)
-- [UPPS 2025.3仕様書](../specification/upps_2025_3_specification.md)
-- [UPPS運用指針](../specification/operational_guidelines.md)
+- [UPPS症状表現テンプレート作成ガイドライン](../../specification/clinical_symptom_expression_templates.md)
+- [UPPS 2025.3仕様書](../../specification/upps_2025_3_specification.md)
+- [UPPS運用指針](../../specification/operational_guidelines.md)
 
 ## サポート・問い合わせ
 
