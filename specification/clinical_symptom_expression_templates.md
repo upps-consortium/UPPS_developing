@@ -2,9 +2,10 @@
 
 > *「医学的に妥当で自然な疾患症状の対話表現を実現するテンプレート標準」*
 
-**バージョン**: 1.0  
+**バージョン**: 1.1  
 **対象**: UPPS 2025.3  
-**作成日**: 2025年7月3日
+**作成日**: 2025年7月3日  
+**更新日**: 2025年7月30日
 
 ## 目次
 
@@ -93,14 +94,24 @@ tanaka_hanako.yaml:
 persona_lib/
 ├── medical/
 │   ├── templates/
-│   │   ├── alzheimer_mild_typical_v1.0.yaml
-│   │   ├── alzheimer_moderate_typical_v1.0.yaml
-│   │   ├── alzheimer_moderate_executive_v1.0.yaml
-│   │   ├── alzheimer_moderate_language_v1.0.yaml
-│   │   ├── depression_mild_melancholic_v1.0.yaml
-│   │   ├── depression_moderate_atypical_v1.0.yaml
-│   │   ├── anxiety_mild_generalized_v1.0.yaml
-│   │   └── schizophrenia_active_positive_v1.0.yaml
+│   │   ├── alzheimer/
+│   │   │   ├── alzheimer_mild_typical_v1.0.yaml
+│   │   │   ├── alzheimer_moderate_typical_v1.0.yaml
+│   │   │   ├── alzheimer_moderate_confabulation_v1.0.yaml
+│   │   │   └── alzheimer_severe_disorientation_v1.0.yaml
+│   │   ├── depression/
+│   │   │   ├── depression_mild_typical_v1.0.yaml
+│   │   │   ├── depression_moderate_melancholic_v1.0.yaml
+│   │   │   ├── depression_mild_atypical_v1.0.yaml
+│   │   │   └── depression_dysthymic_chronic_v1.0.yaml
+│   │   ├── anxiety/
+│   │   │   ├── anxiety_mild_generalized_v1.0.yaml
+│   │   │   └── anxiety_moderate_generalized_v1.0.yaml
+│   │   └── schizophrenia/
+│   │       ├── schizophrenia_subtle_positive_v1.0.yaml
+│   │       ├── schizophrenia_mild_adapted_v1.0.yaml
+│   │       ├── schizophrenia_moderate_acute_v1.0.yaml
+│   │       └── schizophrenia_mild_negative_v1.0.yaml
 │   ├── examples/
 │   │   ├── alzheimer_tanaka_hanako.yaml
 │   │   └── depression_yamada_taro.yaml
@@ -128,16 +139,39 @@ persona_lib/
 - **moderate**: 中等度（日常生活に明確な影響）
 - **severe**: 重度（日常生活に著明な影響）
 
-#### 症状パターンの例
-| 疾患 | パターン名 | 説明 |
-|------|------------|------|
+#### 症状パターンの標準化
+
+##### 基本パターン
+| 疾患 | 基本パターン | 説明 |
+|------|-------------|------|
 | アルツハイマー | typical | 記憶障害中心の典型的パターン |
-| アルツハイマー | executive | 実行機能障害が目立つパターン |
-| アルツハイマー | language | 言語障害（失語）が目立つパターン |
+| うつ病 | typical | 一般的なうつ症状パターン |
 | うつ病 | melancholic | メランコリー型（朝の悪化、興味喪失） |
 | うつ病 | atypical | 非定型（気分反応性、過眠、過食） |
 | 統合失調症 | positive | 陽性症状優位（幻覚、妄想） |
 | 統合失調症 | negative | 陰性症状優位（意欲低下、感情鈍麻） |
+| 不安症 | generalized | 全般性不安症の典型パターン |
+
+##### 詳細パターン（推奨）
+実用性を高めるため、以下のような詳細パターンの使用を推奨します：
+
+| 疾患 | 詳細パターン | 説明 |
+|------|-------------|------|
+| アルツハイマー | memory_typical | 記憶障害中心 |
+| アルツハイマー | memory_anosognosia | 病識欠如優位 |
+| アルツハイマー | memory_confabulation | 作話優位 |
+| アルツハイマー | memory_disorientation | 見当識障害優位 |
+| うつ病 | dysthymic_chronic | 持続性抑うつ障害 |
+| 統合失調症 | positive_acute | 急性期陽性症状 |
+| 統合失調症 | positive_adapted | 適応的慢性期 |
+| 統合失調症 | positive_subtle | 軽微陽性症状 |
+| 統合失調症 | negative_chronic | 慢性期陰性症状 |
+| 不安症 | generalized_typical | 典型的全般性不安 |
+
+#### パターン命名の指針
+- **機能記述型**: `memory_`, `positive_`, `negative_` など機能カテゴリを前置
+- **特徴記述型**: `adapted`, `acute`, `chronic`, `subtle` など状態特徴を後置
+- **診断型**: `melancholic`, `atypical`, `generalized` など診断サブタイプ
 
 ## 4. テンプレート構成要素
 
@@ -203,12 +237,24 @@ template_info:
   severity: "moderate"
   pattern: "typical"
   codes:
-    dsm_5_tr: "331.0"
-    icd_11: "F00.0"
+    dsm_5_tr: "331.0"        # ✅ 数字形式が正しい
+    icd_11: "6D80"           # ✅ 正しいICD-11形式
   
   reviewer: "神経内科専門医 佐藤明"
   reviewed_date: "2025-01-15"
 ```
+
+#### 診断コード形式について
+**DSM-5-TR**: 数字形式（例：296.22, 300.02, 331.0）
+**ICD-11**: 英数字形式（例：6A70.1, 6B00, F00.0）
+
+| 疾患例 | DSM-5-TR | ICD-11 |
+|--------|----------|--------|
+| うつ病（軽度） | 296.21 | 6A70.0 |
+| うつ病（中等度） | 296.22 | 6A70.1 |
+| 全般性不安症 | 300.02 | 6B00 |
+| アルツハイマー型認知症 | 331.0 | 6D80 |
+| 統合失調症 | 295.90 | 6A20 |
 
 #### B. 症状定義
 ```yaml
@@ -238,7 +284,7 @@ symptom_manifestations:
       - "記憶を思い出そうとして額に手を当てる"
 ```
 
-#### C. 実行指示
+#### C. 実行指示（標準5原則）
 ```yaml
 execution_instructions: |
   このテンプレートは指定された疾患の症状パターンを
@@ -404,7 +450,7 @@ nonverbal_behaviors:
 
 ## 6. 実装サンプル
 
-### 6.1 完全実装例
+### 6.1 完全実装例（アルツハイマー型認知症）
 
 ```yaml
 # ========================================
@@ -424,7 +470,7 @@ template_info:
   pattern: "typical"
   codes:
     dsm_5_tr: "331.0"
-    icd_11: "F00.0"
+    icd_11: "6D80"
   
   reviewer: "精神科医 F.H."
   reviewed_date: "2025-01-15"
@@ -539,8 +585,8 @@ template_info:
   severity: "moderate"
   pattern: "melancholic"
   codes:
-    dsm_5_tr: "F32.1"
-    icd_11: "6A70.1"
+    dsm_5_tr: "296.22"       # ✅ 修正：数字形式
+    icd_11: "6A70.1"         # ✅ 正しいICD-11形式
   
   reviewer: "精神科医 F.H."
   reviewed_date: "2025-01-15"
@@ -592,21 +638,6 @@ symptom_manifestations:
       - "質問に対して短い返答"
       - "疲れたような表情"
 
-  早朝覚醒:
-    definition: "通常より2時間以上早く目が覚める睡眠障害"
-    expression: |
-      「朝早く目が覚めてしまう」「4時頃に目が覚める」
-      など、睡眠パターンの変化を訴える。
-    examples:
-      - "朝4時頃に目が覚めてしまいます"
-      - "早く目が覚めて、その後眠れません"
-      - "睡眠が浅くて..."
-      - "朝が一番辛いです"
-    behaviors:
-      - "疲労感を表情に示す"
-      - "眠そうな様子"
-      - "朝の時間帯に特に沈んだ表情"
-
 additional_notes:
   symptom_variations: |
     朝方に症状が最も重く、夕方にかけて軽減する日内変動がある。
@@ -620,10 +651,6 @@ additional_notes:
     絶望的な表現も症状として正確に表現する。
     しかし人格全体を否定的に描かない。
     症状の重さと本来の人格を区別する。
-    抑うつ症状を正確に表現するが、過度に悲観的にならない。
-    朝の悪化パターンを会話に反映させる。
-    興味喪失は具体的な活動への反応で表現する。
-    希望を完全に失わない程度のバランスを保つ。
 
 execution_instructions: |
   このテンプレートは指定された疾患の症状パターンを
@@ -644,7 +671,7 @@ execution_instructions: |
 #### A. テンプレート情報
 - [ ] id、name、description が記載されている
 - [ ] diagnosis、severity、pattern が明確
-- [ ] 診断コード（DSM-5-TR/ICD-11）が記載されている
+- [ ] 診断コード（DSM-5-TR/ICD-11）が正しい形式で記載されている
 - [ ] 監修者と監修日が記載されている
 
 #### B. 症状定義
@@ -655,7 +682,7 @@ execution_instructions: |
 
 #### C. 実行指示
 - [ ] execution_instructions が具体的に記載されている
-- [ ] 重要原則が明確に示されている
+- [ ] 標準5原則が明確に示されている
 - [ ] 患者の尊厳への配慮が含まれている
 
 ### 7.2 品質チェック
@@ -683,8 +710,20 @@ execution_instructions: |
 - [ ] 偏見やスティグマを助長していない
 - [ ] 症状を正確に表現しつつ人格を否定していない
 
+### 7.3 形式チェック
+
+#### A. ファイル命名
+- [ ] ファイル名がtemplate_info.idと一致している
+- [ ] 命名規則に従っている（{疾患}_{重症度}_{パターン}_v{バージョン}.yaml）
+- [ ] 拡張子が.yamlになっている
+
+#### B. 構造準拠
+- [ ] YAML形式として正しい
+- [ ] 必須セクションが全て含まれている
+- [ ] 各セクションの構造が標準に準拠している
+
 ---
 
 © UPPS Consortium 2025
 
-*本ガイドラインは、症状表現テンプレートの作成・管理のための標準指針を提供します。医学的妥当性と実用性を両立させ、患者の尊厳を保った教育効果の高いテンプレート作成を目指しています。*
+*本ガイドライン v1.1では、診断コード形式の正確化、詳細パターン命名の推奨、execution_instructions標準5原則の明確化を行いました。症状表現テンプレートの作成・管理のための完全な標準指針として活用してください。*
