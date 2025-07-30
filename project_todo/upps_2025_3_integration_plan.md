@@ -98,10 +98,10 @@ persona_lib/medical/
 │   ├── ptsd_moderate_template.yaml         # PTSDテンプレート
 │   └── cognitive_impairment_template.yaml  # 軽度認知障害テンプレート
 ├── examples/
-│   ├── alzheimer_tanaka_hanako.yaml        # 田中花子（アルツハイマー実装例）
-│   ├── depression_yamada_taro.yaml         # 山田太郎（うつ病実装例）
-│   ├── anxiety_sato_yuki.yaml              # 佐藤雪（不安症実装例）
-│   ├── ptsd_watanabe_ken.yaml              # 渡辺健（PTSD実装例）
+│   ├── alzheimer_TH.yaml                   # T.H.（アルツハイマー実装例）
+│   ├── depression_YT.yaml                  # Y.T.（うつ病実装例）
+│   ├── anxiety_SY.yaml                     # S.Y.（不安症実装例）
+│   ├── ptsd_KW.yaml                        # K.W.（PTSD実装例）
 │   └── cognitive_suzuki_ai.yaml            # 鈴木愛（軽度認知障害実装例）
 └── README.md
 ```
@@ -601,10 +601,10 @@ upps/
 │   │   │   ├── ptsd_moderate_template.yaml
 │   │   │   └── cognitive_impairment_template.yaml
 │   │   ├── examples/                    # 医療用実装例
-│   │   │   ├── alzheimer_tanaka_hanako.yaml
-│   │   │   ├── depression_yamada_taro.yaml
-│   │   │   ├── anxiety_sato_yuki.yaml
-│   │   │   ├── ptsd_watanabe_ken.yaml
+│   │   │   ├── alzheimer_TH.yaml
+│   │   │   ├── depression_YT.yaml
+│   │   │   ├── anxiety_SY.yaml
+│   │   │   ├── ptsd_KW.yaml
 │   │   │   └── cognitive_suzuki_ai.yaml
 │   │   └── README.md
 │   ├── creative/                        # 創作用ペルソナ
