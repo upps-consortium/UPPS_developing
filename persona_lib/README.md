@@ -9,6 +9,7 @@ Persona data is separated by domain.
 persona_lib/
 ├── rachel_bladerunner.yaml   # Sample persona from film
 ├── lum_urusei_yatsura.yaml   # Sample persona from anime
+├── original_characters/      # UPPS original character personas
 ├── medical/                  # Medical patient personas and symptom templates
 ```
 
