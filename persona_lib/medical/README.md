@@ -36,6 +36,9 @@ examples/
 ├── alzheimer_TH.yaml                  # T.H.（アルツハイマー）
 ├── depression_YT.yaml                 # Y.T.（うつ病）
 ├── anxiety_SY.yaml                    # S.Y.（不安症）
+├── panic_TK.yaml                      # T.K.（パニック症）
+├── bipolar_NA.yaml                    # N.A.（双極性障害）
+├── ptsd_KW.yaml                       # K.W.（PTSD）
 └── schizophrenia_SK.yaml             # S.K.（統合失調症）
 ```
 
@@ -188,6 +191,8 @@ templates/
 ├── anxiety/          ✅ 2ファイル実装済み
 │   ├── anxiety_mild_generalized_v1.0.yaml
 │   └── anxiety_moderate_generalized_v1.0.yaml
+├── panic/            ✅ 1ファイル実装済み
+│   └── panic_disorder_moderate_v1.0.yaml
 ├── ptsd/             ✅ 2ファイル実装済み
 │   ├── ptsd_moderate_reexperiencing_v1.0.yaml
 │   └── ptsd_moderate_avoidance_v1.0.yaml
