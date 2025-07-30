@@ -121,28 +121,28 @@ upps/
 ├── LICENSE.md                     # ライセンス情報  
 ├── README.md                      # このファイル  
 │  
-├── specification/                 # 規格仕様 ✅  
-│   ├── upps_standard.md           # 規格定義書  
-│   ├── operational_guidelines.md  # 運用指針    
-│   └── schema/                    # スキーマ定義  
-│       └── upps_schema.yaml         
+├── specification/                 # 規格仕様 ✅
+│   ├── upps_2025_3_specification.md  # 規格定義書
+│   ├── operational_guidelines.md     # 運用指針
+│   └── schema/                       # スキーマ定義
+│       └── upps_schema.yaml
 │  
 ├── prompting/                     # プロンプト主導型 ✅  
 │   ├── README.md                     # プロンプトフォルダ内の案内
 │   ├── prompt_guide.md               # プロンプト実施ガイド（詳細）
 │   ├── templates/
 │   │   ├── basic_template.md         # 基本テンプレート
-│   │   └── upps_template.md          # 標準テンプレート（2025.3対応）
+│   │   └── standard_template.md      # 標準テンプレート（2025.3対応）
 │   └── providers/
-│       ├── openai_gpt.md             # OpenAI GPT用テンプレート
-│       ├── anthropic_claude.md       # Anthropic Claude用テンプレート
-│       ├── google_gemini.md          # Google Gemini用テンプレート
-│       └── meta_llama.md             # Meta Llama用テンプレート
+│       ├── openai_gpt_template.md         # OpenAI GPT用テンプレート
+│       ├── anthropic_claude_template.md   # Anthropic Claude用テンプレート
+│       ├── google_gemini_template.md      # Google Gemini用テンプレート
+│       └── meta_llama_template.md         # Meta Llama用テンプレート
 │
 └── tools/
-│   └──upps_editor/                # ペルソナ編集ツール
+│   └── editor/                    # ペルソナ編集ツール
 │
-└──　persona_lib/                  # ペルソナファイルライブラリ
+└── persona_lib/                   # ペルソナファイルライブラリ
 │       ├── rachel_bladerunner.yaml  # サンプルペルソナデータ
 │       ├── rachel_bladerunner.md   # 解説
 │       ├── lum_urusei_yatsura.yaml  # サンプルペルソナデータ
@@ -152,18 +152,11 @@ upps/
 ### 📋 予定・開発中
 
 ```
-prompting/                         # プロンプト主導型（開発中）  
-├── example/                       
-│   ├── conversation_example.md    # 会話例 🚧  
-│   └── session_management.md      # セッション管理例 🚧  
+prompting/                         # プロンプト主導型（開発中）
+├── examples/
+│   └── example_conversation.md    # 会話例 🚧
 │  
-programming/                       # プログラム主導型（将来予定）  
-├── implementation_guide.md        # 実装ガイド 📋  
-├── api_reference.md               # APIリファレンス 📋  
-└── examples/                      # プログラム例 📋  
-    ├── basic_chatbot.py            
-    ├── state_visualization.py      
-    └── web_interface/  
+# programming/ ディレクトリは将来追加予定
 ```
 
 ## 変更履歴

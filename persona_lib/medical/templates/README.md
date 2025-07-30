@@ -59,32 +59,36 @@ personal_info:
   - 中等度・典型パターン（記憶障害中心）
   - 日常生活に明確な影響
   
-- **alzheimer_moderate_executive_v1.0.yaml**
-  - 中等度・実行機能障害パターン
-  - 計画性・判断力の低下が目立つ
+  - **alzheimer_moderate_confabulation_v1.0.yaml**
+    - 中等度・作話症状パターン
+    - 誤った記憶を補う発言が目立つ
+
+  - **alzheimer_moderate_anosognosia_v1.0.yaml**
+    - 中等度・病識欠如パターン
+    - 自身の障害を自覚しない
   
-- **alzheimer_moderate_language_v1.0.yaml**
-  - 中等度・言語障害パターン
-  - 失語症状が顕著
-  
-- **alzheimer_severe_typical_v1.0.yaml**
-  - 重度・典型パターン
-  - 日常生活に著明な影響
+  - **alzheimer_severe_disorientation_v1.0.yaml**
+    - 重度・見当識障害パターン
+    - 日常生活に著しい混乱
 
 ### 気分障害関連
 
 #### うつ病
-- **depression_mild_melancholic_v1.0.yaml**
-  - 軽度・メランコリー型
-  - 朝の悪化、興味喪失が特徴
-  
-- **depression_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 抑うつ気分、意欲低下が顕著
-  
-- **depression_moderate_atypical_v1.0.yaml**
-  - 中等度・非定型パターン
-  - 気分反応性、過眠・過食傾向
+  - **depression_mild_typical_v1.0.yaml**
+    - 軽度・典型パターン
+    - 気分の落ち込みが主体
+
+  - **depression_mild_atypical_v1.0.yaml**
+    - 軽度・非定型パターン
+    - 気分反応性、過眠・過食傾向
+
+  - **depression_moderate_melancholic_v1.0.yaml**
+    - 中等度・メランコリー型
+    - 朝の悪化、興味喪失が特徴
+
+  - **depression_dysthymic_chronic_v1.0.yaml**
+    - 慢性持続型抑うつ
+    - 長期にわたる軽度抑うつ状態
 
 #### 双極性障害
 - **bipolar_manic_moderate_v1.0.yaml**
@@ -113,13 +117,13 @@ personal_info:
 
 ### 統合失調症関連
 
-- **schizophrenia_active_positive_v1.0.yaml**
-  - 活動期・陽性症状優位
-  - 幻覚、妄想が顕著
-  
-- **schizophrenia_active_negative_v1.0.yaml**
-  - 活動期・陰性症状優位
-  - 意欲低下、感情鈍麻が顕著
+  - **schizophrenia_moderate_acute_v1.0.yaml**
+    - 中等度・急性期パターン
+    - 陽性症状が顕著
+
+  - **schizophrenia_mild_negative_v1.0.yaml**
+    - 軽度・陰性症状優位
+    - 意欲低下、感情鈍麻が目立つ
 
 ### トラウマ関連
 
