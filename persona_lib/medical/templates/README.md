@@ -90,6 +90,11 @@ personal_info:
     - 慢性持続型抑うつ
     - 長期にわたる軽度抑うつ状態
 
+#### 持続性抑うつ障害
+- **persistent_depression_v1.0.yaml**
+  - 慢性・持続性抑うつ障害
+  - 2年以上持続する軽〜中等度の抑うつ症状
+
 #### 双極性障害
 - **bipolar_manic_moderate_v1.0.yaml**
   - 躁エピソード・中等度

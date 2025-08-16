@@ -17,6 +17,7 @@ templates/
 ├── README.md                # テンプレート使用方法
 ├── alzheimer/               # アルツハイマー型認知症テンプレート
 ├── depression/              # うつ病テンプレート
+├── persistent_depression/          # 持続性抑うつ障害テンプレート
 ├── schizophrenia/           # 統合失調症テンプレート
 ├── delusional_disorder/     # 妄想性障害テンプレート
 ├── anxiety/                 # 不安症テンプレート
@@ -41,6 +42,7 @@ examples/
 ├── README.md            # 実装例使用方法
 ├── alzheimer_TH.yaml    # T.H.（アルツハイマー）
 ├── depression_YT.yaml   # Y.T.（うつ病）
+├── persistent_depression_MA.yaml   # M.A.（持続性抑うつ障害）
 ├── anxiety_SY.yaml      # S.Y.（不安症）
 ├── delusional_disorder_AH.yaml  # A.H.（妄想性障害）
 ├── schizophrenia_MT.yaml        # M.T.（統合失調症）
