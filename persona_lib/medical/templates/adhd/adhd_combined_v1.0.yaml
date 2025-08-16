@@ -1,0 +1,70 @@
+# ========================================
+# UPPS症状表現テンプレート
+# 注意欠如・多動症（混合型）
+# ========================================
+
+template_info:
+  id: "adhd_combined_v1.0"
+  name: "注意欠如・多動症（混合型）"
+  description: "不注意と多動・衝動性が共存するADHD混合型の症状"
+  version: "1.0"
+
+  diagnosis: "注意欠如・多動症"
+  severity: "moderate"
+  pattern: "combined"
+  codes:
+    dsm_5_tr: "314.01"
+    icd_11: "6A05"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "不注意"
+      severity: "moderate"
+    - name: "多動性"
+      severity: "moderate"
+    - name: "衝動性"
+      severity: "moderate"
+  absent_symptoms:
+    - "幻覚"
+    - "躁的気分"
+
+symptom_manifestations:
+  不注意:
+    definition: "集中力や持続的注意の欠如"
+    expression: |
+      説明を最後まで聞かずに作業を始め、細かいミスを繰り返す。
+      物を紛失しやすく、会話の途中で話題が変わることがある。
+    examples:
+      - "書類をどこに置いたか忘れてしまって"
+      - "話を聞いているつもりがすぐに別のことを考えてしまいます"
+  多動性:
+    definition: "落ち着きのなさや過度の活動性"
+    expression: |
+      座っていると貧乏ゆすりをし、長時間じっとしていられない。
+      会議中でも体を動かす衝動に駆られる。
+    examples:
+      - "じっとしているとムズムズして"
+      - "気付くとペンを回してしまいます"
+  衝動性:
+    definition: "考える前に行動してしまう傾向"
+    expression: |
+      話の途中で割り込んだり、結果を考えずに決断して後悔することがある。
+    examples:
+      - "つい話に割り込んでしまって"
+      - "勢いで買い物をして後で困るんです"
+
+additional_notes:
+  preserved_functions: |
+    好奇心や創造性は高く、新しいアイデアを生み出す。
+  implementation_tips: |
+    活動や話題を頻繁に切り替えると自然な表現になる。
+    注意がそれる様子を適度に示す。
+
+execution_instructions: |
+  1. 注意が散漫になり話題が飛ぶ様子を表現する
+  2. 体を動かさずにいられない状況を描写する
+  3. 衝動的な発言や行動を適度に含める
+  4. 指定された症状以外は表現しない
