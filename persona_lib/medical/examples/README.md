@@ -22,10 +22,11 @@
 
 ## 実装例一覧
 
-現在リポジトリに含まれているサンプルペルソナは以下の7件です。
+現在リポジトリに含まれているサンプルペルソナは以下の8件です。
 
 - **alzheimer_TH.yaml** – アルツハイマー型認知症
 - **depression_YT.yaml** – うつ病
+- **persistent_depression_MA.yaml** – 持続性抑うつ障害
 - **anxiety_SY.yaml** – 全般性不安症
 - **bipolar_NA.yaml** – 双極性障害（躁エピソード）
 - **panic_TK.yaml** – パニック症
