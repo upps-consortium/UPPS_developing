@@ -3,7 +3,7 @@
 > *医学教育・臨床研修・心理学研究のための仮想患者ペルソナ集*
 
 **対象**: UPPS 2025.3  
-**最終更新**: 2025年7月30日
+**最終更新**: 2025年8月1日
 
 ## 概要
 
@@ -18,6 +18,7 @@ templates/
 ├── alzheimer/               # アルツハイマー型認知症テンプレート
 ├── depression/              # うつ病テンプレート
 ├── schizophrenia/           # 統合失調症テンプレート
+├── delusional_disorder/     # 妄想性障害テンプレート
 ├── anxiety/                 # 不安症テンプレート
 ├── panic/                   # パニック症テンプレート
 ├── ocd/                     # 強迫症テンプレート
@@ -41,8 +42,12 @@ examples/
 ├── alzheimer_TH.yaml    # T.H.（アルツハイマー）
 ├── depression_YT.yaml   # Y.T.（うつ病）
 ├── anxiety_SY.yaml      # S.Y.（不安症）
+├── delusional_disorder_AH.yaml  # A.H.（妄想性障害）
+├── schizophrenia_MT.yaml        # M.T.（統合失調症）
 ├── bipolar_NA.yaml      # N.A.（双極性障害）
-├── ocd_YK.yaml          # Y.K.（強迫症）
+
+├── bipolar_MO.yaml      # M.O.（双極性障害）
+├── ocd_YK.yaml        # Y.K.（強迫症）
 ├── panic_TK.yaml        # パニック症
 ├── ptsd_KW.yaml         # K.W.（PTSD）
 ├── borderline_pd_JK.yaml  # J.K.（境界性パーソナリティ障害）
