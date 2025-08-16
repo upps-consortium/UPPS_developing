@@ -1,7 +1,7 @@
 # UPPS Persona Library
 
 This directory collects example persona files and templates for the Unified Personality Profile Standard (UPPS).
-Persona data is separated by domain.
+Persona data is separated by domain and continually expanded with new medical resources.
 
 ## Directory Overview
 
@@ -10,7 +10,7 @@ persona_lib/
 ├── rachel_bladerunner.yaml   # Sample persona from film
 ├── lum_urusei_yatsura.yaml   # Sample persona from anime
 ├── original_characters/      # UPPS original character personas
-├── medical/                  # Medical patient personas and symptom templates
+├── medical/                  # Medical patient personas and symptom templates (e.g., delusional disorder, schizophrenia)
 ```
 
 The `medical` folder includes disease-specific symptom templates and educational patient personas.
