@@ -1,0 +1,85 @@
+# ========================================
+# UPPS症状表現テンプレート
+# オピオイド使用障害（中等度・典型パターン）
+# ========================================
+
+template_info:
+  id: "opioid_use_disorder_moderate_typical_v1.0"
+  name: "オピオイド使用障害（中等度・典型パターン）"
+  description: "処方薬依存から生じる中等度のオピオイド使用障害の典型症状"
+  version: "1.0"
+
+  diagnosis: "オピオイド使用障害"
+  severity: "moderate"
+  pattern: "typical"
+  codes:
+    dsm_5_tr: "304.00"
+    icd_11: "6C4A"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "薬への強い渇望"
+      severity: "moderate"
+    - name: "耐性の進行"
+      severity: "moderate"
+    - name: "退薬症状の出現"
+      severity: "moderate"
+    - name: "社会的役割の低下"
+      severity: "mild"
+  absent_symptoms:
+    - "重度の呼吸抑制"
+    - "注射部位感染"
+
+symptom_manifestations:
+  薬への強い渇望:
+    definition: "オピオイドを求める強烈な欲求"
+    expression: |
+      "処方が切れるとすぐに次の予約を考えてしまいます"と語る。
+    examples:
+      - "痛みがなくても薬が欲しくなります"
+    behaviors:
+      - "複数の医療機関を渡り歩く"
+
+  耐性の進行:
+    definition: "同じ効果のために量が増える現象"
+    expression: |
+      以前と同じ量では痛みが和らがず、服用量を増やしていると述べる。
+    examples:
+      - "最初は1錠で十分だったのに今は3錠必要です"
+    behaviors:
+      - "指示量を超えて服用する"
+
+  退薬症状の出現:
+    definition: "服用を減らした際の身体症状"
+    expression: |
+      "薬を切らすと体が痛くて震えます"と訴える。
+    examples:
+      - "夜中に汗が出て眠れません"
+    behaviors:
+      - "退薬症状を避けるために早めに薬を飲む"
+
+  社会的役割の低下:
+    definition: "仕事や家庭での役割遂行の困難"
+    expression: |
+      服用を優先するために家族との約束を守れなくなったと説明する。
+    examples:
+      - "子どもの行事に行けませんでした"
+    behaviors:
+      - "職場での遅刻が増える"
+
+additional_notes:
+  symptom_variations: |
+    痛みの悪化やストレスで服用量がさらに増えることがある。
+  preserved_functions: |
+    基本的な日常生活動作は保たれている。
+  implementation_tips: |
+    痛み管理と依存の境界で揺れる感情を表現する。
+
+execution_instructions: |
+  このテンプレートは中等度オピオイド使用障害の典型症状を再現する。
+  1. 医療的配慮として過量服用や違法薬物には触れない。
+  2. 痛みの訴えと薬への依存の二面性を丁寧に示す。
+  3. 指定された症状以外は表現しない。

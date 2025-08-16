@@ -20,9 +20,12 @@ templates/
 ├── schizophrenia/           # 統合失調症テンプレート
 ├── anxiety/                 # 不安症テンプレート
 ├── panic/                   # パニック症テンプレート
-├── ocd/                    # 強迫症テンプレート
+├── ocd/                     # 強迫症テンプレート
 ├── ptsd/                    # PTSDテンプレート
-└── bipolar/                 # 双極性障害テンプレート
+├── bipolar/                 # 双極性障害テンプレート
+├── alcohol_use/             # アルコール使用障害テンプレート
+├── opioid_use/              # オピオイド使用障害テンプレート
+└── gambling/                # ギャンブル障害テンプレート
 ```
 
 **特徴**:
@@ -39,9 +42,12 @@ examples/
 ├── depression_YT.yaml   # Y.T.（うつ病）
 ├── anxiety_SY.yaml      # S.Y.（不安症）
 ├── bipolar_NA.yaml      # N.A.（双極性障害）
-├── ocd_YK.yaml        # Y.K.（強迫症）
+├── ocd_YK.yaml          # Y.K.（強迫症）
 ├── panic_TK.yaml        # パニック症
-└── ptsd_KW.yaml         # K.W.（PTSD）
+├── ptsd_KW.yaml         # K.W.（PTSD）
+├── alcohol_use_HS.yaml  # H.S.（アルコール使用障害）
+├── opioid_use_MT.yaml   # M.T.（オピオイド使用障害）
+└── gambling_NM.yaml     # N.M.（ギャンブル障害）
 ```
 
 **特徴**:
