@@ -28,6 +28,8 @@ templates/
 ├── body_dysmorphic/        # 身体醜形症テンプレート
 ├── hoarding/               # ためこみ症テンプレート
 ├── ptsd/                    # PTSDテンプレート
+├── acute_stress/            # 急性ストレス反応テンプレート
+├── adjustment/              # 適応障害テンプレート
 ├── borderline_pd/           # 境界性パーソナリティ障害テンプレート
 ├── antisocial_pd/           # 反社会性パーソナリティ障害テンプレート
 ├── avoidant_pd/             # 回避性パーソナリティ障害テンプレート
@@ -57,11 +59,14 @@ examples/
 ├── hoarding_AT.yaml   # A.T.（ためこみ症）
 ├── panic_TK.yaml        # パニック症
 ├── ptsd_KW.yaml         # K.W.（PTSD）
+├── acute_stress_MT.yaml # M.T.（急性ストレス反応）
+├── adjustment_HS.yaml   # H.S.（適応障害）
 ├── social_anxiety_NH.yaml  # N.H.（社交不安症）
 ├── specific_phobia_AK.yaml # A.K.（特定恐怖症）
 ├── borderline_pd_JK.yaml  # J.K.（境界性パーソナリティ障害）
 ├── antisocial_pd_DT.yaml  # D.T.（反社会性パーソナリティ障害）
 └── avoidant_pd_HM.yaml    # H.M.（回避性パーソナリティ障害）
+
 ```
 
 **特徴**:

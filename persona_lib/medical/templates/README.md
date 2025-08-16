@@ -169,11 +169,20 @@ personal_info:
 - **ptsd_moderate_reexperiencing_v1.0.yaml**
   - 中等度・再体験症状優位
   - フラッシュバック、悪夢が顕著
-  
+
 - **ptsd_moderate_avoidance_v1.0.yaml**
   - 中等度・回避症状優位
   - 刺激回避、感情麻痺が顕著
 
+#### 急性ストレス反応
+- **acute_stress_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 外傷直後の過覚醒と回避
+
+#### 適応障害
+- **adjustment_mild_depressive_v1.0.yaml**
+  - 軽度・抑うつ型
+  - ストレス因子への適応困難
 
 ### 発達症関連
 
@@ -223,6 +232,8 @@ personal_info:
 - `schizophrenia`: 統合失調症
 - `delusional_disorder`: 妄想性障害
 - `ptsd`: 外傷後ストレス障害
+- `acute_stress`: 急性ストレス反応
+- `adjustment`: 適応障害
 
 ### 重症度
 - `mild`: 軽度（日常生活に軽微な影響）
