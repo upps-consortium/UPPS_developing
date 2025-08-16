@@ -17,13 +17,22 @@ templates/
 ├── README.md                # テンプレート使用方法
 ├── alzheimer/               # アルツハイマー型認知症テンプレート
 ├── depression/              # うつ病テンプレート
+├── persistent_depression/          # 持続性抑うつ障害テンプレート
 ├── schizophrenia/           # 統合失調症テンプレート
+├── delusional_disorder/     # 妄想性障害テンプレート
 ├── anxiety/                 # 不安症テンプレート
 ├── panic/                   # パニック症テンプレート
+├── social_anxiety/          # 社交不安症テンプレート
+├── specific_phobia/         # 特定恐怖症テンプレート
 ├── ocd/                    # 強迫症テンプレート
+├── body_dysmorphic/        # 身体醜形症テンプレート
+├── hoarding/               # ためこみ症テンプレート
 ├── ptsd/                    # PTSDテンプレート
 ├── acute_stress/            # 急性ストレス反応テンプレート
 ├── adjustment/              # 適応障害テンプレート
+├── borderline_pd/           # 境界性パーソナリティ障害テンプレート
+├── antisocial_pd/           # 反社会性パーソナリティ障害テンプレート
+├── avoidant_pd/             # 回避性パーソナリティ障害テンプレート
 └── bipolar/                 # 双極性障害テンプレート
 ```
 
@@ -39,13 +48,25 @@ examples/
 ├── README.md            # 実装例使用方法
 ├── alzheimer_TH.yaml    # T.H.（アルツハイマー）
 ├── depression_YT.yaml   # Y.T.（うつ病）
+├── persistent_depression_MA.yaml   # M.A.（持続性抑うつ障害）
 ├── anxiety_SY.yaml      # S.Y.（不安症）
+├── delusional_disorder_AH.yaml  # A.H.（妄想性障害）
+├── schizophrenia_MT.yaml        # M.T.（統合失調症）
 ├── bipolar_NA.yaml      # N.A.（双極性障害）
+├── bipolar_MO.yaml      # M.O.（双極性障害）
 ├── ocd_YK.yaml        # Y.K.（強迫症）
+├── body_dysmorphic_MS.yaml  # M.S.（身体醜形症）
+├── hoarding_AT.yaml   # A.T.（ためこみ症）
 ├── panic_TK.yaml        # パニック症
 ├── ptsd_KW.yaml         # K.W.（PTSD）
 ├── acute_stress_MT.yaml # M.T.（急性ストレス反応）
-└── adjustment_HS.yaml   # H.S.（適応障害）
+├── adjustment_HS.yaml   # H.S.（適応障害）
+├── social_anxiety_NH.yaml  # N.H.（社交不安症）
+├── specific_phobia_AK.yaml # A.K.（特定恐怖症）
+├── borderline_pd_JK.yaml  # J.K.（境界性パーソナリティ障害）
+├── antisocial_pd_DT.yaml  # D.T.（反社会性パーソナリティ障害）
+└── avoidant_pd_HM.yaml    # H.M.（回避性パーソナリティ障害）
+
 ```
 
 **特徴**:

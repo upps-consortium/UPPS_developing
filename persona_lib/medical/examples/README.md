@@ -22,17 +22,30 @@
 
 ## 実装例一覧
 
-現在リポジトリに含まれているサンプルペルソナは以下の9件です。
+現在リポジトリに含まれているサンプルペルソナは以下の10件です。
 
 - **alzheimer_TH.yaml** – アルツハイマー型認知症
 - **depression_YT.yaml** – うつ病
+- **persistent_depression_MA.yaml** – 持続性抑うつ障害
 - **anxiety_SY.yaml** – 全般性不安症
+- **delusional_disorder_AH.yaml** – 妄想性障害
 - **bipolar_NA.yaml** – 双極性障害（躁エピソード）
+- **bipolar_MO.yaml** – 双極性障害（躁状態）
 - **panic_TK.yaml** – パニック症
 - **ptsd_KW.yaml** – PTSD
 - **ocd_YK.yaml** – 強迫症
 - **acute_stress_MT.yaml** – 急性ストレス反応
 - **adjustment_HS.yaml** – 適応障害
+- **body_dysmorphic_MS.yaml** – 身体醜形症
+- **hoarding_AT.yaml** – ためこみ症
+- **social_anxiety_NH.yaml** – 社交不安症
+- **specific_phobia_AK.yaml** – 特定恐怖症
+- **schizophrenia_MT.yaml** – 統合失調症
+- **autism_HS.yaml** – 自閉スペクトラム症
+- **adhd_JM.yaml** – 注意欠如・多動症（混合型）
+- **borderline_pd_JK.yaml** – 境界性パーソナリティ障害
+- **antisocial_pd_DT.yaml** – 反社会性パーソナリティ障害
+- **avoidant_pd_HM.yaml** – 回避性パーソナリティ障害
 
 ## 使用方法
 
