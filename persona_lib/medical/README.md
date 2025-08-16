@@ -21,8 +21,11 @@ templates/
 ├── delusional_disorder/     # 妄想性障害テンプレート
 ├── anxiety/                 # 不安症テンプレート
 ├── panic/                   # パニック症テンプレート
-├── ocd/                    # 強迫症テンプレート
+├── ocd/                     # 強迫症テンプレート
 ├── ptsd/                    # PTSDテンプレート
+├── borderline_pd/           # 境界性パーソナリティ障害テンプレート
+├── antisocial_pd/           # 反社会性パーソナリティ障害テンプレート
+├── avoidant_pd/             # 回避性パーソナリティ障害テンプレート
 └── bipolar/                 # 双極性障害テンプレート
 ```
 
@@ -42,10 +45,14 @@ examples/
 ├── delusional_disorder_AH.yaml  # A.H.（妄想性障害）
 ├── schizophrenia_MT.yaml        # M.T.（統合失調症）
 ├── bipolar_NA.yaml      # N.A.（双極性障害）
+
 ├── bipolar_MO.yaml      # M.O.（双極性障害）
 ├── ocd_YK.yaml        # Y.K.（強迫症）
 ├── panic_TK.yaml        # パニック症
-└── ptsd_KW.yaml         # K.W.（PTSD）
+├── ptsd_KW.yaml         # K.W.（PTSD）
+├── borderline_pd_JK.yaml  # J.K.（境界性パーソナリティ障害）
+├── antisocial_pd_DT.yaml  # D.T.（反社会性パーソナリティ障害）
+└── avoidant_pd_HM.yaml    # H.M.（回避性パーソナリティ障害）
 ```
 
 **特徴**:
