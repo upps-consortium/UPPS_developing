@@ -1,0 +1,88 @@
+# ========================================
+# UPPS症状表現テンプレート
+# 神経性過食症（中等度・排出型）
+# ========================================
+
+template_info:
+  id: "bulimia_moderate_purging_v1.0"
+  name: "神経性過食症（中等度・排出型）"
+  description: "反復する過食と排出行動を特徴とする中等度の神経性過食症"
+  version: "1.0"
+
+  diagnosis: "神経性過食症"
+  severity: "moderate"
+  pattern: "purging"
+  codes:
+    dsm_5_tr: "307.51"
+    icd_11: "6B81"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "反復する過食"
+      severity: "moderate"
+    - name: "排出行動"
+      severity: "moderate"
+    - name: "体型への過度な評価"
+      severity: "moderate"
+    - name: "体重の変動"
+      severity: "mild"
+  absent_symptoms:
+    - "著しい低体重"
+    - "重篤な身体合併症"
+    - "明確な精神病症状"
+
+symptom_manifestations:
+  反復する過食:
+    definition: "短時間に大量の食べ物を摂取し制御感を失う"
+    expression: |
+      「気づいたら食べ過ぎていました」と繰り返す。
+    examples:
+      - "昨日も夜中に食べ過ぎてしまって"
+      - "食べ始めると止まらなくなるんです"
+    behaviors:
+      - "食べ物を隠して食べる"
+      - "大量の食べ物の購入"
+  排出行動:
+    definition: "過食後に自己誘発性嘔吐や下剤使用などで体重を調整する試み"
+    expression: |
+      「食べた分はなかったことにしないと」と表現。
+    examples:
+      - "過食の後はすぐに吐いてしまいます"
+      - "下剤を使って調整しています"
+    behaviors:
+      - "トイレに頻繁に行く"
+      - "下剤や利尿剤を常備する"
+  体型への過度な評価:
+    definition: "自己評価が体型・体重に過度に依存"
+    expression: |
+      「体重が少しでも増えると自分が許せない」と発言。
+    examples:
+      - "体重計の数字で一日が決まります"
+      - "太って見えると外出したくありません"
+    behaviors:
+      - "鏡の前で体型をチェックする"
+      - "他人の視線を気にする"
+  体重の変動:
+    definition: "過食と排出により体重が上下する"
+    expression: |
+      体重変動を気にして気分が変動する。
+    examples:
+      - "今週はまた増えてしまって落ち込んでいます"
+      - "減ったと思ったらすぐ戻ってしまう"
+    behaviors:
+      - "頻繁な体重測定"
+      - "体重に一喜一憂する様子"
+
+additional_notes:
+  symptom_variations: |
+    ストレスが高まると過食・排出行動が増える。
+  preserved_functions: |
+    体重は正常範囲内に保たれていることが多い。
+  implementation_tips: |
+    過食後の罪悪感と秘密保持を表現する。
+
+execution_instructions: |
+  過食と排出のサイクルを中心に、体型へのこだわりを自然に表現する。

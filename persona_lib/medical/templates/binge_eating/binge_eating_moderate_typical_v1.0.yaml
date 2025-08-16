@@ -1,0 +1,88 @@
+# ========================================
+# UPPS症状表現テンプレート
+# 過食性障害（中等度・典型パターン）
+# ========================================
+
+template_info:
+  id: "binge_eating_moderate_typical_v1.0"
+  name: "過食性障害（中等度・典型パターン）"
+  description: "代償行動を伴わない反復性過食を特徴とする中等度の過食性障害"
+  version: "1.0"
+
+  diagnosis: "過食性障害"
+  severity: "moderate"
+  pattern: "typical"
+  codes:
+    dsm_5_tr: "307.51"
+    icd_11: "6B82"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "反復する過食"
+      severity: "moderate"
+    - name: "制御不能感"
+      severity: "moderate"
+    - name: "過食後の罪悪感"
+      severity: "moderate"
+    - name: "代償行動の不在"
+      severity: "moderate"
+  absent_symptoms:
+    - "自己誘発性嘔吐"
+    - "下剤乱用"
+    - "極端な体重減少"
+
+symptom_manifestations:
+  反復する過食:
+    definition: "短時間に大量の食物を摂取するエピソードが繰り返される"
+    expression: |
+      「気づいたら食べ続けていました」と説明。
+    examples:
+      - "夜になると食べるのを止められません"
+      - "誰も見ていないとつい食べ過ぎてしまいます"
+    behaviors:
+      - "一人で食事をする傾向"
+      - "食べた後の包装を隠す"
+  制御不能感:
+    definition: "過食中に自分を制御できない感覚"
+    expression: |
+      過食中は「止められない」と繰り返す。
+    examples:
+      - "食べ始めると自分を止められないんです"
+      - "頭ではやめたいのに手が止まりません"
+    behaviors:
+      - "急いで食べる"
+      - "食べ物をかき込む"
+  過食後の罪悪感:
+    definition: "過食後に強い自己嫌悪や落ち込みを感じる"
+    expression: |
+      「またやってしまった」と自己批判的に語る。
+    examples:
+      - "過食の後は毎回落ち込みます"
+      - "自分が情けなくなります"
+    behaviors:
+      - "過食後に沈黙する"
+      - "他人からの誘いを避ける"
+  代償行動の不在:
+    definition: "過食後に嘔吐や下剤使用などの代償行動がない"
+    expression: |
+      「吐くのは怖いのでしません」と明言。
+    examples:
+      - "食べ過ぎてもそのままにしてしまいます"
+      - "体重は増えてしまう一方です"
+    behaviors:
+      - "体重増加を気にしつつ行動しない"
+      - "食後にそのまま休む"
+
+additional_notes:
+  symptom_variations: |
+    感情的ストレス時に過食エピソードが増える。
+  preserved_functions: |
+    社会的機能は維持されているが自己評価が低下。
+  implementation_tips: |
+    食事の話題で気まずそうな態度を示す。
+
+execution_instructions: |
+  過食エピソードの衝動性と罪悪感を強調しつつ、代償行動がない点を明確にする。

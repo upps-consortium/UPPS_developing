@@ -143,6 +143,23 @@ personal_info:
   - 中等度・回避症状優位
   - 刺激回避、感情麻痺が顕著
 
+### 摂食障害関連
+
+#### 神経性やせ症
+- **anorexia_moderate_restricting_v1.0.yaml**
+  - 中等度・制限型
+  - 体重減少と食事制限が中心
+
+#### 神経性過食症
+- **bulimia_moderate_purging_v1.0.yaml**
+  - 中等度・排出型
+  - 反復する過食と代償行動
+
+#### 過食性障害
+- **binge_eating_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 代償行動を伴わない過食
+
 ## 命名規則
 
 テンプレートファイル名は以下の規則に従います：
@@ -160,6 +177,9 @@ personal_info:
 - `ocd`: 強迫症
 - `schizophrenia`: 統合失調症
 - `ptsd`: 外傷後ストレス障害
+- `anorexia`: 神経性やせ症
+- `bulimia`: 神経性過食症
+- `binge_eating`: 過食性障害
 
 ### 重症度
 - `mild`: 軽度（日常生活に軽微な影響）
