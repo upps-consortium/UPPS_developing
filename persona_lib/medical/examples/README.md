@@ -22,7 +22,8 @@
 
 ## 実装例一覧
 
-現在リポジトリに含まれているサンプルペルソナは以下の9件です。
+=======
+現在リポジトリに含まれているサンプルペルソナは以下の10件です。
 
 - **alzheimer_TH.yaml** – アルツハイマー型認知症
 - **depression_YT.yaml** – うつ病
@@ -33,6 +34,9 @@
 - **ocd_YK.yaml** – 強迫症
 - **autism_HS.yaml** – 自閉スペクトラム症
 - **adhd_JM.yaml** – 注意欠如・多動症（混合型）
+- **borderline_pd_JK.yaml** – 境界性パーソナリティ障害
+- **antisocial_pd_DT.yaml** – 反社会性パーソナリティ障害
+- **avoidant_pd_HM.yaml** – 回避性パーソナリティ障害
 
 ## 使用方法
 
