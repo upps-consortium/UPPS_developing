@@ -1,0 +1,90 @@
+# ========================================
+# UPPS症状表現テンプレート
+# 適応障害（軽度・抑うつ型）
+# ========================================
+
+template_info:
+  id: "adjustment_mild_depressive_v1.0"
+  name: "適応障害（軽度・抑うつ型）"
+  description: "明確なストレス因子に対する気分低下と適応困難を特徴とする軽度の症状パターン"
+  version: "1.0"
+
+  diagnosis: "適応障害"
+  severity: "mild"
+  pattern: "depressive"
+  codes:
+    dsm_5_tr: "309.0"
+    icd_11: "6B43"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-08-01"
+
+symptom_profile:
+  active_symptoms:
+    - name: "抑うつ気分"
+      severity: "mild"
+    - name: "ストレス因子への適応困難"
+    - name: "軽度の不安"
+    - name: "集中困難"
+  absent_symptoms:
+    - "重度の自殺念慮"
+    - "長期にわたる機能障害"
+
+symptom_manifestations:
+  抑うつ気分:
+    definition: "気分の落ち込みと興味の低下"
+    expression: |
+      「気分が上がらない」「何をしても楽しくない」と表現。
+    examples:
+      - "最近気分が沈んでいます"
+      - "好きだったことも楽しめません"
+    behaviors:
+      - "ため息をつく"
+      - "話す速度が遅くなる"
+
+  ストレス因子への適応困難:
+    definition: "生活上の変化に適応できず日常に支障をきたす状態"
+    expression: |
+      「仕事に慣れない」「新しい環境がしんどい」と表現。
+    examples:
+      - "異動先の雰囲気に馴染めません"
+      - "新しい業務が頭に入りません"
+    behaviors:
+      - "肩を落とす"
+      - "視線を下げる"
+
+  軽度の不安:
+    definition: "ストレス因子に関連した漠然とした不安"
+    expression: |
+      「失敗しないか心配」「落ち着かない」と表現。
+    examples:
+      - "また怒られるのではと不安です"
+      - "家に帰っても落ち着きません"
+    behaviors:
+      - "指をいじる"
+      - "周囲を気にする様子"
+
+  集中困難:
+    definition: "注意力の低下と効率の悪化"
+    expression: |
+      「集中できない」「物事が頭に入ってこない」と表現。
+    examples:
+      - "書類を読むのに時間がかかります"
+      - "会議中に内容が頭に残りません"
+    behaviors:
+      - "額に手を当てる"
+      - "話の途中で考え込む"
+
+additional_notes:
+  symptom_variations: |
+    ストレス因子が軽減すると症状も速やかに改善する傾向。
+    6か月以上持続する場合は他の診断を考慮。
+  preserved_functions: |
+    基本的な日常生活は維持されている。
+    仕事は継続可能だが効率が低下している。
+  implementation_tips: |
+    ストレス因子に言及した際にため息や抑うつ的な表情を示す。
+    症状は軽度で、日常会話は可能。
+
+execution_instructions: |
+  ストレス因子と症状を関連付けて表現し、自然な抑うつ気分を維持すること。

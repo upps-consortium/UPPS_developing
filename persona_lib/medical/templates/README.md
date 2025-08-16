@@ -3,7 +3,7 @@
 > *医学的に妥当で自然な疾患症状の対話表現を実現するテンプレート集*
 
 **対象**: UPPS 2025.3  
-**最終更新**: 2025年7月3日
+**最終更新**: 2025年8月1日
 
 ## 概要
 
@@ -90,6 +90,11 @@ personal_info:
     - 慢性持続型抑うつ
     - 長期にわたる軽度抑うつ状態
 
+#### 持続性抑うつ障害
+- **persistent_depression_v1.0.yaml**
+  - 慢性・持続性抑うつ障害
+  - 2年以上持続する軽〜中等度の抑うつ症状
+
 #### 双極性障害
 - **bipolar_manic_moderate_v1.0.yaml**
   - 躁エピソード・中等度
@@ -127,12 +132,32 @@ personal_info:
   - 中等度・典型パターン
   - 病気への過度な不安・確認行動
 
+#### 社交不安症
+- **social_anxiety_moderate_performance_v1.0.yaml**
+  - 中等度・発表場面恐怖
+  - 人前での発言・評価恐怖
+
+#### 特定恐怖症
+- **specific_phobia_moderate_animal_v1.0.yaml**
+  - 中等度・動物恐怖
+  - 犬などの特定動物への強い恐怖
+
 ### 強迫症関連
 
 #### 強迫症
 - **ocd_moderate_typical_v1.0.yaml**
   - 中等度・典型パターン
   - 強迫観念と強迫行為が顕著
+
+#### 身体醜形症
+- **body_dysmorphic_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 外見へのとらわれ、確認行動
+
+#### ためこみ症
+- **hoarding_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 不要物の収集と捨てられない傾向
 
 ### 統合失調症関連
 
@@ -144,16 +169,71 @@ personal_info:
     - 軽度・陰性症状優位
     - 意欲低下、感情鈍麻が目立つ
 
+### 妄想性障害関連
+
+- **delusional_disorder_typical_v1.0.yaml**
+  - 典型例・非奇異性妄想が中心
+  - 幻覚や思考障害は目立たない
+
 ### トラウマ関連
 
 #### PTSD
 - **ptsd_moderate_reexperiencing_v1.0.yaml**
   - 中等度・再体験症状優位
   - フラッシュバック、悪夢が顕著
-  
+
 - **ptsd_moderate_avoidance_v1.0.yaml**
   - 中等度・回避症状優位
   - 刺激回避、感情麻痺が顕著
+
+### 解離性障害関連
+
+#### 解離性同一症
+- **dissociative_identity_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 同一性の交代、記憶の抜け落ち
+
+#### 離人症
+- **depersonalization_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 離人感、現実感喪失
+#### 急性ストレス反応
+- **acute_stress_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 外傷直後の過覚醒と回避
+
+#### 適応障害
+- **adjustment_mild_depressive_v1.0.yaml**
+  - 軽度・抑うつ型
+  - ストレス因子への適応困難
+
+### 発達症関連
+
+#### 自閉スペクトラム症
+- **autism_typical_v1.0.yaml**
+  - 典型パターン
+  - 社会的コミュニケーションの困難と限定された興味
+
+#### 注意欠如・多動症
+- **adhd_combined_v1.0.yaml**
+  - 混合型
+  - 不注意と多動・衝動性が共存
+### パーソナリティ障害関連
+
+#### 境界性パーソナリティ障害
+- **borderline_pd_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 感情の不安定さ、対人関係の不安定さが特徴
+
+#### 反社会性パーソナリティ障害
+- **antisocial_pd_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 他者権利の無視、罪悪感の欠如が特徴
+
+#### 回避性パーソナリティ障害
+- **avoidant_pd_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 対人回避と劣等感が特徴
 
 ## 命名規則
 
@@ -169,9 +249,16 @@ personal_info:
 - `bipolar`: 双極性障害
 - `anxiety`: 不安症
 - `panic`: パニック症
+- `social_anxiety`: 社交不安症
+- `specific_phobia`: 特定恐怖症
 - `ocd`: 強迫症
 - `schizophrenia`: 統合失調症
+- `delusional_disorder`: 妄想性障害
 - `ptsd`: 外傷後ストレス障害
+- `dissociative_identity`: 解離性同一症
+- `depersonalization`: 離人症
+- `acute_stress`: 急性ストレス反応
+- `adjustment`: 適応障害
 
 ### 重症度
 - `mild`: 軽度（日常生活に軽微な影響）
