@@ -3,7 +3,7 @@
 > *医学教育・臨床研修・心理学研究のための仮想患者ペルソナ集*
 
 **対象**: UPPS 2025.3  
-**最終更新**: 2025年7月30日
+**最終更新**: 2025年8月1日
 
 ## 概要
 
@@ -22,6 +22,8 @@ templates/
 ├── panic/                   # パニック症テンプレート
 ├── ocd/                    # 強迫症テンプレート
 ├── ptsd/                    # PTSDテンプレート
+├── acute_stress/            # 急性ストレス反応テンプレート
+├── adjustment/              # 適応障害テンプレート
 └── bipolar/                 # 双極性障害テンプレート
 ```
 
@@ -41,7 +43,9 @@ examples/
 ├── bipolar_NA.yaml      # N.A.（双極性障害）
 ├── ocd_YK.yaml        # Y.K.（強迫症）
 ├── panic_TK.yaml        # パニック症
-└── ptsd_KW.yaml         # K.W.（PTSD）
+├── ptsd_KW.yaml         # K.W.（PTSD）
+├── acute_stress_MT.yaml # M.T.（急性ストレス反応）
+└── adjustment_HS.yaml   # H.S.（適応障害）
 ```
 
 **特徴**:
