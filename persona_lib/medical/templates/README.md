@@ -174,6 +174,17 @@ personal_info:
   - 中等度・回避症状優位
   - 刺激回避、感情麻痺が顕著
 
+### 解離性障害関連
+
+#### 解離性同一症
+- **dissociative_identity_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 同一性の交代、記憶の抜け落ち
+
+#### 離人症
+- **depersonalization_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 離人感、現実感喪失
 #### 急性ストレス反応
 - **acute_stress_moderate_typical_v1.0.yaml**
   - 中等度・典型パターン
@@ -232,6 +243,8 @@ personal_info:
 - `schizophrenia`: 統合失調症
 - `delusional_disorder`: 妄想性障害
 - `ptsd`: 外傷後ストレス障害
+- `dissociative_identity`: 解離性同一症
+- `depersonalization`: 離人症
 - `acute_stress`: 急性ストレス反応
 - `adjustment`: 適応障害
 

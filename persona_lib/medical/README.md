@@ -28,6 +28,9 @@ templates/
 ├── body_dysmorphic/        # 身体醜形症テンプレート
 ├── hoarding/               # ためこみ症テンプレート
 ├── ptsd/                    # PTSDテンプレート
+├── bipolar/                 # 双極性障害テンプレート
+├── dissociative_identity/   # 解離性同一症テンプレート
+├── depersonalization/       # 離人症テンプレート
 ├── acute_stress/            # 急性ストレス反応テンプレート
 ├── adjustment/              # 適応障害テンプレート
 ├── borderline_pd/           # 境界性パーソナリティ障害テンプレート
@@ -59,6 +62,8 @@ examples/
 ├── hoarding_AT.yaml   # A.T.（ためこみ症）
 ├── panic_TK.yaml        # パニック症
 ├── ptsd_KW.yaml         # K.W.（PTSD）
+├── dissociative_identity_AZ.yaml  # A.Z.（解離性同一症）
+├── depersonalization_BQ.yaml      # B.Q.（離人症）
 ├── acute_stress_MT.yaml # M.T.（急性ストレス反応）
 ├── adjustment_HS.yaml   # H.S.（適応障害）
 ├── social_anxiety_NH.yaml  # N.H.（社交不安症）
@@ -193,6 +198,8 @@ dialogue_instructions:
 | 不安症 | 2種類 | 3種類 | 67% | 🟡 部分完成 |
 | PTSD | 2種類 | 2種類 | 100% | 🟢 完成 |
 | 双極性障害 | 2種類 | 2種類 | 100% | 🟢 完成 |
+| 解離性同一症 | 1種類 | 1種類 | 100% | 🟢 完成 |
+| 離人症 | 1種類 | 1種類 | 100% | 🟢 完成 |
 
 ### 📁 ディレクトリ構造（実際の状況）
 ```
@@ -223,9 +230,13 @@ templates/
 ├── ptsd/             ✅ 2ファイル実装済み
 │   ├── ptsd_moderate_reexperiencing_v1.0.yaml
 │   └── ptsd_moderate_avoidance_v1.0.yaml
-└── bipolar/          ✅ 2ファイル実装済み
-    ├── bipolar_manic_moderate_v1.0.yaml
-    └── bipolar_depressive_moderate_v1.0.yaml
+├── bipolar/          ✅ 2ファイル実装済み
+│   ├── bipolar_manic_moderate_v1.0.yaml
+│   └── bipolar_depressive_moderate_v1.0.yaml
+├── dissociative_identity/  ✅ 1ファイル実装済み
+│   └── dissociative_identity_moderate_typical_v1.0.yaml
+└── depersonalization/      ✅ 1ファイル実装済み
+    └── depersonalization_moderate_typical_v1.0.yaml
 ```
 
 ## 品質保証

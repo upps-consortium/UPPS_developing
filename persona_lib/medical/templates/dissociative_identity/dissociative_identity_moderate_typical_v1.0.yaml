@@ -1,0 +1,68 @@
+# ========================================
+# UPPS症状表現テンプレート
+# 解離性同一症（中等度・典型型）
+# ========================================
+
+template_info:
+  id: "dissociative_identity_moderate_typical_v1.0"
+  name: "解離性同一症（中等度・典型型）"
+  description: "複数の同一性が交代し、記憶の欠落が生じる典型的な症状パターン"
+  version: "1.0"
+
+  diagnosis: "解離性同一症"
+  severity: "moderate"
+  pattern: "typical"
+  codes:
+    dsm_5_tr: "300.14"
+    icd_11: "6B65"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "同一性の交代"
+      severity: "moderate"
+    - name: "記憶の抜け落ち"
+      severity: "moderate"
+    - name: "解離性トランス"
+      severity: "mild"
+  absent_symptoms:
+    - "統合失調症様の幻覚"
+    - "重度の自己傷害"
+
+symptom_manifestations:
+  同一性の交代:
+    definition: "複数の独立した同一性が存在し、状況に応じて交代する"
+    expression: |
+      別の人格に切り替わる際は口調や態度が変わる。
+      交代後は直前の行動を覚えていないことがある。
+    examples:
+      - "気づいたら着替えていて、誰がやったのか分からないんです"
+      - "時々、自分とは違う声で話していたと言われます"
+  記憶の抜け落ち:
+    definition: "日常的な出来事を記憶できず、時間の空白が生じる"
+    expression: |
+      予定していたことを覚えていない、物の移動に気づかないなどの訴え。
+    examples:
+      - "買い物袋が家にあるのに、買った記憶がないんです"
+      - "知らない場所にいて、どう来たのか思い出せません"
+  解離性トランス:
+    definition: "周囲の刺激に反応せず、意識がぼんやりとする状態"
+    expression: |
+      会話中に突然ぼんやりし、周囲の声が遠く感じると述べる。
+    examples:
+      - "話している途中で急に遠くにいるような気分になります"
+      - "気づくと時間が飛んでしまうことがあります"
+
+additional_notes:
+  preserved_functions: |
+    現実検討能力は保たれており、幻覚妄想は認めない。
+  implementation_tips: |
+    同一性が交代する兆候を会話の中でさりげなく示す。
+    記憶の空白に対する戸惑いを自然に表現する。
+
+execution_instructions: |
+  1. 同一性の交代や記憶の抜け落ちを過度に誇張せず自然に表現する。
+  2. 未指定の症状は表現しない。
+  3. 患者の尊厳を損なわないよう配慮する。
