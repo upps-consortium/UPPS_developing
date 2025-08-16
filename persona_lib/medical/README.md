@@ -20,6 +20,7 @@ templates/
 ├── schizophrenia/           # 統合失調症テンプレート
 ├── anxiety/                 # 不安症テンプレート
 ├── panic/                   # パニック症テンプレート
+├── ocd/                    # 強迫症テンプレート
 ├── ptsd/                    # PTSDテンプレート
 └── bipolar/                 # 双極性障害テンプレート
 ```
@@ -38,6 +39,7 @@ examples/
 ├── depression_YT.yaml   # Y.T.（うつ病）
 ├── anxiety_SY.yaml      # S.Y.（不安症）
 ├── bipolar_NA.yaml      # N.A.（双極性障害）
+├── ocd_YK.yaml        # Y.K.（強迫症）
 ├── panic_TK.yaml        # パニック症
 └── ptsd_KW.yaml         # K.W.（PTSD）
 ```

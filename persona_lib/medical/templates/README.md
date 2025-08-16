@@ -115,6 +115,13 @@ personal_info:
   - 中等度・パニック症
   - パニック発作、予期不安
 
+### 強迫症関連
+
+#### 強迫症
+- **ocd_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 強迫観念と強迫行為が顕著
+
 ### 統合失調症関連
 
   - **schizophrenia_moderate_acute_v1.0.yaml**
@@ -150,6 +157,7 @@ personal_info:
 - `bipolar`: 双極性障害
 - `anxiety`: 不安症
 - `panic`: パニック症
+- `ocd`: 強迫症
 - `schizophrenia`: 統合失調症
 - `ptsd`: 外傷後ストレス障害
 

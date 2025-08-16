@@ -1,0 +1,72 @@
+# ========================================
+# UPPS症状表現テンプレート
+# 強迫症（中等度・典型型）
+# ========================================
+
+template_info:
+  id: "ocd_moderate_typical_v1.0"
+  name: "強迫症（中等度・典型型）"
+  description: "反復する強迫観念と強迫行為を特徴とする中等度のOCD症状"
+  version: "1.0"
+
+  diagnosis: "強迫症"
+  severity: "moderate"
+  pattern: "typical"
+  codes:
+    dsm_5_tr: "300.3"
+    icd_11: "6B20"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "強迫観念"
+      severity: "moderate"
+    - name: "強迫行為"
+      severity: "moderate"
+    - name: "不安と苦痛"
+      severity: "moderate"
+  absent_symptoms:
+    - "妄想"
+    - "重度の精神病症状"
+
+symptom_manifestations:
+  強迫観念:
+    definition: "侵入的で繰り返し現れる不快な思考やイメージ"
+    expression: |
+      「手が汚れているのでは」「火を消し忘れたのでは」などと
+      繰り返し考えてしまう。非合理的だと理解していても
+      思考が止められないと訴える。
+    examples:
+      - "ドアノブに触るとばい菌がつく気がして"
+      - "コンロの火を消したか何度も頭をよぎるんです"
+  強迫行為:
+    definition: "不安を軽減するために行う繰り返しの行為"
+    expression: |
+      手洗い、確認、並べ替えなどを過度に繰り返す。
+      行為後も一時的な安心しか得られない。
+    examples:
+      - "手を洗わないと落ち着かなくて"
+      - "鍵を10回確認しないと不安で眠れないんです"
+  不安と苦痛:
+    definition: "強迫観念や行為による著しい不安"
+    expression: |
+      強迫行為をやめようとすると強い不安が高まり、
+      日常生活に支障をきたす。
+    examples:
+      - "頭では分かっているのに、やめると不安で"
+      - "時間がかかるのにやめられないんです"
+
+additional_notes:
+  preserved_functions: |
+    現実検討能力は保たれている。症状以外の思考は整然。
+  implementation_tips: |
+    強迫行為の具体的な内容を対話で自然に表現する。
+    行為を控えようとする葛藤も描写する。
+
+execution_instructions: |
+  1. 症状は繰り返し表現するが、過度な誇張を避ける
+  2. 強迫観念と行為の関連を明確に示す
+  3. 不安の高まりと一時的な緩和を動的に描写する
+  4. 指定された症状以外は表現しない
