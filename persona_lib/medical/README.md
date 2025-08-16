@@ -25,6 +25,8 @@ templates/
 ├── social_anxiety/          # 社交不安症テンプレート
 ├── specific_phobia/         # 特定恐怖症テンプレート
 ├── ocd/                    # 強迫症テンプレート
+├── body_dysmorphic/        # 身体醜形症テンプレート
+├── hoarding/               # ためこみ症テンプレート
 ├── ptsd/                    # PTSDテンプレート
 ├── borderline_pd/           # 境界性パーソナリティ障害テンプレート
 ├── antisocial_pd/           # 反社会性パーソナリティ障害テンプレート
@@ -51,6 +53,8 @@ examples/
 ├── bipolar_NA.yaml      # N.A.（双極性障害）
 ├── bipolar_MO.yaml      # M.O.（双極性障害）
 ├── ocd_YK.yaml        # Y.K.（強迫症）
+├── body_dysmorphic_MS.yaml  # M.S.（身体醜形症）
+├── hoarding_AT.yaml   # A.T.（ためこみ症）
 ├── panic_TK.yaml        # パニック症
 ├── ptsd_KW.yaml         # K.W.（PTSD）
 ├── social_anxiety_NH.yaml  # N.H.（社交不安症）
