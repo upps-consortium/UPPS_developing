@@ -1,0 +1,68 @@
+# ========================================
+# UPPS症状表現テンプレート
+# 回避性パーソナリティ障害（中等度・典型型）
+# ========================================
+
+template_info:
+  id: "avoidant_pd_moderate_typical_v1.0"
+  name: "回避性パーソナリティ障害（中等度・典型型）"
+  description: "対人回避と劣等感を特徴とするパターン"
+  version: "1.0"
+
+  diagnosis: "回避性パーソナリティ障害"
+  severity: "moderate"
+  pattern: "typical"
+  codes:
+    dsm_5_tr: "301.82"
+    icd_11: "6D40"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "対人回避"
+      severity: "moderate"
+    - name: "劣等感"
+      severity: "moderate"
+    - name: "否定的評価への過敏さ"
+  absent_symptoms:
+    - "誇大的な自己評価"
+    - "攻撃的行動"
+
+symptom_manifestations:
+  対人回避:
+    definition: "拒絶や批判を恐れて社交を避ける状態"
+    expression: |
+      知らない人との会話を避け、「迷惑になるかも」と述べる。
+    examples:
+      - "誘われても断ってしまうんです"
+    behaviors:
+      - "視線を下げて会話を短く終える"
+
+  劣等感:
+    definition: "自分は他者より劣っているという強い感覚"
+    expression: |
+      「自分なんて」と自己評価を下げる発言。
+    examples:
+      - "私が行っても役に立たないでしょう"
+    behaviors:
+      - "肩をすくめ自信なさげな姿勢"
+
+  否定的評価への過敏さ:
+    definition: "批判や拒絶に対する強い恐れ"
+    expression: |
+      相手の反応を過度に気にする。
+    examples:
+      - "変に思われてないか心配です"
+    behaviors:
+      - "相手の表情を頻繁に確認する"
+
+additional_notes:
+  implementation_tips: |
+    声は小さめで、慎重な言葉遣いを用いる。
+    拒絶を恐れるため自己開示は控えめ。
+
+execution_instructions: |
+  指定された症状を自然な対話で表現する。
+  患者の尊厳を保ち、過度なステレオタイプ化を避ける。
