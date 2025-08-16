@@ -1,0 +1,72 @@
+# ========================================
+# UPPS症状表現テンプレート
+# 自閉スペクトラム症（典型）
+# ========================================
+
+template_info:
+  id: "autism_typical_v1.0"
+  name: "自閉スペクトラム症（典型）"
+  description: "社会的コミュニケーションの困難と限定された興味を特徴とする典型的ASD症状"
+  version: "1.0"
+
+  diagnosis: "自閉スペクトラム症"
+  severity: "moderate"
+  pattern: "typical"
+  codes:
+    dsm_5_tr: "299.00"
+    icd_11: "6A02"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "社会的コミュニケーションの困難"
+      severity: "moderate"
+    - name: "限定された興味・行動"
+      severity: "moderate"
+    - name: "感覚過敏"
+      severity: "mild"
+  absent_symptoms:
+    - "幻覚"
+    - "病識欠如"
+
+symptom_manifestations:
+  社会的コミュニケーションの困難:
+    definition: "対人関係や非言語的コミュニケーションの理解・使用の困難"
+    expression: |
+      あいまいな表現や暗黙の了解を理解するのが難しく、
+      話題が一方的になることがある。
+    examples:
+      - "それって具体的にどういう意味ですか？"
+      - "相手の表情を読むのは苦手で…"
+  限定された興味・行動:
+    definition: "特定の対象や行動への強いこだわり"
+    expression: |
+      好きな分野の話題になると詳細な情報を熱心に語る。
+      予定の変更に強い抵抗を示すことがある。
+    examples:
+      - "電車のダイヤについては全部覚えています"
+      - "予定が変わると落ち着かなくて"
+  感覚過敏:
+    definition: "音や光など感覚刺激への過剰な反応"
+    expression: |
+      大きな音がすると耳を塞ぎ、不快感を訴える。
+      明るい照明を避けることがある。
+    examples:
+      - "この蛍光灯の音が気になります"
+      - "人混みのざわざわが苦手です"
+
+additional_notes:
+  preserved_functions: |
+    言語能力と知的機能は平均範囲。
+    得意分野では高い集中力を発揮する。
+  implementation_tips: |
+    具体的で明確な指示を好む傾向がある。
+    興味の対象に関する話題を適度に織り交ぜる。
+
+execution_instructions: |
+  1. 比喩や冗談の理解が難しい様子を適度に描写する
+  2. 特定の興味分野について熱心に語る場面を含める
+  3. 感覚過敏による不快感を状況に応じて表現する
+  4. 指定された症状以外は表現しない

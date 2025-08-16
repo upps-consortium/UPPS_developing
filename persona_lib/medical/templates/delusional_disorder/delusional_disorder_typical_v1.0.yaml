@@ -1,0 +1,56 @@
+# ========================================
+# UPPS症状表現テンプレート
+# 妄想性障害（典型例）
+# ========================================
+
+template_info:
+  id: "delusional_disorder_typical_v1.0"
+  name: "妄想性障害（典型例）"
+  description: "持続的な非奇異性妄想が中心となる妄想性障害の典型的症状パターン"
+  version: "1.0"
+
+  diagnosis: "妄想性障害"
+  pattern: "typical"
+  codes:
+    dsm_5_tr: "297.1"
+    icd_11: "6A24"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "被害妄想"
+    - name: "嫉妬妄想"
+  absent_symptoms:
+    - "幻覚"
+    - "思考障害"
+    - "顕著な陰性症状"
+
+symptom_manifestations:
+  被害妄想:
+    definition: "他者から害を加えられていると確信する誤った信念"
+    expression: |
+      周囲の人が自分を陥れようとしていると訴える。
+      些細な出来事を敵意の証拠と解釈する。
+    examples:
+      - "隣人が私を監視しているんです"
+      - "誰かが私の食事に何か混ぜています"
+  嫉妬妄想:
+    definition: "配偶者や恋人の不貞を確信する誤った信念"
+    expression: |
+      根拠のない疑いを繰り返し主張し、否定されても納得しない。
+    examples:
+      - "夫は必ず浮気をしています"
+      - "証拠はないけれど確信があります"
+
+additional_notes:
+  preserved_functions: |
+    妄想以外の思考や行動は比較的保たれており、日常生活も概ね維持される。
+  implementation_tips: |
+    妄想内容には一貫性を持たせ、反証が困難である態度を示す。
+
+execution_instructions: |
+  1. 妄想は現実的にあり得る内容として描写する
+  2. 妄想に関する確信の強さを対話で示す
+  3. 指定された妄想以外の症状は表現しない
