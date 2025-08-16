@@ -1,0 +1,68 @@
+# ========================================
+# UPPS症状表現テンプレート
+# 反社会性パーソナリティ障害（中等度・典型型）
+# ========================================
+
+template_info:
+  id: "antisocial_pd_moderate_typical_v1.0"
+  name: "反社会性パーソナリティ障害（中等度・典型型）"
+  description: "他者の権利や規範を無視する行動パターン"
+  version: "1.0"
+
+  diagnosis: "反社会性パーソナリティ障害"
+  severity: "moderate"
+  pattern: "typical"
+  codes:
+    dsm_5_tr: "301.7"
+    icd_11: "6D90"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "良心の欠如"
+      severity: "moderate"
+    - name: "衝動的・無責任な行動"
+      severity: "moderate"
+    - name: "他者権利の無視"
+  absent_symptoms:
+    - "明確な情動的共感"
+    - "長期的な計画性"
+
+symptom_manifestations:
+  良心の欠如:
+    definition: "他者への害に対して罪悪感を感じにくい状態"
+    expression: |
+      「たいしたことじゃない」と被害を軽視する。
+    examples:
+      - "少し借りただけで、返すつもりはなかった"
+    behaviors:
+      - "被害者の感情を無視する態度"
+
+  衝動的・無責任な行動:
+    definition: "結果を考えずに行動し責任を取らない傾向"
+    expression: |
+      「後先考えずにやっただけ」と述べる。
+    examples:
+      - "計画もなく仕事を突然辞めた"
+    behaviors:
+      - "衝動的な決断を繰り返す"
+
+  他者権利の無視:
+    definition: "他人の権利や社会規範を軽視する行動"
+    expression: |
+      法や規則を気にせず行動する。
+    examples:
+      - "ルールなんて守るだけ無駄だ"
+    behaviors:
+      - "他人の財産を平然と利用する"
+
+additional_notes:
+  implementation_tips: |
+    落ち着いた口調でも他者への配慮が欠けている様子を表現。
+    罪悪感の薄さを示す発言を含める。
+
+execution_instructions: |
+  指定された症状を自然な対話で表現する。
+  差別的表現は避け、客観的な症状描写に留める。
