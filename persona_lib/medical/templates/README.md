@@ -187,6 +187,22 @@ personal_info:
   - 中等度・回避症状優位
   - 刺激回避、感情麻痺が顕著
 
+### 摂食障害関連
+
+#### 神経性やせ症
+- **anorexia_moderate_restricting_v1.0.yaml**
+  - 中等度・制限型
+  - 体重減少と食事制限が中心
+
+#### 神経性過食症
+- **bulimia_moderate_purging_v1.0.yaml**
+  - 中等度・排出型
+  - 反復する過食と代償行動
+
+#### 過食性障害
+- **binge_eating_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 代償行動を伴わない過食
 
 ### 物質・嗜癖関連
 
@@ -274,6 +290,9 @@ personal_info:
 - `schizophrenia`: 統合失調症
 - `delusional_disorder`: 妄想性障害
 - `ptsd`: 外傷後ストレス障害
+- `anorexia`: 神経性やせ症
+- `bulimia`: 神経性過食症
+- `binge_eating`: 過食性障害
 - `alcohol_use_disorder`: アルコール使用障害
 - `opioid_use_disorder`: オピオイド使用障害
 - `gambling_disorder`: ギャンブル障害
