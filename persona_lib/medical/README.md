@@ -22,6 +22,12 @@ templates/
 ├── delusional_disorder/     # 妄想性障害テンプレート
 ├── anxiety/                 # 不安症テンプレート
 ├── panic/                   # パニック症テンプレート
+
+├── ocd/                     # 強迫症テンプレート
+├── ptsd/                    # PTSDテンプレート
+├── bipolar/                 # 双極性障害テンプレート
+├── somatic_symptom/         # 身体症状症テンプレート
+├── illness_anxiety/         # 病気不安症テンプレート
 ├── social_anxiety/          # 社交不安症テンプレート
 ├── specific_phobia/         # 特定恐怖症テンプレート
 ├── ocd/                    # 強迫症テンプレート
@@ -48,14 +54,20 @@ templates/
 ### examples/ - 実装例
 ```
 examples/
-├── README.md            # 実装例使用方法
-├── alzheimer_TH.yaml    # T.H.（アルツハイマー）
-├── depression_YT.yaml   # Y.T.（うつ病）
+├── README.md                 # 実装例使用方法
+├── alzheimer_TH.yaml         # T.H.（アルツハイマー）
+├── depression_YT.yaml        # Y.T.（うつ病）
+├── anxiety_SY.yaml           # S.Y.（不安症）
+├── bipolar_NA.yaml           # N.A.（双極性障害）
+├── ocd_YK.yaml               # Y.K.（強迫症）
+├── panic_TK.yaml             # パニック症
+├── ptsd_KW.yaml              # K.W.（PTSD）
+├── somatic_symptom_MS.yaml   # M.S.（身体症状症）
+├── illness_anxiety_HK.yaml   # H.K.（病気不安症）
 ├── persistent_depression_MA.yaml   # M.A.（持続性抑うつ障害）
 ├── anxiety_SY.yaml      # S.Y.（不安症）
 ├── delusional_disorder_AH.yaml  # A.H.（妄想性障害）
 ├── schizophrenia_MT.yaml        # M.T.（統合失調症）
-├── bipolar_NA.yaml      # N.A.（双極性障害）
 ├── bipolar_MO.yaml      # M.O.（双極性障害）
 ├── ocd_YK.yaml        # Y.K.（強迫症）
 ├── body_dysmorphic_MS.yaml  # M.S.（身体醜形症）
