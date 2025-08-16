@@ -1,0 +1,85 @@
+# ========================================
+# UPPS症状表現テンプレート
+# アルコール使用障害（中等度・典型パターン）
+# ========================================
+
+template_info:
+  id: "alcohol_use_disorder_moderate_typical_v1.0"
+  name: "アルコール使用障害（中等度・典型パターン）"
+  description: "強い飲酒欲求とコントロール困難を特徴とする中等度のアルコール使用障害"
+  version: "1.0"
+
+  diagnosis: "アルコール使用障害"
+  severity: "moderate"
+  pattern: "typical"
+  codes:
+    dsm_5_tr: "303.90"
+    icd_11: "6C40"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "強い飲酒欲求"
+      severity: "moderate"
+    - name: "飲酒量のコントロール困難"
+      severity: "moderate"
+    - name: "耐性の形成"
+      severity: "moderate"
+    - name: "軽度の退薬症状"
+      severity: "mild"
+  absent_symptoms:
+    - "重度の肝障害"
+    - "幻覚やせん妄"
+
+symptom_manifestations:
+  強い飲酒欲求:
+    definition: "飲まずにはいられない衝動的な欲求"
+    expression: |
+      "仕事が終わると無性に飲みたくなり、気付くと酒屋に向かっています"と訴える。
+    examples:
+      - "夕方になると飲酒のことばかり考えてしまう"
+    behaviors:
+      - "帰宅途中に自動的に酒を買ってしまう"
+
+  飲酒量のコントロール困難:
+    definition: "飲酒開始後に予定量を超えてしまう"
+    expression: |
+      1杯だけのつもりが、気付けばボトル半分以上を空けていると説明する。
+    examples:
+      - "少し飲むつもりが毎回深酒になります"
+    behaviors:
+      - "飲み会で止められても飲み続ける"
+
+  耐性の形成:
+    definition: "同じ酔いを得るために量が増える現象"
+    expression: |
+      昔よりも酔うまでの量が増えたと述べる。
+    examples:
+      - "以前はビール2本で酔ったのに今は6本必要です"
+    behaviors:
+      - "強い酒を選ぶようになる"
+
+  軽度の退薬症状:
+    definition: "飲酒を控えた際に現れる不快な症状"
+    expression: |
+      朝に手の震えや汗が出て落ち着かないと話す。
+    examples:
+      - "飲まないと手が震えてしまいます"
+    behaviors:
+      - "朝に迎え酒をする"
+
+additional_notes:
+  symptom_variations: |
+    ストレスの高い日や社交の場で飲酒量が増える傾向がある。
+  preserved_functions: |
+    家庭や仕事の基本的な役割はまだ維持できている。
+  implementation_tips: |
+    飲酒に対する葛藤と自己正当化の揺れを自然に表現する。
+
+execution_instructions: |
+  このテンプレートは中等度アルコール使用障害の典型症状を再現する目的で使用する。
+  1. 指定された症状のみを表現し、誇張しない。
+  2. 飲酒に対する罪悪感と欲求の二面性を示す。
+  3. 患者の尊厳を保った表現を心がける。
