@@ -138,10 +138,22 @@ personal_info:
 - **ptsd_moderate_reexperiencing_v1.0.yaml**
   - 中等度・再体験症状優位
   - フラッシュバック、悪夢が顕著
-  
+
 - **ptsd_moderate_avoidance_v1.0.yaml**
   - 中等度・回避症状優位
   - 刺激回避、感情麻痺が顕著
+
+### 解離性障害関連
+
+#### 解離性同一症
+- **dissociative_identity_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 同一性の交代、記憶の抜け落ち
+
+#### 離人症
+- **depersonalization_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 離人感、現実感喪失
 
 ## 命名規則
 
@@ -160,6 +172,8 @@ personal_info:
 - `ocd`: 強迫症
 - `schizophrenia`: 統合失調症
 - `ptsd`: 外傷後ストレス障害
+- `dissociative_identity`: 解離性同一症
+- `depersonalization`: 離人症
 
 ### 重症度
 - `mild`: 軽度（日常生活に軽微な影響）
