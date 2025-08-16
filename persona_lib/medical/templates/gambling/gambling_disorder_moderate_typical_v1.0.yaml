@@ -1,0 +1,74 @@
+# ========================================
+# UPPS症状表現テンプレート
+# ギャンブル障害（中等度・典型パターン）
+# ========================================
+
+template_info:
+  id: "gambling_disorder_moderate_typical_v1.0"
+  name: "ギャンブル障害（中等度・典型パターン）"
+  description: "負けを取り返そうとする衝動と隠匿を特徴とする中等度ギャンブル障害"
+  version: "1.0"
+
+  diagnosis: "ギャンブル障害"
+  severity: "moderate"
+  pattern: "typical"
+  codes:
+    dsm_5_tr: "312.31"
+    icd_11: "6C50"
+
+  reviewer: "要専門医監修"
+  reviewed_date: "2025-07-30"
+
+symptom_profile:
+  active_symptoms:
+    - name: "ギャンブルへの没頭"
+      severity: "moderate"
+    - name: "負けを取り返そうとする行動"
+      severity: "moderate"
+    - name: "家族や友人への隠匿"
+      severity: "moderate"
+  absent_symptoms:
+    - "自殺念慮"
+    - "重大な財政破綻"
+
+symptom_manifestations:
+  ギャンブルへの没頭:
+    definition: "ギャンブルのことが頭から離れない状態"
+    expression: |
+      仕事中も次に行く店や資金のことを考えてしまうと述べる。
+    examples:
+      - "昼休みにもネットでオッズを確認しています"
+    behaviors:
+      - "スマホで頻繁にギャンブルサイトをチェックする"
+
+  負けを取り返そうとする行動:
+    definition: "損失を埋めようとしてさらに賭ける"
+    expression: |
+      負けるとすぐに別のゲームで取り返そうとする衝動に駆られる。
+    examples:
+      - "昨日の負けを取り返すためにまた行ってしまいました"
+    behaviors:
+      - "連敗しても賭け金を増やす"
+
+  家族や友人への隠匿:
+    definition: "ギャンブルの頻度や損失を隠す行為"
+    expression: |
+      家族には残業と偽ってパチンコに通っていると話す。
+    examples:
+      - "妻には小遣いの使い道を誤魔化しています"
+    behaviors:
+      - "レシートやオンライン履歴を削除する"
+
+additional_notes:
+  symptom_variations: |
+    給料日の後やストレスが高い時期に賭け金が増加する。
+  preserved_functions: |
+    基本的な就労は継続できている。
+  implementation_tips: |
+    罪悪感と興奮の混在する心理を表現する。
+
+execution_instructions: |
+  このテンプレートは中等度ギャンブル障害の典型症状を示す。
+  1. ギャンブル行動の具体例を自然な会話で表現する。
+  2. 家族への隠匿による葛藤を織り交ぜる。
+  3. 指定された症状以外を描写しない。

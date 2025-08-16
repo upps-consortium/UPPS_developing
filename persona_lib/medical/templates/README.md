@@ -3,6 +3,7 @@
 > *医学的に妥当で自然な疾患症状の対話表現を実現するテンプレート集*
 
 **対象**: UPPS 2025.3  
+
 **最終更新**: 2025年8月1日
 
 ## 概要
@@ -186,6 +187,24 @@ personal_info:
   - 中等度・回避症状優位
   - 刺激回避、感情麻痺が顕著
 
+
+### 物質・嗜癖関連
+
+#### アルコール使用障害
+- **alcohol_use_disorder_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 飲酒欲求とコントロール困難
+
+#### オピオイド使用障害
+- **opioid_use_disorder_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 処方薬依存と退薬症状
+
+#### ギャンブル障害
+- **gambling_disorder_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 損失追求と隠匿行動
+
 ### 解離性障害関連
 
 #### 解離性同一症
@@ -255,6 +274,9 @@ personal_info:
 - `schizophrenia`: 統合失調症
 - `delusional_disorder`: 妄想性障害
 - `ptsd`: 外傷後ストレス障害
+- `alcohol_use_disorder`: アルコール使用障害
+- `opioid_use_disorder`: オピオイド使用障害
+- `gambling_disorder`: ギャンブル障害
 - `dissociative_identity`: 解離性同一症
 - `depersonalization`: 離人症
 - `acute_stress`: 急性ストレス反応

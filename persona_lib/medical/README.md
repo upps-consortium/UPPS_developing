@@ -26,6 +26,9 @@ templates/
 ├── ocd/                     # 強迫症テンプレート
 ├── ptsd/                    # PTSDテンプレート
 ├── bipolar/                 # 双極性障害テンプレート
+├── alcohol_use/             # アルコール使用障害テンプレート
+├── opioid_use/              # オピオイド使用障害テンプレート
+├── gambling/                # ギャンブル障害テンプレート
 ├── somatic_symptom/         # 身体症状症テンプレート
 ├── illness_anxiety/         # 病気不安症テンプレート
 ├── social_anxiety/          # 社交不安症テンプレート
@@ -43,6 +46,7 @@ templates/
 ├── antisocial_pd/           # 反社会性パーソナリティ障害テンプレート
 ├── avoidant_pd/             # 回避性パーソナリティ障害テンプレート
 └── bipolar/                 # 双極性障害テンプレート
+
 ```
 
 **特徴**:
@@ -66,6 +70,9 @@ examples/
 ├── illness_anxiety_HK.yaml   # H.K.（病気不安症）
 ├── persistent_depression_MA.yaml   # M.A.（持続性抑うつ障害）
 ├── anxiety_SY.yaml      # S.Y.（不安症）
+├── alcohol_use_HS.yaml  # H.S.（アルコール使用障害）
+├── opioid_use_MT.yaml   # M.T.（オピオイド使用障害）
+├── gambling_NM.yaml     # N.M.（ギャンブル障害）
 ├── delusional_disorder_AH.yaml  # A.H.（妄想性障害）
 ├── schizophrenia_MT.yaml        # M.T.（統合失調症）
 ├── bipolar_MO.yaml      # M.O.（双極性障害）
