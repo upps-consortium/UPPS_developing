@@ -115,6 +115,18 @@ personal_info:
   - 中等度・パニック症
   - パニック発作、予期不安
 
+### 身体症状関連
+
+#### 身体症状症
+- **somatic_symptom_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 身体症状への過度な意識と苦痛
+
+#### 病気不安症
+- **illness_anxiety_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 病気への過度な不安・確認行動
+
 ### 強迫症関連
 
 #### 強迫症
