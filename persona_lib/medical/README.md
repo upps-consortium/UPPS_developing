@@ -21,6 +21,8 @@ templates/
 ├── anxiety/                 # 不安症テンプレート
 ├── panic/                   # パニック症テンプレート
 ├── ocd/                    # 強迫症テンプレート
+├── body_dysmorphic/        # 身体醜形症テンプレート
+├── hoarding/               # ためこみ症テンプレート
 ├── ptsd/                    # PTSDテンプレート
 └── bipolar/                 # 双極性障害テンプレート
 ```
@@ -40,6 +42,8 @@ examples/
 ├── anxiety_SY.yaml      # S.Y.（不安症）
 ├── bipolar_NA.yaml      # N.A.（双極性障害）
 ├── ocd_YK.yaml        # Y.K.（強迫症）
+├── body_dysmorphic_MS.yaml  # M.S.（身体醜形症）
+├── hoarding_AT.yaml   # A.T.（ためこみ症）
 ├── panic_TK.yaml        # パニック症
 └── ptsd_KW.yaml         # K.W.（PTSD）
 ```

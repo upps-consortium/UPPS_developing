@@ -122,6 +122,16 @@ personal_info:
   - 中等度・典型パターン
   - 強迫観念と強迫行為が顕著
 
+#### 身体醜形症
+- **body_dysmorphic_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 外見へのとらわれ、確認行動
+
+#### ためこみ症
+- **hoarding_moderate_typical_v1.0.yaml**
+  - 中等度・典型パターン
+  - 不要物の収集と捨てられない傾向
+
 ### 統合失調症関連
 
   - **schizophrenia_moderate_acute_v1.0.yaml**
