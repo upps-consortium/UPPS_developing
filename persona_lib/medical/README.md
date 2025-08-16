@@ -20,6 +20,8 @@ templates/
 ├── schizophrenia/           # 統合失調症テンプレート
 ├── anxiety/                 # 不安症テンプレート
 ├── panic/                   # パニック症テンプレート
+├── social_anxiety/          # 社交不安症テンプレート
+├── specific_phobia/         # 特定恐怖症テンプレート
 ├── ocd/                    # 強迫症テンプレート
 ├── ptsd/                    # PTSDテンプレート
 └── bipolar/                 # 双極性障害テンプレート
@@ -41,7 +43,9 @@ examples/
 ├── bipolar_NA.yaml      # N.A.（双極性障害）
 ├── ocd_YK.yaml        # Y.K.（強迫症）
 ├── panic_TK.yaml        # パニック症
-└── ptsd_KW.yaml         # K.W.（PTSD）
+├── ptsd_KW.yaml         # K.W.（PTSD）
+├── social_anxiety_NH.yaml  # N.H.（社交不安症）
+└── specific_phobia_AK.yaml # A.K.（特定恐怖症）
 ```
 
 **特徴**:

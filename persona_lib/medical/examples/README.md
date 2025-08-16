@@ -22,7 +22,7 @@
 
 ## 実装例一覧
 
-現在リポジトリに含まれているサンプルペルソナは以下の7件です。
+現在リポジトリに含まれているサンプルペルソナは以下の9件です。
 
 - **alzheimer_TH.yaml** – アルツハイマー型認知症
 - **depression_YT.yaml** – うつ病
@@ -31,6 +31,8 @@
 - **panic_TK.yaml** – パニック症
 - **ptsd_KW.yaml** – PTSD
 - **ocd_YK.yaml** – 強迫症
+- **social_anxiety_NH.yaml** – 社交不安症
+- **specific_phobia_AK.yaml** – 特定恐怖症
 
 ## 使用方法
 

@@ -115,6 +115,16 @@ personal_info:
   - 中等度・パニック症
   - パニック発作、予期不安
 
+#### 社交不安症
+- **social_anxiety_moderate_performance_v1.0.yaml**
+  - 中等度・発表場面恐怖
+  - 人前での発言・評価恐怖
+
+#### 特定恐怖症
+- **specific_phobia_moderate_animal_v1.0.yaml**
+  - 中等度・動物恐怖
+  - 犬などの特定動物への強い恐怖
+
 ### 強迫症関連
 
 #### 強迫症
@@ -157,6 +167,8 @@ personal_info:
 - `bipolar`: 双極性障害
 - `anxiety`: 不安症
 - `panic`: パニック症
+- `social_anxiety`: 社交不安症
+- `specific_phobia`: 特定恐怖症
 - `ocd`: 強迫症
 - `schizophrenia`: 統合失調症
 - `ptsd`: 外傷後ストレス障害
