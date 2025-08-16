@@ -3,7 +3,7 @@
 > *症状表現テンプレートを活用した具体的な仮想患者ペルソナ集*
 
 **対象**: UPPS 2025.3  
-**最終更新**: 2025年7月30日
+**最終更新**: 2025年8月1日
 
 ## 概要
 
@@ -22,15 +22,18 @@
 
 ## 実装例一覧
 
-現在リポジトリに含まれているサンプルペルソナは以下の7件です。
+現在リポジトリに含まれているサンプルペルソナは以下の10件です。
 
 - **alzheimer_TH.yaml** – アルツハイマー型認知症
 - **depression_YT.yaml** – うつ病
 - **anxiety_SY.yaml** – 全般性不安症
+- **delusional_disorder_AH.yaml** – 妄想性障害
 - **bipolar_NA.yaml** – 双極性障害（躁エピソード）
+- **bipolar_MO.yaml** – 双極性障害（躁状態）
 - **panic_TK.yaml** – パニック症
 - **ptsd_KW.yaml** – PTSD
 - **ocd_YK.yaml** – 強迫症
+- **schizophrenia_MT.yaml** – 統合失調症
 
 ## 使用方法
 
