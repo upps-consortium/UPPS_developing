@@ -116,18 +116,20 @@ emotion_system:
 
 ### ✅ 現在利用可能
 
+`persona_lib/medical/templates` には **31** 件の疾患テンプレートディレクトリが、`persona_lib/medical/examples` には **32** 件のサンプルペルソナが含まれています（疾患はICD-11コード順）。
+
 ```
 upps/
-├── LICENSE.md                     # ライセンス情報  
-├── README.md                      # このファイル  
-│  
+├── LICENSE.md                     # ライセンス情報
+├── README.md                      # このファイル
+│
 ├── specification/                 # 規格仕様 ✅
 │   ├── upps_2025_3_specification.md  # 規格定義書
 │   ├── operational_guidelines.md     # 運用指針
 │   └── schema/                       # スキーマ定義
 │       └── upps_schema.yaml
-│  
-├── prompting/                     # プロンプト主導型 ✅  
+│
+├── prompting/                     # プロンプト主導型 ✅
 │   ├── README.md                     # プロンプトフォルダ内の案内
 │   ├── prompt_guide.md               # プロンプト実施ガイド（詳細）
 │   ├── templates/
@@ -139,14 +141,86 @@ upps/
 │       ├── google_gemini_template.md      # Google Gemini用テンプレート
 │       └── meta_llama_template.md         # Meta Llama用テンプレート
 │
-└── tools/
+├── tools/
 │   └── editor/                    # ペルソナ編集ツール
 │
 └── persona_lib/                   # ペルソナファイルライブラリ
-│       ├── rachel_bladerunner.yaml  # サンプルペルソナデータ
-│       ├── rachel_bladerunner.md   # 解説
-│       ├── lum_urusei_yatsura.yaml  # サンプルペルソナデータ
-│       └── lum_urusei_yatsura.md    # 解説
+    ├── README.md
+    ├── rachel_bladerunner.yaml    # サンプルペルソナデータ
+    ├── rachel_bladerunner.md      # 解説
+    ├── lum_urusei_yatsura.yaml    # サンプルペルソナデータ
+    ├── lum_urusei_yatsura.md      # 解説
+    ├── original_characters/
+    └── medical/
+        ├── README.md
+        ├── medical_main_readme_fixed.md
+        ├── templates/            # 31 disorder templates
+        │   ├── README.md
+        │   ├── 6A02 autism/
+        │   ├── 6A05 adhd/
+        │   ├── 6A20 schizophrenia/
+        │   ├── 6A24 delusional_disorder/
+        │   ├── 6A61 bipolar/
+        │   ├── 6A72 depression/
+        │   ├── 6A72 persistent_depression/
+        │   ├── 6B00 anxiety/
+        │   ├── 6B01 panic/
+        │   ├── 6B03 specific_phobia/
+        │   ├── 6B04 social_anxiety/
+        │   ├── 6B20 ocd/
+        │   ├── 6B21 body_dysmorphic/
+        │   ├── 6B24 hoarding/
+        │   ├── 6B41 acute_stress/
+        │   ├── 6B41 ptsd/
+        │   ├── 6B43 adjustment/
+        │   ├── 6B64 depersonalization/
+        │   ├── 6B65 dissociative_identity/
+        │   ├── 6B80 anorexia/
+        │   ├── 6B81 bulimia/
+        │   ├── 6B82 binge_eating/
+        │   ├── 6C20 somatic_symptom/
+        │   ├── 6C21 illness_anxiety/
+        │   ├── 6C40 alcohol_use/
+        │   ├── 6C4A opioid_use/
+        │   ├── 6C50 gambling/
+        │   ├── 6D10 borderline_pd/
+        │   ├── 6D40 avoidant_pd/
+        │   ├── 6D80 alzheimer/
+        │   └── 6D90 antisocial_pd/
+        └── examples/             # 32 sample personas
+            ├── README.md
+            ├── acute_stress_MT.yaml
+            ├── adhd_JM.yaml
+            ├── adjustment_HS.yaml
+            ├── alcohol_use_HS.yaml
+            ├── alzheimer_TH.yaml
+            ├── anorexia_MT.yaml
+            ├── antisocial_pd_DT.yaml
+            ├── anxiety_SY.yaml
+            ├── autism_HS.yaml
+            ├── avoidant_pd_HM.yaml
+            ├── binge_eating_HK.yaml
+            ├── bipolar_MO.yaml
+            ├── bipolar_NA.yaml
+            ├── body_dysmorphic_MS.yaml
+            ├── borderline_pd_JK.yaml
+            ├── bulimia_SN.yaml
+            ├── delusional_disorder_AH.yaml
+            ├── depersonalization_BQ.yaml
+            ├── depression_YT.yaml
+            ├── dissociative_identity_AZ.yaml
+            ├── gambling_NM.yaml
+            ├── hoarding_AT.yaml
+            ├── illness_anxiety_HK.yaml
+            ├── ocd_YK.yaml
+            ├── opioid_use_MT.yaml
+            ├── panic_TK.yaml
+            ├── persistent_depression_MA.yaml
+            ├── ptsd_KW.yaml
+            ├── schizophrenia_MT.yaml
+            ├── social_anxiety_NH.yaml
+            ├── somatic_symptom_MS.yaml
+            └── specific_phobia_AK.yaml
 ```
 
 ### 📋 予定・開発中
