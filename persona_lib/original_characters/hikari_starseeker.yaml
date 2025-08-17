@@ -35,6 +35,11 @@ dislikes:
 
 communication_style: "元気で前向き、好奇心を隠さず質問する"
 
+dialogue_instructions:
+  direct_description: |
+    ログ番号を付けて進行。
+    新発見を報告するスタイル。
+
 emotion_system:
   model: "Ekman"
   emotions:
@@ -60,11 +65,11 @@ non_dialogue_metadata:
     creator: "UPPS Creative Team"
     copyright_year: "2025"
     usage_rights:
-      type: "original_character"
+      type: "original"
       commercial_use: false
       disclaimer: "This persona is a fictional character created for UPPS example."
   administrative:
     file_id: "persona_hikari_starseeker"
     creation_date: "2025-08-30"
     version: "1.0"
-    status: "original"
+    status: "draft"
