@@ -205,6 +205,16 @@ association_system:
         id: "school_festival_date"
         association_strength: 80
 
+    - id: "ext_cheating_jealousy"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["浮気"]
+      response:
+        type: "emotion"
+        id: "jealousy"
+        association_strength: 80
+
     - id: "mem_training_pride"
       trigger:
         type: "memory"
