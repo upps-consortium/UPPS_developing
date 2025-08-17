@@ -22,40 +22,40 @@
 
 ## 実装例一覧
 
-現在リポジトリに含まれているサンプルペルソナは以下の10件です。
+現在リポジトリに含まれているサンプルペルソナは以下の32件です。（ICD-11コード順）
 
-- **alzheimer_TH.yaml** – アルツハイマー型認知症
-- **depression_YT.yaml** – うつ病
-- **persistent_depression_MA.yaml** – 持続性抑うつ障害
-- **anxiety_SY.yaml** – 全般性不安症
-- **delusional_disorder_AH.yaml** – 妄想性障害
-- **bipolar_NA.yaml** – 双極性障害（躁エピソード）
-- **bipolar_MO.yaml** – 双極性障害（躁状態）
-- **panic_TK.yaml** – パニック症
-- **ptsd_KW.yaml** – PTSD
-- **ocd_YK.yaml** – 強迫症
-- **anorexia_MT.yaml** – 神経性やせ症
-- **bulimia_SN.yaml** – 神経性過食症
-- **binge_eating_HK.yaml** – 過食性障害
-- **alcohol_use_HS.yaml** – アルコール使用障害
-- **opioid_use_MT.yaml** – オピオイド使用障害
-- **gambling_NM.yaml** – ギャンブル障害
-- **somatic_symptom_MS.yaml** – 身体症状症
-- **illness_anxiety_HK.yaml** – 病気不安症
-- **dissociative_identity_AZ.yaml** – 解離性同一症
-- **depersonalization_BQ.yaml** – 離人症
-- **acute_stress_MT.yaml** – 急性ストレス反応
-- **adjustment_HS.yaml** – 適応障害
-- **body_dysmorphic_MS.yaml** – 身体醜形症
-- **hoarding_AT.yaml** – ためこみ症
-- **social_anxiety_NH.yaml** – 社交不安症
-- **specific_phobia_AK.yaml** – 特定恐怖症
-- **schizophrenia_MT.yaml** – 統合失調症
-- **autism_HS.yaml** – 自閉スペクトラム症
-- **adhd_JM.yaml** – 注意欠如・多動症（混合型）
-- **borderline_pd_JK.yaml** – 境界性パーソナリティ障害
-- **antisocial_pd_DT.yaml** – 反社会性パーソナリティ障害
-- **avoidant_pd_HM.yaml** – 回避性パーソナリティ障害
+- **autism_HS.yaml** – 自閉スペクトラム症 (6A02)
+- **adhd_JM.yaml** – 注意欠如・多動症 (6A05)
+- **schizophrenia_MT.yaml** – 統合失調症 (6A20)
+- **delusional_disorder_AH.yaml** – 妄想性障害 (6A24)
+- **bipolar_NA.yaml** – 双極性障害（躁エピソード） (6A60)
+- **bipolar_MO.yaml** – 双極性障害（躁エピソード） (6A61)
+- **depression_YT.yaml** – 大うつ病性障害 (6A70.1)
+- **persistent_depression_MA.yaml** – 持続性抑うつ障害 (6A72)
+- **anxiety_SY.yaml** – 全般性不安症 (6B00)
+- **panic_TK.yaml** – パニック症 (6B01)
+- **social_anxiety_NH.yaml** – 社交不安症 (6B04)
+- **specific_phobia_AK.yaml** – 特定恐怖症 (6B05)
+- **ocd_YK.yaml** – 強迫症 (6B20)
+- **body_dysmorphic_MS.yaml** – 身体醜形症 (6B21)
+- **hoarding_AT.yaml** – ためこみ症 (6B24)
+- **acute_stress_MT.yaml** – 急性ストレス反応 (6B41)
+- **ptsd_KW.yaml** – 心的外傷後ストレス障害 (6B41)
+- **adjustment_HS.yaml** – 適応障害 (6B43)
+- **depersonalization_BQ.yaml** – 離人症 (6B64)
+- **dissociative_identity_AZ.yaml** – 解離性同一症 (6B65)
+- **anorexia_MT.yaml** – 神経性やせ症 (6B80)
+- **bulimia_SN.yaml** – 神経性過食症 (6B81)
+- **binge_eating_HK.yaml** – 過食性障害 (6B82)
+- **somatic_symptom_MS.yaml** – 身体症状症 (6C20)
+- **illness_anxiety_HK.yaml** – 病気不安症 (6C21)
+- **alcohol_use_HS.yaml** – アルコール使用障害 (6C40)
+- **opioid_use_MT.yaml** – オピオイド使用障害 (6C4A)
+- **gambling_NM.yaml** – ギャンブル障害 (6C50)
+- **borderline_pd_JK.yaml** – 境界性パーソナリティ障害 (6D10)
+- **avoidant_pd_HM.yaml** – 回避性パーソナリティ障害 (6D40)
+- **alzheimer_TH.yaml** – アルツハイマー型認知症 (6D80)
+- **antisocial_pd_DT.yaml** – 反社会性パーソナリティ障害 (6D90)
 
 ## 使用方法
 
