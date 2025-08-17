@@ -3,7 +3,7 @@
 > *医学教育・臨床研修・心理学研究のための仮想患者ペルソナ集*
 
 **対象**: UPPS 2025.3  
-**最終更新**: 2025年8月1日
+**最終更新**: 2025年8月17日
 
 ## 概要
 
@@ -11,44 +11,41 @@
 
 ## 構成
 
-### templates/ - 症状表現テンプレート
+### templates/ - 症状表現テンプレート (31フォルダ)
 ```
 templates/
 ├── README.md                # テンプレート使用方法
-├── alzheimer/               # アルツハイマー型認知症テンプレート
-├── depression/              # うつ病テンプレート
-├── persistent_depression/          # 持続性抑うつ障害テンプレート
+├── autism/                  # 自閉スペクトラム症テンプレート
+├── adhd/                    # 注意欠如多動症テンプレート
 ├── schizophrenia/           # 統合失調症テンプレート
 ├── delusional_disorder/     # 妄想性障害テンプレート
+├── bipolar/                 # 双極性障害テンプレート
+├── depression/              # うつ病テンプレート
+├── persistent_depression/   # 持続性抑うつ障害テンプレート
 ├── anxiety/                 # 不安症テンプレート
 ├── panic/                   # パニック症テンプレート
-
+├── specific_phobia/         # 特定恐怖症テンプレート
+├── social_anxiety/          # 社交不安症テンプレート
 ├── ocd/                     # 強迫症テンプレート
+├── body_dysmorphic/         # 身体醜形症テンプレート
+├── hoarding/                # ためこみ症テンプレート
 ├── ptsd/                    # PTSDテンプレート
-├── bipolar/                 # 双極性障害テンプレート
+├── acute_stress/            # 急性ストレス反応テンプレート
+├── adjustment/              # 適応障害テンプレート
+├── depersonalization/       # 離人症テンプレート
+├── dissociative_identity/   # 解離性同一症テンプレート
+├── anorexia/                # 神経性やせ症テンプレート
+├── bulimia/                 # 神経性過食症テンプレート
+├── binge_eating/            # 過食性障害テンプレート
+├── somatic_symptom/         # 身体症状症テンプレート
+├── illness_anxiety/         # 病気不安症テンプレート
 ├── alcohol_use/             # アルコール使用障害テンプレート
 ├── opioid_use/              # オピオイド使用障害テンプレート
 ├── gambling/                # ギャンブル障害テンプレート
-├── somatic_symptom/         # 身体症状症テンプレート
-├── illness_anxiety/         # 病気不安症テンプレート
-├── social_anxiety/          # 社交不安症テンプレート
-├── specific_phobia/         # 特定恐怖症テンプレート
-├── ocd/                    # 強迫症テンプレート
-├── body_dysmorphic/        # 身体醜形症テンプレート
-├── hoarding/               # ためこみ症テンプレート
-├── ptsd/                    # PTSDテンプレート
-├── anorexia/               # 神経性やせ症テンプレート
-├── bulimia/                # 神経性過食症テンプレート
-├── binge_eating/           # 過食性障害テンプレート
-├── dissociative_identity/   # 解離性同一症テンプレート
-├── depersonalization/       # 離人症テンプレート
-├── acute_stress/            # 急性ストレス反応テンプレート
-├── adjustment/              # 適応障害テンプレート
 ├── borderline_pd/           # 境界性パーソナリティ障害テンプレート
-├── antisocial_pd/           # 反社会性パーソナリティ障害テンプレート
 ├── avoidant_pd/             # 回避性パーソナリティ障害テンプレート
-└── bipolar/                 # 双極性障害テンプレート
-
+├── alzheimer/               # アルツハイマー型認知症テンプレート
+└── antisocial_pd/           # 反社会性パーソナリティ障害テンプレート
 ```
 
 **特徴**:
@@ -57,45 +54,42 @@ templates/
 - 専門医監修による品質保証
 - 複数ペルソナでの再利用可能
 
-### examples/ - 実装例
+### examples/ - 実装例 (32ファイル)
 ```
 examples/
 ├── README.md                 # 実装例使用方法
-├── alzheimer_TH.yaml         # T.H.（アルツハイマー）
-├── depression_YT.yaml        # Y.T.（うつ病）
-├── anxiety_SY.yaml           # S.Y.（不安症）
+├── autism_HS.yaml            # H.S.（自閉スペクトラム症）
+├── adhd_JM.yaml              # J.M.（注意欠如多動症）
+├── schizophrenia_MT.yaml     # M.T.（統合失調症）
+├── delusional_disorder_AH.yaml  # A.H.（妄想性障害）
+├── bipolar_MO.yaml           # M.O.（双極性障害）
 ├── bipolar_NA.yaml           # N.A.（双極性障害）
+├── depression_YT.yaml        # Y.T.（うつ病）
+├── persistent_depression_MA.yaml   # M.A.（持続性抑うつ障害）
+├── anxiety_SY.yaml           # S.Y.（不安症）
+├── panic_TK.yaml             # T.K.（パニック症）
+├── specific_phobia_AK.yaml   # A.K.（特定恐怖症）
+├── social_anxiety_NH.yaml    # N.H.（社交不安症）
 ├── ocd_YK.yaml               # Y.K.（強迫症）
-├── panic_TK.yaml             # パニック症
+├── body_dysmorphic_MS.yaml   # M.S.（身体醜形症）
+├── hoarding_AT.yaml          # A.T.（ためこみ症）
 ├── ptsd_KW.yaml              # K.W.（PTSD）
+├── acute_stress_MT.yaml      # M.T.（急性ストレス反応）
+├── adjustment_HS.yaml        # H.S.（適応障害）
+├── depersonalization_BQ.yaml # B.Q.（離人症）
+├── dissociative_identity_AZ.yaml  # A.Z.（解離性同一症）
+├── anorexia_MT.yaml          # M.T.（神経性やせ症）
+├── bulimia_SN.yaml           # S.N.（神経性過食症）
+├── binge_eating_HK.yaml      # H.K.（過食性障害）
 ├── somatic_symptom_MS.yaml   # M.S.（身体症状症）
 ├── illness_anxiety_HK.yaml   # H.K.（病気不安症）
-├── persistent_depression_MA.yaml   # M.A.（持続性抑うつ障害）
-├── anxiety_SY.yaml      # S.Y.（不安症）
-├── alcohol_use_HS.yaml  # H.S.（アルコール使用障害）
-├── opioid_use_MT.yaml   # M.T.（オピオイド使用障害）
-├── gambling_NM.yaml     # N.M.（ギャンブル障害）
-├── delusional_disorder_AH.yaml  # A.H.（妄想性障害）
-├── schizophrenia_MT.yaml        # M.T.（統合失調症）
-├── bipolar_MO.yaml      # M.O.（双極性障害）
-├── ocd_YK.yaml        # Y.K.（強迫症）
-├── body_dysmorphic_MS.yaml  # M.S.（身体醜形症）
-├── hoarding_AT.yaml   # A.T.（ためこみ症）
-├── panic_TK.yaml        # パニック症
-├── ptsd_KW.yaml         # K.W.（PTSD）
-├── anorexia_MT.yaml     # M.T.（神経性やせ症）
-├── bulimia_SN.yaml      # S.N.（神経性過食症）
-├── binge_eating_HK.yaml # H.K.（過食性障害）
-├── dissociative_identity_AZ.yaml  # A.Z.（解離性同一症）
-├── depersonalization_BQ.yaml      # B.Q.（離人症）
-├── acute_stress_MT.yaml # M.T.（急性ストレス反応）
-├── adjustment_HS.yaml   # H.S.（適応障害）
-├── social_anxiety_NH.yaml  # N.H.（社交不安症）
-├── specific_phobia_AK.yaml # A.K.（特定恐怖症）
-├── borderline_pd_JK.yaml  # J.K.（境界性パーソナリティ障害）
-├── antisocial_pd_DT.yaml  # D.T.（反社会性パーソナリティ障害）
-└── avoidant_pd_HM.yaml    # H.M.（回避性パーソナリティ障害）
-
+├── alcohol_use_HS.yaml       # H.S.（アルコール使用障害）
+├── opioid_use_MT.yaml        # M.T.（オピオイド使用障害）
+├── gambling_NM.yaml          # N.M.（ギャンブル障害）
+├── borderline_pd_JK.yaml     # J.K.（境界性パーソナリティ障害）
+├── avoidant_pd_HM.yaml       # H.M.（回避性パーソナリティ障害）
+├── alzheimer_TH.yaml         # T.H.（アルツハイマー型認知症）
+└── antisocial_pd_DT.yaml     # D.T.（反社会性パーソナリティ障害）
 ```
 
 **特徴**:
