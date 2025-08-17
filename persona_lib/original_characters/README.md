@@ -9,6 +9,7 @@
 - `hikari_starseeker.yaml` - 銀河を旅する冒険家ヒカリ・スターシーカー
 - `arto_magius.yaml` - 風変わりな魔法使いアルト・マギウス
 - `nova_circuitbreaker.yaml` - サイバーセキュリティ専門家ノヴァ・サーキットブレイカー
+- `flashy_mad_scientist.yaml` - 派手な発明家フラッシー・マッドサイエンティスト
 
 各キャラクターの概要は対応するMarkdownファイルをご覧ください。
 ---
