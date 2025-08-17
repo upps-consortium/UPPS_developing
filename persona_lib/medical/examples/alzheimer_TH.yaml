@@ -205,7 +205,7 @@ current_emotion_state:
 non_dialogue_metadata:
   clinical_data:
     primary_diagnosis:
-      icd_11: "F00.0"
+      icd_11: "6D80"
       dsm_5_tr: "331.0"
       name_jp: "アルツハイマー型認知症"
       severity: "moderate"
