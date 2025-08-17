@@ -48,227 +48,39 @@ personal_info:
 - **プライバシー**: 個人特定可能な情報は一切含まない
 
 ## テンプレート一覧
+- `autism` (6A02): 自閉スペクトラム症の典型テンプレート
+- `adhd` (6A05): 注意欠如・多動症（混合型）のテンプレート
+- `schizophrenia` (6A20): 統合失調症の軽度〜中等度テンプレート
+- `delusional_disorder` (6A24): 妄想性障害の典型テンプレート
+- `bipolar` (6A60): 双極性障害の躁・うつエピソード（中等度〜重度）テンプレート
+- `depression` (6A70): うつ病の軽度〜中等度テンプレート
+- `persistent_depression` (6A72): 持続性抑うつ障害の長期症状テンプレート
+- `anxiety` (6B00): 全般性不安症の軽度・中等度テンプレート
+- `panic` (6B01): パニック症の中等度テンプレート
+- `specific_phobia` (6B03): 特定恐怖症（動物恐怖）のテンプレート
+- `social_anxiety` (6B04): 社交不安症（発表場面恐怖）のテンプレート
+- `ocd` (6B20): 強迫症の中等度典型テンプレート
+- `body_dysmorphic` (6B21): 身体醜形症の中等度テンプレート
+- `hoarding` (6B24): ためこみ症の中等度テンプレート
+- `acute_stress` (6B41): 急性ストレス反応の中等度テンプレート
+- `ptsd` (6B41): 外傷後ストレス障害の中等度テンプレート（再体験／回避）
+- `adjustment` (6B43): 適応障害の軽度抑うつ型テンプレート
+- `depersonalization` (6B64): 離人症の中等度テンプレート
+- `dissociative_identity` (6B65): 解離性同一症の中等度テンプレート
+- `anorexia` (6B80): 神経性やせ症（制限型）の中等度テンプレート
+- `bulimia` (6B81): 神経性過食症（排出型）の中等度テンプレート
+- `binge_eating` (6B82): 過食性障害の中等度テンプレート
+- `somatic_symptom` (6C20): 身体症状症の中等度テンプレート
+- `illness_anxiety` (6C21): 病気不安症の中等度テンプレート
+- `alcohol_use` (6C40): アルコール使用障害の中等度テンプレート
+- `opioid_use` (6C4A): オピオイド使用障害の中等度テンプレート
+- `gambling` (6C50): ギャンブル障害の中等度テンプレート
+- `borderline_pd` (6D10): 境界性パーソナリティ障害の中等度テンプレート
+- `avoidant_pd` (6D40): 回避性パーソナリティ障害の中等度テンプレート
+- `alzheimer` (6D80): アルツハイマー型認知症の軽度〜重度テンプレート
+- `antisocial_pd` (6D90): 反社会性パーソナリティ障害の中等度テンプレート
 
-### 認知症関連
-
-#### アルツハイマー型認知症
-- **alzheimer_mild_typical_v1.0.yaml**
-  - 軽度・典型パターン（記憶障害中心）
-  - 日常生活に軽微な影響
-  
-- **alzheimer_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン（記憶障害中心）
-  - 日常生活に明確な影響
-  
-  - **alzheimer_moderate_confabulation_v1.0.yaml**
-    - 中等度・作話症状パターン
-    - 誤った記憶を補う発言が目立つ
-
-  - **alzheimer_moderate_anosognosia_v1.0.yaml**
-    - 中等度・病識欠如パターン
-    - 自身の障害を自覚しない
-  
-  - **alzheimer_severe_disorientation_v1.0.yaml**
-    - 重度・見当識障害パターン
-    - 日常生活に著しい混乱
-
-### 気分障害関連
-
-#### うつ病
-  - **depression_mild_typical_v1.0.yaml**
-    - 軽度・典型パターン
-    - 気分の落ち込みが主体
-
-  - **depression_mild_atypical_v1.0.yaml**
-    - 軽度・非定型パターン
-    - 気分反応性、過眠・過食傾向
-
-  - **depression_moderate_melancholic_v1.0.yaml**
-    - 中等度・メランコリー型
-    - 朝の悪化、興味喪失が特徴
-
-  - **depression_dysthymic_chronic_v1.0.yaml**
-    - 慢性持続型抑うつ
-    - 長期にわたる軽度抑うつ状態
-
-#### 持続性抑うつ障害
-- **persistent_depression_v1.0.yaml**
-  - 慢性・持続性抑うつ障害
-  - 2年以上持続する軽〜中等度の抑うつ症状
-
-#### 双極性障害
-- **bipolar_manic_moderate_v1.0.yaml**
-  - 躁エピソード・中等度
-  - 気分高揚、多弁、活動性増加
-  
-- **bipolar_depressive_moderate_v1.0.yaml**
-  - うつエピソード・中等度
-  - 双極性障害のうつ状態
-
-### 不安症関連
-
-#### 全般性不安症
-- **anxiety_mild_generalized_v1.0.yaml**
-  - 軽度・全般性不安
-  - 過度の心配、身体症状
-  
-- **anxiety_moderate_generalized_v1.0.yaml**
-  - 中等度・全般性不安
-  - 日常生活への影響が明確
-
-#### パニック症
-- **panic_disorder_moderate_v1.0.yaml**
-  - 中等度・パニック症
-  - パニック発作、予期不安
-
-### 身体症状関連
-
-#### 身体症状症
-- **somatic_symptom_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 身体症状への過度な意識と苦痛
-
-#### 病気不安症
-- **illness_anxiety_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 病気への過度な不安・確認行動
-
-#### 社交不安症
-- **social_anxiety_moderate_performance_v1.0.yaml**
-  - 中等度・発表場面恐怖
-  - 人前での発言・評価恐怖
-
-#### 特定恐怖症
-- **specific_phobia_moderate_animal_v1.0.yaml**
-  - 中等度・動物恐怖
-  - 犬などの特定動物への強い恐怖
-
-### 強迫症関連
-
-#### 強迫症
-- **ocd_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 強迫観念と強迫行為が顕著
-
-#### 身体醜形症
-- **body_dysmorphic_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 外見へのとらわれ、確認行動
-
-#### ためこみ症
-- **hoarding_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 不要物の収集と捨てられない傾向
-
-### 統合失調症関連
-
-  - **schizophrenia_moderate_acute_v1.0.yaml**
-    - 中等度・急性期パターン
-    - 陽性症状が顕著
-
-  - **schizophrenia_mild_negative_v1.0.yaml**
-    - 軽度・陰性症状優位
-    - 意欲低下、感情鈍麻が目立つ
-
-### 妄想性障害関連
-
-- **delusional_disorder_typical_v1.0.yaml**
-  - 典型例・非奇異性妄想が中心
-  - 幻覚や思考障害は目立たない
-
-### トラウマ関連
-
-#### PTSD
-- **ptsd_moderate_reexperiencing_v1.0.yaml**
-  - 中等度・再体験症状優位
-  - フラッシュバック、悪夢が顕著
-
-- **ptsd_moderate_avoidance_v1.0.yaml**
-  - 中等度・回避症状優位
-  - 刺激回避、感情麻痺が顕著
-
-### 摂食障害関連
-
-#### 神経性やせ症
-- **anorexia_moderate_restricting_v1.0.yaml**
-  - 中等度・制限型
-  - 体重減少と食事制限が中心
-
-#### 神経性過食症
-- **bulimia_moderate_purging_v1.0.yaml**
-  - 中等度・排出型
-  - 反復する過食と代償行動
-
-#### 過食性障害
-- **binge_eating_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 代償行動を伴わない過食
-
-### 物質・嗜癖関連
-
-#### アルコール使用障害
-- **alcohol_use_disorder_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 飲酒欲求とコントロール困難
-
-#### オピオイド使用障害
-- **opioid_use_disorder_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 処方薬依存と退薬症状
-
-#### ギャンブル障害
-- **gambling_disorder_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 損失追求と隠匿行動
-
-### 解離性障害関連
-
-#### 解離性同一症
-- **dissociative_identity_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 同一性の交代、記憶の抜け落ち
-
-#### 離人症
-- **depersonalization_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 離人感、現実感喪失
-#### 急性ストレス反応
-- **acute_stress_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 外傷直後の過覚醒と回避
-
-#### 適応障害
-- **adjustment_mild_depressive_v1.0.yaml**
-  - 軽度・抑うつ型
-  - ストレス因子への適応困難
-
-### 発達症関連
-
-#### 自閉スペクトラム症
-- **autism_typical_v1.0.yaml**
-  - 典型パターン
-  - 社会的コミュニケーションの困難と限定された興味
-
-#### 注意欠如・多動症
-- **adhd_combined_v1.0.yaml**
-  - 混合型
-  - 不注意と多動・衝動性が共存
-### パーソナリティ障害関連
-
-#### 境界性パーソナリティ障害
-- **borderline_pd_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 感情の不安定さ、対人関係の不安定さが特徴
-
-#### 反社会性パーソナリティ障害
-- **antisocial_pd_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 他者権利の無視、罪悪感の欠如が特徴
-
-#### 回避性パーソナリティ障害
-- **avoidant_pd_moderate_typical_v1.0.yaml**
-  - 中等度・典型パターン
-  - 対人回避と劣等感が特徴
+合計31ディレクトリのテンプレートを収録。重症度バリエーションあり：アルツハイマー型認知症、全般性不安症、双極性障害、うつ病、統合失調症。
 
 ## 命名規則
 
