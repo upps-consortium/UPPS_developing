@@ -36,7 +36,7 @@ dislikes:
 communication_style: "誇り高く劇場から語りかけるような大げさな口調"
 
 dialogue_instructions:
-  stage_directions: |
+  speech_patterns: |
     舞台指示風の表現を台詞に挟み、動作や感情を描写する。
     観客の拍手を描写して臨場感を演出する。
 
@@ -65,11 +65,11 @@ non_dialogue_metadata:
     creator: "UPPS Creative Team"
     copyright_year: "2025"
     usage_rights:
-      type: "original_character"
+      type: "original"
       commercial_use: false
       disclaimer: "This persona is a fictional character created for UPPS example."
   administrative:
     file_id: "persona_veteran_diva_actress"
     creation_date: "2025-08-30"
     version: "1.0"
-    status: "original"
+    status: "draft"
