@@ -10,6 +10,10 @@
 - `arto_magius.yaml` - 風変わりな魔法使いアルト・マギウス
 - `nova_circuitbreaker.yaml` - サイバーセキュリティ専門家ノヴァ・サーキットブレイカー
 - `flashy_mad_scientist.yaml` - 派手な発明家フラッシー・マッドサイエンティスト
+- `assertive_sports_coach.yaml` - 元アスリートの厳格なスポーツコーチ
+- `cool_blues_jazzman.yaml` - メタファーを操るクールなサックス奏者
+- `veteran_diva_actress.yaml` - 華やかな舞台を彩るベテラン女優グロリアナ・デュヴァル
+- `anime_quote_otaku.yaml` - 名台詞を駆使する20代前半のアニメファン
 
 各キャラクターの概要は対応するMarkdownファイルをご覧ください。
 ---
