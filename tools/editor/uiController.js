@@ -42,6 +42,8 @@ export default class UIController {
                 this.handleMetadataInputChange(e);
             } else if (e.target.matches('.disease-input')) {
                 this.handleDiseaseInputChange(e);
+            } else if (e.target.matches('.context-input')) {
+                this.handleContextInputChange(e);
             }
         });
 
@@ -51,7 +53,7 @@ export default class UIController {
             }
         });
 
-        ['instructions-text', 'metadata-text'].forEach(id => {
+        ['instructions-text', 'metadata-text', 'context-text'].forEach(id => {
             const area = document.getElementById(id);
             area.addEventListener('dragover', e => e.preventDefault());
             area.addEventListener('drop', e => {
@@ -164,6 +166,7 @@ export default class UIController {
         this.updateAssociationsUI(data);
         this.updateDialogueInstructionsUI(data);
         this.updateMetadataUI(data);
+        this.updateContextUI(data);
         this.updatePrompt();
         this.updateDiseasePromptsUI(data);
     }
@@ -241,6 +244,20 @@ export default class UIController {
         const area = document.getElementById('disease-prompts');
         if (area) {
             area.value = data.disease_prompts_text || '';
+        }
+    }
+
+    handleContextInputChange(e) {
+        const { id, value } = e.target;
+        if (id === 'context-text') {
+            this.personaData.updateSessionContext(value);
+        }
+    }
+
+    updateContextUI(data) {
+        const area = document.getElementById('context-text');
+        if (area) {
+            area.value = data.session_context || '';
         }
     }
 

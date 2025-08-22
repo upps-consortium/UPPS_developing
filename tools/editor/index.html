@@ -44,6 +44,9 @@
             <button class="tab-btn" data-tab="metadata">
                 📑 メタデータ
             </button>
+            <button class="tab-btn" data-tab="context">
+                📚 コンテキスト
+            </button>
             <button class="tab-btn" data-tab="preview">
                 📄 プレビュー
             </button>
@@ -298,6 +301,16 @@
                         <span class="suggestion" draggable="true" data-snippet="copyright_info:\n  " title="権利者やライセンス表記">著作権情報</span>
                         <span class="suggestion" draggable="true" data-snippet="administrative:\n  " title="バージョンや責任者">管理情報</span>
                         <span class="suggestion" draggable="true" data-snippet="usage_terms:\n  - " title="利用規約や禁止事項">使用条件</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="context-tab" class="tab-panel">
+                <div class="card">
+                    <h2 class="card-title">コンテキスト</h2>
+                    <div class="form-group">
+                        <label for="context-text">コンテキスト</label>
+                        <textarea id="context-text" rows="8" class="context-input"></textarea>
                     </div>
                 </div>
             </div>

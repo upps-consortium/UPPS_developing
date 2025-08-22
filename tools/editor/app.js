@@ -61,7 +61,8 @@ class PersonaData {
             },
             dialogue_instructions_text: "",
             non_dialogue_metadata_text: "",
-            disease_prompts_text: ""
+            disease_prompts_text: "",
+            session_context: ""
         };
     }
 
@@ -110,6 +111,11 @@ class PersonaData {
 
     updateDiseasePromptsText(text) {
         this.data.disease_prompts_text = text;
+        this.notifyChange();
+    }
+
+    updateSessionContext(text) {
+        this.data.session_context = text;
         this.notifyChange();
     }
 
@@ -192,6 +198,11 @@ class PersonaData {
         } catch (e) {
             outputData.disease_specific_prompts = this.data.disease_prompts_text || {};
         }
+        try {
+            outputData.session_context = jsyaml.load(this.data.session_context) || {};
+        } catch (e) {
+            outputData.session_context = this.data.session_context || {};
+        }
 
         delete outputData.dialogue_instructions_text;
         delete outputData.non_dialogue_metadata_text;
@@ -218,14 +229,17 @@ class PersonaData {
             const instructions = parsedData.dialogue_instructions;
             const metadata = parsedData.non_dialogue_metadata;
             const disease = parsedData.disease_specific_prompts;
+            const context = parsedData.session_context;
             delete parsedData.dialogue_instructions;
             delete parsedData.non_dialogue_metadata;
             delete parsedData.disease_specific_prompts;
+            delete parsedData.session_context;
 
             this.data = { ...this.getDefaultData(), ...parsedData };
             this.data.dialogue_instructions_text = instructions ? jsyaml.dump(instructions) : '';
             this.data.non_dialogue_metadata_text = metadata ? jsyaml.dump(metadata) : '';
             this.data.disease_prompts_text = disease ? jsyaml.dump(disease) : '';
+            this.data.session_context = context ? jsyaml.dump(context) : '';
             this.notifyChange();
             return true;
         } catch (error) {
