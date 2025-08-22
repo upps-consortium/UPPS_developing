@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPPSペルソナエディター</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>UPPSペルソナエディター</h1>
+            <div class="header-actions">
+                <button class="btn btn--primary" onclick="app.handleNewPersona()">
+                    ✨ 新規作成
+                </button>
+                <button class="btn btn--primary" onclick="app.handleLoadFile()">
+                    📁 開く
+                </button>
+                <button class="btn btn--primary" onclick="app.handleSaveFile()">
+                    💾 保存
+                </button>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="personal">
+                👤 基本情報
+            </button>
+            <button class="tab-btn" data-tab="personality">
+                🧠 性格特性
+            </button>
+            <button class="tab-btn" data-tab="emotions">
+                😊 感情システム
+            </button>
+            <button class="tab-btn" data-tab="associations">
+                🔗 関連性ネットワーク
+            </button>
+            <button class="tab-btn" data-tab="instructions">
+                📝 対話指示
+            </button>
+            <button class="tab-btn" data-tab="metadata">
+                📑 メタデータ
+            </button>
+            <button class="tab-btn" data-tab="preview">
+                📄 プレビュー
+            </button>
+        </nav>
+
+        <!-- Content -->
+        <main class="content">
+            <!-- Notifications -->
+            <div id="notifications"></div>
+
+            <!-- Personal Info Tab -->
+            <div id="personal-tab" class="tab-panel active">
+                <div class="card">
+                    <h2 class="card-title">基本情報</h2>
+                    
+                    <div class="form-group">
+                        <label for="persona-name">氏名</label>
+                        <input type="text" id="persona-name" placeholder="例: 田中太郎" class="persona-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="persona-age">年齢</label>
+                        <input type="number" id="persona-age" placeholder="例: 25" min="0" max="150" class="persona-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="persona-gender">性別</label>
+                        <select id="persona-gender" class="persona-input">
+                            <option value="">選択してください</option>
+                            <option value="Male">男性</option>
+                            <option value="Female">女性</option>
+                            <option value="Other">その他</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="persona-occupation">職業</label>
+                        <input type="text" id="persona-occupation" placeholder="例: システムエンジニア" class="persona-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="persona-background">背景情報</label>
+                        <textarea id="persona-background" rows="6" 
+                                placeholder="成育歴、生活背景の詳細記述を入力してください..." 
+                                class="persona-input"></textarea>
+                        <div class="form-help">このペルソナの生育歴、教育背景、重要な人生体験などを記述してください。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personality Tab -->
+            <div id="personality-tab" class="tab-panel">
+                <div class="card">
+                    <h2 class="card-title">BigFive性格特性</h2>
+                    
+                    <div class="form-group">
+                        <label for="openness-slider">開放性 (Openness)</label>
+                        <div class="slider-container">
+                            <input type="range" id="openness-slider" class="slider-input" min="0" max="100" value="50">
+                            <span class="slider-value">50%</span>
+                        </div>
+                        <div class="form-help">新しい経験や概念への受容性</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="conscientiousness-slider">誠実性 (Conscientiousness)</label>
+                        <div class="slider-container">
+                            <input type="range" id="conscientiousness-slider" class="slider-input" min="0" max="100" value="50">
+                            <span class="slider-value">50%</span>
+                        </div>
+                        <div class="form-help">計画性や責任感</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="extraversion-slider">外向性 (Extraversion)</label>
+                        <div class="slider-container">
+                            <input type="range" id="extraversion-slider" class="slider-input" min="0" max="100" value="50">
+                            <span class="slider-value">50%</span>
+                        </div>
+                        <div class="form-help">社交性やエネルギーの外向的発散</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="agreeableness-slider">協調性 (Agreeableness)</label>
+                        <div class="slider-container">
+                            <input type="range" id="agreeableness-slider" class="slider-input" min="0" max="100" value="50">
+                            <span class="slider-value">50%</span>
+                        </div>
+                        <div class="form-help">他者への思いやりや協力</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="neuroticism-slider">神経症的傾向 (Neuroticism)</label>
+                        <div class="slider-container">
+                            <input type="range" id="neuroticism-slider" class="slider-input" min="0" max="100" value="50">
+                            <span class="slider-value">50%</span>
+                        </div>
+                        <div class="form-help">感情の不安定さやストレス反応</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emotions Tab -->
+            <div id="emotions-tab" class="tab-panel">
+                <div class="card">
+                    <h2 class="card-title">感情システム (Ekmanモデル)</h2>
+                    
+                    <div class="form-group">
+                        <label for="joy-slider">喜び (Joy)</label>
+                        <div class="slider-container">
+                            <input type="range" id="joy-slider" class="slider-input" min="0" max="100" value="50">
+                            <span class="slider-value">50</span>
+                        </div>
+                        <div class="form-help">幸福感、満足感</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sadness-slider">悲しみ (Sadness)</label>
+                        <div class="slider-container">
+                            <input type="range" id="sadness-slider" class="slider-input" min="0" max="100" value="30">
+                            <span class="slider-value">30</span>
+                        </div>
+                        <div class="form-help">悲しみ、失望感</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="anger-slider">怒り (Anger)</label>
+                        <div class="slider-container">
+                            <input type="range" id="anger-slider" class="slider-input" min="0" max="100" value="25">
+                            <span class="slider-value">25</span>
+                        </div>
+                        <div class="form-help">怒り、いらだち</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fear-slider">恐れ (Fear)</label>
+                        <div class="slider-container">
+                            <input type="range" id="fear-slider" class="slider-input" min="0" max="100" value="40">
+                            <span class="slider-value">40</span>
+                        </div>
+                        <div class="form-help">恐れ、不安</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="disgust-slider">嫌悪 (Disgust)</label>
+                        <div class="slider-container">
+                            <input type="range" id="disgust-slider" class="slider-input" min="0" max="100" value="20">
+                            <span class="slider-value">20</span>
+                        </div>
+                        <div class="form-help">嫌悪、不快感</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surprise-slider">驚き (Surprise)</label>
+                        <div class="slider-container">
+                            <input type="range" id="surprise-slider" class="slider-input" min="0" max="100" value="55">
+                            <span class="slider-value">55</span>
+                        </div>
+                        <div class="form-help">驚き、意外性への反応</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Associations Tab -->
+            <div id="associations-tab" class="tab-panel">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">関連性ネットワーク</h2>
+                        <div class="header-buttons">
+                            <button class="btn btn--secondary" onclick="app.openTemplateModal()">
+                                📋 テンプレート
+                            </button>
+                            <button class="btn btn--primary" onclick="app.openAssociationModal()">
+                                ➕ 新規追加
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 関連性一覧テーブル -->
+                    <div class="associations-table-container">
+                        <table class="associations-table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>ID</th>
+                                    <th>トリガー</th>
+                                    <th>レスポンス</th>
+                                    <th>強度</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="associations-tbody">
+                                <!-- JavaScript で動的生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- 空の状態 -->
+                    <div id="associations-empty" class="empty-state">
+                        <p>関連性が設定されていません</p>
+                        <button class="btn btn--secondary" onclick="app.openAssociationModal()">
+                            最初の関連性を追加
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions Tab -->
+            <div id="instructions-tab" class="tab-panel">
+                <div class="card">
+                    <h2 class="card-title">対話指示</h2>
+                    <div class="form-group">
+                        <label for="instructions-text">指示内容</label>
+                        <textarea id="instructions-text" rows="8" class="instructions-input"></textarea>
+                    </div>
+                    <div class="suggestions">
+                        <span class="suggestion" draggable="true" data-snippet="speech_patterns: |\n  " title="キャラクターの語調を指定">話し方・口調</span>
+                        <span class="suggestion" draggable="true" data-snippet="behavioral_responses: |\n  " title="想定する振る舞い">行動・反応</span>
+                        <span class="suggestion" draggable="true" data-snippet="special_abilities: |\n  " title="特別なスキルや能力">特殊能力</span>
+                        <span class="suggestion" draggable="true" data-snippet="direct_description: |\n  " title="自然言語による指示">直接記述</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metadata Tab -->
+            <div id="metadata-tab" class="tab-panel">
+                <div class="card">
+                    <h2 class="card-title">メタデータ</h2>
+                    <div class="form-group">
+                        <label for="metadata-text">メタデータ</label>
+                        <textarea id="metadata-text" rows="8" class="metadata-input"></textarea>
+                    </div>
+                    <div class="suggestions">
+                        <span class="suggestion" draggable="true" data-snippet="clinical_data:\n  " title="健康や病歴に関する情報">医療関連データ</span>
+                        <span class="suggestion" draggable="true" data-snippet="copyright_info:\n  " title="権利者やライセンス表記">著作権情報</span>
+                        <span class="suggestion" draggable="true" data-snippet="administrative:\n  " title="バージョンや責任者">管理情報</span>
+                        <span class="suggestion" draggable="true" data-snippet="usage_terms:\n  - " title="利用規約や禁止事項">使用条件</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Tab -->
+            <div id="preview-tab" class="tab-panel">
+                <div class="card">
+                    <h2 class="card-title">YAMLプレビュー</h2>
+                    <div id="yaml-preview" class="preview-container">
+# ここにYAMLプレビューが表示されます
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Hidden File Input -->
+        <input type="file" id="file-input" class="file-input" accept=".yaml,.yml" />
+        
+        <!-- Association Edit Modal -->
+        <div id="association-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>関連性の編集</h3>
+                    <button class="modal-close" onclick="app.closeAssociationModal()">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-steps">
+                        <!-- Step 1: Trigger Type Selection -->
+                        <div class="step active" data-step="1">
+                            <h4>ステップ1: トリガータイプ選択</h4>
+                            <div class="trigger-type-selection">
+                                <label class="radio-card">
+                                    <input type="radio" name="triggerType" value="external">
+                                    <div class="radio-card-content">
+                                        <strong>🏷️ 外部トリガー</strong>
+                                        <small>会話トピックや単語</small>
+                                    </div>
+                                </label>
+                                <label class="radio-card">
+                                    <input type="radio" name="triggerType" value="emotion">
+                                    <div class="radio-card-content">
+                                        <strong>😊 感情トリガー</strong>
+                                        <small>感情状態の閾値</small>
+                                    </div>
+                                </label>
+                                <label class="radio-card">
+                                    <input type="radio" name="triggerType" value="memory">
+                                    <div class="radio-card-content">
+                                        <strong>💭 記憶トリガー</strong>
+                                        <small>特定の記憶</small>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Trigger Details -->
+                        <div class="step" data-step="2">
+                            <h4>ステップ2: トリガー詳細設定</h4>
+                            <div id="trigger-details">
+                                <!-- 選択されたタイプに応じて動的に変更 -->
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Response Settings -->
+                        <div class="step" data-step="3">
+                            <h4>ステップ3: レスポンス設定</h4>
+                            <div class="form-group">
+                                <label for="responseType">レスポンスタイプ</label>
+                                <select id="responseType">
+                                    <option value="memory">記憶</option>
+                                    <option value="emotion">感情</option>
+                                    <option value="emotion_baseline_change">感情ベースライン変更</option>
+                                    <option value="special_ability_activation">特殊能力発動</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="responseTarget">対象</label>
+                                <select id="responseTarget">
+                                    <!-- 選択されたタイプに応じて動的に変更 -->
+                                </select>
+                            </div>
+                            <div class="form-group" id="changeAmountGroup" style="display:none;">
+                                <label for="changeAmount">変化量/強度</label>
+                                <input type="number" id="changeAmount" value="0">
+                            </div>
+                            <div class="form-group" id="responseDescGroup" style="display:none;">
+                                <label for="responseDescription">説明</label>
+                                <input type="text" id="responseDescription">
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4: Association Strength -->
+                        <div class="step" data-step="4">
+                            <h4>ステップ4: 関連強度設定</h4>
+                            <div class="form-group">
+                                <label for="association-strength">関連強度</label>
+                                <div class="slider-container">
+                                    <input type="range" id="association-strength" 
+                                           class="slider-input" min="0" max="100" value="70">
+                                    <span class="slider-value">70</span>
+                                </div>
+                                <div class="strength-guide">
+                                    <small>
+                                        <strong>0-30:</strong> 弱い関連 |
+                                        <strong>31-70:</strong> 中程度 |
+                                        <strong>71-100:</strong> 強い関連
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn--secondary" id="prev-step-btn" onclick="app.previousStep()" style="display: none;">← 前へ</button>
+                    <button class="btn btn--primary" id="next-step-btn" onclick="app.nextStep()">次へ →</button>
+                    <button class="btn btn--success" id="save-association-btn" onclick="app.saveAssociation()" style="display: none;">
+                        💾 保存
+                    </button>
+                    <button class="btn btn--secondary" onclick="app.closeAssociationModal()">キャンセル</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Association Template Modal -->
+        <div id="template-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>関連性テンプレート選択</h3>
+                    <button class="modal-close" onclick="app.closeTemplateModal()">✕</button>
+                </div>
+                <div class="modal-body">
+                    <p>典型的な関連性パターンから選択して、カスタマイズできます</p>
+                    <div class="template-grid" id="template-grid">
+                        <!-- JavaScript で動的生成 -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn--secondary" onclick="app.closeTemplateModal()">キャンセル</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- js-yaml CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script type="module" src="./app.js"></script>
+</body>
+</html>
