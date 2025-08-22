@@ -1,0 +1,184 @@
+{
+  "templates": [
+    {
+      "name": "acute_stress_moderate_typical_v1.0",
+      "path": "acute_stress/acute_stress_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "adhd_combined_v1.0",
+      "path": "adhd/adhd_combined_v1.0.yaml"
+    },
+    {
+      "name": "adjustment_mild_depressive_v1.0",
+      "path": "adjustment/adjustment_mild_depressive_v1.0.yaml"
+    },
+    {
+      "name": "alcohol_use_disorder_moderate_typical_v1.0",
+      "path": "alcohol_use/alcohol_use_disorder_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "alzheimer_mild_typical_v1.0",
+      "path": "alzheimer/alzheimer_mild_typical_v1.0.yaml"
+    },
+    {
+      "name": "alzheimer_moderate_anosognosia_v1.0",
+      "path": "alzheimer/alzheimer_moderate_anosognosia_v1.0.yaml"
+    },
+    {
+      "name": "alzheimer_moderate_confabulation_v1.0",
+      "path": "alzheimer/alzheimer_moderate_confabulation_v1.0.yaml"
+    },
+    {
+      "name": "alzheimer_moderate_typical_v1.0",
+      "path": "alzheimer/alzheimer_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "alzheimer_severe_disorientation_v1.0",
+      "path": "alzheimer/alzheimer_severe_disorientation_v1.0.yaml"
+    },
+    {
+      "name": "anorexia_moderate_restricting_v1.0",
+      "path": "anorexia/anorexia_moderate_restricting_v1.0.yaml"
+    },
+    {
+      "name": "antisocial_pd_moderate_typical_v1.0",
+      "path": "antisocial_pd/antisocial_pd_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "anxiety_mild_generalized_v1.0",
+      "path": "anxiety/anxiety_mild_generalized_v1.0.yaml"
+    },
+    {
+      "name": "anxiety_moderate_generalized_v1.0",
+      "path": "anxiety/anxiety_moderate_generalized_v1.0.yaml"
+    },
+    {
+      "name": "autism_typical_v1.0",
+      "path": "autism/autism_typical_v1.0.yaml"
+    },
+    {
+      "name": "avoidant_pd_moderate_typical_v1.0",
+      "path": "avoidant_pd/avoidant_pd_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "binge_eating_moderate_typical_v1.0",
+      "path": "binge_eating/binge_eating_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "bipolar_depressive_moderate_v1.0",
+      "path": "bipolar/bipolar_depressive_moderate_v1.0.yaml"
+    },
+    {
+      "name": "bipolar_manic_moderate_v1.0",
+      "path": "bipolar/bipolar_manic_moderate_v1.0.yaml"
+    },
+    {
+      "name": "bipolar_manic_severe_v1.0",
+      "path": "bipolar/bipolar_manic_severe_v1.0.yaml"
+    },
+    {
+      "name": "body_dysmorphic_moderate_typical_v1.0",
+      "path": "body_dysmorphic/body_dysmorphic_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "borderline_pd_moderate_typical_v1.0",
+      "path": "borderline_pd/borderline_pd_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "bulimia_moderate_purging_v1.0",
+      "path": "bulimia/bulimia_moderate_purging_v1.0.yaml"
+    },
+    {
+      "name": "delusional_disorder_typical_v1.0",
+      "path": "delusional_disorder/delusional_disorder_typical_v1.0.yaml"
+    },
+    {
+      "name": "depersonalization_moderate_typical_v1.0",
+      "path": "depersonalization/depersonalization_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "depression_dysthymic_chronic_v1.0",
+      "path": "depression/depression_dysthymic_chronic_v1.0.yaml"
+    },
+    {
+      "name": "depression_mild_atypical_v1.0",
+      "path": "depression/depression_mild_atypical_v1.0.yaml"
+    },
+    {
+      "name": "depression_mild_typical_v1.0",
+      "path": "depression/depression_mild_typical_v1.0.yaml"
+    },
+    {
+      "name": "depression_moderate_melancholic_v1.0",
+      "path": "depression/depression_moderate_melancholic_v1.0.yaml"
+    },
+    {
+      "name": "dissociative_identity_moderate_typical_v1.0",
+      "path": "dissociative_identity/dissociative_identity_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "gambling_disorder_moderate_typical_v1.0",
+      "path": "gambling/gambling_disorder_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "hoarding_moderate_typical_v1.0",
+      "path": "hoarding/hoarding_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "illness_anxiety_moderate_typical_v1.0",
+      "path": "illness_anxiety/illness_anxiety_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "ocd_moderate_typical_v1.0",
+      "path": "ocd/ocd_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "opioid_use_disorder_moderate_typical_v1.0",
+      "path": "opioid_use/opioid_use_disorder_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "panic_disorder_moderate_v1.0",
+      "path": "panic/panic_disorder_moderate_v1.0.yaml"
+    },
+    {
+      "name": "persistent_depression_v1.0",
+      "path": "persistent_depression/persistent_depression_v1.0.yaml"
+    },
+    {
+      "name": "ptsd_moderate_avoidance_v1.0",
+      "path": "ptsd/ptsd_moderate_avoidance_v1.0.yaml"
+    },
+    {
+      "name": "ptsd_moderate_reexperiencing_v1.0",
+      "path": "ptsd/ptsd_moderate_reexperiencing_v1.0.yaml"
+    },
+    {
+      "name": "schizophrenia_mild_adapted_v1.0",
+      "path": "schizophrenia/schizophrenia_mild_adapted_v1.0.yaml"
+    },
+    {
+      "name": "schizophrenia_mild_negative_v1.0",
+      "path": "schizophrenia/schizophrenia_mild_negative_v1.0.yaml"
+    },
+    {
+      "name": "schizophrenia_moderate_acute_v1.0",
+      "path": "schizophrenia/schizophrenia_moderate_acute_v1.0.yaml"
+    },
+    {
+      "name": "schizophrenia_subtle_positive_v1.0",
+      "path": "schizophrenia/schizophrenia_subtle_positive_v1.0.yaml"
+    },
+    {
+      "name": "social_anxiety_moderate_performance_v1.0",
+      "path": "social_anxiety/social_anxiety_moderate_performance_v1.0.yaml"
+    },
+    {
+      "name": "somatic_symptom_moderate_typical_v1.0",
+      "path": "somatic_symptom/somatic_symptom_moderate_typical_v1.0.yaml"
+    },
+    {
+      "name": "specific_phobia_moderate_animal_v1.0",
+      "path": "specific_phobia/specific_phobia_moderate_animal_v1.0.yaml"
+    }
+  ]
+}

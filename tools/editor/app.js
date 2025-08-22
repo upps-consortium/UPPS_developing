@@ -60,7 +60,8 @@ class PersonaData {
                 associations: []
             },
             dialogue_instructions_text: "",
-            non_dialogue_metadata_text: ""
+            non_dialogue_metadata_text: "",
+            disease_prompts_text: ""
         };
     }
 
@@ -104,6 +105,23 @@ class PersonaData {
 
     updateMetadataText(text) {
         this.data.non_dialogue_metadata_text = text;
+        this.notifyChange();
+    }
+
+    updateDiseasePromptsText(text) {
+        this.data.disease_prompts_text = text;
+        this.notifyChange();
+    }
+
+    mergeDiseaseTemplate(template) {
+        let current = {};
+        try {
+            current = jsyaml.load(this.data.disease_prompts_text) || {};
+        } catch (e) {
+            current = {};
+        }
+        const merged = { ...current, ...template };
+        this.data.disease_prompts_text = jsyaml.dump(merged);
         this.notifyChange();
     }
 
@@ -169,9 +187,15 @@ class PersonaData {
         } catch (e) {
             outputData.non_dialogue_metadata = this.data.non_dialogue_metadata_text || {};
         }
+        try {
+            outputData.disease_specific_prompts = jsyaml.load(this.data.disease_prompts_text) || {};
+        } catch (e) {
+            outputData.disease_specific_prompts = this.data.disease_prompts_text || {};
+        }
 
         delete outputData.dialogue_instructions_text;
         delete outputData.non_dialogue_metadata_text;
+        delete outputData.disease_prompts_text;
 
         return jsyaml.dump(outputData, {
             lineWidth: -1,
@@ -193,12 +217,15 @@ class PersonaData {
 
             const instructions = parsedData.dialogue_instructions;
             const metadata = parsedData.non_dialogue_metadata;
+            const disease = parsedData.disease_specific_prompts;
             delete parsedData.dialogue_instructions;
             delete parsedData.non_dialogue_metadata;
+            delete parsedData.disease_specific_prompts;
 
             this.data = { ...this.getDefaultData(), ...parsedData };
             this.data.dialogue_instructions_text = instructions ? jsyaml.dump(instructions) : '';
             this.data.non_dialogue_metadata_text = metadata ? jsyaml.dump(metadata) : '';
+            this.data.disease_prompts_text = disease ? jsyaml.dump(disease) : '';
             this.notifyChange();
             return true;
         } catch (error) {
@@ -225,6 +252,7 @@ class App {
         this.initializeAssociationModal();
         this.initializeTemplates();
         this.initializeShortcuts();
+        this.initializeMedicalSelector();
     }
 
     initializeAssociationModal() {
@@ -254,6 +282,22 @@ class App {
                 this.closeTemplateModal();
             }
         });
+    }
+
+    initializeMedicalSelector() {
+        fetch('../../persona_lib/medical/templates/index.json')
+            .then(res => res.json())
+            .then(data => {
+                const select = document.getElementById('medical-template-select');
+                if (!select) return;
+                data.templates.forEach(t => {
+                    const option = document.createElement('option');
+                    option.value = t.path;
+                    option.textContent = t.name;
+                    select.appendChild(option);
+                });
+            })
+            .catch(err => console.error('template list load error', err));
     }
 
     initializeTemplates() {
@@ -487,6 +531,13 @@ class App {
         const personaName = this.personaData.getData().personal_info.name;
         const filename = personaName ? `${personaName.replace(/\s+/g, '_')}.yaml` : 'persona.yaml';
         this.fileHandler.saveFile(filename);
+    }
+
+    handleMergeMedicalTemplate() {
+        const select = document.getElementById('medical-template-select');
+        if (select && select.value) {
+            this.fileHandler.loadMedicalTemplate(select.value);
+        }
     }
 
     // 関連性ネットワーク編集メソッド
