@@ -28,6 +28,20 @@ export default class FileHandler {
         });
     }
 
+    async loadMedicalTemplate(relativePath) {
+        const basePath = '../../persona_lib/medical/templates/';
+        try {
+            const response = await fetch(basePath + relativePath);
+            const content = await response.text();
+            const templateData = jsyaml.load(content);
+            this.personaData.mergeDiseaseTemplate(templateData);
+            this.uiController.showNotification('医療テンプレートを読み込みました', 'success');
+        } catch (error) {
+            console.error('Template load error:', error);
+            this.uiController.showNotification('テンプレートの読み込みに失敗しました', 'error');
+        }
+    }
+
     saveFile(filename = 'persona.yaml') {
         const yamlContent = this.personaData.toYAML();
         const blob = new Blob([yamlContent], { type: 'text/yaml' });

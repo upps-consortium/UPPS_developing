@@ -34,6 +34,8 @@ export default class UIController {
                 this.handleDialogueInputChange(e);
             } else if (e.target.matches('.metadata-input')) {
                 this.handleMetadataInputChange(e);
+            } else if (e.target.matches('.disease-input')) {
+                this.handleDiseaseInputChange(e);
             }
         });
 
@@ -138,6 +140,13 @@ export default class UIController {
         }
     }
 
+    handleDiseaseInputChange(e) {
+        const { id, value } = e.target;
+        if (id === 'disease-prompts') {
+            this.personaData.updateDiseasePromptsText(value);
+        }
+    }
+
     updateAllUI() {
         const data = this.personaData.getData();
         this.updatePersonalInfoUI(data);
@@ -146,6 +155,7 @@ export default class UIController {
         this.updateAssociationsUI(data);
         this.updateDialogueInstructionsUI(data);
         this.updateMetadataUI(data);
+        this.updateDiseasePromptsUI(data);
     }
 
     updatePersonalInfoUI(data) {
@@ -215,6 +225,13 @@ export default class UIController {
 
     updateMetadataUI(data) {
         document.getElementById('metadata-text').value = data.non_dialogue_metadata_text || '';
+    }
+
+    updateDiseasePromptsUI(data) {
+        const area = document.getElementById('disease-prompts');
+        if (area) {
+            area.value = data.disease_prompts_text || '';
+        }
     }
 
     renderTrigger(trigger) {
