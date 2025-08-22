@@ -265,13 +265,27 @@
                     <div class="suggestions">
                         <span class="suggestion" draggable="true" data-snippet="speech_patterns: |\n  " title="キャラクターの語調を指定">話し方・口調</span>
                         <span class="suggestion" draggable="true" data-snippet="behavioral_responses: |\n  " title="想定する振る舞い">行動・反応</span>
-                        <span class="suggestion" draggable="true" data-snippet="special_abilities: |\n  " title="特別なスキルや能力">特殊能力</span>
-                        <span class="suggestion" draggable="true" data-snippet="direct_description: |\n  " title="自然言語による指示">直接記述</span>
-                    </div>
+                    <span class="suggestion" draggable="true" data-snippet="special_abilities: |\n  " title="特別なスキルや能力">特殊能力</span>
+                    <span class="suggestion" draggable="true" data-snippet="direct_description: |\n  " title="自然言語による指示">直接記述</span>
                 </div>
             </div>
+            <div class="card">
+                <h2 class="card-title">医療テンプレート</h2>
+                <div class="form-group">
+                    <label for="medical-template-select">テンプレート選択</label>
+                    <select id="medical-template-select" class="persona-input">
+                        <option value="">選択してください</option>
+                    </select>
+                    <button class="btn btn--primary" onclick="app.handleMergeMedicalTemplate()">適用</button>
+                </div>
+                <div class="form-group">
+                    <label for="disease-prompts">疾患特有プロンプト</label>
+                    <textarea id="disease-prompts" rows="8" class="disease-input"></textarea>
+                </div>
+            </div>
+        </div>
 
-            <!-- Metadata Tab -->
+        <!-- Metadata Tab -->
             <div id="metadata-tab" class="tab-panel">
                 <div class="card">
                     <h2 class="card-title">メタデータ</h2>
