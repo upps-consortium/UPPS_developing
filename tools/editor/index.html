@@ -47,6 +47,9 @@
             <button class="tab-btn" data-tab="preview">
                 📄 プレビュー
             </button>
+            <button class="tab-btn" data-tab="prompt">
+                📋 プロンプト
+            </button>
         </nav>
 
         <!-- Content -->
@@ -306,6 +309,18 @@
                     <div id="yaml-preview" class="preview-container">
 # ここにYAMLプレビューが表示されます
                     </div>
+                </div>
+            </div>
+
+            <!-- Prompt Tab -->
+            <div id="prompt-tab" class="tab-panel">
+                <div class="card">
+                    <h2 class="card-title">組み合わせプロンプト</h2>
+                    <div class="form-group">
+                        <label for="assembled-text">指示 + ペルソナYAML</label>
+                        <textarea id="assembled-text" rows="16" readonly></textarea>
+                    </div>
+                    <button class="btn btn--secondary" id="copy-assembled-btn">Copy All</button>
                 </div>
             </div>
         </main>
