@@ -22,6 +22,12 @@ export default class UIController {
                     document.getElementById('metadata-text');
                 this.insertSnippet(textarea, snippet);
             }
+            if (e.target.id === 'copy-assembled-btn') {
+                const text = document.getElementById('assembled-text').value;
+                navigator.clipboard.writeText(text)
+                    .then(() => this.showNotification('プロンプトをコピーしました'))
+                    .catch(() => this.showNotification('コピーに失敗しました', 'error'));
+            }
         });
 
         // データ変更イベント
@@ -86,6 +92,9 @@ export default class UIController {
         if (tabName === 'preview') {
             this.updatePreview();
         }
+        if (tabName === 'prompt') {
+            this.updatePrompt();
+        }
     }
 
     handlePersonalInfoChange(e) {
@@ -146,6 +155,7 @@ export default class UIController {
         this.updateAssociationsUI(data);
         this.updateDialogueInstructionsUI(data);
         this.updateMetadataUI(data);
+        this.updatePrompt();
     }
 
     updatePersonalInfoUI(data) {
@@ -273,6 +283,17 @@ export default class UIController {
         const filled = '■'.repeat(bars);
         const empty = '□'.repeat(10 - bars);
         return `<div class="strength-bar">${filled}${empty} ${strength}</div>`;
+    }
+
+    updatePrompt() {
+        const yamlContent = this.personaData.toYAML();
+        const promptText = `# UPPSペルソナシミュレーション指示（2025.3対応）\n` +
+            `以下のペルソナ設定に従って応答してください。\n\n` +
+            `\u0060\u0060\u0060yaml\n${yamlContent}\n\u0060\u0060\u0060\n`;
+        const area = document.getElementById('assembled-text');
+        if (area) {
+            area.value = promptText;
+        }
     }
 
     updatePreview() {
