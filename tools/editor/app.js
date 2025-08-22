@@ -15,6 +15,7 @@ class PersonaData {
                 occupation: ""
             },
             background: "",
+            session_context: "",
             personality: {
                 model: "BigFive",
                 traits: {
@@ -37,6 +38,7 @@ class PersonaData {
                 }
             },
             memory_system: {
+                context: "",
                 memories: [
                     {
                         id: "childhood_nature",
@@ -94,6 +96,16 @@ class PersonaData {
 
     updateBackground(background) {
         this.data.background = background;
+        this.notifyChange();
+    }
+
+    updateSessionContext(context) {
+        this.data.session_context = context;
+        this.notifyChange();
+    }
+
+    updateMemoryContext(context) {
+        this.data.memory_system.context = context;
         this.notifyChange();
     }
 

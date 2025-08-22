@@ -101,6 +101,10 @@ export default class UIController {
             this.personaData.updatePersonalInfo({ occupation: value });
         } else if (id === 'persona-background') {
             this.personaData.updateBackground(value);
+        } else if (id === 'session-context') {
+            this.personaData.updateSessionContext(value);
+        } else if (id === 'memory-context') {
+            this.personaData.updateMemoryContext(value);
         }
     }
 
@@ -154,6 +158,8 @@ export default class UIController {
         document.getElementById('persona-gender').value = data.personal_info.gender || '';
         document.getElementById('persona-occupation').value = data.personal_info.occupation || '';
         document.getElementById('persona-background').value = data.background || '';
+        document.getElementById('session-context').value = data.session_context || '';
+        document.getElementById('memory-context').value = data.memory_system.context || '';
     }
 
     updatePersonalityUI(data) {
