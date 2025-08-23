@@ -605,6 +605,14 @@ class App {
         if (e.target.id === 'template-modal') {
             this.closeTemplateModal();
         }
+        if (e.target.classList.contains('edit-association')) {
+            const id = parseInt(e.target.dataset.id, 10);
+            this.editAssociation(id);
+        }
+        if (e.target.classList.contains('delete-association')) {
+            const id = parseInt(e.target.dataset.id, 10);
+            this.deleteAssociation(id);
+        }
     }
 
     handleShortcutKeys(e) {
