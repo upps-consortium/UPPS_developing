@@ -10,8 +10,15 @@ export default class FileHandler {
     async loadFile() {
         return new Promise((resolve) => {
             const input = document.getElementById('file-input');
-            input.onchange = (e) => {
+
+            const cleanup = () => {
+                input.removeEventListener('change', onChange);
+                input.removeEventListener('focusout', onFocusOut);
+            };
+
+            const onChange = (e) => {
                 const file = e.target.files[0];
+                cleanup();
                 if (file) {
                     const reader = new FileReader();
                     reader.onload = (e) => {
@@ -27,8 +34,25 @@ export default class FileHandler {
                         }
                     };
                     reader.readAsText(file);
+                } else {
+                    input.value = '';
+                    this.uiController.showNotification('ファイルの選択がキャンセルされました', 'error');
+                    resolve(false);
                 }
             };
+
+            const onFocusOut = () => {
+                // ユーザーがダイアログをキャンセルした場合にも Promise を解決する
+                if (!input.files || input.files.length === 0) {
+                    cleanup();
+                    input.value = '';
+                    this.uiController.showNotification('ファイルの選択がキャンセルされました', 'error');
+                    resolve(false);
+                }
+            };
+
+            input.addEventListener('change', onChange, { once: true });
+            input.addEventListener('focusout', onFocusOut, { once: true });
             input.click();
         });
     }

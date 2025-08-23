@@ -58,6 +58,7 @@ export default class UIController {
 
         ['instructions-text', 'metadata-text', 'context-text'].forEach(id => {
             const area = document.getElementById(id);
+            if (!area) return; // 要素が存在しない場合はスキップ
             area.addEventListener('dragover', e => e.preventDefault());
             area.addEventListener('drop', e => {
                 e.preventDefault();
@@ -69,7 +70,11 @@ export default class UIController {
             area.addEventListener('keydown', e => {
                 if (e.key === 'Enter') {
                     const start = area.selectionStart;
-                    const indentMatch = area.value.slice(0, start).split('\n').pop().match(/^\s+/);
+                    const indentMatch = area.value
+                        .slice(0, start)
+                        .split('\n')
+                        .pop()
+                        .match(/^\s+/);
                     const indent = indentMatch ? indentMatch[0] : '';
                     setTimeout(() => {
                         const pos = area.selectionStart;
@@ -263,15 +268,11 @@ export default class UIController {
                 <td>${assoc.id}</td>
                 <td>${this.renderTrigger(assoc.trigger)}</td>
                 <td>${this.renderResponse(assoc.response)}</td>
-                <td>${this.renderStrength(assoc.response.association_strength)}</td>
+                <td>${this.renderStrength(assoc.response?.association_strength ?? 0)}</td>
                 <td>
                     <div class="action-buttons">
-                        <button class="btn-icon" onclick="app.editAssociation(${assoc.id})" title="編集">
-                            ✏️
-                        </button>
-                        <button class="btn-icon" onclick="app.deleteAssociation(${assoc.id})" title="削除">
-                            🗑️
-                        </button>
+                        <button class="btn-icon edit-association" data-id="${assoc.id}" title="編集">✏️</button>
+                        <button class="btn-icon delete-association" data-id="${assoc.id}" title="削除">🗑️</button>
                     </div>
                 </td>
             </tr>
@@ -279,11 +280,17 @@ export default class UIController {
     }
 
     updateDialogueInstructionsUI(data) {
-        document.getElementById('instructions-text').value = data.dialogue_instructions_text || '';
+        const area = document.getElementById('instructions-text');
+        if (area) {
+            area.value = data.dialogue_instructions_text || '';
+        }
     }
 
     updateMetadataUI(data) {
-        document.getElementById('metadata-text').value = data.non_dialogue_metadata_text || '';
+        const area = document.getElementById('metadata-text');
+        if (area) {
+            area.value = data.non_dialogue_metadata_text || '';
+        }
     }
 
     updateDiseasePromptsUI(data) {
@@ -342,7 +349,7 @@ export default class UIController {
         return 'Unknown';
     }
 
-    renderResponse(response) {
+    renderResponse(response = {}) {
         let icon = '💭';
         if (response.type === 'emotion' || response.type === 'emotion_baseline_change') {
             icon = '😊';
@@ -350,19 +357,21 @@ export default class UIController {
             icon = '⚡';
         }
         const change = response.change_amount !== undefined ? ` (${response.change_amount})` : '';
+        const id = response.id || '';
         return `
             <div class="response-display">
                 <span class="response-type-icon">${icon}</span>
-                <div>${response.id}${change}</div>
+                <div>${id}${change}</div>
             </div>
         `;
     }
 
-    renderStrength(strength) {
-        const bars = Math.floor(strength / 10);
+    renderStrength(strength = 0) {
+        const value = Number(strength) || 0;
+        const bars = Math.floor(value / 10);
         const filled = '■'.repeat(bars);
         const empty = '□'.repeat(10 - bars);
-        return `<div class="strength-bar">${filled}${empty} ${strength}</div>`;
+        return `<div class="strength-bar">${filled}${empty} ${value}</div>`;
     }
 
     async updatePrompt() {
@@ -398,8 +407,13 @@ export default class UIController {
     }
 
     updatePreview() {
+        const preview = document.getElementById('yaml-preview');
+        if (!preview) {
+            console.warn('yaml-preview element not found');
+            return;
+        }
         const yamlContent = this.personaData.toYAML();
-        document.getElementById('yaml-preview').textContent = yamlContent;
+        preview.textContent = yamlContent;
     }
 
     showNotification(message, type = 'success') {
