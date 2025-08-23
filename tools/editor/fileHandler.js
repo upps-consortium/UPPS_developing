@@ -29,7 +29,7 @@ export default class FileHandler {
     }
 
     async loadMedicalTemplate(relativePath) {
-        const basePath = '../../persona_lib/medical/templates/';
+        const basePath = '../../persona_lib/medical/';
         try {
             const response = await fetch(basePath + relativePath);
             const content = await response.text();
@@ -38,7 +38,10 @@ export default class FileHandler {
             this.uiController.showNotification('医療テンプレートを読み込みました', 'success');
         } catch (error) {
             console.error('Template load error:', error);
-            this.uiController.showNotification('テンプレートの読み込みに失敗しました', 'error');
+            this.uiController.showNotification(
+                `テンプレートの読み込みに失敗しました: ${error.message}`,
+                'error'
+            );
         }
     }
 
