@@ -233,6 +233,27 @@ prompting/                         # プロンプト主導型（開発中）
 # programming/ ディレクトリは将来追加予定
 ```
 
+## ペルソナ編集ツールの起動
+
+`tools/editor` ディレクトリにはブラウザベースのペルソナ編集ツールが含まれています。
+このツールは `fetch` を利用してファイルを読み込むため、`file://` で `index.html` を直接開くと読み込みに失敗します。
+以下のようにローカル HTTP サーバー経由でアクセスしてください。
+
+### 起動手順
+
+```bash
+# リポジトリのルートから
+cd tools/editor
+
+# Python 3 を使用する場合
+python3 -m http.server 8000
+
+# または Node.js を使用する場合
+npx http-server -p 8000
+```
+
+その後、ブラウザで [http://localhost:8000](http://localhost:8000) を開きます。
+
 ## 変更履歴
 
 ### バージョン 2025.3 v1.0.0
