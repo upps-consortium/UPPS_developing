@@ -349,39 +349,15 @@ class App {
         this.currentStep = 1;
         this.editingAssociationId = null;
         this.associationFormData = {};
-        this.initializeAssociationModal();
+        this.bindEventHandlers();
         this.initializeTemplates();
-        this.initializeShortcuts();
         this.initializeMedicalSelector();
     }
 
-    initializeAssociationModal() {
-        // ラジオボタンの変更を監視
-        document.addEventListener('change', (e) => {
-            if (e.target.name === 'triggerType') {
-                this.updateTriggerDetails(e.target.value);
-            } else if (e.target.id === 'responseType') {
-                this.updateResponseTargets(e.target.value);
-            }
-        });
-
-        // 関連強度スライダーの監視
-        document.addEventListener('input', (e) => {
-            if (e.target.id === 'association-strength') {
-                const valueDisplay = e.target.parentNode.querySelector('.slider-value');
-                valueDisplay.textContent = e.target.value;
-            }
-        });
-
-        // モーダル背景クリックで閉じる
-        document.addEventListener('click', (e) => {
-            if (e.target.id === 'association-modal') {
-                this.closeAssociationModal();
-            }
-            if (e.target.id === 'template-modal') {
-                this.closeTemplateModal();
-            }
-        });
+    bindEventHandlers() {
+        document.addEventListener('change', this.handleAssociationChange.bind(this));
+        document.addEventListener('click', this.handleGlobalClick.bind(this));
+        document.addEventListener('keydown', this.handleShortcutKeys.bind(this));
     }
 
     async initializeMedicalSelector() {
@@ -614,25 +590,40 @@ class App {
         ];
     }
 
-    initializeShortcuts() {
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey) {
-                switch (e.key.toLowerCase()) {
-                    case 's':
-                        e.preventDefault();
-                        this.handleSaveFile();
-                        break;
-                    case 'o':
-                        e.preventDefault();
-                        this.handleLoadFile();
-                        break;
-                    case 'n':
-                        e.preventDefault();
-                        this.handleNewPersona();
-                        break;
-                }
+    handleAssociationChange(e) {
+        if (e.target.name === 'triggerType') {
+            this.updateTriggerDetails(e.target.value);
+        } else if (e.target.id === 'responseType') {
+            this.updateResponseTargets(e.target.value);
+        }
+    }
+
+    handleGlobalClick(e) {
+        if (e.target.id === 'association-modal') {
+            this.closeAssociationModal();
+        }
+        if (e.target.id === 'template-modal') {
+            this.closeTemplateModal();
+        }
+    }
+
+    handleShortcutKeys(e) {
+        if (e.ctrlKey) {
+            switch (e.key.toLowerCase()) {
+                case 's':
+                    e.preventDefault();
+                    this.handleSaveFile();
+                    break;
+                case 'o':
+                    e.preventDefault();
+                    this.handleLoadFile();
+                    break;
+                case 'n':
+                    e.preventDefault();
+                    this.handleNewPersona();
+                    break;
             }
-        });
+        }
     }
 
     handleNewPersona() {
