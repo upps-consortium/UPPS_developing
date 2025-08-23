@@ -127,6 +127,11 @@ export default class UIController {
         // スライダー値表示を更新
         const valueDisplay = e.target.parentNode.querySelector('.slider-value');
 
+        if (id === 'association-strength') {
+            valueDisplay.textContent = numValue.toString();
+            return;
+        }
+
         if (id.includes('-slider')) {
             const traitName = id.replace('-slider', '');
 
