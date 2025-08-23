@@ -54,7 +54,7 @@
                 📄 プレビュー
             </button>
             <button class="tab-btn" data-tab="prompt">
-                📋 プロンプト
+                📋 会話開始用プロンプト
             </button>
         </nav>
 
@@ -435,12 +435,12 @@
             <!-- Prompt Tab -->
             <div id="prompt-tab" class="tab-panel">
                 <div class="card">
-                    <h2 class="card-title">組み合わせプロンプト</h2>
+                    <h2 class="card-title">会話開始用プロンプト</h2>
                     <div class="form-group">
-                        <label for="assembled-text">指示 + ペルソナYAML</label>
+                        <label for="assembled-text">以下をコピーして会話を開始</label>
                         <textarea id="assembled-text" rows="16" readonly></textarea>
                     </div>
-                    <button class="btn btn--secondary" id="copy-assembled-btn">Copy All</button>
+                    <button class="btn btn--primary" id="copy-assembled-btn">プロンプトをコピー</button>
                 </div>
             </div>
         </main>

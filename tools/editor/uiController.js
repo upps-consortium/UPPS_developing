@@ -28,6 +28,9 @@ export default class UIController {
                     .then(() => this.showNotification('プロンプトをコピーしました'))
                     .catch(() => this.showNotification('コピーに失敗しました', 'error'));
             }
+            if (e.target.id === 'assembled-text') {
+                e.target.select();
+            }
         });
 
         // データ変更イベント
@@ -357,11 +360,32 @@ export default class UIController {
         return `<div class="strength-bar">${filled}${empty} ${strength}</div>`;
     }
 
-    updatePrompt() {
+    async updatePrompt() {
         const yamlContent = this.personaData.toYAML();
-        const promptText = `# UPPSペルソナシミュレーション指示（2025.3対応）\n` +
-            `以下のペルソナ設定に従って応答してください。\n\n` +
-            `\u0060\u0060\u0060yaml\n${yamlContent}\n\u0060\u0060\u0060\n`;
+        if (!this.promptTemplate) {
+            try {
+                const res = await fetch('../../prompting/templates/basic_template.md');
+                const text = await res.text();
+                const match = text.match(/````\n([\s\S]*?)\n````/);
+                this.promptTemplate = match ? match[1] : text;
+            } catch (e) {
+                this.promptTemplate = '# UPPSペルソナシミュレーション指示（2025.3対応）\n\n[ペルソナデータをここに挿入]';
+            }
+        }
+
+        let promptText = this.promptTemplate.replace('[ペルソナデータをここに挿入]', yamlContent);
+        const data = this.personaData.getData();
+
+        if (data.dialogue_instructions_text) {
+            promptText += `\n\n## 対話指示\n${data.dialogue_instructions_text}`;
+        }
+        if (data.disease_prompts_text) {
+            promptText += `\n\n## 疾患特有プロンプト\n${data.disease_prompts_text}`;
+        }
+        if (data.session_context) {
+            promptText += `\n\n## セッションコンテキスト\n${data.session_context}`;
+        }
+
         const area = document.getElementById('assembled-text');
         if (area) {
             area.value = promptText;
