@@ -15,9 +15,11 @@ export default class FileHandler {
                         const content = e.target.result;
                         if (this.personaData.fromYAML(content)) {
                             this.uiController.showNotification('ファイルを正常に読み込みました', 'success');
+                            input.value = '';
                             resolve(true);
                         } else {
                             this.uiController.showNotification('ファイルの読み込みに失敗しました', 'error');
+                            input.value = '';
                             resolve(false);
                         }
                     };
