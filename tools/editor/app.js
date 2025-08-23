@@ -37,6 +37,16 @@ class PersonaData {
                     surprise: { baseline: 55, description: "驚き、意外性への反応" }
                 }
             },
+            cognitive_system: {
+                model: "WAIS-IV",
+                abilities: {
+                    verbal_comprehension: { level: 50 },
+                    perceptual_reasoning: { level: 50 },
+                    working_memory: { level: 50 },
+                    processing_speed: { level: 50 }
+                },
+                general_ability: { level: 50 }
+            },
             memory_system: {
                 memories: [
                     {
@@ -90,6 +100,20 @@ class PersonaData {
         Object.keys(emotions).forEach(emotion => {
             if (this.data.emotion_system.emotions[emotion]) {
                 this.data.emotion_system.emotions[emotion].baseline = emotions[emotion];
+            }
+        });
+        this.notifyChange();
+    }
+
+    updateCognitiveSystem(abilities) {
+        Object.keys(abilities).forEach(key => {
+            if (key === 'general_ability') {
+                if (!this.data.cognitive_system.general_ability) {
+                    this.data.cognitive_system.general_ability = { level: 0 };
+                }
+                this.data.cognitive_system.general_ability.level = abilities[key];
+            } else if (this.data.cognitive_system.abilities[key]) {
+                this.data.cognitive_system.abilities[key].level = abilities[key];
             }
         });
         this.notifyChange();
@@ -183,6 +207,21 @@ class PersonaData {
             outputData.personality.traits[trait] = outputData.personality.traits[trait] / 100;
         });
 
+        // 認知能力のレベルを整数に
+        if (outputData.cognitive_system && outputData.cognitive_system.abilities) {
+            Object.keys(outputData.cognitive_system.abilities).forEach(key => {
+                const ability = outputData.cognitive_system.abilities[key];
+                if (ability && ability.level !== undefined) {
+                    ability.level = parseInt(ability.level);
+                }
+            });
+            if (outputData.cognitive_system.general_ability) {
+                outputData.cognitive_system.general_ability.level = parseInt(
+                    outputData.cognitive_system.general_ability.level
+                );
+            }
+        }
+
         // dialogue_instructions と non_dialogue_metadata を YAML オブジェクトに変換
         try {
             outputData.dialogue_instructions = jsyaml.load(this.data.dialogue_instructions_text) || {};
@@ -235,6 +274,22 @@ class PersonaData {
             delete parsedData.non_dialogue_metadata;
             delete parsedData.disease_specific_prompts;
             delete parsedData.session_context;
+
+            // 認知能力レベルを整数化
+            if (parsedData.cognitive_system && parsedData.cognitive_system.abilities) {
+                Object.keys(parsedData.cognitive_system.abilities).forEach(key => {
+                    const ability = parsedData.cognitive_system.abilities[key];
+                    if (ability && ability.level !== undefined) {
+                        ability.level = parseInt(ability.level);
+                    }
+                });
+                if (parsedData.cognitive_system.general_ability &&
+                    parsedData.cognitive_system.general_ability.level !== undefined) {
+                    parsedData.cognitive_system.general_ability.level = parseInt(
+                        parsedData.cognitive_system.general_ability.level
+                    );
+                }
+            }
 
             this.data = { ...this.getDefaultData(), ...parsedData };
             this.data.dialogue_instructions_text = instructions ? jsyaml.dump(instructions) : '';
