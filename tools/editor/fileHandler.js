@@ -1,3 +1,5 @@
+import { validatePersona } from './validator.js';
+
 export default class FileHandler {
     constructor(personaData, uiController) {
         this.personaData = personaData;
@@ -49,9 +51,23 @@ export default class FileHandler {
 
     saveFile(filename = 'persona.yaml') {
         const yamlContent = this.personaData.toYAML();
+        let profile;
+        try {
+            profile = jsyaml.load(yamlContent);
+        } catch (e) {
+            this.uiController.showNotification('YAMLの生成に失敗しました', 'error');
+            return;
+        }
+
+        const result = validatePersona(profile);
+        if (!result.valid) {
+            this.uiController.showNotification(result.errors.join('\n'), 'error');
+            return;
+        }
+
         const blob = new Blob([yamlContent], { type: 'text/yaml' });
         const url = window.URL.createObjectURL(blob);
-        
+
         const a = document.createElement('a');
         a.href = url;
         a.download = filename;
@@ -59,7 +75,7 @@ export default class FileHandler {
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
-        
+
         this.uiController.showNotification('ファイルを保存しました', 'success');
     }
 }
