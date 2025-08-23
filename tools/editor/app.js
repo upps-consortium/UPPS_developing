@@ -299,20 +299,39 @@ class App {
         });
     }
 
-    initializeMedicalSelector() {
-        fetch('../../persona_lib/medical/templates/index.json')
-            .then(res => res.json())
-            .then(data => {
-                const select = document.getElementById('medical-template-select');
-                if (!select) return;
-                data.templates.forEach(t => {
-                    const option = document.createElement('option');
-                    option.value = t.path;
-                    option.textContent = t.name;
-                    select.appendChild(option);
-                });
+    async initializeMedicalSelector() {
+        const select = document.getElementById('medical-template-select');
+        if (!select) return;
+
+        const sources = [
+            { dir: 'templates', url: '../../persona_lib/medical/templates/index.json' },
+            { dir: 'examples', url: '../../persona_lib/medical/examples/index.json' }
+        ];
+
+        const lists = await Promise.all(
+            sources.map(async (src) => {
+                try {
+                    const res = await fetch(src.url);
+                    const data = await res.json();
+                    const items = data.templates || data.samples || data.examples || [];
+                    return items.map(item => ({ ...item, dir: src.dir }));
+                } catch (err) {
+                    console.error(`${src.dir} list load error`, err);
+                    this.uiController.showNotification(
+                        `${src.dir === 'templates' ? 'テンプレート' : 'サンプル'}一覧の読み込みに失敗しました`,
+                        'error'
+                    );
+                    return [];
+                }
             })
-            .catch(err => console.error('template list load error', err));
+        );
+
+        lists.flat().forEach(item => {
+            const option = document.createElement('option');
+            option.value = `${item.dir}/${item.path}`;
+            option.textContent = item.name;
+            select.appendChild(option);
+        });
     }
 
     initializeTemplates() {
