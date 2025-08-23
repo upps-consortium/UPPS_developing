@@ -1,3 +1,4 @@
+import jsyaml from 'js-yaml';
 import UIController from './uiController.js';
 import FileHandler from './fileHandler.js';
 import deepMerge from '../../utils/deepMerge.js';
