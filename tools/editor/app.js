@@ -1,5 +1,6 @@
 import UIController from './uiController.js';
 import FileHandler from './fileHandler.js';
+import deepMerge from '../../utils/deepMerge.js';
 
 class PersonaData {
     constructor() {
@@ -126,7 +127,7 @@ class PersonaData {
         } catch (e) {
             current = {};
         }
-        const merged = { ...current, ...template };
+        const merged = deepMerge(current, template);
         this.data.disease_prompts_text = jsyaml.dump(merged);
         this.notifyChange();
     }
