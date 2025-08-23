@@ -123,11 +123,15 @@ export default class UIController {
 
         // スライダー値表示を更新
         const valueDisplay = e.target.parentNode.querySelector('.slider-value');
-        
+
         if (id.includes('-slider')) {
             const traitName = id.replace('-slider', '');
-            
-            if (['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'].includes(traitName)) {
+
+            if (traitName.startsWith('current_')) {
+                const emotion = traitName.replace('current_', '');
+                valueDisplay.textContent = numValue.toString();
+                this.personaData.updateCurrentEmotionState({ [emotion]: numValue });
+            } else if (['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'].includes(traitName)) {
                 valueDisplay.textContent = numValue + '%';
                 this.personaData.updatePersonality({ [traitName]: numValue });
             } else if (['joy', 'sadness', 'anger', 'fear', 'disgust', 'surprise'].includes(traitName)) {
@@ -195,11 +199,22 @@ export default class UIController {
 
     updateEmotionSystemUI(data) {
         const emotions = data.emotion_system.emotions;
+        const current = data.current_emotion_state || {};
         Object.keys(emotions).forEach(emotion => {
             const slider = document.getElementById(`${emotion}-slider`);
-            const valueDisplay = slider.parentNode.querySelector('.slider-value');
-            slider.value = emotions[emotion].baseline;
-            valueDisplay.textContent = emotions[emotion].baseline.toString();
+            if (slider) {
+                const valueDisplay = slider.parentNode.querySelector('.slider-value');
+                slider.value = emotions[emotion].baseline;
+                valueDisplay.textContent = emotions[emotion].baseline.toString();
+            }
+
+            const currentSlider = document.getElementById(`current_${emotion}-slider`);
+            if (currentSlider) {
+                const currentValueDisplay = currentSlider.parentNode.querySelector('.slider-value');
+                const value = current[emotion] !== undefined ? current[emotion] : emotions[emotion].baseline;
+                currentSlider.value = value;
+                currentValueDisplay.textContent = value.toString();
+            }
         });
     }
 

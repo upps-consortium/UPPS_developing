@@ -37,6 +37,14 @@ class PersonaData {
                     surprise: { baseline: 55, description: "驚き、意外性への反応" }
                 }
             },
+            current_emotion_state: {
+                joy: 50,
+                sadness: 30,
+                anger: 25,
+                fear: 40,
+                disgust: 20,
+                surprise: 55
+            },
             cognitive_system: {
                 model: "WAIS-IV",
                 abilities: {
@@ -101,6 +109,13 @@ class PersonaData {
             if (this.data.emotion_system.emotions[emotion]) {
                 this.data.emotion_system.emotions[emotion].baseline = emotions[emotion];
             }
+        });
+        this.notifyChange();
+    }
+
+    updateCurrentEmotionState(states) {
+        Object.keys(states).forEach(emotion => {
+            this.data.current_emotion_state[emotion] = states[emotion];
         });
         this.notifyChange();
     }
@@ -222,6 +237,13 @@ class PersonaData {
             }
         }
 
+        // 現在の感情状態を整数に
+        if (outputData.current_emotion_state) {
+            Object.keys(outputData.current_emotion_state).forEach(key => {
+                outputData.current_emotion_state[key] = parseInt(outputData.current_emotion_state[key]);
+            });
+        }
+
         // dialogue_instructions と non_dialogue_metadata を YAML オブジェクトに変換
         try {
             outputData.dialogue_instructions = jsyaml.load(this.data.dialogue_instructions_text) || {};
@@ -289,6 +311,13 @@ class PersonaData {
                         parsedData.cognitive_system.general_ability.level
                     );
                 }
+            }
+
+            // 現在の感情状態を整数化
+            if (parsedData.current_emotion_state) {
+                Object.keys(parsedData.current_emotion_state).forEach(key => {
+                    parsedData.current_emotion_state[key] = parseInt(parsedData.current_emotion_state[key]);
+                });
             }
 
             this.data = { ...this.getDefaultData(), ...parsedData };
