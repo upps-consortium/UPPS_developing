@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "jest": "^29.6.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
   }
 }

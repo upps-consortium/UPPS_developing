@@ -1,3 +1,4 @@
+import jsyaml from 'js-yaml';
 import { validatePersona } from './validator.js';
 
 export default class FileHandler {
