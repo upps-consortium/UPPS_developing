@@ -254,6 +254,21 @@ npx http-server -p 8000
 
 その後、ブラウザで [http://localhost:8000](http://localhost:8000) を開きます。
 
+## LLMチャットアプリの起動
+
+`tools/chat-app` には OpenAI API を利用したシンプルなチャットアプリが含まれています。
+ペルソナや疾患ファイルを読み込み、内部状態の表示を切り替えながら LLM と対話できます。
+
+### 起動手順
+
+```bash
+# リポジトリのルートから
+cd tools/chat-app
+python3 -m http.server 8000
+```
+
+ブラウザで [http://localhost:8000](http://localhost:8000) を開き、API キーやペルソナファイルを設定して使用します。
+
 ## 変更履歴
 
 ### バージョン 2025.3 v1.0.0

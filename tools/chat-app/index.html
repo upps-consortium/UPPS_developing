@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>UPPS LLM Chat</title>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="app.js" defer></script>
+  <style>
+    body { font-family: sans-serif; margin: 1em; }
+    #chatLog { border: 1px solid #ccc; padding: 0.5em; height: 300px; overflow-y: scroll; margin-bottom: 1em; }
+    .message.user { color: blue; }
+    .message.assistant { color: green; }
+    pre { white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>UPPS LLM Chat</h1>
+
+  <section>
+    <label>OpenAI API Key: <input type="password" id="apiKey" placeholder="sk-..." /></label>
+  </section>
+
+  <section>
+    <h2>ペルソナ/疾患ファイルの読み込み</h2>
+    <input type="file" id="localFile" />
+    <div>
+      <input type="text" id="remoteUrl" placeholder="https://example.com/persona.yaml" style="width:60%" />
+      <button id="fetchRemote">Fetch</button>
+    </div>
+    <pre id="loadedData"></pre>
+  </section>
+
+  <section>
+    <label><input type="checkbox" id="showState" />内部状態を表示</label>
+    <div id="statePanel" style="display:none;">
+      <pre id="stateView"></pre>
+    </div>
+  </section>
+
+  <section>
+    <div id="chatLog"></div>
+    <input type="text" id="userInput" placeholder="メッセージを入力" style="width:70%" />
+    <button id="sendBtn">送信</button>
+  </section>
+</body>
+</html>
