@@ -35,6 +35,9 @@
             <button class="tab-btn" data-tab="emotions">
                 😊 感情システム
             </button>
+            <button class="tab-btn" data-tab="cognitive">
+                🧮 認知能力
+            </button>
             <button class="tab-btn" data-tab="associations">
                 🔗 関連性ネットワーク
             </button>
@@ -209,6 +212,58 @@
                             <span class="slider-value">55</span>
                         </div>
                         <div class="form-help">驚き、意外性への反応</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cognitive System Tab -->
+            <div id="cognitive-tab" class="tab-panel">
+                <div class="card">
+                    <h2 class="card-title">認知能力 (WAIS-IV)</h2>
+
+                    <div class="form-group">
+                        <label for="verbal_comprehension-slider">言語理解 (Verbal Comprehension)</label>
+                        <div class="slider-container">
+                            <input type="range" id="verbal_comprehension-slider" class="slider-input" min="0" max="100" value="50">
+                            <span class="slider-value">50</span>
+                        </div>
+                        <div class="form-help">言語理解能力</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="perceptual_reasoning-slider">知覚推理 (Perceptual Reasoning)</label>
+                        <div class="slider-container">
+                            <input type="range" id="perceptual_reasoning-slider" class="slider-input" min="0" max="100" value="50">
+                            <span class="slider-value">50</span>
+                        </div>
+                        <div class="form-help">視覚的・空間的推理能力</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="working_memory-slider">ワーキングメモリ (Working Memory)</label>
+                        <div class="slider-container">
+                            <input type="range" id="working_memory-slider" class="slider-input" min="0" max="100" value="50">
+                            <span class="slider-value">50</span>
+                        </div>
+                        <div class="form-help">情報の保持と操作</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="processing_speed-slider">処理速度 (Processing Speed)</label>
+                        <div class="slider-container">
+                            <input type="range" id="processing_speed-slider" class="slider-input" min="0" max="100" value="50">
+                            <span class="slider-value">50</span>
+                        </div>
+                        <div class="form-help">情報処理の速さ</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="general_ability-slider">全般的能力 (General Ability)</label>
+                        <div class="slider-container">
+                            <input type="range" id="general_ability-slider" class="slider-input" min="0" max="100" value="50">
+                            <span class="slider-value">50</span>
+                        </div>
+                        <div class="form-help">全体的な認知能力</div>
                     </div>
                 </div>
             </div>

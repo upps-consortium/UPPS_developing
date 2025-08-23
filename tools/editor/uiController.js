@@ -133,6 +133,9 @@ export default class UIController {
             } else if (['joy', 'sadness', 'anger', 'fear', 'disgust', 'surprise'].includes(traitName)) {
                 valueDisplay.textContent = numValue.toString();
                 this.personaData.updateEmotionSystem({ [traitName]: numValue });
+            } else if (['verbal_comprehension', 'perceptual_reasoning', 'working_memory', 'processing_speed', 'general_ability'].includes(traitName)) {
+                valueDisplay.textContent = numValue.toString();
+                this.personaData.updateCognitiveSystem({ [traitName]: numValue });
             }
         }
     }
@@ -163,6 +166,7 @@ export default class UIController {
         this.updatePersonalInfoUI(data);
         this.updatePersonalityUI(data);
         this.updateEmotionSystemUI(data);
+        this.updateCognitiveSystemUI(data);
         this.updateAssociationsUI(data);
         this.updateDialogueInstructionsUI(data);
         this.updateMetadataUI(data);
@@ -197,6 +201,25 @@ export default class UIController {
             slider.value = emotions[emotion].baseline;
             valueDisplay.textContent = emotions[emotion].baseline.toString();
         });
+    }
+
+    updateCognitiveSystemUI(data) {
+        const abilities = data.cognitive_system.abilities;
+        Object.keys(abilities).forEach(ability => {
+            const slider = document.getElementById(`${ability}-slider`);
+            if (slider) {
+                const valueDisplay = slider.parentNode.querySelector('.slider-value');
+                slider.value = abilities[ability].level;
+                valueDisplay.textContent = abilities[ability].level.toString();
+            }
+        });
+        const general = data.cognitive_system.general_ability;
+        const gSlider = document.getElementById('general_ability-slider');
+        if (gSlider) {
+            const valueDisplay = gSlider.parentNode.querySelector('.slider-value');
+            gSlider.value = general.level;
+            valueDisplay.textContent = general.level.toString();
+        }
     }
 
     updateAssociationsUI(data) {
