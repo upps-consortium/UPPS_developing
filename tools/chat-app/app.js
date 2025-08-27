@@ -5,7 +5,6 @@ const fetchRemoteBtn = document.getElementById('fetchRemote');
 const loadedDataPre = document.getElementById('loadedData');
 const showStateCheckbox = document.getElementById('showState');
 const statePanel = document.getElementById('statePanel');
-const stateView = document.getElementById('stateView');
 const chatLog = document.getElementById('chatLog');
 const userInput = document.getElementById('userInput');
 const sendBtn = document.getElementById('sendBtn');
@@ -13,15 +12,9 @@ const sendBtn = document.getElementById('sendBtn');
 let personaText = '';
 let diseaseText = '';
 let messages = [];
-let internalState = { mood: 'neutral' };
-
-function updateStateView() {
-  stateView.textContent = JSON.stringify(internalState, null, 2);
-}
 
 showStateCheckbox.addEventListener('change', () => {
   statePanel.style.display = showStateCheckbox.checked ? 'block' : 'none';
-  updateStateView();
 });
 
 localFileInput.addEventListener('change', (e) => {
@@ -65,7 +58,9 @@ async function sendMessage() {
     const systemParts = [];
     if (personaText) systemParts.push(`# Persona\n${personaText}`);
     if (diseaseText) systemParts.push(`# Condition\n${diseaseText}`);
-    if (showStateCheckbox.checked) systemParts.push(`# InternalState\n${JSON.stringify(internalState)}`);
+    if (showStateCheckbox.checked) {
+      systemParts.push('# 内部状態\n応答の末尾に<internal>タグを出力し、その中でmood、energy、thoughtsを列挙してください。');
+    }
     systemParts.push('You are an assistant that follows the above persona and condition.');
     messages.push({ role: 'system', content: systemParts.join('\n\n') });
   }
@@ -90,10 +85,6 @@ async function sendMessage() {
     const reply = data.choices?.[0]?.message?.content || '(no response)';
     messages.push({ role: 'assistant', content: reply });
     appendMessage('assistant', reply);
-    // update internal state randomly
-    const moods = ['neutral', 'happy', 'sad', 'angry'];
-    internalState.mood = moods[Math.floor(Math.random() * moods.length)];
-    if (showStateCheckbox.checked) updateStateView();
   } catch (err) {
     appendMessage('assistant', `Error: ${err}`);
   }
