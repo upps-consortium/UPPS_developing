@@ -5,6 +5,7 @@ const fetchRemoteBtn = document.getElementById('fetchRemote');
 const loadedDataPre = document.getElementById('loadedData');
 const showStateCheckbox = document.getElementById('showState');
 const statePanel = document.getElementById('statePanel');
+const stateView = document.getElementById('stateView');
 const chatLog = document.getElementById('chatLog');
 const userInput = document.getElementById('userInput');
 const sendBtn = document.getElementById('sendBtn');
@@ -41,12 +42,18 @@ fetchRemoteBtn.addEventListener('click', async () => {
   }
 });
 
-function appendMessage(role, content) {
+function extractAndDisplayMessage(role, content) {
+  const internalRegex = /<internal>([\s\S]*?)<\/internal>/;
+  const match = content.match(internalRegex);
+  const main = content.replace(internalRegex, '').trim();
   const div = document.createElement('div');
   div.className = `message ${role}`;
-  div.textContent = `${role}: ${content}`;
+  div.textContent = `${role}: ${main}`;
   chatLog.appendChild(div);
   chatLog.scrollTop = chatLog.scrollHeight;
+  if (match && showStateCheckbox.checked) {
+    stateView.textContent = match[1].trim();
+  }
 }
 
 async function sendMessage() {
@@ -66,7 +73,7 @@ async function sendMessage() {
   }
 
   messages.push({ role: 'user', content: text });
-  appendMessage('user', text);
+  extractAndDisplayMessage('user', text);
   userInput.value = '';
 
   try {
@@ -84,9 +91,9 @@ async function sendMessage() {
     const data = await response.json();
     const reply = data.choices?.[0]?.message?.content || '(no response)';
     messages.push({ role: 'assistant', content: reply });
-    appendMessage('assistant', reply);
+    extractAndDisplayMessage('assistant', reply);
   } catch (err) {
-    appendMessage('assistant', `Error: ${err}`);
+    extractAndDisplayMessage('assistant', `Error: ${err}`);
   }
 }
 
