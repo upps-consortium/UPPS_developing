@@ -242,16 +242,87 @@ def validate_cognitive_system(profile: Dict) -> bool:
     return valid
 
 
+def validate_dialogue_instructions(profile: Dict) -> bool:
+    valid = True
+    if "dialogue_instructions" not in profile:
+        print("⚠️ dialogue_instructionsフィールドが見つかりません。対話指示検証をスキップします")
+        return True
+    instructions = profile["dialogue_instructions"]
+    template_ref = instructions.get("template_ref")
+    direct_description = instructions.get("direct_description")
+    if not template_ref and not direct_description:
+        print(
+            "❌ dialogue_instructionsにはtemplate_refまたはdirect_descriptionのいずれかが必要です"
+        )
+        valid = False
+    if template_ref is not None and not isinstance(template_ref, str):
+        print("❌ dialogue_instructions.template_refは文字列である必要があります")
+        valid = False
+    if direct_description is not None and not isinstance(direct_description, str):
+        print("❌ dialogue_instructions.direct_descriptionは文字列である必要があります")
+        valid = False
+    if valid:
+        print("✅ 対話指示の検証: 成功")
+    return valid
+
+
+def validate_non_dialogue_metadata(profile: Dict) -> bool:
+    valid = True
+    if "non_dialogue_metadata" not in profile:
+        print(
+            "⚠️ non_dialogue_metadataフィールドが見つかりません。非対話メタデータ検証をスキップします"
+        )
+        return True
+    metadata = profile["non_dialogue_metadata"]
+
+    clinical = metadata.get("clinical_data")
+    if clinical is None:
+        print("❌ non_dialogue_metadataにclinical_dataフィールドがありません")
+        return False
+    primary = clinical.get("primary_diagnosis")
+    if primary is None:
+        print(
+            "❌ non_dialogue_metadata.clinical_dataにprimary_diagnosisフィールドがありません"
+        )
+        valid = False
+    else:
+        icd = primary.get("icd_11")
+        dsm = primary.get("dsm_5_tr")
+        if not icd and not dsm:
+            print(
+                "❌ primary_diagnosisにicd_11またはdsm_5_trの診断コードが必要です"
+            )
+            valid = False
+
+    # validation情報はclinical_data内またはnon_dialogue_metadata直下に配置される場合がある
+    validation = metadata.get("validation")
+    if validation is None and isinstance(clinical, dict):
+        validation = clinical.get("validation")
+    if validation and "quality_score" in validation:
+        qs = validation.get("quality_score")
+        if not isinstance(qs, (int, float)) or qs < 0 or qs > 100:
+            print("❌ validation.quality_scoreは0-100の範囲である必要があります")
+            valid = False
+
+    if valid:
+        print("✅ 非対話メタデータの検証: 成功")
+    return valid
+
+
 def validate_references(profile: Dict) -> bool:
     version_valid = validate_version(profile, EXPECTED_PROFILE_VERSION)
     emotion_valid = validate_emotion_references(profile)
     memory_valid = validate_memory_references(profile)
     association_valid = validate_association_references(profile)
     cognitive_valid = validate_cognitive_system(profile)
+    dialogue_valid = validate_dialogue_instructions(profile)
+    metadata_valid = validate_non_dialogue_metadata(profile)
     return (
         version_valid
         and emotion_valid
         and memory_valid
         and association_valid
         and cognitive_valid
+        and dialogue_valid
+        and metadata_valid
     )
