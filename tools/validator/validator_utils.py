@@ -224,17 +224,43 @@ def validate_cognitive_system(profile: Dict) -> bool:
         "working_memory",
         "processing_speed",
     ]
+    abilities = profile["cognitive_system"]["abilities"]
     for ability in required_abilities:
-        if ability not in profile["cognitive_system"]["abilities"]:
+        if ability not in abilities:
             print(f"❌ cognitive_systemのabilities内に'{ability}'能力がありません")
             valid = False
-        elif "level" not in profile["cognitive_system"]["abilities"][ability]:
-            print(f"❌ cognitive_systemの'{ability}'能力にlevelフィールドがありません")
+
+    for ability_name, ability_info in abilities.items():
+        if "level" not in ability_info:
+            print(f"❌ cognitive_systemの'{ability_name}'能力にlevelフィールドがありません")
+            valid = False
+            continue
+        level = ability_info["level"]
+        if not isinstance(level, int):
+            print(
+                f"❌ cognitive_systemの'{ability_name}'能力のlevelは整数である必要があります"
+            )
+            valid = False
+        elif not 0 <= level <= 100:
+            print(
+                f"❌ cognitive_systemの'{ability_name}'能力のlevelは0から100の範囲である必要があります"
+            )
             valid = False
     if "general_ability" in profile["cognitive_system"]:
-        if "level" not in profile["cognitive_system"]["general_ability"]:
+        general = profile["cognitive_system"]["general_ability"]
+        if "level" not in general:
             print("❌ cognitive_systemのgeneral_abilityにlevelフィールドがありません")
             valid = False
+        else:
+            level = general["level"]
+            if not isinstance(level, int):
+                print("❌ cognitive_systemのgeneral_ability.levelは整数である必要があります")
+                valid = False
+            elif not 0 <= level <= 100:
+                print(
+                    "❌ cognitive_systemのgeneral_ability.levelは0から100の範囲である必要があります"
+                )
+                valid = False
     else:
         print("⚠️ cognitive_systemにgeneral_abilityフィールドがありません")
     if valid:
