@@ -4,6 +4,7 @@ This directory collects example persona files and templates for the Unified Pers
 Persona data is separated by domain and continually expanded with new medical resources.
 
 For guidance on extending emotion sets, see [additional emotion recommendations](../specification/additional_emotions_recommendations.md).
+Additional emotion IDs should use English terms consistent with Ekman's model.
 
 ## Directory Overview
 

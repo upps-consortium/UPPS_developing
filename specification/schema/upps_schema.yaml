@@ -337,7 +337,7 @@ properties:
         minProperties: 1
       additional_emotions:
         type: object
-        description: "追加感情セット（オプション）"
+        description: "追加感情セット（オプション。キーはEkmanモデルに基づく英語ID）"
         additionalProperties:
           type: object
           required:
