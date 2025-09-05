@@ -322,7 +322,7 @@ emotion_system:
       baseline: 55
       description: "驚き、意外性への反応"
   
-  additional_emotions:          # 追加感情（オプション）
+  additional_emotions:          # 追加感情（オプション。IDは英語）
     curiosity:
       baseline: 85
       description: "好奇心、知的探究心"

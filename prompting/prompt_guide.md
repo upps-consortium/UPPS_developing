@@ -94,7 +94,7 @@ emotion_system:
       baseline: 55
       description: "驚き、意外性への反応"
   
-  additional_emotions:  # 標準モデル以外の追加感情
+  additional_emotions:  # 標準モデル以外の追加感情（IDはEkmanモデルに基づく英語名）
     curiosity:
       baseline: 85
       description: "好奇心、知的探究心"
