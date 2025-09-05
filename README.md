@@ -254,6 +254,20 @@ npx http-server -p 8000
 
 その後、ブラウザで [http://localhost:8000](http://localhost:8000) を開きます。
 
+## ペルソナ検証ツールの利用
+
+UPPS ペルソナファイルのスキーマや参照整合性を確認するには、`tools/validator/upps_validator.py` を使用します。
+
+```bash
+python tools/validator/upps_validator.py path/to/persona.yaml --all
+```
+
+主なフラグ:
+
+- `--schema` — スキーマ検証のみを実行
+- `--reference` — 参照整合性検証のみを実行
+- `--all` — すべての検証を実行（デフォルト）
+
 ## LLMチャットアプリの起動
 
 `tools/chat-app` には OpenAI API を利用したシンプルなチャットアプリが含まれています。
