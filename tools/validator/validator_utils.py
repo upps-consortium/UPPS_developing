@@ -10,6 +10,28 @@ import yaml
 import jsonschema
 from jsonschema import validate
 
+EXPECTED_PROFILE_VERSION = "2025.3 v1.0.0"
+
+
+def validate_version(profile: Dict, expected: str) -> bool:
+    version = (
+        profile.get("non_dialogue_metadata", {})
+        .get("administrative", {})
+        .get("version")
+    )
+    if version is None:
+        print(
+            "❌ バージョン検証: non_dialogue_metadata.administrative.version が見つかりません"
+        )
+        return False
+    if version != expected:
+        print(
+            f"❌ バージョン検証: プロファイルのバージョン '{version}' は期待される '{expected}' と一致しません"
+        )
+        return False
+    print("✅ バージョン検証: 成功")
+    return True
+
 
 def load_yaml(file_path: str) -> Dict:
     """Load YAML file and return dictionary."""
@@ -207,8 +229,15 @@ def validate_cognitive_system(profile: Dict) -> bool:
 
 
 def validate_references(profile: Dict) -> bool:
+    version_valid = validate_version(profile, EXPECTED_PROFILE_VERSION)
     emotion_valid = validate_emotion_references(profile)
     memory_valid = validate_memory_references(profile)
     association_valid = validate_association_references(profile)
     cognitive_valid = validate_cognitive_system(profile)
-    return emotion_valid and memory_valid and association_valid and cognitive_valid
+    return (
+        version_valid
+        and emotion_valid
+        and memory_valid
+        and association_valid
+        and cognitive_valid
+    )
