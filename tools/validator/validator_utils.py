@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import os
+from pathlib import Path
 from typing import Dict, Set, Tuple
 
 import yaml
@@ -43,22 +44,35 @@ def load_yaml(file_path: str) -> Dict:
 
 
 def load_schema(schema_path: str | None = None) -> Tuple[Dict, str]:
-    """Load UPPS schema. If schema_path is None, search common locations."""
-    possible_paths = []
+    """Load UPPS schema.
+
+    The schema location can be overridden by providing ``schema_path`` or by
+    setting the ``UPPS_SCHEMA_PATH`` environment variable. If neither is
+    supplied, common locations relative to this file are searched.
+    """
+    base_dir = Path(__file__).resolve().parent
+
+    possible_paths: list[Path] = []
+
     if schema_path:
-        possible_paths.append(schema_path)
-    possible_paths.extend(
-        [
-            os.path.join(os.path.dirname(__file__), "upps_schema.yaml"),
-            "upps_schema.yaml",
-            "../schema/upps_schema.yaml",
-            "../specification/schema/upps_schema.yaml",
-            "specification/schema/upps_schema.yaml",
-        ]
-    )
+        possible_paths.append(Path(schema_path))
+    env_schema = os.getenv("UPPS_SCHEMA_PATH")
+    if env_schema:
+        possible_paths.append(Path(env_schema))
+
+    relative_candidates = [
+        Path("upps_schema.yaml"),
+        Path("schema/upps_schema.yaml"),
+        Path("specification/schema/upps_schema.yaml"),
+    ]
+    search_dirs = [base_dir, base_dir.parent, base_dir.parent.parent]
+    for directory in search_dirs:
+        for rel in relative_candidates:
+            possible_paths.append((directory / rel).resolve())
+
     for path in possible_paths:
-        if os.path.exists(path):
-            return load_yaml(path), path
+        if path.exists():
+            return load_yaml(str(path)), str(path)
     raise FileNotFoundError("UPPSスキーマファイル(upps_schema.yaml)が見つかりません")
 
 

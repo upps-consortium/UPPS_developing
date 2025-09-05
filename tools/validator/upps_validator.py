@@ -34,7 +34,10 @@ def main() -> None:
         help="Run only reference integrity validation",
     )
     parser.add_argument("--all", action="store_true", help="Run all validations")
-    parser.add_argument("--schema-path", help="Path to UPPS schema file")
+    parser.add_argument(
+        "--schema-path",
+        help="Path to UPPS schema file. Can also be set via UPPS_SCHEMA_PATH.",
+    )
 
     args = parser.parse_args()
 
