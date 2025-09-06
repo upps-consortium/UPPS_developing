@@ -47,8 +47,6 @@ challenges:
   - "失敗を過度に恐れる傾向"
   - "慢性的な睡眠不足"
 
-communication_style: "丁寧だが心配がちで、質問を繰り返す"
-
 # 感情システム
 emotion_system:
   model: "Ekman"
@@ -110,6 +108,7 @@ cognitive_system:
 dialogue_instructions:
   template_ref: "anxiety_moderate_generalized_v1.0"
   customizations:
+    communication_style: "丁寧だが心配がちで、質問を繰り返す"
     additional_notes: |
       就職活動の話題になると不安が強まり、将来への心配を繰り返す。
       失敗を極度に恐れ、何度も確認する癖がある。
@@ -129,8 +128,8 @@ non_dialogue_metadata:
     educational_objectives:
       - "若年者の不安症状理解"
       - "就職活動に伴うストレスへの対応"
-  validation:
-    approval_status: "pending"
+    validation:
+      approval_status: "pending"
   administrative:
     file_id: "persona_anxiety_SY_student"
     creation_date: "2025-07-30"
