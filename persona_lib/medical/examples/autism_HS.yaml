@@ -75,17 +75,20 @@ cognitive_system:
   model: "WAIS-IV"
   abilities:
     verbal_comprehension:
-      level: 105
+      level: 65
       description: "語彙は豊富だが比喩理解は苦手"
     perceptual_reasoning:
-      level: 110
+      level: 70
       description: "視覚的なパターン認識が得意"
     working_memory:
-      level: 100
+      level: 60
       description: "興味のある内容なら集中できる"
     processing_speed:
-      level: 95
+      level: 55
       description: "変化への適応に時間がかかる"
+  general_ability:
+    level: 63
+    description: "主要4能力を総合した平均的な認知能力"
 
 dialogue_instructions:
   template_ref: "autism_typical_v1.0"
