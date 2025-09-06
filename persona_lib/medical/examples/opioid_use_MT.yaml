@@ -77,12 +77,18 @@ cognitive_system:
     verbal_comprehension:
       level: 90
       description: "平均以上"
+    perceptual_reasoning:
+      level: 82
+      description: "視覚的情報の理解は良好"
     working_memory:
       level: 75
       description: "不安で集中が途切れる"
     processing_speed:
       level: 80
       description: "平均的"
+  general_ability:
+    level: 82
+    description: "認知機能は概ね良好だが不安が妨げとなる"
 
 dialogue_instructions:
   template_ref: "opioid_use_disorder_moderate_typical_v1.0"

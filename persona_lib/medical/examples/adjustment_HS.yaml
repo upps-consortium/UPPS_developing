@@ -79,9 +79,18 @@ cognitive_system:
     verbal_comprehension:
       level: 85
       description: "コミュニケーション能力は十分"
+    perceptual_reasoning:
+      level: 82
+      description: "状況変化への理解は良好"
     working_memory:
       level: 80
       description: "仕事の変化により集中力が低下"
+    processing_speed:
+      level: 78
+      description: "ストレスでやや遅い"
+  general_ability:
+    level: 80
+    description: "全般的な認知機能は平均的"
 
 dialogue_instructions:
   template_ref: "adjustment_mild_depressive_v1.0"

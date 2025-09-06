@@ -70,6 +70,12 @@ emotion_system:
     frustration:
       baseline: 55
       description: "成果を出せない焦り"
+    pride:
+      baseline: 45
+      description: "過去の成功を誇りに思う気持ち"
+    love:
+      baseline: 60
+      description: "家族への深い愛情"
 
 # 記憶システム
 memory_system:
@@ -114,6 +120,9 @@ cognitive_system:
     processing_speed:
       level: 65
       description: "疲労によりやや遅い"
+  general_ability:
+    level: 75
+    description: "全体として平均的だが意欲低下が影響"
 
 # 対話実行指示（テンプレート参照型）
 dialogue_instructions:

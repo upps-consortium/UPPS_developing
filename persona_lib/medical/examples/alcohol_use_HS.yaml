@@ -77,12 +77,18 @@ cognitive_system:
     verbal_comprehension:
       level: 85
       description: "会話は得意"
+    perceptual_reasoning:
+      level: 80
+      description: "状況判断は平均的"
     working_memory:
       level: 70
       description: "飲酒翌日は集中が落ちる"
     processing_speed:
       level: 80
       description: "平均的"
+  general_ability:
+    level: 78
+    description: "飲酒の影響を除けば認知機能は安定"
 
 dialogue_instructions:
   template_ref: "alcohol_use_disorder_moderate_typical_v1.0"

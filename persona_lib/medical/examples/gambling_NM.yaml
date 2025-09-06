@@ -77,12 +77,18 @@ cognitive_system:
     verbal_comprehension:
       level: 85
       description: "平均的"
+    perceptual_reasoning:
+      level: 80
+      description: "パターン認識は良好"
     working_memory:
       level: 70
       description: "ギャンブルのことが気になり集中が難しい"
     processing_speed:
       level: 85
       description: "やや速い"
+  general_ability:
+    level: 80
+    description: "全般的認知は平均的だが注意がギャンブルに偏る"
 
 dialogue_instructions:
   template_ref: "gambling_disorder_moderate_typical_v1.0"

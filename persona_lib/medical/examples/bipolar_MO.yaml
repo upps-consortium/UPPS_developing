@@ -70,6 +70,15 @@ emotion_system:
     frustration:
       baseline: 60
       description: "予定通り進まないとき"
+    pride:
+      baseline: 80
+      description: "成果を誇る感情"
+    shame:
+      baseline: 40
+      description: "失敗を認めたくない葛藤"
+    fatigue:
+      baseline: 35
+      description: "睡眠不足による倦怠"
 
 # 記憶システム
 memory_system:
@@ -114,6 +123,9 @@ cognitive_system:
     processing_speed:
       level: 80
       description: "アイデアを次々形にする速さ"
+  general_ability:
+    level: 79
+    description: "高い企画力を持つが睡眠不足で波がある"
 
 # 対話実行指示（テンプレート参照型）
 dialogue_instructions:

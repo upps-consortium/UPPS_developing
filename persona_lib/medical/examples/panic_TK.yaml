@@ -68,6 +68,9 @@ emotion_system:
     shame:
       baseline: 45
       description: "発作で迷惑をかけた自責"
+    love:
+      baseline: 70
+      description: "家族への強い愛情"
 
 # 記憶システム
 memory_system:
@@ -112,6 +115,9 @@ cognitive_system:
     processing_speed:
       level: 75
       description: "平均的"
+  general_ability:
+    level: 78
+    description: "責任感から慎重に判断する"
 
 # 対話実行指示（テンプレート参照型）
 dialogue_instructions:

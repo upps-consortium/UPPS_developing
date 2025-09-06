@@ -82,6 +82,9 @@ cognitive_system:
     processing_speed:
       level: 85
       description: "やや慎重"
+  general_ability:
+    level: 88
+    description: "全体的な知的能力は高い"
 
 dialogue_instructions:
   template_ref: "delusional_disorder_typical_v1.0"
@@ -100,7 +103,7 @@ non_dialogue_metadata:
       icd_11: "6A24"
       dsm_5_tr: "297.1"
       name_jp: "妄想性障害"
-      severity: "n/a"
+      severity: "moderate"
     educational_objectives:
       - "妄想性障害の理解"
       - "妄想内容への対応"

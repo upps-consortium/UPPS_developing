@@ -58,6 +58,10 @@ emotion_system:
     hope:
       baseline: 35
       description: "回復へのわずかな期待"
+  additional_emotions:
+    love:
+      baseline: 65
+      description: "家族への温かな愛情"
 
 memory_system:
   memories:
@@ -82,12 +86,18 @@ cognitive_system:
     verbal_comprehension:
       level: 95
       description: "会話理解は良好"
+    perceptual_reasoning:
+      level: 85
+      description: "仕事上の課題を整理する力"
     working_memory:
       level: 80
       description: "集中力が低下している"
     processing_speed:
       level: 75
       description: "疲労でやや遅い"
+  general_ability:
+    level: 83
+    description: "全体的な認知力は高いが気分低下が影響"
 
 dialogue_instructions:
   template_ref: "persistent_depression_v1.0"

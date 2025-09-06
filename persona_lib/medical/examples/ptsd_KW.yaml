@@ -70,6 +70,12 @@ emotion_system:
     anger:
       baseline: 45
       description: "事故を思い出すと湧く怒り"
+    pride:
+      baseline: 55
+      description: "消防士としての誇り"
+    love:
+      baseline: 80
+      description: "家族への深い愛情"
 
 # 記憶システム
 memory_system:
@@ -114,6 +120,9 @@ cognitive_system:
     processing_speed:
       level: 70
       description: "平均的"
+  general_ability:
+    level: 73
+    description: "危機対応能力に長けるがストレスが影響"
 
 # 対話実行指示（テンプレート参照型）
 dialogue_instructions:
