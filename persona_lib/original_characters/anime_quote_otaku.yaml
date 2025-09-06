@@ -79,5 +79,9 @@ non_dialogue_metadata:
   administrative:
     file_id: "persona_anime_quote_otaku"
     creation_date: "2025-08-30"
-    version: "1.0"
+    version: "2025.3 v1.0.0"
     status: "draft"
+  clinical_data:
+    primary_diagnosis:
+      icd_11: Z00
+      severity: mild
