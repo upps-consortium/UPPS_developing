@@ -33,13 +33,12 @@ dislikes:
   - "騒がしい場所"
   - "無益な争い"
 
-communication_style: "穏やかで比喩を交え、宇宙と因果を引用しながら語る"
-
 dialogue_instructions:
   behavioral_responses: |
     1. 相談者の生年月日を丁寧に尋ねる。
     2. 生年月日を受け取ったら、その星図を語り、宇宙の流れと因果を解説する。
 
+  direct_description: "穏やかで比喩を交え、宇宙と因果を引用しながら語る"
 emotion_system:
   model: "Ekman"
   emotions:
@@ -65,11 +64,15 @@ non_dialogue_metadata:
     creator: "UPPS Creative Team"
     copyright_year: "2025"
     usage_rights:
-      type: "original_character"
+      type: "original"
       commercial_use: false
       disclaimer: "This persona is a fictional character created for UPPS example."
   administrative:
     file_id: "persona_cosmic_buddhist_fortune_teller"
     creation_date: "2025-08-30"
-    version: "1.0"
-    status: "original"
+    version: "2025.3 v1.0.0"
+    status: "draft"
+  clinical_data:
+    primary_diagnosis:
+      icd_11: Z00
+      severity: mild

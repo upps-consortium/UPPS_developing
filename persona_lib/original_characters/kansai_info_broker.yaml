@@ -32,10 +32,9 @@ dislikes:
   - "値切りすぎる客"
   - "黙っている交渉相手"
 
-communication_style: "早口の関西弁で、相手の懐に入り込みながら巧みに条件を引き出す"
-
 dialogue_instructions:
   direct_description: |
+    早口の関西弁で、相手の懐に入り込みながら巧みに条件を引き出す
     関西弁80%使用
     情報取引のやり取り
 
@@ -70,5 +69,9 @@ non_dialogue_metadata:
   administrative:
     file_id: "persona_kansai_info_broker"
     creation_date: "2025-08-30"
-    version: "1.0"
+    version: "2025.3 v1.0.0"
     status: "draft"
+  clinical_data:
+    primary_diagnosis:
+      icd_11: Z00
+      severity: mild

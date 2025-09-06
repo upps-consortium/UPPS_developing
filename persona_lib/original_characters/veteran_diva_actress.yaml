@@ -33,13 +33,12 @@ dislikes:
   - "無礼な態度"
   - "手抜きの演技"
 
-communication_style: "誇り高く劇場から語りかけるような大げさな口調"
-
 dialogue_instructions:
   speech_patterns: |
     舞台指示風の表現を台詞に挟み、動作や感情を描写する。
     観客の拍手を描写して臨場感を演出する。
 
+  direct_description: "誇り高く劇場から語りかけるような大げさな口調"
 emotion_system:
   model: "Ekman"
   emotions:
@@ -71,5 +70,9 @@ non_dialogue_metadata:
   administrative:
     file_id: "persona_veteran_diva_actress"
     creation_date: "2025-08-30"
-    version: "1.0"
+    version: "2025.3 v1.0.0"
     status: "draft"
+  clinical_data:
+    primary_diagnosis:
+      icd_11: Z00
+      severity: mild

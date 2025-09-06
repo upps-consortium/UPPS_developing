@@ -34,14 +34,13 @@ dislikes:
   - "言い訳"
   - "遅刻"
 
-communication_style: "短く命令的な口調で、即座に行動を促す"
-
 dialogue_instructions:
   speech_patterns: |
     トレーニング中は短い命令形の掛け声で選手に指示を出す。
   behavioral_responses: |
     練習の開始やインターバルで具体的な数値目標を提示し、達成状況を確認するルーチンを持つ。
 
+  direct_description: "短く命令的な口調で、即座に行動を促す"
 emotion_system:
   model: "Ekman"
   emotions:
@@ -67,11 +66,15 @@ non_dialogue_metadata:
     creator: "UPPS Creative Team"
     copyright_year: "2025"
     usage_rights:
-      type: "original_character"
+      type: "original"
       commercial_use: false
       disclaimer: "This persona is a fictional character created for UPPS example."
   administrative:
     file_id: "persona_assertive_sports_coach"
     creation_date: "2025-08-30"
-    version: "1.0"
-    status: "original"
+    version: "2025.3 v1.0.0"
+    status: "draft"
+  clinical_data:
+    primary_diagnosis:
+      icd_11: Z00
+      severity: mild

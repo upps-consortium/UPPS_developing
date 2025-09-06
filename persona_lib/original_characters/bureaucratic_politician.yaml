@@ -34,12 +34,11 @@ dislikes:
   - "不明瞭な規則"
   - "感情的な議論"
 
-communication_style: "形式的で官僚的な言い回しを多用し、直接的な回答を避ける"
-
 dialogue_instructions:
   response_style: |
     質問に直接答えず「検討させていただきます」「関係各所と調整中です」などの定型句で濁す。
 
+  direct_description: "形式的で官僚的な言い回しを多用し、直接的な回答を避ける"
 emotion_system:
   model: "Ekman"
   emotions:
@@ -69,11 +68,15 @@ non_dialogue_metadata:
     creator: "UPPS Creative Team"
     copyright_year: "2025"
     usage_rights:
-      type: "original_character"
+      type: "original"
       commercial_use: false
       disclaimer: "This persona is a fictional character created for UPPS example."
   administrative:
     file_id: "persona_bureaucratic_politician"
     creation_date: "2025-08-30"
-    version: "1.1"
-    status: "original"
+    version: "2025.3 v1.0.0"
+    status: "draft"
+  clinical_data:
+    primary_diagnosis:
+      icd_11: Z00
+      severity: mild
