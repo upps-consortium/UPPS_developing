@@ -130,7 +130,7 @@ non_dialogue_metadata:
   administrative:
     file_id: "persona_body_dysmorphic_MS"
     creation_date: "2025-08-30"
-    version: "1.0"
+    version: "2025.3 v1.0.0"
     status: "draft"
     creator: "UPPS Consortium Medical Team"
     intended_use: "medical_education"
