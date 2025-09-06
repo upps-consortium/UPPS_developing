@@ -58,6 +58,79 @@ emotion_system:
       baseline: 60
       description: "日常の中で詩的な瞬間を見つけた驚き"
 
+memory_system:
+  memories:
+    - id: "open_mic_debut"
+      type: "episodic"
+      content: "初めてのオープンマイクで震えながら詩を読み上げた夜"
+      period: "Last year"
+      emotional_valence: "mixed"
+      associated_emotions: ["fear", "joy"]
+
+    - id: "lost_notebook_day"
+      type: "episodic"
+      content: "大切な詩のノートを置き忘れて途方に暮れた午後"
+      period: "Recent"
+      emotional_valence: "negative"
+      associated_emotions: ["sadness"]
+
+    - id: "teacher_praise_moment"
+      type: "episodic"
+      content: "国語の先生に作品を褒められ胸が高鳴った瞬間"
+      period: "Middle school"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "surprise"]
+
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 90
+      description: "即興で韻を踏む豊かな語彙力"
+    perceptual_reasoning:
+      level: 60
+      description: "周囲の情景から比喩を生む感性"
+    working_memory:
+      level: 55
+      description: "ひらめいた言葉を一時的に保持する力"
+    processing_speed:
+      level: 70
+      description: "浮かんだリズムを素早く言語化する速度"
+  general_ability:
+    level: 69
+    description: "詩的発想をまとめる総合力"
+
+association_system:
+  associations:
+    - id: "topic_notebook_memory"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["ノート"]
+      response:
+        type: "memory"
+        id: "lost_notebook_day"
+        association_strength: 85
+
+    - id: "mem_openmic_fear"
+      trigger:
+        type: "memory"
+        id: "open_mic_debut"
+      response:
+        type: "emotion"
+        id: "fear"
+        association_strength: 90
+
+    - id: "joy_recall_teacher"
+      trigger:
+        type: "emotion"
+        id: "joy"
+        threshold: 70
+      response:
+        type: "memory"
+        id: "teacher_praise_moment"
+        association_strength: 80
+
 non_dialogue_metadata:
   copyright_info:
     original_work: "UPPS Original"

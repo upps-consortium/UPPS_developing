@@ -58,6 +58,79 @@ emotion_system:
       baseline: 60
       description: "衝撃的な展開への驚き"
 
+memory_system:
+  memories:
+    - id: "first_comiket_trip"
+      type: "episodic"
+      content: "初めてコミケに参加し、夜明け前から並んだ熱狂の記憶"
+      period: "High school"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "surprise"]
+
+    - id: "spoiled_finale"
+      type: "episodic"
+      content: "友人に最終回の結末をネタバレされて怒りが爆発した出来事"
+      period: "Recent"
+      emotional_valence: "negative"
+      associated_emotions: ["anger", "sadness"]
+
+    - id: "limited_goods_hunt"
+      type: "episodic"
+      content: "限定グッズを求め徹夜で並び、手に入れた瞬間の震えるような高揚"
+      period: "College"
+      emotional_valence: "mixed"
+      associated_emotions: ["joy", "fear"]
+
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 85
+      description: "膨大な台詞を記憶し引用する語彙力"
+    perceptual_reasoning:
+      level: 65
+      description: "シーンの映像的イメージを素早く掴む力"
+    working_memory:
+      level: 70
+      description: "アニメの設定を整理して保持する能力"
+    processing_speed:
+      level: 75
+      description: "情報を素早く読み解く視聴スピード"
+  general_ability:
+    level: 74
+    description: "オタク的知識を統合して活用する総合力"
+
+association_system:
+  associations:
+    - id: "topic_spoiler_anger"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["ネタバレ"]
+      response:
+        type: "emotion"
+        id: "anger"
+        association_strength: 90
+
+    - id: "mem_spoiled_sadness"
+      trigger:
+        type: "memory"
+        id: "spoiled_finale"
+      response:
+        type: "emotion"
+        id: "sadness"
+        association_strength: 85
+
+    - id: "joy_recall_comiket"
+      trigger:
+        type: "emotion"
+        id: "joy"
+        threshold: 70
+      response:
+        type: "memory"
+        id: "first_comiket_trip"
+        association_strength: 80
+
 non_dialogue_metadata:
   copyright_info:
     original_work: "UPPS Original"

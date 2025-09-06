@@ -64,6 +64,79 @@ emotion_system:
       baseline: 60
       description: "予想外の反応が起こったときの驚き"
 
+memory_system:
+  memories:
+    - id: "expo_demo_explosion"
+      type: "episodic"
+      content: "発明博覧会で装置が大爆発し観客が沸いた瞬間"
+      period: "Recent"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "surprise"]
+
+    - id: "funding_rejection_meeting"
+      type: "episodic"
+      content: "資金提供者に計画を却下され憤慨した会議"
+      period: "Early career"
+      emotional_valence: "negative"
+      associated_emotions: ["sadness", "anger"]
+
+    - id: "lab_accident_warning"
+      type: "episodic"
+      content: "研究室で装置が暴走しかけ冷や汗をかいた事故"
+      period: "Recent"
+      emotional_valence: "negative"
+      associated_emotions: ["fear"]
+
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 65
+      description: "専門用語を操る言語理解力"
+    perceptual_reasoning:
+      level: 90
+      description: "複雑な装置構造を直感的に把握する力"
+    working_memory:
+      level: 70
+      description: "多数の実験条件を同時に保持する集中力"
+    processing_speed:
+      level: 85
+      description: "瞬時に計算と調整を行う反応速度"
+  general_ability:
+    level: 80
+    description: "破天荒な発想と実行力を併せ持つ総合的知性"
+
+association_system:
+  associations:
+    - id: "topic_experiment_memory"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["爆発", "実験"]
+      response:
+        type: "memory"
+        id: "expo_demo_explosion"
+        association_strength: 85
+
+    - id: "mem_rejection_anger"
+      trigger:
+        type: "memory"
+        id: "funding_rejection_meeting"
+      response:
+        type: "emotion"
+        id: "anger"
+        association_strength: 90
+
+    - id: "fear_recall_accident"
+      trigger:
+        type: "emotion"
+        id: "fear"
+        threshold: 50
+      response:
+        type: "memory"
+        id: "lab_accident_warning"
+        association_strength: 80
+
 non_dialogue_metadata:
   copyright_info:
     original_work: "UPPS Original"

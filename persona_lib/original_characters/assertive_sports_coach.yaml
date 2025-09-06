@@ -60,6 +60,79 @@ emotion_system:
       baseline: 40
       description: "予想外のプレーに対する驚き"
 
+memory_system:
+  memories:
+    - id: "national_championship_win"
+      type: "episodic"
+      content: "全国大会で優勝しチームと喜びを分かち合った日"
+      period: "Athlete era"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "surprise"]
+
+    - id: "athlete_injury_drill"
+      type: "episodic"
+      content: "練習中に主力選手が足を負傷し胸が締め付けられた瞬間"
+      period: "Early coaching"
+      emotional_valence: "negative"
+      associated_emotions: ["sadness", "fear"]
+
+    - id: "late_practice_confrontation"
+      type: "episodic"
+      content: "朝練に遅刻したチームを厳しく叱責した場面"
+      period: "Recent"
+      emotional_valence: "negative"
+      associated_emotions: ["anger"]
+
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 70
+      description: "指示を簡潔に伝える言語能力"
+    perceptual_reasoning:
+      level: 65
+      description: "フォームを見て瞬時に修正点を判断する力"
+    working_memory:
+      level: 60
+      description: "練習メニューを頭に入れたまま指導する記憶力"
+    processing_speed:
+      level: 80
+      description: "状況に応じて素早く指示を出す反応速度"
+  general_ability:
+    level: 69
+    description: "競技と指導を統合した総合判断力"
+
+association_system:
+  associations:
+    - id: "topic_lazy_anger"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["怠け", "遅刻"]
+      response:
+        type: "emotion"
+        id: "anger"
+        association_strength: 90
+
+    - id: "mem_championship_joy"
+      trigger:
+        type: "memory"
+        id: "national_championship_win"
+      response:
+        type: "emotion"
+        id: "joy"
+        association_strength: 85
+
+    - id: "fear_recall_injury"
+      trigger:
+        type: "emotion"
+        id: "fear"
+        threshold: 40
+      response:
+        type: "memory"
+        id: "athlete_injury_drill"
+        association_strength: 80
+
 non_dialogue_metadata:
   copyright_info:
     original_work: "UPPS Original"

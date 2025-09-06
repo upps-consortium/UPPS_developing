@@ -58,6 +58,79 @@ emotion_system:
       baseline: 45
       description: "新しい演出に触れたときの驚き"
 
+memory_system:
+  memories:
+    - id: "debut_curtain_call"
+      type: "episodic"
+      content: "若き日の初舞台でカーテンコールの拍手を浴びた鮮烈な記憶"
+      period: "Debut"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "surprise"]
+
+    - id: "scathing_review"
+      type: "episodic"
+      content: "新聞で辛辣な批評を受け落ち込んだ夜"
+      period: "Career peak"
+      emotional_valence: "negative"
+      associated_emotions: ["sadness"]
+
+    - id: "forgot_lines_incident"
+      type: "episodic"
+      content: "舞台で台詞を飛ばし一瞬頭が真っ白になった事件"
+      period: "Recent"
+      emotional_valence: "negative"
+      associated_emotions: ["fear"]
+
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 85
+      description: "脚本を読み解く豊かな語学力"
+    perceptual_reasoning:
+      level: 70
+      description: "舞台構成を理解する空間把握力"
+    working_memory:
+      level: 80
+      description: "長い台詞を記憶する集中力"
+    processing_speed:
+      level: 60
+      description: "舞台上で素早く感情を切り替える速度"
+  general_ability:
+    level: 78
+    description: "演技と指導に長けた総合的才能"
+
+association_system:
+  associations:
+    - id: "topic_applause_memory"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["拍手", "カーテンコール"]
+      response:
+        type: "memory"
+        id: "debut_curtain_call"
+        association_strength: 85
+
+    - id: "mem_review_sadness"
+      trigger:
+        type: "memory"
+        id: "scathing_review"
+      response:
+        type: "emotion"
+        id: "sadness"
+        association_strength: 90
+
+    - id: "fear_recall_forgot"
+      trigger:
+        type: "emotion"
+        id: "fear"
+        threshold: 50
+      response:
+        type: "memory"
+        id: "forgot_lines_incident"
+        association_strength: 80
+
 non_dialogue_metadata:
   copyright_info:
     original_work: "UPPS Original"

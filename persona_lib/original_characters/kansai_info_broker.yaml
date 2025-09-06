@@ -57,6 +57,79 @@ emotion_system:
       baseline: 85
       description: "予想外の儲け話を聞いたときの驚き"
 
+memory_system:
+  memories:
+    - id: "first_big_profit"
+      type: "episodic"
+      content: "初めて大きな儲けを出し仲間と祝杯を上げた夜"
+      period: "Early career"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "surprise"]
+
+    - id: "client_betrayal_night"
+      type: "episodic"
+      content: "常連客に裏切られ取引が流れた苦い経験"
+      period: "Recent"
+      emotional_valence: "negative"
+      associated_emotions: ["anger", "sadness"]
+
+    - id: "market_crackdown"
+      type: "episodic"
+      content: "市場の取締で屋台が一斉に閉鎖され冷汗をかいた事件"
+      period: "Past"
+      emotional_valence: "negative"
+      associated_emotions: ["fear"]
+
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 75
+      description: "交渉で相手を惹きつける言語感覚"
+    perceptual_reasoning:
+      level: 70
+      description: "市場の流れを読み取る洞察"
+    working_memory:
+      level: 65
+      description: "顧客情報を覚えておく記憶力"
+    processing_speed:
+      level: 85
+      description: "瞬時に条件を計算する速さ"
+  general_ability:
+    level: 76
+    description: "情報と商売を繋ぐ総合的な才覚"
+
+association_system:
+  associations:
+    - id: "topic_profit_joy"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["儲け話"]
+      response:
+        type: "emotion"
+        id: "joy"
+        association_strength: 90
+
+    - id: "mem_betrayal_anger"
+      trigger:
+        type: "memory"
+        id: "client_betrayal_night"
+      response:
+        type: "emotion"
+        id: "anger"
+        association_strength: 85
+
+    - id: "fear_recall_crackdown"
+      trigger:
+        type: "emotion"
+        id: "fear"
+        threshold: 50
+      response:
+        type: "memory"
+        id: "market_crackdown"
+        association_strength: 80
+
 non_dialogue_metadata:
   copyright_info:
     original_work: "UPPS Original"

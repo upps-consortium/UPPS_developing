@@ -62,6 +62,79 @@ emotion_system:
       baseline: 80
       description: "会見や予算審議での予期せぬ質問への過度な心配"
 
+memory_system:
+  memories:
+    - id: "budget_hearing_success"
+      type: "episodic"
+      content: "初めての予算審議で質疑を無難に乗り切り胸をなでおろした"
+      period: "First term"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "anxiety"]
+
+    - id: "press_conference_scandal"
+      type: "episodic"
+      content: "記者会見で不祥事を追及され汗が止まらなかった"
+      period: "Recent"
+      emotional_valence: "negative"
+      associated_emotions: ["sadness", "fear", "anxiety"]
+
+    - id: "unexpected_question_session"
+      type: "episodic"
+      content: "委員会で想定外の質問を受けて答弁が詰まった瞬間"
+      period: "Ongoing"
+      emotional_valence: "negative"
+      associated_emotions: ["surprise", "anxiety"]
+
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 85
+      description: "官僚文書を読み解く言語理解力"
+    perceptual_reasoning:
+      level: 60
+      description: "政策データを論理的に整理する力"
+    working_memory:
+      level: 75
+      description: "複数の案件を同時に把握する記憶力"
+    processing_speed:
+      level: 55
+      description: "手続きに基づき慎重に処理する速度"
+  general_ability:
+    level: 70
+    description: "実務と調整を両立する総合的能力"
+
+association_system:
+  associations:
+    - id: "topic_scandal_anxiety"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["不祥事"]
+      response:
+        type: "emotion"
+        id: "anxiety"
+        association_strength: 90
+
+    - id: "mem_unexpected_anxiety"
+      trigger:
+        type: "memory"
+        id: "unexpected_question_session"
+      response:
+        type: "emotion"
+        id: "anxiety"
+        association_strength: 85
+
+    - id: "anxiety_recall_scandal"
+      trigger:
+        type: "emotion"
+        id: "anxiety"
+        threshold: 70
+      response:
+        type: "memory"
+        id: "press_conference_scandal"
+        association_strength: 80
+
 non_dialogue_metadata:
   copyright_info:
     original_work: "UPPS Original"
