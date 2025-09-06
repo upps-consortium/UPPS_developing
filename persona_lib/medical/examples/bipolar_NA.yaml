@@ -70,6 +70,15 @@ emotion_system:
     frustration:
       baseline: 50
       description: "思い通りに進まないとき"
+    pride:
+      baseline: 70
+      description: "作品の成功に対する誇り"
+    shame:
+      baseline: 45
+      description: "入院歴を思い出した恥ずかしさ"
+    fatigue:
+      baseline: 40
+      description: "徹夜続きによる疲労"
 
 # 記憶システム
 memory_system:
@@ -114,6 +123,9 @@ cognitive_system:
     processing_speed:
       level: 70
       description: "作業は速いがミスも増える"
+  general_ability:
+    level: 75
+    description: "創造力は高いが衝動性が影響"
 
 # 対話実行指示（テンプレート参照型）
 dialogue_instructions:

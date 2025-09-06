@@ -79,9 +79,18 @@ cognitive_system:
     verbal_comprehension:
       level: 80
       description: "平均的"
+    perceptual_reasoning:
+      level: 78
+      description: "状況判断は素早い"
     working_memory:
       level: 75
       description: "事故後集中しにくい"
+    processing_speed:
+      level: 72
+      description: "緊張時にやや低下"
+  general_ability:
+    level: 76
+    description: "全体的に平均的だがストレスで能力が揺らぐ"
 
 dialogue_instructions:
   template_ref: "acute_stress_moderate_typical_v1.0"
