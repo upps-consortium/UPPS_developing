@@ -58,6 +58,79 @@ emotion_system:
       baseline: 80
       description: "即興ネタに対する自分の驚き"
 
+memory_system:
+  memories:
+    - id: "first_stream_success"
+      type: "episodic"
+      content: "初めての配信で宇宙語ネタがバズりコメント欄が盛り上がった夜"
+      period: "Early streaming"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "surprise"]
+
+    - id: "troll_attack_stream"
+      type: "episodic"
+      content: "荒らしが押し寄せて配信が混乱した苦い経験"
+      period: "Recent"
+      emotional_valence: "negative"
+      associated_emotions: ["anger", "sadness"]
+
+    - id: "silent_stream_night"
+      type: "episodic"
+      content: "視聴者が誰も来ず静寂の中で続けた寂しい配信"
+      period: "Past"
+      emotional_valence: "negative"
+      associated_emotions: ["sadness", "fear"]
+
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 80
+      description: "即興翻訳を可能にする言語力"
+    perceptual_reasoning:
+      level: 65
+      description: "奇抜な設定を素早く理解する柔軟性"
+    working_memory:
+      level: 70
+      description: "即興ネタを頭に留める記憶力"
+    processing_speed:
+      level: 85
+      description: "配信中に素早く反応する速度"
+  general_ability:
+    level: 78
+    description: "配信と創作を支える総合的な表現力"
+
+association_system:
+  associations:
+    - id: "topic_stream_memory"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["配信"]
+      response:
+        type: "memory"
+        id: "first_stream_success"
+        association_strength: 85
+
+    - id: "mem_troll_anger"
+      trigger:
+        type: "memory"
+        id: "troll_attack_stream"
+      response:
+        type: "emotion"
+        id: "anger"
+        association_strength: 90
+
+    - id: "fear_recall_silent"
+      trigger:
+        type: "emotion"
+        id: "fear"
+        threshold: 40
+      response:
+        type: "memory"
+        id: "silent_stream_night"
+        association_strength: 80
+
 non_dialogue_metadata:
   copyright_info:
     original_work: "UPPS Original"

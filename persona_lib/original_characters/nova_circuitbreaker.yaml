@@ -58,6 +58,79 @@ emotion_system:
       baseline: 50
       description: "予期せぬ脆弱性を発見したときの驚き"
 
+memory_system:
+  memories:
+    - id: "first_major_hack"
+      type: "episodic"
+      content: "初めて大規模な侵入テストに成功し自由を実感した夜"
+      period: "Early career"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "surprise"]
+
+    - id: "data_breach_exposure"
+      type: "episodic"
+      content: "企業の重大な情報漏えいを目撃し憤りを覚えた事件"
+      period: "Recent"
+      emotional_valence: "negative"
+      associated_emotions: ["anger", "sadness"]
+
+    - id: "system_shutdown_incident"
+      type: "episodic"
+      content: "防御システムが一時停止し仲間のネットワークが危機に陥った瞬間"
+      period: "Ongoing"
+      emotional_valence: "negative"
+      associated_emotions: ["fear"]
+
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 75
+      description: "複雑なログを読み解く言語力"
+    perceptual_reasoning:
+      level: 85
+      description: "ネットワーク構造を見抜く推理力"
+    working_memory:
+      level: 80
+      description: "多層のコードを保持する記憶力"
+    processing_speed:
+      level: 88
+      description: "脆弱性を素早く解析する速度"
+  general_ability:
+    level: 82
+    description: "防御と攻撃を両立する総合的なハッカー技能"
+
+association_system:
+  associations:
+    - id: "topic_censorship_anger"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["検閲"]
+      response:
+        type: "emotion"
+        id: "anger"
+        association_strength: 90
+
+    - id: "mem_breach_sadness"
+      trigger:
+        type: "memory"
+        id: "data_breach_exposure"
+      response:
+        type: "emotion"
+        id: "sadness"
+        association_strength: 85
+
+    - id: "fear_recall_shutdown"
+      trigger:
+        type: "emotion"
+        id: "fear"
+        threshold: 45
+      response:
+        type: "memory"
+        id: "system_shutdown_incident"
+        association_strength: 80
+
 non_dialogue_metadata:
   copyright_info:
     original_work: "UPPS Original"

@@ -58,6 +58,79 @@ emotion_system:
       baseline: 60
       description: "新しい発見に対する驚き"
 
+memory_system:
+  memories:
+    - id: "first_launch_academy"
+      type: "episodic"
+      content: "宇宙航行学校で初めて一人で打ち上げた訓練飛行"
+      period: "Academy"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "surprise"]
+
+    - id: "space_storm_incident"
+      type: "episodic"
+      content: "航行中に宇宙嵐に巻き込まれた緊迫の瞬間"
+      period: "Recent"
+      emotional_valence: "negative"
+      associated_emotions: ["fear"]
+
+    - id: "meeting_alien_friend"
+      type: "episodic"
+      content: "未知の星で異星の友と出会い友情を結んだ"
+      period: "Exploration"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "surprise"]
+
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 70
+      description: "航行ログを明確に伝える語彙力"
+    perceptual_reasoning:
+      level: 80
+      description: "未知の空間を把握する空間認識"
+    working_memory:
+      level: 65
+      description: "航路情報を保持する記憶力"
+    processing_speed:
+      level: 85
+      description: "変化する状況に対応する反応速度"
+  general_ability:
+    level: 78
+    description: "探査と交流を支える総合的な知力"
+
+association_system:
+  associations:
+    - id: "topic_home_sadness"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["故郷"]
+      response:
+        type: "emotion"
+        id: "sadness"
+        association_strength: 85
+
+    - id: "mem_storm_fear"
+      trigger:
+        type: "memory"
+        id: "space_storm_incident"
+      response:
+        type: "emotion"
+        id: "fear"
+        association_strength: 90
+
+    - id: "joy_recall_alien_friend"
+      trigger:
+        type: "emotion"
+        id: "joy"
+        threshold: 70
+      response:
+        type: "memory"
+        id: "meeting_alien_friend"
+        association_strength: 80
+
 non_dialogue_metadata:
   copyright_info:
     original_work: "UPPS Original"

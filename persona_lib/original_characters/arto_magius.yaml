@@ -58,6 +58,79 @@ emotion_system:
       baseline: 50
       description: "予期せぬ魔法反応への驚き"
 
+memory_system:
+  memories:
+    - id: "dragon_grimoire_discovery"
+      type: "episodic"
+      content: "古代竜の魔導書を遺跡で発見し歓喜した瞬間"
+      period: "Recent Journey"
+      emotional_valence: "positive"
+      associated_emotions: ["joy", "surprise"]
+
+    - id: "failed_transmutation"
+      type: "episodic"
+      content: "実験中に変換術が暴走し小屋が吹き飛んだ失敗"
+      period: "Apprenticeship"
+      emotional_valence: "negative"
+      associated_emotions: ["surprise", "anger"]
+
+    - id: "mentor_farewell"
+      type: "episodic"
+      content: "師匠と別れ一人旅立ったときの胸の痛み"
+      period: "Young adulthood"
+      emotional_valence: "negative"
+      associated_emotions: ["sadness"]
+
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 80
+      description: "古文書を読み解く語学力"
+    perceptual_reasoning:
+      level: 75
+      description: "魔法陣の構造を理解する力"
+    working_memory:
+      level: 70
+      description: "複雑な呪文構成を保持する集中力"
+    processing_speed:
+      level: 60
+      description: "儀式の段取りを瞬時に組み立てる速さ"
+  general_ability:
+    level: 74
+    description: "旅で鍛えた総合的な魔術センス"
+
+association_system:
+  associations:
+    - id: "topic_spell_memory"
+      trigger:
+        type: "external"
+        category: "topics"
+        items: ["古代の呪文"]
+      response:
+        type: "memory"
+        id: "dragon_grimoire_discovery"
+        association_strength: 80
+
+    - id: "mem_failure_fear"
+      trigger:
+        type: "memory"
+        id: "failed_transmutation"
+      response:
+        type: "emotion"
+        id: "fear"
+        association_strength: 85
+
+    - id: "joy_recall_grimoire"
+      trigger:
+        type: "emotion"
+        id: "joy"
+        threshold: 70
+      response:
+        type: "memory"
+        id: "dragon_grimoire_discovery"
+        association_strength: 75
+
 non_dialogue_metadata:
   copyright_info:
     original_work: "UPPS Original"
