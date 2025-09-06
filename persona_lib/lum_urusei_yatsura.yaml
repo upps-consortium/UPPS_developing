@@ -139,6 +139,26 @@ memory_system:
       emotional_valence: "positive"
       associated_emotions: ["love", "joy", "surprise"]
 
+# 認知能力システム
+cognitive_system:
+  model: "WAIS-IV"
+  abilities:
+    verbal_comprehension:
+      level: 60
+      description: "地球語も日常会話は得意だが、学術的な表現は苦手"
+    perceptual_reasoning:
+      level: 75
+      description: "直感的なパターン認識と空間把握に優れる"
+    working_memory:
+      level: 55
+      description: "興味のない事には注意が散漫"
+    processing_speed:
+      level: 80
+      description: "反応が速く、電撃も即座に放てる"
+  general_ability:
+    level: 68
+    description: "身体能力と反射神経は優秀だが、学習面は平均的"
+
 # 動的変容（感情と能力の連動）
 association_system:
   associations:
@@ -157,6 +177,7 @@ association_system:
         id: "electric_shock"
         intensity_factor: "emotion_level"
         description: "感情高ぶりによる電撃発動"
+        association_strength: 90
 
     - id: "mem_flirt_jealousy"
       trigger:
