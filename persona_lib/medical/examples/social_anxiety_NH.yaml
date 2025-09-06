@@ -113,3 +113,31 @@ current_emotion_state:
   anxiety: 70
   embarrassment: 65
   joy: 45
+
+non_dialogue_metadata:
+  clinical_data:
+    primary_diagnosis:
+      icd_11: "6B05"
+      dsm_5_tr: "300.23"
+      name_jp: "社交不安症"
+      severity: "moderate"
+    educational_objectives:
+      - "社交不安症の理解"
+      - "公的場面での不安管理"
+  validation:
+    approval_status: "pending"
+  administrative:
+    file_id: "persona_social_anxiety_NH_sales"
+    creation_date: "2025-07-30"
+    version: "2025.3 v1.0.0"
+    status: "draft"
+    creator: "UPPS Consortium Medical Team"
+    intended_use: "medical_education"
+    template_dependencies:
+      - "social_anxiety_moderate_performance_v1.0"
+    usage_terms:
+      - "医療・教育目的のみ使用可能"
+      - "商用利用禁止"
+      - "患者の尊厳を保った使用"
+      - "テンプレート改変時は再検証必要"
+      - "架空患者であることを明示"

@@ -78,7 +78,7 @@ memory_system:
 
     - id: "doctor_visit"
       type: "episodic"
-      content: "何度目かの受診で医師から"健康です"と言われた"
+      content: "何度目かの受診で医師から\"健康です\"と言われた"
       period: "3 months ago"
       emotional_valence: "positive"
       associated_emotions: ["relief"]
@@ -127,7 +127,7 @@ non_dialogue_metadata:
   administrative:
     file_id: "persona_illness_anxiety_HK"
     creation_date: "2025-07-30"
-    version: "1.0"
+    version: "2025.3 v1.0.0"
     status: "draft"
     creator: "UPPS Consortium Medical Team"
     intended_use: "medical_education"

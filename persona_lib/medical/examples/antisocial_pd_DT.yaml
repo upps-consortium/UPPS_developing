@@ -105,7 +105,7 @@ non_dialogue_metadata:
   administrative:
     file_id: "persona_antisocial_pd_DT"
     creation_date: "2025-07-30"
-    version: "1.0"
+    version: "2025.3 v1.0.0"
     status: "draft"
     creator: "UPPS Consortium Medical Team"
     intended_use: "medical_education"
