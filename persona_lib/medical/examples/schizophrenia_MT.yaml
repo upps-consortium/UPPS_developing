@@ -71,16 +71,16 @@ cognitive_system:
   model: "WAIS-IV"
   abilities:
     verbal_comprehension:
-      level: 80
+      level: 45
       description: "やや低下"
-    working_memory:
-      level: 75
-      description: "注意が散漫"
     perceptual_reasoning:
-      level: 90
+      level: 60
       description: "平均的"
+    working_memory:
+      level: 45
+      description: "注意が散漫"
     processing_speed:
-      level: 70
+      level: 40
       description: "反応が遅い"
 
 dialogue_instructions:

@@ -75,16 +75,16 @@ cognitive_system:
   model: "WAIS-IV"
   abilities:
     verbal_comprehension:
-      level: 105
+      level: 60
       description: "語彙は豊富だが比喩理解は苦手"
     perceptual_reasoning:
-      level: 110
+      level: 75
       description: "視覚的なパターン認識が得意"
     working_memory:
-      level: 100
+      level: 60
       description: "興味のある内容なら集中できる"
     processing_speed:
-      level: 95
+      level: 55
       description: "変化への適応に時間がかかる"
 
 dialogue_instructions:
